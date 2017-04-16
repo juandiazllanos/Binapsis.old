@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A6755B01-2B4A-4F97-9E0C-7F48BED6EC80}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Binapsis.Presentacion.MVVM</RootNamespace>
+    <AssemblyName>Binapsis.Presentacion.MVVM</AssemblyName>
+    <DefaultLanguage>es-ES</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="project.json" />
+    <!-- A reference to the entire .NET Framework is automatically included -->
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FabricaVistaModelo.cs" />
+    <Compile Include="Mapeo\MapeoTipo.cs" />
+    <Compile Include="Mapeo\MapeoReferencia.cs" />
+    <Compile Include="Mapeo\MapeoPropiedad.cs" />
+    <Compile Include="ObservadorModelo.cs" />
+    <Compile Include="VistaModelo.cs" />
+    <Compile Include="VistaModeloColeccion.cs" />
+    <Compile Include="VistaModeloPropiedad.cs" />
+    <Compile Include="VistaModeloReferencia.cs" />
+    <Compile Include="Vista\VistaObjeto.cs" />
+    <Compile Include="Vista\VistaPropiedad.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vista\VistaAtributo.cs" />
+    <Compile Include="Vista\VistaFila.cs" />
+    <Compile Include="Vista\VistaColeccion.cs" />
+    <Compile Include="Vista\VistaReferencia.cs" />
+    <Compile Include="ObservableVista.cs" />
+    <Compile Include="ObservadorVista.cs" />
+    <Compile Include="Vista\VistaReferenciaFila.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Plataforma\Binapsis.Plataforma.Estructura\Binapsis.Plataforma.Estructura.csproj">
+      <Project>{1095c376-0173-487d-bd2e-54991e05f539}</Project>
+      <Name>Binapsis.Plataforma.Estructura</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Plataforma\Binapsis.Plataforma.Notificaciones\Binapsis.Plataforma.Notificaciones.csproj">
+      <Project>{ec26f237-92c5-47bd-81f3-e2f48e701ee2}</Project>
+      <Name>Binapsis.Plataforma.Notificaciones</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Binapsis.Presentacion.Editores\Binapsis.Presentacion.Editores.csproj">
+      <Project>{b61630d5-ad76-4a90-9411-e55ffa5b7e40}</Project>
+      <Name>Binapsis.Presentacion.Editores</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

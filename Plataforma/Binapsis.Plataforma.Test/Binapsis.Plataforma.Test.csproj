@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{030FAEB2-2A03-4B78-B37D-FC7CDAF15ACF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Binapsis.Plataforma.Test</RootNamespace>
+    <AssemblyName>Binapsis.Plataforma.Test</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="Builders\BuilderObjetoDatos.cs" />
+    <Compile Include="Builders\BuilderTipo.cs" />
+    <Compile Include="Estructura\EvaluarObjetoDatos.cs" />
+    <Compile Include="EvaluarComparacionObjetoDatos.cs" />
+    <Compile Include="Historial\EvaluarObjetoDatosHistorial.cs" />
+    <Compile Include="Historial\Helpers\Estado.cs" />
+    <Compile Include="Notificacion\Impl\Observador.cs" />
+    <Compile Include="Notificacion\EvaluarObservadorObjetoDatos.cs" />
+    <Compile Include="Serializacion\EvaluarSerializacionDiagrama.cs" />
+    <Compile Include="Serializacion\Impl\FicheroImpl.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="Serializacion\Helper\HelperDiagrama.cs" />
+    <Compile Include="HelperTipo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serializacion\EvaluarSerializacionEnFichero.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Binapsis.Plataforma.Estructura\Binapsis.Plataforma.Estructura.csproj">
+      <Project>{1095c376-0173-487d-bd2e-54991e05f539}</Project>
+      <Name>Binapsis.Plataforma.Estructura</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Binapsis.Plataforma.Historial\Binapsis.Plataforma.Historial.csproj">
+      <Project>{07ebc2ad-0697-43a3-a62d-333d75fbd4e5}</Project>
+      <Name>Binapsis.Plataforma.Historial</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Binapsis.Plataforma.Notificaciones\Binapsis.Plataforma.Notificaciones.csproj">
+      <Project>{ec26f237-92c5-47bd-81f3-e2f48e701ee2}</Project>
+      <Name>Binapsis.Plataforma.Notificaciones</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Binapsis.Plataforma.Serializacion.Binario\Binapsis.Plataforma.Serializacion.Binario.csproj">
+      <Project>{8102fe4d-58ed-4c59-80af-e1b19f758ee8}</Project>
+      <Name>Binapsis.Plataforma.Serializacion.Binario</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Binapsis.Plataforma.Serializacion.Xml\Binapsis.Plataforma.Serializacion.Xml.csproj">
+      <Project>{ae6bf23c-e25a-4d0e-94de-81246ae2bcb5}</Project>
+      <Name>Binapsis.Plataforma.Serializacion.Xml</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Binapsis.Plataforma.Serializacion\Binapsis.Plataforma.Serializacion.csproj">
+      <Project>{a7961b7c-6d4f-47e7-8d00-f95e1134e817}</Project>
+      <Name>Binapsis.Plataforma.Serializacion</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

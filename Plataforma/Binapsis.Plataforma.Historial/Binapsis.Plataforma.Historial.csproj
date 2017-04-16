@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{07EBC2AD-0697-43A3-A62D-333D75FBD4E5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Binapsis.Plataforma.Historial</RootNamespace>
+    <AssemblyName>Binapsis.Plataforma.Historial</AssemblyName>
+    <DefaultLanguage>es-ES</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="project.json" />
+    <!-- A reference to the entire .NET Framework is automatically included -->
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Interno\Comandos\ComandoAgregar.cs" />
+    <Compile Include="Interno\Comandos\ComandoEstablecer.cs" />
+    <Compile Include="Interno\Comandos\ComandoRemover.cs" />
+    <Compile Include="Impl\HistorialImpl.cs" />
+    <Compile Include="Interno\Estados\EstadoObjetoDatosItem.cs" />
+    <Compile Include="FabricaHistorial.cs" />
+    <Compile Include="Interno\FabricaEstado.cs" />
+    <Compile Include="Interno\Estados\EstadoBoolean.cs" />
+    <Compile Include="Interno\Estados\EstadoByte.cs" />
+    <Compile Include="Interno\Estados\EstadoChar.cs" />
+    <Compile Include="Interno\Estados\EstadoDateTime.cs" />
+    <Compile Include="Interno\Estados\EstadoDecimal.cs" />
+    <Compile Include="Interno\Estados\EstadoDouble.cs" />
+    <Compile Include="Interno\Estados\EstadoFloat.cs" />
+    <Compile Include="Interno\Estados\EstadoInteger.cs" />
+    <Compile Include="Interno\Estados\EstadoLong.cs" />
+    <Compile Include="Interno\Estados\EstadoObject.cs" />
+    <Compile Include="Interno\Estados\EstadoObjetoDatos.cs" />
+    <Compile Include="Interno\Estados\EstadoSByte.cs" />
+    <Compile Include="Interno\Estados\EstadoShort.cs" />
+    <Compile Include="Interno\Estados\EstadoString.cs" />
+    <Compile Include="Interno\Estados\EstadoUInteger.cs" />
+    <Compile Include="Interno\Estados\EstadoULong.cs" />
+    <Compile Include="Interno\Estados\EstadoUShort.cs" />
+    <Compile Include="Log.cs" />
+    <Compile Include="Interno\HistorialEstado.cs" />
+    <Compile Include="Interno\HistorialComando.cs" />
+    <Compile Include="Instantanea.cs" />
+    <Compile Include="Interno\HistorialObjetoDatos.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resumen.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Binapsis.Plataforma.Estructura\Binapsis.Plataforma.Estructura.csproj">
+      <Project>{1095c376-0173-487d-bd2e-54991e05f539}</Project>
+      <Name>Binapsis.Plataforma.Estructura</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
