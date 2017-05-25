@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="binapsis" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\Desarrollo\\Binapsis\\Plataforma\\Binapsis\.Plataforma\.ServicioConfiguracion\\obj\\Debug\\netcoreapp1\.1\\PubTmp\\Out\\$" />
+  </parameter>
+</parameters>

@@ -1,0 +1,4 @@
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Editores\bin\Debug\Binapsis.Presentacion.Editores.dll
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Editores\bin\Debug\Binapsis.Presentacion.Editores.pdb
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Editores\obj\Debug\Binapsis.Presentacion.Editores.dll
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Editores\obj\Debug\Binapsis.Presentacion.Editores.pdb

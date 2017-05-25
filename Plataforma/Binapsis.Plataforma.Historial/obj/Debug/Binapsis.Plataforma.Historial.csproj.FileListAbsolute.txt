@@ -1,0 +1,14 @@
+D:\Desarrollo\Binapsis\Binapsis.Plataforma\Binapsis.Plataforma.Historial\obj\Debug\Binapsis.Plataforma.Historial.csprojResolveAssemblyReference.cache
+D:\Desarrollo\Binapsis\Binapsis.Plataforma\Binapsis.Plataforma.Historial\bin\Debug\Binapsis.Plataforma.Historial.dll
+D:\Desarrollo\Binapsis\Binapsis.Plataforma\Binapsis.Plataforma.Historial\bin\Debug\Binapsis.Plataforma.Historial.pdb
+D:\Desarrollo\Binapsis\Binapsis.Plataforma\Binapsis.Plataforma.Historial\bin\Debug\Binapsis.Plataforma.Estructura.dll
+D:\Desarrollo\Binapsis\Binapsis.Plataforma\Binapsis.Plataforma.Historial\bin\Debug\Binapsis.Plataforma.Estructura.pdb
+D:\Desarrollo\Binapsis\Binapsis.Plataforma\Binapsis.Plataforma.Historial\obj\Debug\Binapsis.Plataforma.Historial.dll
+D:\Desarrollo\Binapsis\Binapsis.Plataforma\Binapsis.Plataforma.Historial\obj\Debug\Binapsis.Plataforma.Historial.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Historial\bin\Debug\Binapsis.Plataforma.Historial.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Historial\bin\Debug\Binapsis.Plataforma.Historial.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Historial\bin\Debug\Binapsis.Plataforma.Estructura.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Historial\bin\Debug\Binapsis.Plataforma.Estructura.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Historial\obj\Debug\Binapsis.Plataforma.Historial.csprojResolveAssemblyReference.cache
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Historial\obj\Debug\Binapsis.Plataforma.Historial.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Historial\obj\Debug\Binapsis.Plataforma.Historial.pdb
