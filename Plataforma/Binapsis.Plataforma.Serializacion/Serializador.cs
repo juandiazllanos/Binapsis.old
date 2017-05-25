@@ -28,7 +28,7 @@ namespace Binapsis.Plataforma.Serializacion
             {
                 diag = helper.Crear(od);
 
-                stream = _secuencia.Crear();
+                stream = _secuencia.Stream;
                 stream.SetLength(0);
 
                 _escritor.Stream = stream;
@@ -36,7 +36,7 @@ namespace Binapsis.Plataforma.Serializacion
             }            
             finally
             {
-                stream?.Dispose();
+                _secuencia.Cerrar();
             }
         }
         

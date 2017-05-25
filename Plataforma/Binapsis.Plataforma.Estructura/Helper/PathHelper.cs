@@ -35,7 +35,7 @@ namespace Binapsis.Plataforma.Estructura.Helpers
             else
                 propiedad = null;
         }
-
+        
         private static IObjetoDatos ResolverReferencia(IObjetoDatos od, string ruta)
         {
             IObjetoDatos referencia = default(IObjetoDatos);
@@ -78,6 +78,19 @@ namespace Binapsis.Plataforma.Estructura.Helpers
             return referencia;
         }
 
+
+        internal static void AgregarObjetoDatos(IObjetoDatos od, string ruta, IObjetoDatos item)
+        {
+            IObjetoDatos referencia;
+            IPropiedad propiedad;
+
+            Resolver(od, ruta, out referencia, out propiedad);
+
+            if (referencia != null && propiedad != null)
+            {
+                referencia.AgregarObjetoDatos(propiedad, item);
+            }            
+        }
 
         internal static IObjetoDatos CrearObjetoDatos(IObjetoDatos od, string ruta)
         {

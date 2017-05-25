@@ -10,16 +10,19 @@ namespace Binapsis.Plataforma.Serializacion.Impl
     {
         Stream _stream;
         HeapId _oid;
+        IFabrica _fabrica;
 
-        public LectorBase()        
+        public LectorBase(IFabrica fabrica)        
         {
             _oid = new HeapId();
+            _fabrica = fabrica;
         }
         
         protected LectorBase(LectorBase lector)
         {
             _oid = lector._oid;
             _stream = lector._stream;
+            _fabrica = lector._fabrica;
         }
         
         public ITipo Tipo { get; private set; }
@@ -73,7 +76,10 @@ namespace Binapsis.Plataforma.Serializacion.Impl
             IObjetoDatos valor = CrearObjetoDatos(od, propiedad, id);
 
             if (propiedad.Asociacion == Asociacion.Agregacion)
-                od.EstablecerObjetoDatos(propiedad, valor);
+                if (!propiedad.EsColeccion)
+                    od.EstablecerObjetoDatos(propiedad, valor);
+                else
+                    od.AgregarObjetoDatos(propiedad, valor);
             
             lector.Leer(valor);
         }
@@ -94,7 +100,7 @@ namespace Binapsis.Plataforma.Serializacion.Impl
         
         protected virtual IObjetoDatos CrearObjetoDatos(ITipo tipo)
         {
-            return Fabrica.Instancia.Crear(tipo);
+            return _fabrica.Crear(tipo);
         }
 
         protected abstract ILector Crear();

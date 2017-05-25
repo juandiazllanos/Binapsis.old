@@ -59,6 +59,7 @@ namespace Binapsis.Plataforma.Serializacion.Interno
         private void CrearRoot(IObjetoDatos od)
         {
             ObjetoMap omap = _heap.Obtener(od);
+            omap.Propietario = "/";
             Root root = new Root(omap);
             _diag.Root = root;
         }
@@ -118,8 +119,8 @@ namespace Binapsis.Plataforma.Serializacion.Interno
             {
                 // le referencia agregacion es proxy, hasta que se resuelva
                 nodoobj.EsProxy = true;
-                // se mantiene la primera referencia
-                if (!_agre.ContainsKey(od))  _agre.Add(od, nodoobj);
+                // se mantiene la primera referencia y que sea diferente del root
+                if (!_agre.ContainsKey(od) && omap.Propietario != "/")  _agre.Add(od, nodoobj);
                 return;
             }                
 

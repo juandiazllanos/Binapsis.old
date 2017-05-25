@@ -1,21 +1,17 @@
-using Binapsis.Presentacion.Editores;
-
 namespace Binapsis.Presentacion.MVVM.Mapeo
 {
-	public class MapeoReferencia : MapeoPropiedad
+    public class MapeoReferencia : MapeoPropiedad
     {
-        public MapeoReferencia(MapeoTipo mapeo, string nombre, MapeoTipo mapeoTipo)
-            : this(mapeo, nombre, null, mapeoTipo)
-        {            
-        }
-
-        public MapeoReferencia(MapeoTipo mapeo, string nombre, IEditor editor, MapeoTipo mapeoTipo) 
-            : base(mapeo, nombre, editor)
+        public MapeoReferencia(MapeoTipo mapeo) 
+            : base(mapeo)
         {
-            Mapeo = mapeoTipo;
         }
-
-        public  MapeoTipo Mapeo { get; }        		
+        
+        public  MapeoTipo Mapeo
+        {
+            get;
+            set;
+        }        		
 	}
 
 }

@@ -24,14 +24,14 @@ namespace Binapsis.Plataforma.Serializacion
             try
             {
                 // inicializar secuencia
-                stream = _secuencia.Crear();
+                stream = _secuencia.Stream;
                 // inicializar lector
                 _lector.Stream = stream;
                 _lector.Leer(od);
             }
             finally
             {
-                stream?.Dispose();
+                _secuencia.Cerrar();
             }
         }
 

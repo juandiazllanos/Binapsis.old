@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1F9492B7-3567-41A0-9EDF-ABA23275F169}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Binapsis.Plataforma.Configuracion.Sql</RootNamespace>
+    <AssemblyName>Binapsis.Plataforma.Configuracion.Sql</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Comandos\ComandoBase.cs" />
+    <Compile Include="Comandos\ComandoEscritura.cs" />
+    <Compile Include="Comandos\ComandoExiste.cs" />
+    <Compile Include="Comandos\ComandoLectura.cs" />
+    <Compile Include="Comandos\ComandoParametrizado.cs" />
+    <Compile Include="Helper\HelperBase.cs" />
+    <Compile Include="Helper\HelperEnsamblado.cs" />
+    <Compile Include="Helper\HelperUri.cs" />
+    <Compile Include="IComando.cs" />
+    <Compile Include="IHelper.cs" />
+    <Compile Include="Impl\Escritura\ActualizarEnsamblado.cs" />
+    <Compile Include="Impl\Escritura\EliminarEnsamblado.cs" />
+    <Compile Include="Impl\Escritura\InsertarEnsamblado.cs" />
+    <Compile Include="Impl\Lectura\ConsultarEnsamblado.cs" />
+    <Compile Include="Impl\Lectura\ExisteEnsamblado.cs" />
+    <Compile Include="Impl\Lectura\RecuperarEnsamblado.cs" />
+    <Compile Include="Impl\Parametrizado\CrearId.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Binapsis.Plataforma.Configuracion\Binapsis.Plataforma.Configuracion.csproj">
+      <Project>{431fb5cb-564f-4259-9e38-fa2cfb733625}</Project>
+      <Name>Binapsis.Plataforma.Configuracion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Binapsis.Plataforma.Estructura\Binapsis.Plataforma.Estructura.csproj">
+      <Project>{1095c376-0173-487d-bd2e-54991e05f539}</Project>
+      <Name>Binapsis.Plataforma.Estructura</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

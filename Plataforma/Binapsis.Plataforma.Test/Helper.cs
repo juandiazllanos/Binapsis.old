@@ -8,7 +8,7 @@ namespace Binapsis.Plataforma.Test
     {
         public static IObjetoDatos Crear(ITipo tipo)
         {
-            return Fabrica.Instancia.Crear(tipo);
+            return FabricaDatos.Instancia.Crear(tipo);
         }
 
         public static IObjetoDatos Crear(ITipo tipo, IFabrica fabrica)

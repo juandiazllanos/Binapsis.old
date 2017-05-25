@@ -2,12 +2,12 @@ namespace Binapsis.Plataforma.Estructura
 {
 	public enum Cardinalidad : byte
     {
-        Uno = 1,
-		Muchos = 3,
-		Cero = 0,
-		Uno_Muchos = 5,
-		Cero_Muchos = 4,
-		Cero_Uno = 2
-
+        Ninguna = 0,
+        Cero = 1,        
+        CeroAUno = 2,
+        CeroAMuchos = 5,
+        Uno = 3,
+        UnoAMuchos = 6,
+        Muchos = 4,
 	}
 }

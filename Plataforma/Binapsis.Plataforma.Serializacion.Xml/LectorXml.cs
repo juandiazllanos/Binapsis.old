@@ -15,8 +15,8 @@ namespace Binapsis.Plataforma.Serializacion.Xml
         bool _isEmpty;
         bool _finalizado;
         
-        public LectorXml()
-            : base()
+        public LectorXml(IFabrica fabrica)
+            : base(fabrica)
         {
 
         }

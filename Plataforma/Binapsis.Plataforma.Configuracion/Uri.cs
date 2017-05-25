@@ -1,5 +1,6 @@
 ﻿using Binapsis.Plataforma.Estructura.Impl;
 using Binapsis.Plataforma.Estructura;
+using System;
 
 namespace Binapsis.Plataforma.Configuracion
 {
@@ -9,7 +10,12 @@ namespace Binapsis.Plataforma.Configuracion
             : base(impl)
         {
         }
-        
+
+        protected override ObjetoBase CrearObjetoDatos(IImplementacion impl)
+        {
+            return FabricaConfiguracion.Instancia.Crear(impl);
+        }
+
         public Ensamblado Ensamblado
         {
             get

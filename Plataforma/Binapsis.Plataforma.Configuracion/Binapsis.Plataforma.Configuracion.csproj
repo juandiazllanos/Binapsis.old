@@ -39,10 +39,16 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\Propiedad.cs" />
+    <Compile Include="Base\Tipo.cs" />
+    <Compile Include="Definicion.cs" />
     <Compile Include="Ensamblado.cs" />
+    <Compile Include="Base\BaseTypes.cs" />
+    <Compile Include="FabricaConfiguracion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Propiedad.cs" />
     <Compile Include="Tipo.cs" />
+    <Compile Include="Types.cs" />
     <Compile Include="Uri.cs" />
   </ItemGroup>
   <ItemGroup>

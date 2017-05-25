@@ -10,8 +10,8 @@ namespace Binapsis.Plataforma.Serializacion.Binario
         BinaryReader _reader;
         int _id;
 
-        public LectorBinario()
-            : base()
+        public LectorBinario(IFabrica fabrica)
+            : base(fabrica)
         {
         }
 

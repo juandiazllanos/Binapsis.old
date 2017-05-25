@@ -22,7 +22,7 @@ namespace Binapsis.Plataforma.Estructura.Impl
 
         public IImplementacion Crear(ITipo tipo, IObjetoDatos propietario)
         {
-            return FabricaImplementacion.Instancia.Crear(tipo, propietario);            
+            return FabricaImpl.Instancia.Crear(tipo, propietario);            
         }
         
         public void Eliminar()

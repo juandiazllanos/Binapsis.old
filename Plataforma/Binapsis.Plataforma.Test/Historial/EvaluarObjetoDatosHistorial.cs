@@ -2,6 +2,7 @@
 using Binapsis.Plataforma.Estructura;
 using Binapsis.Plataforma.Historial;
 using Binapsis.Plataforma.Test.Historial.Helpers;
+using Binapsis.Plataforma.Estructura.Impl;
 
 namespace Binapsis.Plataforma.Test.Historial
 {
@@ -12,9 +13,8 @@ namespace Binapsis.Plataforma.Test.Historial
         public void DeshacerCambiosEnObjetoDatos()
         {
             // arrange
-            Log controlador = new Log();
-            //FabricaHistorial fabrica = new FabricaHistorial();
-            IFabrica fabrica = new FabricaHistorial(controlador);
+            Log controlador = new Log();            
+            IFabrica fabrica = new FabricaDatos(new FabricaHistorial(controlador));
             IObjetoDatos od = fabrica.Crear(HelperTipo.ObtenerTipo());
 
             // crear un estado
@@ -34,7 +34,7 @@ namespace Binapsis.Plataforma.Test.Historial
         public void DeshacerCambiosEnObjetoDatosX()
         {
             Log controlador = new Log();            
-            IFabrica fabrica = new FabricaHistorial(controlador);
+            IFabrica fabrica = new FabricaDatos(new FabricaHistorial(controlador));
             IObjetoDatos od = fabrica.Crear(HelperTipo.ObtenerTipo2());
 
             // establecer valores
@@ -51,7 +51,7 @@ namespace Binapsis.Plataforma.Test.Historial
         public void RecuperarInstantaneaEnObjetoDatos()
         {
             Log log = new Log();
-            IFabrica fabrica = new FabricaHistorial(log);
+            IFabrica fabrica = new FabricaDatos(new FabricaHistorial(log));
             IObjetoDatos od = fabrica.Crear(HelperTipo.ObtenerTipo());
             var estado0 = new Estado(od);
 
@@ -101,7 +101,7 @@ namespace Binapsis.Plataforma.Test.Historial
         {
             // arrange
             Log log = new Log();            
-            IFabrica fabrica = new FabricaHistorial(log);
+            IFabrica fabrica = new FabricaDatos(new FabricaHistorial(log));
             IObjetoDatos od = fabrica.Crear(HelperTipo.ObtenerTipo2());
 
             // act

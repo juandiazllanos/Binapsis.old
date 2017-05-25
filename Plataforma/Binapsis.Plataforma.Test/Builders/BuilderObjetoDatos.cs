@@ -62,7 +62,7 @@ namespace Binapsis.Plataforma.Test.Builders
 
         public static IObjetoDatos Construir(ITipo tipo, int niveles, int items)
         {
-            IObjetoDatos od = Fabrica.Instancia.Crear(tipo);            
+            IObjetoDatos od = FabricaDatos.Instancia.Crear(tipo);            
             Construir(od, niveles, items);            
             return od;
         }

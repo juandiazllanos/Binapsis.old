@@ -39,25 +39,41 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FabricaVistaModelo.cs" />
+    <Compile Include="Builder\BuilderInvocacionModelo.cs" />
+    <Compile Include="Builder\BuilderVistaModelo.cs" />
+    <Compile Include="Controlador\ControladorInvocacionModelo.cs" />
+    <Compile Include="Helper\HelperModelo.cs" />
+    <Compile Include="IComando.cs" />
+    <Compile Include="Invocacion.cs" />
+    <Compile Include="InvocacionModelo.cs" />
+    <Compile Include="InvocacionEditor\InvocacionComando.cs" />
+    <Compile Include="InvocacionEditor\InvocacionTipo.cs" />
+    <Compile Include="Mapeo\MapeoPropiedadDefinicion.cs" />
+    <Compile Include="Mapeo\MapeoComando.cs" />
     <Compile Include="Mapeo\MapeoTipo.cs" />
     <Compile Include="Mapeo\MapeoReferencia.cs" />
     <Compile Include="Mapeo\MapeoPropiedad.cs" />
-    <Compile Include="ObservadorModelo.cs" />
+    <Compile Include="Definicion\PropiedadInfo.cs" />
+    <Compile Include="Definicion\TipoInfo.cs" />
+    <Compile Include="Observable\ObservableInvocacion.cs" />
+    <Compile Include="Observador\ObservadorInvocacion.cs" />
+    <Compile Include="Observador\ObservadorModelo.cs" />
+    <Compile Include="Vista.cs" />
+    <Compile Include="VistaItem.cs" />
+    <Compile Include="Controlador\ControladorVistaModelo.cs" />
     <Compile Include="VistaModelo.cs" />
-    <Compile Include="VistaModeloColeccion.cs" />
-    <Compile Include="VistaModeloPropiedad.cs" />
-    <Compile Include="VistaModeloReferencia.cs" />
-    <Compile Include="Vista\VistaObjeto.cs" />
-    <Compile Include="Vista\VistaPropiedad.cs" />
+    <Compile Include="Interno\VistaModeloColeccion.cs" />
+    <Compile Include="Interno\VistaModeloTipo.cs" />
+    <Compile Include="Interno\VistaModeloPropiedad.cs" />
+    <Compile Include="Interno\VistaModeloReferencia.cs" />
+    <Compile Include="VistaEditor\VistaPropiedad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Vista\VistaAtributo.cs" />
-    <Compile Include="Vista\VistaFila.cs" />
-    <Compile Include="Vista\VistaColeccion.cs" />
-    <Compile Include="Vista\VistaReferencia.cs" />
-    <Compile Include="ObservableVista.cs" />
-    <Compile Include="ObservadorVista.cs" />
-    <Compile Include="Vista\VistaReferenciaFila.cs" />
+    <Compile Include="VistaEditor\VistaAtributo.cs" />
+    <Compile Include="VistaEditor\VistaColeccion.cs" />
+    <Compile Include="VistaEditor\VistaReferencia.cs" />
+    <Compile Include="Observable\ObservableVista.cs" />
+    <Compile Include="Observador\ObservadorVista.cs" />
+    <Compile Include="VistaEditor\VistaTipo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Plataforma\Binapsis.Plataforma.Estructura\Binapsis.Plataforma.Estructura.csproj">
@@ -73,6 +89,7 @@
       <Name>Binapsis.Presentacion.Editores</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

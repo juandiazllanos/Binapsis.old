@@ -3,26 +3,21 @@ using Binapsis.Plataforma.Estructura;
 
 namespace Binapsis.Plataforma.Notificaciones.Impl
 {
-    public class FabricaNotificacion : FabricaImplementacion
+    public class FabricaNotificacion : FabricaImplBase
     {
         public FabricaNotificacion()
             : base()
         {
-        }
+        }        
         
-        public FabricaNotificacion(IFabrica fabrica) 
+        public FabricaNotificacion(IFabricaImpl fabrica) 
             : base(fabrica)
-        {            
-        }
-
-        static FabricaNotificacion()
         {
-            Instancia = new FabricaNotificacion();
         }
 
-        static new FabricaNotificacion Instancia { get; } 
+        public static FabricaNotificacion Instancia { get; } = new FabricaNotificacion();
 
-        protected override IImplementacion CrearImplementacion(IImplementacion impl)
+        protected override IImplementacion Crear(IImplementacion impl)
         {
             return new ImplementacionNotificacion(impl);
         }        

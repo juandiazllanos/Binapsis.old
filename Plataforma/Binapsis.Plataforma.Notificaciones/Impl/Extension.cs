@@ -7,7 +7,7 @@ namespace Binapsis.Plataforma.Notificaciones.Impl.Extension
 {
     public static class Extension
     {
-        public static Observable Obervable(this IObjetoDatos objetoDatos)
+        public static Observable Observable(this IObjetoDatos objetoDatos)
         {
             if (objetoDatos.GetType() == typeof(ObjetoBase) || objetoDatos.GetType().GetTypeInfo().IsSubclassOf(typeof(ObjetoBase)))
                 return Observable((ObjetoBase)objetoDatos);

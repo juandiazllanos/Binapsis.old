@@ -4,6 +4,6 @@ namespace Binapsis.Plataforma.Estructura
     {        
 		IObjetoDatos Crear(ITipo tipo);        
 		IObjetoDatos Crear(ITipo tipo, IObjetoDatos propietario);        
-		IObjetoDatos Crear(IImplementacion impl);
+		//IObjetoDatos Crear(IImplementacion impl);
 	}
 }

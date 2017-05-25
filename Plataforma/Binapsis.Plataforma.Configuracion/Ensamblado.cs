@@ -10,6 +10,11 @@ namespace Binapsis.Plataforma.Configuracion
         {
         }
 
+        protected override ObjetoBase CrearObjetoDatos(IImplementacion impl)
+        {
+            return FabricaConfiguracion.Instancia.Crear(impl);
+        }
+
         public string Nombre
         {
             get

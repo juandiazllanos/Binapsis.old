@@ -5,17 +5,23 @@ namespace Binapsis.Presentacion.MVVM.Mapeo
 	public class MapeoPropiedad
     {
         MapeoTipo _mapeo;
-        
-		public MapeoPropiedad(MapeoTipo mapeo, string nombre, IEditor editor)
+
+        public MapeoPropiedad(MapeoTipo mapeo)
         {
             _mapeo = mapeo;
-            Nombre = nombre;
-            Editor = editor;
-		}
-
-        public string Nombre { get; }
+        }
         
-        public IEditor Editor { get; }
+        public MapeoPropiedadDefinicion Propiedad
+        {
+            get;
+            set;
+        }
+                
+        public IEditor Editor
+        {
+            get;
+            set;
+        }
     }
 
 }

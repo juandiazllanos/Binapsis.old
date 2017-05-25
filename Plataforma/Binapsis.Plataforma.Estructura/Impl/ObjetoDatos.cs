@@ -4,6 +4,10 @@ namespace Binapsis.Plataforma.Estructura.Impl
 {
     public class ObjetoDatos : ObjetoBase
     {
+        public ObjetoDatos(ITipo tipo)
+            : this(new Implementacion(tipo))
+        {
+        }
 
         public ObjetoDatos(IImplementacion impl)
             : base(impl)
@@ -25,11 +29,30 @@ namespace Binapsis.Plataforma.Estructura.Impl
                 return base.Tipo;
             }
         }
-        
+
+        public void AgregarObjetoDatos(int indice, ObjetoDatos item)
+        {
+            base.AgregarObjetoDatos(indice, item);
+        }
+
+        public void AgregarObjetoDatos(IPropiedad propiedad, ObjetoDatos item)
+        {
+            base.AgregarObjetoDatos(propiedad, item);
+        }
+
+        public void AgregarObjetoDatos(string ruta, ObjetoDatos item)
+        {
+            base.AgregarObjetoDatos(ruta, item);
+        }
+
+        protected override ObjetoBase CrearObjetoDatos(IImplementacion impl)
+        {
+            return FabricaDatos.Instancia.Crear(impl);
+        }
 
         public new IObjetoDatos CrearObjetoDatos(int indice)
         {
-            return CrearObjetoDatos(indice);            
+            return base.CrearObjetoDatos(indice);            
         }
 
         public new IObjetoDatos CrearObjetoDatos(IPropiedad propiedad)
@@ -39,7 +62,7 @@ namespace Binapsis.Plataforma.Estructura.Impl
 
         public new IObjetoDatos CrearObjetoDatos(string ruta)
         {
-            return CrearObjetoDatos(ruta);
+            return base.CrearObjetoDatos(ruta);
         }
 
         
@@ -633,6 +656,6 @@ namespace Binapsis.Plataforma.Estructura.Impl
         {
             base.RemoverObjetoDatos(nombre, item);
         }
-
+        
     }    
 }

@@ -4,7 +4,7 @@ using Binapsis.Plataforma.Historial.Impl;
 
 namespace Binapsis.Plataforma.Historial
 {
-    public class FabricaHistorial : FabricaImplementacion
+    public class FabricaHistorial : FabricaImplBase
     {
         Log _log;
 
@@ -14,7 +14,13 @@ namespace Binapsis.Plataforma.Historial
             _log = new Log();
         }
 
-        public FabricaHistorial(IFabrica fabrica) 
+        //public FabricaHistorial(IFabrica fabrica) 
+        //    : base(fabrica)
+        //{
+        //    _log = new Log();
+        //}
+
+        public FabricaHistorial(IFabricaImpl fabrica) 
             : base(fabrica)
         {
             _log = new Log();
@@ -26,18 +32,23 @@ namespace Binapsis.Plataforma.Historial
             _log = log;
         }
 
-        public FabricaHistorial(Log log, IFabrica fabrica)
+        public FabricaHistorial(Log log, IFabricaImpl fabrica)
             : base(fabrica)
         {
             _log = log;
         }
                 
-        static new FabricaHistorial Instancia { get; } = new FabricaHistorial();
+        public static FabricaHistorial Instancia { get; } = new FabricaHistorial();
 
-        protected override IImplementacion CrearImplementacion(IImplementacion impl)
+        protected override IImplementacion Crear(IImplementacion impl)
         {
             return new HistorialImpl(impl, _log.Historial);
         }
+
+        //protected override IImplementacion CrearImplementacion(IImplementacion impl)
+        //{
+        //    return new HistorialImpl(impl, _log.Historial);
+        //}
 
         //public override IImplementacion Crear(ITipo tipo) =>  Crear(base.Crear(tipo));
 

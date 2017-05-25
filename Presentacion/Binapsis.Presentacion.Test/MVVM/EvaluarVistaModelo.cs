@@ -8,6 +8,7 @@ using Binapsis.Plataforma.Notificaciones.Impl;
 using Binapsis.Presentacion.Editores;
 using System.Reflection;
 using System;
+using Binapsis.Plataforma.Estructura.Impl;
 
 namespace Binapsis.Presentacion.Test.MVVM
 {
@@ -76,196 +77,196 @@ namespace Binapsis.Presentacion.Test.MVVM
             mapeo.Establecer("ReferenciaObjetoDatos", mapeoReferencia);
             mapeo.Establecer("ReferenciaObjetoDatosItem", editorColeccion, mapeoColeccion);
 
-            Assert.AreEqual("atributoBoolean", mapeo.Propiedades[0].Nombre);
+            Assert.AreEqual("atributoBoolean", mapeo.Propiedades[0].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(mapeo.Propiedades[0].Editor.GetType()));
             Assert.AreEqual(editor.EditorBoolean, mapeo.Propiedades[0].Editor);
 
-            Assert.AreEqual("atributoByte", mapeo.Propiedades[1].Nombre);
+            Assert.AreEqual("atributoByte", mapeo.Propiedades[1].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(mapeo.Propiedades[1].Editor.GetType()));
             Assert.AreEqual(editor.EditorByte, mapeo.Propiedades[1].Editor);
 
-            Assert.AreEqual("atributoChar", mapeo.Propiedades[2].Nombre);
+            Assert.AreEqual("atributoChar", mapeo.Propiedades[2].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(mapeo.Propiedades[2].Editor.GetType()));
             Assert.AreEqual(editor.EditorChar, mapeo.Propiedades[2].Editor);
 
-            Assert.AreEqual("atributoDateTime", mapeo.Propiedades[3].Nombre);
+            Assert.AreEqual("atributoDateTime", mapeo.Propiedades[3].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(mapeo.Propiedades[3].Editor.GetType()));
             Assert.AreEqual(editor.EditorDateTime, mapeo.Propiedades[3].Editor);
 
-            Assert.AreEqual("atributoDecimal", mapeo.Propiedades[4].Nombre);
+            Assert.AreEqual("atributoDecimal", mapeo.Propiedades[4].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(mapeo.Propiedades[4].Editor.GetType()));
             Assert.AreEqual(editor.EditorDecimal, mapeo.Propiedades[4].Editor);
 
-            Assert.AreEqual("atributoDouble", mapeo.Propiedades[5].Nombre);
+            Assert.AreEqual("atributoDouble", mapeo.Propiedades[5].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(mapeo.Propiedades[5].Editor.GetType()));
             Assert.AreEqual(editor.EditorDouble, mapeo.Propiedades[5].Editor);
 
-            Assert.AreEqual("atributoFloat", mapeo.Propiedades[6].Nombre);
+            Assert.AreEqual("atributoFloat", mapeo.Propiedades[6].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(mapeo.Propiedades[6].Editor.GetType()));
             Assert.AreEqual(editor.EditorFloat, mapeo.Propiedades[6].Editor);
 
-            Assert.AreEqual("atributoInteger", mapeo.Propiedades[7].Nombre);
+            Assert.AreEqual("atributoInteger", mapeo.Propiedades[7].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(mapeo.Propiedades[7].Editor.GetType()));
             Assert.AreEqual(editor.EditorInteger, mapeo.Propiedades[7].Editor);
 
-            Assert.AreEqual("atributoLong", mapeo.Propiedades[8].Nombre);
+            Assert.AreEqual("atributoLong", mapeo.Propiedades[8].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(mapeo.Propiedades[8].Editor.GetType()));
             Assert.AreEqual(editor.EditorLong, mapeo.Propiedades[8].Editor);
 
-            Assert.AreEqual("atributoSByte", mapeo.Propiedades[9].Nombre);
+            Assert.AreEqual("atributoSByte", mapeo.Propiedades[9].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(mapeo.Propiedades[9].Editor.GetType()));
             Assert.AreEqual(editor.EditorSByte, mapeo.Propiedades[9].Editor);
 
-            Assert.AreEqual("atributoShort", mapeo.Propiedades[10].Nombre);
+            Assert.AreEqual("atributoShort", mapeo.Propiedades[10].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(mapeo.Propiedades[10].Editor.GetType()));
             Assert.AreEqual(editor.EditorShort, mapeo.Propiedades[10].Editor);
 
-            Assert.AreEqual("atributoString", mapeo.Propiedades[11].Nombre);
+            Assert.AreEqual("atributoString", mapeo.Propiedades[11].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(mapeo.Propiedades[11].Editor.GetType()));
             Assert.AreEqual(editor.EditorString, mapeo.Propiedades[11].Editor);
 
-            Assert.AreEqual("atributoUInteger", mapeo.Propiedades[12].Nombre);
+            Assert.AreEqual("atributoUInteger", mapeo.Propiedades[12].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(mapeo.Propiedades[12].Editor.GetType()));
             Assert.AreEqual(editor.EditorUInteger, mapeo.Propiedades[12].Editor);
 
-            Assert.AreEqual("atributoULong", mapeo.Propiedades[13].Nombre);
+            Assert.AreEqual("atributoULong", mapeo.Propiedades[13].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(mapeo.Propiedades[13].Editor.GetType()));
             Assert.AreEqual(editor.EditorULong, mapeo.Propiedades[13].Editor);
 
-            Assert.AreEqual("atributoUShort", mapeo.Propiedades[14].Nombre);
+            Assert.AreEqual("atributoUShort", mapeo.Propiedades[14].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(mapeo.Propiedades[14].Editor.GetType()));
             Assert.AreEqual(editor.EditorUShort, mapeo.Propiedades[14].Editor);
 
-            Assert.AreEqual("ReferenciaObjetoDatos", mapeo.Propiedades[15].Nombre);
+            Assert.AreEqual("ReferenciaObjetoDatos", mapeo.Propiedades[15].Propiedad.Nombre);
             Assert.AreEqual(typeof(MapeoReferencia), mapeo.Propiedades[15].GetType());
             Assert.IsNull(mapeo.Propiedades[15].Editor);
             Assert.AreEqual(mapeoReferencia, ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo);
 
-            Assert.AreEqual("ReferenciaObjetoDatosItem", mapeo.Propiedades[16].Nombre);
+            Assert.AreEqual("ReferenciaObjetoDatosItem", mapeo.Propiedades[16].Propiedad.Nombre);
             Assert.AreEqual(typeof(MapeoReferencia), mapeo.Propiedades[16].GetType());
             Assert.IsTrue(typeof(IEditorColeccion).IsAssignableFrom(mapeo.Propiedades[16].Editor.GetType()));
             Assert.AreEqual(editorColeccion, mapeo.Propiedades[16].Editor);
             Assert.AreEqual(mapeoColeccion, ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo);
 
             // editor referencia
-            Assert.AreEqual("atributoBoolean", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[0].Nombre);
+            Assert.AreEqual("atributoBoolean", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[0].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[0].Editor.GetType()));
             Assert.AreEqual(editorReferencia.EditorBoolean, ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[0].Editor);
 
-            Assert.AreEqual("atributoByte", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[1].Nombre);
+            Assert.AreEqual("atributoByte", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[1].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[1].Editor.GetType()));
             Assert.AreEqual(editorReferencia.EditorByte, ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[1].Editor);
 
-            Assert.AreEqual("atributoChar", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[2].Nombre);
+            Assert.AreEqual("atributoChar", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[2].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[2].Editor.GetType()));
             Assert.AreEqual(editorReferencia.EditorChar, ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[2].Editor);
 
-            Assert.AreEqual("atributoDateTime", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[3].Nombre);
+            Assert.AreEqual("atributoDateTime", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[3].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[3].Editor.GetType()));
             Assert.AreEqual(editorReferencia.EditorDateTime, ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[3].Editor);
 
-            Assert.AreEqual("atributoDecimal", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[4].Nombre);
+            Assert.AreEqual("atributoDecimal", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[4].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[4].Editor.GetType()));
             Assert.AreEqual(editorReferencia.EditorDecimal, ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[4].Editor);
 
-            Assert.AreEqual("atributoDouble", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[5].Nombre);
+            Assert.AreEqual("atributoDouble", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[5].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[5].Editor.GetType()));
             Assert.AreEqual(editorReferencia.EditorDouble, ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[5].Editor);
 
-            Assert.AreEqual("atributoFloat", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[6].Nombre);
+            Assert.AreEqual("atributoFloat", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[6].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[6].Editor.GetType()));
             Assert.AreEqual(editorReferencia.EditorFloat, ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[6].Editor);
 
-            Assert.AreEqual("atributoInteger", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[7].Nombre);
+            Assert.AreEqual("atributoInteger", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[7].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[7].Editor.GetType()));
             Assert.AreEqual(editorReferencia.EditorInteger, ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[7].Editor);
 
-            Assert.AreEqual("atributoLong", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[8].Nombre);
+            Assert.AreEqual("atributoLong", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[8].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[8].Editor.GetType()));
             Assert.AreEqual(editorReferencia.EditorLong, ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[8].Editor);
 
-            Assert.AreEqual("atributoSByte", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[9].Nombre);
+            Assert.AreEqual("atributoSByte", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[9].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[9].Editor.GetType()));
             Assert.AreEqual(editorReferencia.EditorSByte, ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[9].Editor);
 
-            Assert.AreEqual("atributoShort", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[10].Nombre);
+            Assert.AreEqual("atributoShort", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[10].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[10].Editor.GetType()));
             Assert.AreEqual(editorReferencia.EditorShort, ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[10].Editor);
 
-            Assert.AreEqual("atributoString", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[11].Nombre);
+            Assert.AreEqual("atributoString", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[11].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[11].Editor.GetType()));
             Assert.AreEqual(editorReferencia.EditorString, ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[11].Editor);
 
-            Assert.AreEqual("atributoUInteger", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[12].Nombre);
+            Assert.AreEqual("atributoUInteger", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[12].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[12].Editor.GetType()));
             Assert.AreEqual(editorReferencia.EditorUInteger, ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[12].Editor);
 
-            Assert.AreEqual("atributoULong", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[13].Nombre);
+            Assert.AreEqual("atributoULong", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[13].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[13].Editor.GetType()));
             Assert.AreEqual(editorReferencia.EditorULong, ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[13].Editor);
 
-            Assert.AreEqual("atributoUShort", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[14].Nombre);
+            Assert.AreEqual("atributoUShort", ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[14].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorAtributo).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[14].Editor.GetType()));
             Assert.AreEqual(editorReferencia.EditorUShort, ((MapeoReferencia)mapeo.Propiedades[15]).Mapeo.Propiedades[14].Editor);
 
             // editorColeccion
-            Assert.AreEqual("atributoBoolean", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[0].Nombre);
+            Assert.AreEqual("atributoBoolean", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[0].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorColumna).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[0].Editor.GetType()));
             Assert.AreEqual(editorColeccion.ColumnaBoolean, ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[0].Editor);
 
-            Assert.AreEqual("atributoByte", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[1].Nombre);
+            Assert.AreEqual("atributoByte", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[1].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorColumna).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[1].Editor.GetType()));
             Assert.AreEqual(editorColeccion.ColumnaByte, ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[1].Editor);
 
-            Assert.AreEqual("atributoChar", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[2].Nombre);
+            Assert.AreEqual("atributoChar", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[2].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorColumna).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[2].Editor.GetType()));
             Assert.AreEqual(editorColeccion.ColumnaChar, ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[2].Editor);
 
-            Assert.AreEqual("atributoDateTime", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[3].Nombre);
+            Assert.AreEqual("atributoDateTime", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[3].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorColumna).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[3].Editor.GetType()));
             Assert.AreEqual(editorColeccion.ColumnaDateTime, ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[3].Editor);
 
-            Assert.AreEqual("atributoDecimal", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[4].Nombre);
+            Assert.AreEqual("atributoDecimal", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[4].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorColumna).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[4].Editor.GetType()));
             Assert.AreEqual(editorColeccion.ColumnaDecimal, ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[4].Editor);
 
-            Assert.AreEqual("atributoDouble", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[5].Nombre);
+            Assert.AreEqual("atributoDouble", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[5].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorColumna).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[5].Editor.GetType()));
             Assert.AreEqual(editorColeccion.ColumnaDouble, ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[5].Editor);
 
-            Assert.AreEqual("atributoFloat", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[6].Nombre);
+            Assert.AreEqual("atributoFloat", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[6].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorColumna).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[6].Editor.GetType()));
             Assert.AreEqual(editorColeccion.ColumnaFloat, ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[6].Editor);
 
-            Assert.AreEqual("atributoInteger", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[7].Nombre);
+            Assert.AreEqual("atributoInteger", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[7].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorColumna).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[7].Editor.GetType()));
             Assert.AreEqual(editorColeccion.ColumnaInteger, ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[7].Editor);
 
-            Assert.AreEqual("atributoLong", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[8].Nombre);
+            Assert.AreEqual("atributoLong", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[8].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorColumna).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[8].Editor.GetType()));
             Assert.AreEqual(editorColeccion.ColumnaLong, ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[8].Editor);
 
-            Assert.AreEqual("atributoSByte", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[9].Nombre);
+            Assert.AreEqual("atributoSByte", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[9].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorColumna).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[9].Editor.GetType()));
             Assert.AreEqual(editorColeccion.ColumnaSByte, ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[9].Editor);
 
-            Assert.AreEqual("atributoShort", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[10].Nombre);
+            Assert.AreEqual("atributoShort", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[10].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorColumna).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[10].Editor.GetType()));
             Assert.AreEqual(editorColeccion.ColumnaShort, ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[10].Editor);
 
-            Assert.AreEqual("atributoString", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[11].Nombre);
+            Assert.AreEqual("atributoString", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[11].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorColumna).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[11].Editor.GetType()));
             Assert.AreEqual(editorColeccion.ColumnaString, ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[11].Editor);
 
-            Assert.AreEqual("atributoUInteger", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[12].Nombre);
+            Assert.AreEqual("atributoUInteger", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[12].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorColumna).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[12].Editor.GetType()));
             Assert.AreEqual(editorColeccion.ColumnaUInteger, ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[12].Editor);
 
-            Assert.AreEqual("atributoULong", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[13].Nombre);
+            Assert.AreEqual("atributoULong", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[13].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorColumna).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[13].Editor.GetType()));
             Assert.AreEqual(editorColeccion.ColumnaULong, ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[13].Editor);
 
-            Assert.AreEqual("atributoUShort", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[14].Nombre);
+            Assert.AreEqual("atributoUShort", ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[14].Propiedad.Nombre);
             Assert.IsTrue(typeof(IEditorColumna).GetTypeInfo().IsAssignableFrom(((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[14].Editor.GetType()));
             Assert.AreEqual(editorColeccion.ColumnaUShort, ((MapeoReferencia)mapeo.Propiedades[16]).Mapeo.Propiedades[14].Editor);
         }
@@ -274,14 +275,16 @@ namespace Binapsis.Presentacion.Test.MVVM
         public void EstablecerVistaModelo1()
         {
             // modelo            
-            IObjetoDatos od = Helper.Crear(HelperTipo.ObtenerTipo(), new FabricaNotificacion()); 
+            IObjetoDatos od = Helper.Crear(HelperTipo.ObtenerTipo(), new FabricaDatos(FabricaNotificacion.Instancia));
             Helper.Construir(od);
 
             // vista
             EditorObjeto editor = new EditorObjeto() { Nombre = "EditorObjeto" };
-            MapeoTipo mapeo = CrearMapeo(editor);            
-            FabricaVistaModelo fabricaVistaModelo = new FabricaVistaModelo(mapeo);
-            VistaModelo vistaModelo = fabricaVistaModelo.Crear(od);
+            MapeoTipo mapeo = CrearMapeo(editor);
+
+            Vista vista = new Vista(mapeo);
+            VistaModelo vistaModelo = new VistaModelo(vista);
+            vistaModelo.Establecer(od);
 
             // evaluar
             Evaluar(od, editor);
@@ -291,14 +294,16 @@ namespace Binapsis.Presentacion.Test.MVVM
         public void EstablecerVistaModelo2()
         {
             // modelo            
-            IObjetoDatos od = Helper.Crear(HelperTipo.ObtenerTipo(), new FabricaNotificacion());
+            IObjetoDatos od = Helper.Crear(HelperTipo.ObtenerTipo(), new FabricaDatos(FabricaNotificacion.Instancia));
             Helper.Construir(od, 1);
 
             // vista
             EditorObjeto editor = new EditorObjeto() { Nombre = "EditorReferencia" };
             MapeoTipo mapeo = CrearMapeo(null, editor);
-            FabricaVistaModelo fabricaVistaModelo = new FabricaVistaModelo(mapeo);
-            VistaModelo vistaModelo = fabricaVistaModelo.Crear(od);
+
+            Vista vista = new Vista(mapeo);
+            VistaModelo vistaModelo = new VistaModelo(vista);
+            vistaModelo.Establecer(od);
 
             // evaluar
             Evaluar(od.ObtenerObjetoDatos("ReferenciaObjetoDatos"), editor);
@@ -308,7 +313,7 @@ namespace Binapsis.Presentacion.Test.MVVM
         public void EstablecerVistaModelo3()
         {
             // modelo            
-            IObjetoDatos od = Helper.Crear(HelperTipo.ObtenerTipo2(), new FabricaNotificacion());
+            IObjetoDatos od = Helper.Crear(HelperTipo.ObtenerTipo2(), new FabricaDatos(FabricaNotificacion.Instancia));
             IObjetoDatos od2 = Helper.Crear(HelperTipo.ObtenerTipo());
             Helper.Construir(od, 1);
             Helper.Construir(od2, 1);
@@ -319,8 +324,9 @@ namespace Binapsis.Presentacion.Test.MVVM
             MapeoTipo mapeo = new MapeoTipo();
             mapeo.Establecer("ReferenciaObjetoDatos2", mapeoReferencia);
 
-            FabricaVistaModelo fabricaVistaModelo = new FabricaVistaModelo(mapeo);
-            VistaModelo vistaModelo = fabricaVistaModelo.Crear(od);
+            Vista vista = new Vista(mapeo);
+            VistaModelo vistaModelo = new VistaModelo(vista);
+            vistaModelo.Establecer(od);
 
             // evaluar
             Evaluar(od.ObtenerObjetoDatos("ReferenciaObjetoDatos2"), editor, false);
@@ -342,14 +348,16 @@ namespace Binapsis.Presentacion.Test.MVVM
         public void EstablecerVistaModelo4()
         {
             // modelo            
-            IObjetoDatos od = Helper.Crear(HelperTipo.ObtenerTipo(), new FabricaNotificacion());
+            IObjetoDatos od = Helper.Crear(HelperTipo.ObtenerTipo(), new FabricaDatos(FabricaNotificacion.Instancia));
             Helper.Construir(od, 1, 2);
 
             // vista
             EditorColeccion editor = new EditorColeccion() { Nombre = "EditorColeccion" };
             MapeoTipo mapeo = CrearMapeo(null, null, editor);
-            FabricaVistaModelo fabricaVistaModelo = new FabricaVistaModelo(mapeo);
-            VistaModelo vistaModelo = fabricaVistaModelo.Crear(od);
+
+            Vista vista = new Vista(mapeo);
+            VistaModelo vistaModelo = new VistaModelo(vista);
+            vistaModelo.Establecer(od);
 
             // evaluar fila 1
             Evaluar(od.ObtenerColeccion("ReferenciaObjetoDatosItem")[0], editor.Items[0]);
@@ -375,14 +383,16 @@ namespace Binapsis.Presentacion.Test.MVVM
         public void EstablecerVistaModelo5()
         {
             // modelo            
-            IObjetoDatos od = Helper.Crear(HelperTipo.ObtenerTipo(), new FabricaNotificacion());
+            IObjetoDatos od = Helper.Crear(HelperTipo.ObtenerTipo(), new FabricaDatos(FabricaNotificacion.Instancia));
             Helper.Construir(od, 1, 2);
 
             // vista
             EditorColeccion editor = new EditorColeccion() { Nombre = "EditorColeccion" };
             MapeoTipo mapeo = CrearMapeo(null, null, editor);
-            FabricaVistaModelo fabricaVistaModelo = new FabricaVistaModelo(mapeo);
-            VistaModelo vistaModelo = fabricaVistaModelo.Crear(od);
+
+            Vista vista = new Vista(mapeo);
+            VistaModelo vistaModelo = new VistaModelo(vista);
+            vistaModelo.Establecer(od);
 
             // crear referencia en item 1
             od.ObtenerColeccion("ReferenciaObjetoDatosItem")[0].CrearObjetoDatos("ReferenciaObjetoDatos");
@@ -398,6 +408,43 @@ namespace Binapsis.Presentacion.Test.MVVM
 
             // evaluar
             Evaluar(od.ObtenerColeccion("ReferenciaObjetoDatosItem")[0].ObtenerObjetoDatos("ReferenciaObjetoDatos"), editor.Items[0], "EditorColeccionReferencia.");
+        }
+
+        [TestMethod, TestCategory("Evaluar Presentacion MVVM")]
+        public void EstablecerVistaModelo6()
+        {
+            // modelo            
+            IObjetoDatos od = Helper.Crear(HelperTipo.ObtenerTipo(), new FabricaDatos(FabricaNotificacion.Instancia));
+            Helper.Construir(od, 1, 2);
+
+            // vista
+            EditorColeccion editor = new EditorColeccion() { Nombre = "EditorColeccion" };
+            MapeoTipo mapeo = CrearMapeo(null, null, editor);
+
+            IComando comandoAgregar = new ComandoCrearObjetoDatos("ReferenciaObjetoDatosItem");
+            IComando comandoRemover = new ComandoRemoverObjetoDatos("ReferenciaObjetoDatosItem");
+            EditorComando invocadorAgregar = new EditorComando("AgregarItem");
+            EditorComando invocadorRemover = new EditorComando("RemoverItem");
+
+            mapeo.EstablecerComando(invocadorAgregar, comandoAgregar);
+            mapeo.EstablecerComando(invocadorRemover, comandoRemover);
+
+            Vista vista = new Vista(mapeo);
+            VistaModelo vistaModelo = new VistaModelo(vista);
+            vistaModelo.Establecer(od);
+
+            Assert.AreEqual(2, od.ObtenerColeccion("ReferenciaObjetoDatosItem").Longitud);
+
+            // agregar item
+            invocadorAgregar.Invocar();
+
+            Assert.AreEqual(3, od.ObtenerColeccion("ReferenciaObjetoDatosItem").Longitud);
+
+            // remover item
+            invocadorRemover.Invocar();
+
+            Assert.AreEqual(2, od.ObtenerColeccion("ReferenciaObjetoDatosItem").Longitud);
+
         }
 
         private void Evaluar(IObjetoDatos od, EditorObjetoBase editor)

@@ -7,6 +7,9 @@ namespace Binapsis.Plataforma.Estructura
         IObjetoDatos Propietario { get; }
         ITipo Tipo { get; }
 
+        void AgregarObjetoDatos(string ruta, IObjetoDatos item);
+        void AgregarObjetoDatos(IPropiedad propiedad, IObjetoDatos item);
+        void AgregarObjetoDatos(int indice, IObjetoDatos item);
         IObjetoDatos CrearObjetoDatos(string ruta);
         IObjetoDatos CrearObjetoDatos(IPropiedad propiedad);
         IObjetoDatos CrearObjetoDatos(int indice);

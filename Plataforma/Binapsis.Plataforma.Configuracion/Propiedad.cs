@@ -11,6 +11,26 @@ namespace Binapsis.Plataforma.Configuracion
         {
         }
 
+        protected override ObjetoBase CrearObjetoDatos(IImplementacion impl)
+        {
+            return FabricaConfiguracion.Instancia.Crear(impl);
+        }
+
+
+        private void EstablecerAlias(string valor)
+        {
+            string alias = string.Empty;
+
+            if (valor.Length == 1)
+                alias = valor.Substring(0, 1).ToLower();
+            else if (valor.Length > 1)
+                alias = valor.Substring(0, 1).ToLower() + valor.Substring(1);
+
+            if (string.IsNullOrEmpty(Alias) || (Alias.Length <= alias.Length && alias.Substring(0, Alias.Length) == Alias))
+                Alias = alias;
+
+        }
+
         public string Alias
         {
             get
@@ -76,6 +96,15 @@ namespace Binapsis.Plataforma.Configuracion
             set
             {
                 EstablecerString("Nombre", value);
+                EstablecerAlias(value);
+            }
+        }
+
+        public new Tipo Propietario
+        {
+            get
+            {
+                return (Tipo)base.Propietario;
             }
         }
 
@@ -102,6 +131,7 @@ namespace Binapsis.Plataforma.Configuracion
                 EstablecerObjetoDatos("Tipo", value);
             }
         }
+
 
         ITipo IPropiedad.Tipo
         {

@@ -35,7 +35,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Binapsis.Presentacion.Win">
+      <HintPath>..\Binapsis.Presentacion.Win\obj\Debug\Binapsis.Presentacion.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -53,16 +65,24 @@
   </Choose>
   <ItemGroup>
     <Compile Include="MVVM\EvaluarVistaModelo.cs" />
+    <Compile Include="MVVM\Impl\ComandoCrearObjetoDatos.cs" />
+    <Compile Include="MVVM\Impl\ComandoRemoverObjetoDatos.cs" />
     <Compile Include="MVVM\Impl\EditorAtributo.cs" />
     <Compile Include="MVVM\Impl\EditorBase.cs" />
     <Compile Include="MVVM\Impl\EditorCelda.cs" />
     <Compile Include="MVVM\Impl\EditorColeccion.cs" />
     <Compile Include="MVVM\Impl\EditorColeccionReferencia.cs" />
     <Compile Include="MVVM\Impl\EditorColumna.cs" />
+    <Compile Include="MVVM\Impl\EditorComando.cs" />
     <Compile Include="MVVM\Impl\EditorFila.cs" />
     <Compile Include="MVVM\Impl\EditorObjeto.cs" />
     <Compile Include="MVVM\Impl\EditorObjetoBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Plataforma\Binapsis.Plataforma.Estructura\Binapsis.Plataforma.Estructura.csproj">
@@ -85,6 +105,16 @@
       <Project>{A6755B01-2B4A-4F97-9E0C-7F48BED6EC80}</Project>
       <Name>Binapsis.Presentacion.MVVM</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -1,194 +1,164 @@
 ﻿using Binapsis.Plataforma.Estructura;
-using Binapsis.Plataforma.Notificaciones;
-using Binapsis.Plataforma.Notificaciones.Impl.Extension;
-using Binapsis.Presentacion.MVVM.Vista;
-using System.Collections.Generic;
-using System.Linq;
-using System;
+using Binapsis.Presentacion.MVVM.Builder;
+using Binapsis.Presentacion.MVVM.Controlador;
+using Binapsis.Presentacion.MVVM.Definicion;
+using Binapsis.Presentacion.MVVM.Interno;
 using System.Reflection;
 
 namespace Binapsis.Presentacion.MVVM
 {
     public class VistaModelo
     {
-        IObjetoDatos _modelo;
-        VistaObjeto _vista;
+        ControladorVistaModelo _controlador;
+        VistaModeloTipo _contenido;
+        InvocacionModelo _invocacion;
 
-        IObservable _observableModelo;
-        IObservador _observadorModelo;
-        ObservableVista _observableVista;
-        ObservadorVista _observadorVista;
-                
-        Dictionary<IPropiedad, VistaModeloPropiedad> _vistaModeloPropiedad;
+        #region Constructor
+        public VistaModelo(Vista vista)
+        {
+            Vista = vista;
+            _contenido = new VistaModeloTipo(Vista);
+            _controlador = new ControladorVistaModelo();
+            _invocacion = new InvocacionModelo(Vista.Invocacion);
+        }
+        #endregion
+
+
+        #region Metodos internos
+        internal void AgregarVistaModelo(PropiedadInfo propiedad, IObjetoDatos modelo)
+        {
+            _contenido.Agregar(propiedad, modelo);
+        }
         
-        internal VistaModelo(IObjetoDatos modelo, VistaObjeto vista)
+        internal void EstablecerVistaModelo(PropiedadInfo propiedad, IObjetoDatos modelo)
         {
-            _modelo = modelo;
-            _vista = vista;
-            _vistaModeloPropiedad = new Dictionary<IPropiedad, VistaModeloPropiedad>();            
-
-            // observables
-            _observableModelo = _modelo.Obervable();
-            _observableVista = _vista.Observable;
-
-            // si el modelo implementa notificaciones, enalzar observadores
-            if (_observableModelo != null)
-            {
-                // observadores
-                _observadorModelo = new ObservadorModelo(this);
-                _observadorVista = new ObservadorVista(this);
-
-                // asociar 
-                _observableModelo.Agregar(_observadorModelo);
-                _observableVista.Agregar(_observadorVista);
-            }
-
-            // construir vista modelo
-            Construir();
-
-            // actualizar vista
-            ActualizarVistaInicial();
+            _contenido.Establecer(propiedad, modelo);            
+        }
+        
+        internal VistaModelo ObtenerVistaModelo(PropiedadInfo propiedad)
+        {
+            return _contenido.Obtener(propiedad);
         }
 
-        public void Construir()
+        internal VistaModelo ObtenerVistaModelo(PropiedadInfo propiedad, IObjetoDatos modelo)
         {
-            foreach (IPropiedad propiedad in _vista.VistaPropiedad.Where((item) => !item.Propiedad.Tipo.EsTipoDeDato).Select((item) => item.Propiedad))
-                CrearVistaModelo(propiedad);
+            return _contenido.Obtener(propiedad, modelo);
+        }
+                
+        internal void RemoverVistaModelo(PropiedadInfo propiedad, IObjetoDatos modelo)
+        {
+            _contenido.Remover(propiedad, modelo);
+        }
+        #endregion
+
+
+        #region Metodos publicos
+        public void Establecer(IObjetoDatos modelo)
+        {
+            if (modelo == Modelo) return;
+
+            // establecer modelo
+            Modelo = modelo;
+            
+            // resolver el tipo de la vista
+            ResolverTipo();
+
+            // establecer modelo en controlador
+            _controlador.Establecer(this);
+
+            // construir vista modelo (referencias)
+            BuilderVistaModelo builder = new BuilderVistaModelo(this);
+            builder.Construir();
+
+            // actualizar la vista
+            ActualizarVista();
+            
+            // establecer modelo en invocacion
+            _invocacion.Establecer(modelo);
         }
 
+        private void ResolverTipo()
+        {
+            if (TipoInfo != null || Modelo == null) return;
+
+            ITipo tipo = Modelo.Tipo;
+            TypeInfo type = Modelo.GetType().GetTypeInfo();
+
+            Vista.Establecer(tipo, type);
+
+            //TipoInfo tipoInfo = new TipoInfo();
+
+            //tipoInfo.Nombre = Modelo.Tipo.Nombre;
+            //tipoInfo.Tipo = Modelo.Tipo;
+            //tipoInfo.Type = Modelo.GetType().GetTypeInfo();
+            
+            //Vista.Establecer(tipoInfo);
+        }
+                
         public void ActualizarModelo()
         {
-            foreach (IPropiedad propiedad in _vista.VistaPropiedad.Where((item) => !item.Propiedad.EsColeccion).Select((item) => item.Propiedad))
-                ActualizarModelo(propiedad);
-        }
-
-        internal void ActualizarModelo(IPropiedad propiedad)
-        {
-            _modelo.Establecer(propiedad, _vista.Obtener(propiedad));
-        }
-
-        // solo se ejecuta cuando se instancia el vistaModelo, solo actualiza la vista asociada
-        private void ActualizarVistaInicial()
-        {
-            foreach (IPropiedad propiedad in _vista.VistaPropiedad.Where((item) => item.Propiedad.Tipo.EsTipoDeDato).Select((item) => item.Propiedad))
-                ActualizarVista(propiedad);
+                
         }
 
         public void ActualizarVista()
         {
-            foreach (IPropiedad propiedad in _vista.VistaPropiedad.Where((item) => !item.Propiedad.EsColeccion).Select((item) => item.Propiedad))
+            foreach (PropiedadInfo propiedad in TipoInfo.Propiedades)
                 ActualizarVista(propiedad);
         }
 
-        internal void ActualizarVista(IPropiedad propiedad)
+        public void ActualizarVista(string nombre)
         {
-            if (propiedad.Tipo.EsTipoDeDato)
-                _vista.Establecer(propiedad, _modelo.Obtener(propiedad));
-            else
-                ActualizarVistaReferencia(propiedad);
+            PropiedadInfo propiedad = Vista.TipoInfo[nombre];
+            if (propiedad == null) return;
+
+            ActualizarVista(propiedad);
         }
 
-        private void ActualizarVistaReferencia(IPropiedad propiedad)
+        internal void ActualizarVista(PropiedadInfo propiedad)
         {
-            if (propiedad.Tipo.EsTipoDeDato || propiedad.EsColeccion) return;
-
-            IObjetoDatos od = _modelo.ObtenerObjetoDatos(propiedad);
-
-            if (od == null)
-                EliminarVistaModelo(propiedad);
-            else
-                CrearVistaModelo(propiedad, od);
+            if (propiedad.TipoInfo.EsTipoDeDato)
+                _controlador.ActualizarVista(propiedad);
+            else if (!propiedad.EsColeccion && _contenido.Existe(propiedad))
+                _contenido.Obtener(propiedad).ActualizarVista();
+            else if (propiedad.EsColeccion && _contenido.Existe(propiedad))
+                foreach (VistaModelo vistaModelo in _contenido.ObtenerColeccion(propiedad))
+                    vistaModelo.ActualizarVista();
         }
 
-        internal void ActualizarVistaColeccion(IPropiedad propiedad, IObjetoDatos item, Accion accion)
-        {
-            if (accion == Accion.Agregar)
-                CrearVistaModelo(propiedad, item);
-            else if (accion == Accion.Remover)            
-                EliminarVistaModelo(propiedad, item);
-        }
-
-        private void CrearVistaModelo(IPropiedad propiedad)
-        {
-            if (propiedad.Tipo.EsTipoDeDato) return;
-
-            if (propiedad.EsColeccion)
-                foreach (IObjetoDatos item in _modelo.ObtenerColeccion(propiedad))
-                    CrearVistaModelo(propiedad, item);            
-            else
-                CrearVistaModelo(propiedad, _modelo.ObtenerObjetoDatos(propiedad));                     
-        }
-
-        private void CrearVistaModelo(IPropiedad propiedad, IObjetoDatos modelo)
-        {
-            if (modelo == null) return;
-            VistaModeloPropiedad vistaModeloPropiedad = CrearVistaModeloPropiedad(propiedad);
-            if (vistaModeloPropiedad == null) return;
-            vistaModeloPropiedad.Crear(modelo);            
-        }
         
-        private VistaModeloPropiedad CrearVistaModeloPropiedad(IPropiedad propiedad)
+        public virtual void Controlar(IObjetoDatos objeto, string propiedad)
         {
-            VistaModeloPropiedad vistaModeloPropiedad = ObtenerVistaModeloPropiedad(propiedad);
-            if (vistaModeloPropiedad != null) return vistaModeloPropiedad;
 
-            if (propiedad.EsColeccion)
-                vistaModeloPropiedad =  new VistaModeloColeccion(this, propiedad);
-            else if (!propiedad.Tipo.EsTipoDeDato)
-                vistaModeloPropiedad = new VistaModeloReferencia(this, propiedad);
-
-            if (vistaModeloPropiedad != null)
-                _vistaModeloPropiedad.Add(propiedad, vistaModeloPropiedad);
-
-            return vistaModeloPropiedad;
         }
 
-        private VistaModeloPropiedad ObtenerVistaModeloPropiedad(IPropiedad propiedad)
+        public virtual void ControlarAgregar(IObjetoDatos objeto, string propiedad, IObjetoDatos item)
         {
-            if (!_vistaModeloPropiedad.ContainsKey(propiedad)) return null;
-            return _vistaModeloPropiedad[propiedad];
+
         }
 
-        private void EliminarVistaModelo(IPropiedad propiedad)
+        public virtual void ControlarRemover(IObjetoDatos objeto, string propiedad, IObjetoDatos item)
         {
-            EliminarVistaModelo(propiedad, null);
+
+        }
+        #endregion
+
+
+        #region Propiedades
+        public Vista Vista
+        {
+            get;
         }
 
-        private void EliminarVistaModelo(IPropiedad propiedad, IObjetoDatos modelo)
+        public IObjetoDatos Modelo
         {
-            VistaModeloPropiedad vistaModeloPropiedad = ObtenerVistaModeloPropiedad(propiedad);
-            if (vistaModeloPropiedad == null) return;
-
-            if (modelo == null)
-                vistaModeloPropiedad.Eliminar();
-            else
-                vistaModeloPropiedad.Eliminar(modelo);
-        }
-        
-        public void Liberar()
-        {
-            _vista.Liberar();
-
-            foreach (VistaModeloPropiedad vistaModeloPropiedad in _vistaModeloPropiedad.Values)
-                vistaModeloPropiedad.EliminarTodo();
-
-            _vistaModeloPropiedad.Clear();
-
-            if (_observableModelo != null && _observadorModelo != null)
-                _observableModelo.Remover(_observadorModelo);
-
-            if (_observableVista != null && _observadorVista != null)
-                _observableVista.Remover(_observadorVista);
-        }
-        
-        internal IObjetoDatos Modelo
-        {
-            get { return _modelo; }
+            get;
+            private set;
         }
 
-        internal VistaObjeto Vista
+        internal TipoInfo TipoInfo
         {
-            get { return _vista; }
+            get => Vista.TipoInfo;            
         }
+        #endregion
     }
 }

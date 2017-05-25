@@ -40,12 +40,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Delegados.cs" />
+    <Compile Include="IDialogo.cs" />
     <Compile Include="IEditor.cs" />
+    <Compile Include="IEditorEnumeracion.cs" />
     <Compile Include="IEditorFila.cs" />
     <Compile Include="IEditorColeccion.cs" />
     <Compile Include="IEditorColumna.cs" />
     <Compile Include="IEditorAtributo.cs" />
+    <Compile Include="IEditorComando.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultadoDialogo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

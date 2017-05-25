@@ -40,7 +40,7 @@ namespace Binapsis.Plataforma.Estructura.Interno
         {
             Caracteristica caracteristica; 
 
-            if (propiedad.Cardinalidad >= Cardinalidad.Cero_Muchos)
+            if (propiedad.Cardinalidad >= Cardinalidad.CeroAMuchos)
             {
                 caracteristica = _fabrica[typeof(IColeccion)].Invoke(propiedad);
             }

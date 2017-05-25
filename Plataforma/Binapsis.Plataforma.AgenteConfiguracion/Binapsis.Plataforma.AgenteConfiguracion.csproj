@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Binapsis.Plataforma.Configuracion.Serializacion\Binapsis.Plataforma.Configuracion.Serializacion.csproj" />
+    <ProjectReference Include="..\Binapsis.Plataforma.Configuracion\Binapsis.Plataforma.Configuracion.csproj" />
+    <ProjectReference Include="..\Binapsis.Plataforma.Estructura\Binapsis.Plataforma.Estructura.csproj" />
+    <ProjectReference Include="..\Binapsis.Plataforma.Serializacion.Binario\Binapsis.Plataforma.Serializacion.Binario.csproj" />
+    <ProjectReference Include="..\Binapsis.Plataforma.Serializacion.Xml\Binapsis.Plataforma.Serializacion.Xml.csproj" />
+    <ProjectReference Include="..\Binapsis.Plataforma.Serializacion\Binapsis.Plataforma.Serializacion.csproj" />
+  </ItemGroup>
+
+</Project>

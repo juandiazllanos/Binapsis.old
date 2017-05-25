@@ -14,7 +14,7 @@ namespace Binapsis.Plataforma.Test.Notificacion
         [TestMethod, TestCategory("Evaluar Notificaciones")]
         public void ObservarObjetoDatos()
         {
-            IFabrica fabrica = new FabricaNotificacion();
+            IFabrica fabrica = new FabricaDatos(FabricaNotificacion.Instancia);
             IObjetoDatos od1 = Helper.Crear(HelperTipo.ObtenerTipo2(), fabrica);
             IObjetoDatos od2 = Helper.Crear(HelperTipo.ObtenerTipo2());
 

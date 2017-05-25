@@ -1,20 +1,20 @@
-﻿using Binapsis.Plataforma.Estructura;
-using Binapsis.Plataforma.Estructura.Impl;
+﻿using Binapsis.Plataforma.Configuracion;
+using Binapsis.Plataforma.Estructura;
 using Binapsis.Plataforma.Test.Builders;
 
 namespace Binapsis.Plataforma.Test
 {
     public static class HelperTipo
     {
-        static ITipo _tipo;
-        static ITipo _tipo2;
-        static ITipo _tipo3;
+        static Tipo _tipo;
+        static Tipo _tipo2;
+        static Tipo _tipo3;
 
         static HelperTipo()
         {
-            BuilderTipo.Construir((Tipo)(_tipo = new Tipo()));
-            BuilderTipo.Construir2((Tipo)(_tipo2 = new Tipo()), (Tipo)_tipo);
-            BuilderTipo.Construir3((Tipo)(_tipo3 = new Tipo()), (Tipo)_tipo);
+            BuilderTipo.Construir((_tipo = FabricaConfiguracion.Instancia.CrearTipo()));
+            BuilderTipo.Construir2((_tipo2 = FabricaConfiguracion.Instancia.CrearTipo()), _tipo);
+            BuilderTipo.Construir3((_tipo3 = FabricaConfiguracion.Instancia.CrearTipo()), _tipo);
         }
 
         public static ITipo ObtenerTipo()

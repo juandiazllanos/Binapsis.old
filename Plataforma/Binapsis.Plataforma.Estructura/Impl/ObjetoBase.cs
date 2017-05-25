@@ -17,7 +17,7 @@ namespace Binapsis.Plataforma.Estructura.Impl
             get { return _impl; }
         }
 
-        protected ITipo Tipo
+        public ITipo Tipo
         {
             get
             {
@@ -25,18 +25,39 @@ namespace Binapsis.Plataforma.Estructura.Impl
             }
         }
         
-        protected IObjetoDatos Propietario
+        public ObjetoBase Propietario
         {
             get
             {
-                return _impl.Propietario;
+                return (ObjetoBase)_impl.Propietario;
             }
         }
 
 
+        protected void AgregarObjetoDatos(string ruta, IObjetoDatos item)
+        {
+            if (helper.ComprobarRuta(ref ruta))
+                helper.AgregarObjetoDatos(this, ruta, item);
+            else
+                AgregarObjetoDatos(Tipo[ruta], item);
+        }
+
+        protected void AgregarObjetoDatos(IPropiedad propiedad, IObjetoDatos item)
+        {
+            if (propiedad.Asociacion != Asociacion.Agregacion || !propiedad.EsColeccion) return;
+            _impl.AgregarObjetoDatos(propiedad, item);
+        }
+
+        protected void AgregarObjetoDatos(int indice, IObjetoDatos item)
+        {
+            AgregarObjetoDatos(Tipo[indice], item);
+        }
+
+        protected abstract ObjetoBase CrearObjetoDatos(IImplementacion impl);
+        
         protected IObjetoDatos CrearObjetoDatos(IPropiedad propiedad)
         {
-            IObjetoDatos od = Fabrica.Instancia.Crear(_impl.Crear(propiedad.Tipo, this)); //FabricaObjetoDatos.Crear(_impl.Crear(propiedad.Tipo, this));  //_impl.CrearObjetoDatos(propiedad, this);
+            IObjetoDatos od = CrearObjetoDatos(_impl.Crear(propiedad.Tipo, this)); 
 
             if (propiedad.Cardinalidad >= Cardinalidad.Muchos)
                 _impl.AgregarObjetoDatos(propiedad, od);
@@ -785,6 +806,21 @@ namespace Binapsis.Plataforma.Estructura.Impl
             }
         }
 
+        void IObjetoDatos.AgregarObjetoDatos(string ruta, IObjetoDatos item)
+        {
+            AgregarObjetoDatos(ruta, item);
+        }
+
+        void IObjetoDatos.AgregarObjetoDatos(IPropiedad propiedad, IObjetoDatos item)
+        {
+            AgregarObjetoDatos(propiedad, item);
+        }
+
+        void IObjetoDatos.AgregarObjetoDatos(int indice, IObjetoDatos item)
+        {
+            AgregarObjetoDatos(indice, item);
+        }
+
         IObjetoDatos IObjetoDatos.CrearObjetoDatos(string ruta)
         {
             return CrearObjetoDatos(ruta);
@@ -1389,6 +1425,7 @@ namespace Binapsis.Plataforma.Estructura.Impl
         {
             RemoverObjetoDatos(indice, item);
         }
+         
         #endregion
 
     }
