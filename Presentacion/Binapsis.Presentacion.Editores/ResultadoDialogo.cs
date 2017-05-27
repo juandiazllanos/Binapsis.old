@@ -1,5 +1,8 @@
-﻿public enum ResultadoDialogo : byte
+﻿namespace Binapsis.Presentacion.Editores
 {
-    OK,
-    Cancelado
+    public enum ResultadoDialogo : byte
+    {
+        OK,
+        Cancelado
+    }
 }

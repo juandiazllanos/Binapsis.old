@@ -7,6 +7,4 @@
                 
         ResultadoDialogo Resultado { get; }
     }
-
-    public delegate void TerminarHandler(IDialogo dialogo);
 }
