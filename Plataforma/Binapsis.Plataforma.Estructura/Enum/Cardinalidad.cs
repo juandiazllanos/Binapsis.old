@@ -5,9 +5,9 @@ namespace Binapsis.Plataforma.Estructura
         Ninguna = 0,
         Cero = 1,        
         CeroAUno = 2,
-        CeroAMuchos = 5,
+        CeroAMuchos = 4,
         Uno = 3,
-        UnoAMuchos = 6,
-        Muchos = 4,
+        //UnoAMuchos = 5,
+        //Muchos = 6,
 	}
 }

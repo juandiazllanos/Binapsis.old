@@ -18,13 +18,14 @@ namespace Binapsis.Presentacion.Win
 
         public EditorObjeto()
         {
-            InitializeComponent();
+            InitializeComponent();            
             Inicializar();
         }
-
+        
         private void Inicializar()
         {
-            _mapeo = new MapeoTipo();
+            _mapeo = new MapeoTipo(UsarReflexion);
+            UsarReflexion = true;
         }
 
         protected virtual void InicializarVista()
@@ -32,7 +33,6 @@ namespace Binapsis.Presentacion.Win
             Establecer(Controls);
         }
         
-
         protected virtual void InicializarComando()
         {
 
@@ -81,5 +81,11 @@ namespace Binapsis.Presentacion.Win
             _vistaModelo.Establecer(modelo);
         }
 
+        [DefaultValue(true)]
+        public virtual bool UsarReflexion
+        {
+            get;
+            set;
+        } 
     }
 }

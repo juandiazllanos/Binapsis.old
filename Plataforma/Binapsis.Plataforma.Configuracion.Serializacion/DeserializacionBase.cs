@@ -1,21 +1,20 @@
-﻿using Binapsis.Plataforma.Estructura.Impl;
-using Binapsis.Plataforma.Serializacion;
+﻿using Binapsis.Plataforma.Serializacion;
 using System.IO;
 using System;
 
 namespace Binapsis.Plataforma.Configuracion.Serializacion
 {
-    public abstract class DeserializacionBase<T> : IDeserializador where T : ObjetoBase
+    public abstract class DeserializacionBase : IDeserializador
     {
-        T _objeto;
+        ConfiguracionBase _objeto;
         byte[] _contenido;
         
-        public DeserializacionBase()            
+        public DeserializacionBase(Type type)
         {
-            _objeto = (T)FabricaConfiguracion.Instancia.Crear(typeof(T));
+            _objeto = Fabrica.Instancia.Crear(type);
         }
 
-        public DeserializacionBase(T objeto)
+        public DeserializacionBase(ConfiguracionBase objeto)
         {
             _objeto = objeto;
         }
@@ -48,7 +47,7 @@ namespace Binapsis.Plataforma.Configuracion.Serializacion
                
 
         #region Propiedades
-        public T Objeto
+        public ConfiguracionBase Objeto
         {
             get { return _objeto; }
         }
@@ -76,7 +75,7 @@ namespace Binapsis.Plataforma.Configuracion.Serializacion
             Deserializar(contenido);
         }
 
-        ObjetoBase IDeserializador.Objeto
+        ConfiguracionBase IDeserializador.Objeto
         {
             get { return Objeto; }
         }

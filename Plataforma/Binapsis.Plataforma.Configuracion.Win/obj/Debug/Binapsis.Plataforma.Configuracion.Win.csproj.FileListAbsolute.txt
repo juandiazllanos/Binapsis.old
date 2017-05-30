@@ -112,3 +112,8 @@ D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Win\obj\Debu
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Win\obj\Debug\Binapsis.Plataforma.Configuracion.Win.Vistas.VistaUri.resources
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Win\obj\Debug\Binapsis.Plataforma.Configuracion.Win.Vistas.VistaTipo.resources
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Win\obj\Debug\Binapsis.Plataforma.Configuracion.Win.Vistas.VistaPropiedad.resources
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Win\obj\Debug\Binapsis.Plataforma.Configuracion.Win.Vistas.VistaConexion.resources
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Win\obj\Debug\Binapsis.Plataforma.Configuracion.Win.Vistas.VistaTabla.resources
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Win\obj\Debug\Binapsis.Plataforma.Configuracion.Win.Vistas.VistaBase.resources
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Win\obj\Debug\Binapsis.Plataforma.Configuracion.Win.Vistas.VistaRelacion.resources
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Win\obj\Debug\Binapsis.Plataforma.Configuracion.Win.Vistas.VistaColumna.resources

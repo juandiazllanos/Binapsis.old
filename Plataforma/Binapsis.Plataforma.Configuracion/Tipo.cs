@@ -1,23 +1,27 @@
 ﻿using System.Collections.Generic;
 using Binapsis.Plataforma.Estructura;
-using Binapsis.Plataforma.Estructura.Impl;
 using System.Linq;
 
 namespace Binapsis.Plataforma.Configuracion
 {
-    public class Tipo : ObjetoBase, ITipo
+    public class Tipo : ConfiguracionBase, ITipo
     {
-        public Tipo(IImplementacion  impl)
+        public Tipo()
+            : base(typeof(Tipo))
+        {
+        }
+
+        public Tipo(IImplementacion impl) 
             : base(impl)
         {
         }
 
-        #region Metodos        
-        protected override ObjetoBase CrearObjetoDatos(IImplementacion impl)
-        {
-            return FabricaConfiguracion.Instancia.Crear(impl);
-        }
+        //public Tipo(IFabricaImpl impl)
+        //    : base(typeof(Tipo), impl)
+        //{
+        //}
 
+        #region Metodos
         public bool ContienePropiedad(string nombre)
         {
             return (ObtenerColeccion("Propiedades").FirstOrDefault((item) => ((IPropiedad)item).Nombre == nombre) != null);
@@ -89,48 +93,27 @@ namespace Binapsis.Plataforma.Configuracion
         #region Propiedades
         public string Alias
         {
-            get
-            {
-                return ObtenerString("Alias");
-            }
-            set
-            {
-                EstablecerString("Alias", value);
-            }
+            get => ObtenerString("Alias");
+            set => EstablecerString("Alias", value);
         }
 
         public Tipo Base
         {
-            get
-            {
-                return (Tipo)ObtenerObjetoDatos("Base");
-            }
-            set
-            {
-                EstablecerObjetoDatos("Base", value);
-            }
+            get => (Tipo)ObtenerObjetoDatos("Base");
+            set => EstablecerObjetoDatos("Base", value);
         }
 
         public bool EsTipoDeDato
         {
-            get
-            {
-                return ObtenerBoolean("EsTipoDeDato");
-            }
-            set
-            {
-                EstablecerBoolean("EsTipoDeDato", value);
-            }
+            get => ObtenerBoolean("EsTipoDeDato");
+            set => EstablecerBoolean("EsTipoDeDato", value);
         }
 
         public string Nombre
         {
-            get
-            {
-                return ObtenerString("Nombre");
-            }
+            get => ObtenerString("Nombre");
             set
-            {
+            { 
                 EstablecerString("Nombre", value);
                 EstablecerAlias(value);
             }
@@ -138,45 +121,28 @@ namespace Binapsis.Plataforma.Configuracion
 
         public IReadOnlyList<IPropiedad> Propiedades
         {
-            get
-            {
-                //return (IReadOnlyList<IPropiedad>)ObtenerColeccion("Propiedades");
-                return ObtenerColeccion("Propiedades").Cast<Propiedad>().ToList();
-            }
+            get => ObtenerColeccion("Propiedades").Cast<Propiedad>().ToList();            
         }
 
         public Uri Uri
         {
-            get
-            {
-                return (Uri)ObtenerObjetoDatos("Uri");
-            }
-            set
-            {
-                EstablecerObjetoDatos("Uri", value);
-            }
+            get => (Uri)ObtenerObjetoDatos("Uri");
+            set => EstablecerObjetoDatos("Uri", value);
         }
 
         public IPropiedad this[string nombre]
         {
-            get
-            {
-                return ObtenerPropiedad(nombre);
-            }
+            get => ObtenerPropiedad(nombre);
         }
 
         public IPropiedad this[int indice]
         {
-            get
-            {
-                return ObtenerPropiedad(indice);
-            }
+            get => ObtenerPropiedad(indice);
         }
         #endregion
 
 
         #region ITipo
-
         IPropiedad ITipo.ObtenerPropiedad(string nombre)
         {
             return ObtenerPropiedad(nombre);
@@ -194,66 +160,42 @@ namespace Binapsis.Plataforma.Configuracion
 
         ITipo ITipo.Base
         {
-            get
-            {
-                return Base;
-            }
+            get => Base;
         }
 
         string ITipo.Uri
         {
-            get
-            {
-                return Uri?.Nombre??"";
-            }
+            get => Uri?.Nombre??"";
         }
 
         string ITipo.Alias
         {
-            get
-            {
-                return Alias;
-            }
+            get => Alias;
         }
 
         bool ITipo.EsTipoDeDato
         {
-            get
-            {
-                return EsTipoDeDato;
-            }
+            get => EsTipoDeDato;
         }
 
         string ITipo.Nombre
         {
-            get
-            {
-                return Nombre;
-            }
+            get => Nombre;
         }
 
         IReadOnlyList<IPropiedad> ITipo.Propiedades
         {
-            get
-            {
-                return Propiedades;                
-            }
+            get => Propiedades;
         }
 
         IPropiedad ITipo.this[string nombre]
         {
-            get
-            {
-                return this[nombre];
-            }
+            get => this[nombre];
         }
 
         IPropiedad ITipo.this[int indice]
         {
-            get
-            {
-                return this[indice];
-            }
+            get => this[indice];
         }        
         #endregion
 

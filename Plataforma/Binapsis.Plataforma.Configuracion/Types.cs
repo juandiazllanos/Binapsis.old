@@ -1,5 +1,4 @@
-﻿using Binapsis.Plataforma.Configuracion.Base;
-using Binapsis.Plataforma.Estructura;
+﻿using Binapsis.Plataforma.Estructura;
 using System;
 using System.Collections.Generic;
 
@@ -8,6 +7,7 @@ namespace Binapsis.Plataforma.Configuracion
     public class Types
     {
         Dictionary<string, Tipo> _cache;
+        //BaseTypes _types;
 
         static Types()
         {
@@ -17,46 +17,44 @@ namespace Binapsis.Plataforma.Configuracion
         public Types()
         {
             _cache = new Dictionary<string, Tipo>();
+
             Crear();
         }
 
         private void Crear()
-        {
-            BaseTypes baseTypes = BaseTypes.Instancia;
-            FabricaConfiguracion fabrica = new FabricaConfiguracion();
-
-            Ensamblado ensamSystem = fabrica.CrearEnsamblado("System");
-            Uri uriSystem = fabrica.CrearUri(ensamSystem, "System");  
+        {      
+            Ensamblado ensamSystem = new Ensamblado { Nombre = "System" };
+            Uri uriSystem = new Uri { Ensamblado = ensamSystem, Nombre = "System" };  
             
-            Agregar(fabrica.CrearTipo(uriSystem, "Boolean", "bool", true));
-            Agregar(fabrica.CrearTipo(uriSystem, "Byte", "byte", true));
-            Agregar(fabrica.CrearTipo(uriSystem, "Char", "char", true));
-            Agregar(fabrica.CrearTipo(uriSystem, "DateTime", "DateTime", true));
-            Agregar(fabrica.CrearTipo(uriSystem, "Decimal", "decimal", true));
-            Agregar(fabrica.CrearTipo(uriSystem, "Double", "double", true));
-            Agregar(fabrica.CrearTipo(uriSystem, "Int16", "short", true));
-            Agregar(fabrica.CrearTipo(uriSystem, "Int32", "int", true));
-            Agregar(fabrica.CrearTipo(uriSystem, "Int64", "long", true));
-            Agregar(fabrica.CrearTipo(uriSystem, "Object", "object", true));
-            Agregar(fabrica.CrearTipo(uriSystem, "SByte", "sbyte", true));
-            Agregar(fabrica.CrearTipo(uriSystem, "Single", "float", true));
-            Agregar(fabrica.CrearTipo(uriSystem, "String", "string", true));
-            Agregar(fabrica.CrearTipo(uriSystem, "UInt16", "ushort", true));
-            Agregar(fabrica.CrearTipo(uriSystem, "UInt32", "uint", true));
-            Agregar(fabrica.CrearTipo(uriSystem, "UInt64", "long", true));
+            Agregar(new Tipo { Uri = uriSystem, Nombre = "Boolean", Alias = "bool", EsTipoDeDato = true });
+            Agregar(new Tipo { Uri = uriSystem, Nombre = "Byte", Alias = "byte", EsTipoDeDato = true });
+            Agregar(new Tipo { Uri = uriSystem, Nombre = "Char", Alias = "char", EsTipoDeDato = true });
+            Agregar(new Tipo { Uri = uriSystem, Nombre = "DateTime", Alias = "DateTime", EsTipoDeDato = true });
+            Agregar(new Tipo { Uri = uriSystem, Nombre = "Decimal", Alias = "decimal", EsTipoDeDato = true });
+            Agregar(new Tipo { Uri = uriSystem, Nombre = "Double", Alias = "double", EsTipoDeDato = true });
+            Agregar(new Tipo { Uri = uriSystem, Nombre = "Int16", Alias = "short", EsTipoDeDato = true });
+            Agregar(new Tipo { Uri = uriSystem, Nombre = "Int32", Alias = "int", EsTipoDeDato = true });
+            Agregar(new Tipo { Uri = uriSystem, Nombre = "Int64", Alias = "long", EsTipoDeDato = true });
+            Agregar(new Tipo { Uri = uriSystem, Nombre = "Object", Alias = "object", EsTipoDeDato = true });
+            Agregar(new Tipo { Uri = uriSystem, Nombre = "SByte", Alias = "sbyte", EsTipoDeDato = true });
+            Agregar(new Tipo { Uri = uriSystem, Nombre = "Single", Alias = "float", EsTipoDeDato = true });
+            Agregar(new Tipo { Uri = uriSystem, Nombre = "String", Alias = "string", EsTipoDeDato = true });
+            Agregar(new Tipo { Uri = uriSystem, Nombre = "UInt16", Alias = "ushort", EsTipoDeDato = true });
+            Agregar(new Tipo { Uri = uriSystem, Nombre = "UInt32", Alias = "uint", EsTipoDeDato = true });
+            Agregar(new Tipo { Uri = uriSystem, Nombre = "UInt64", Alias = "long", EsTipoDeDato = true });
 
-            Ensamblado ensamConfig = fabrica.CrearEnsamblado("Binapsis.Plataforma.Configuracion");
-            Uri uriConfig = fabrica.CrearUri(ensamConfig, "Binapsis.Plataforma.Configuracion");
+            Ensamblado ensamConfig = new Ensamblado { Nombre = "Binapsis.Plataforma.Configuracion" };
+            Uri uriConfig = new Uri { Ensamblado = ensamConfig, Nombre = "Binapsis.Plataforma.Configuracion" };
 
-            Tipo tipoEnsamblado = fabrica.CrearTipo(uriConfig, "Ensamblado", "ensamblado");
+            Tipo tipoEnsamblado = new Tipo { Uri = uriConfig, Nombre = "Ensamblado", Alias = "ensamblado" };
             tipoEnsamblado.CrearPropiedad("Nombre", Obtener(typeof(string)), "nombre");
 
-            Tipo tipoUri = fabrica.CrearTipo(uriConfig, "Uri", "uri");
+            Tipo tipoUri = new Tipo { Uri = uriConfig, Nombre = "Uri", Alias = "uri" };
             tipoUri.CrearPropiedad("Ensamblado", tipoEnsamblado, "ensamblado");
             tipoUri.CrearPropiedad("Nombre", Obtener(typeof(string)), "nombre");
 
-            Tipo tipoTipo = fabrica.CrearTipo(uriConfig, "Tipo", "tipo");
-            Tipo tipoPropiedad = fabrica.CrearTipo(uriConfig, "Propiedad", "propiedad");            
+            Tipo tipoTipo = new Tipo { Uri = uriConfig, Nombre = "Tipo", Alias = "tipo" };
+            Tipo tipoPropiedad = new Tipo { Uri = uriConfig, Nombre = "Propiedad", Alias = "propiedad" };
 
             // agregar propiedades del tipo 'Propiedad'
             tipoPropiedad.CrearPropiedad("Alias", Obtener(typeof(string)), "alias");
@@ -92,17 +90,7 @@ namespace Binapsis.Plataforma.Configuracion
             Agregar(tipoUri);            
             Agregar(tipoPropiedad);
             Agregar(tipoTipo);
-
-            // definicion
-            Tipo tipoDefinicion = FabricaConfiguracion.Instancia.CrearTipo(uriConfig, "Definicion", "definicion");
-            tipoDefinicion.CrearPropiedad("Alias", Obtener(typeof(string)), "alias");
-            propiedad = tipoDefinicion.CrearPropiedad("Definiciones", tipoDefinicion, "definiciones");
-            propiedad.Asociacion = Asociacion.Composicion;
-            propiedad.Cardinalidad = Cardinalidad.CeroAMuchos;
-            tipoDefinicion.CrearPropiedad("Nombre", Obtener(typeof(string)), "nombre");
-            tipoDefinicion.CrearPropiedad("Valor", Obtener(typeof(string)), "valor");
-
-            Agregar(tipoDefinicion);
+            
         }
         
         private void Agregar(Tipo tipo)

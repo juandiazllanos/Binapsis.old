@@ -1,14 +1,14 @@
 ﻿using Binapsis.Plataforma.Configuracion.Sql.Builder;
+using Binapsis.Plataforma.Configuracion.Sql.Clave;
 using Binapsis.Plataforma.Configuracion.Sql.Comandos;
 using Binapsis.Plataforma.Configuracion.Sql.SqlBuilder;
-using Binapsis.Plataforma.Estructura.Impl;
 using System.Collections.Generic;
 
 namespace Binapsis.Plataforma.Configuracion.Sql.Helper
 {
     internal class HelperRecuperacion
     {
-        Dictionary<string, ObjetoBase> _cache;        
+        Dictionary<string, ConfiguracionBase> _cache;        
         Contexto _contexto;
 
         public HelperRecuperacion(string cadenaConexion)
@@ -18,7 +18,7 @@ namespace Binapsis.Plataforma.Configuracion.Sql.Helper
 
         public HelperRecuperacion(Contexto contexto)
         {
-            _cache = new Dictionary<string, ObjetoBase>();
+            _cache = new Dictionary<string, ConfiguracionBase>();
             _contexto = contexto;
         }
         
@@ -35,27 +35,36 @@ namespace Binapsis.Plataforma.Configuracion.Sql.Helper
         public Definicion RecuperarDefinicion(string definicion, string clave)
         {
             return Recuperar(new SqlBuilderSeleccionarDefinicion(definicion, clave), new BuilderDefinicion(this), clave);
-
-            //Definicion obj = Recuperar(new SqlBuilderSeleccionarDefinicion(definicion, clave), new BuilderDefinicion(this), clave);
-            //RecuperarItems(obj);
-            //return obj;
         }
-                
-        public Uri RecuperarUri(string clave)
+
+        public Tabla RecuperarTabla(string clave)
         {
-            return Recuperar(new SqlBuilderSeleccionarUri(clave), new BuilderUri(this), clave);
+            return Recuperar(new SqlBuilderSeleccionar(typeof(Tabla), clave), new BuilderTabla(this), clave);
         }
 
         public Tipo RecuperarTipo(string clave)
         {
             return Recuperar(new SqlBuilderSeleccionarTipo(clave), new BuilderTipo(this), clave);
-
-            //Tipo tipo = Recuperar(new SqlBuilderSeleccionarTipo(clave), new BuilderTipo(this), clave);
-            //RecuperarItems(new SqlBuilderSeleccionarPropiedadTipo(clave), new BuilderPropiedad(this, tipo));
-            //return tipo;
         }
-        
-        private T Recuperar<T>(ISqlBuilder builderSql, BuilderConfiguracion<T> builder, string clave) where T : ObjetoBase
+
+        public Uri RecuperarUri(string clave)
+        {
+            return Recuperar(new SqlBuilderSeleccionarUri(clave), new BuilderUri(this), clave);
+        }
+
+        public T Recuperar<T>(ClaveBase clave) where T : ConfiguracionBase
+        {
+            return Recuperar<T>(clave?.ToString());
+        }
+
+        public T Recuperar<T>(string clave) where T : ConfiguracionBase
+        {
+            BuilderConfiguracion<T> builder = new BuilderConfiguracion<T>(this);
+            ISqlBuilder sql = new SqlBuilderSeleccionar(typeof(T), clave);
+            return Recuperar(sql, builder, clave);
+        }
+
+        public T Recuperar<T>(ISqlBuilder builderSql, BuilderConfiguracion<T> builder, string clave) where T : ConfiguracionBase
         {
             // recuperar de cache
             T item = null;
@@ -71,33 +80,19 @@ namespace Binapsis.Plataforma.Configuracion.Sql.Helper
             
             if (comando.Resultado.Length == 0) return null;
 
-            // construir objeto 
-            FabricaConfiguracion fabrica = FabricaConfiguracion.Instancia;
-            item = (T)fabrica.Crear(typeof(T));
+            // construir objeto             
+            item = (T)Fabrica.Instancia.Crear(typeof(T));
 
             // agregar al cache (antes de construir para evitar recursividad infinita)
             if (!string.IsNullOrEmpty(clave))
                 Agregar(clave, item);
 
             builder.Construir(item, comando.Resultado[0]);
-
-            //item = builder.Construir(comando.Resultado[0]);
-
-            //// agregar al cache
-            //if (!string.IsNullOrEmpty(clave))
-            //    Agregar(clave, item);
-
+            
             return item;
         }
-
-        //public void RecuperarItems(Definicion definicion)
-        //{
-        //    RecuperarItems(new SqlBuilderSeleccionarDefinicionItem(definicion.Nombre, definicion.Valor), new BuilderDefinicion(this, definicion));
-        //    foreach (Definicion definicionItem in definicion.Definiciones)
-        //        RecuperarItems(definicionItem);
-        //}
-
-        internal void RecuperarItems<T>(ISqlBuilder builderSql, BuilderConfiguracion<T> builder) where T : ObjetoBase
+        
+        internal void RecuperarItems<T>(ISqlBuilder builderSql, BuilderConfiguracion<T> builder) where T : ConfiguracionBase
         {            
             // ejecutar consulta            
             ComandoLectura comando = new ComandoLectura(builderSql);
@@ -109,7 +104,7 @@ namespace Binapsis.Plataforma.Configuracion.Sql.Helper
             builder.Construir(comando.Resultado);            
         }
 
-        private T Obtener<T>(string clave) where T : ObjetoBase
+        private T Obtener<T>(string clave) where T : ConfiguracionBase
         {
             string key = $"{typeof(T).Name}.{clave}";
             T item = default(T);
@@ -120,7 +115,7 @@ namespace Binapsis.Plataforma.Configuracion.Sql.Helper
             return item;
         }
 
-        private void Agregar<T>(string clave, T item) where T : ObjetoBase
+        private void Agregar<T>(string clave, T item) where T : ConfiguracionBase
         {
             string key = $"{typeof(T).Name}.{clave}";
 

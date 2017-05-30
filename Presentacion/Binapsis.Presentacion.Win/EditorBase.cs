@@ -5,6 +5,7 @@ using Binapsis.Presentacion.Win.Diseñadores;
 using DevExpress.XtraEditors;
 using Binapsis.Presentacion.Win.Estilos;
 using System;
+using System.ComponentModel.Design;
 
 namespace Binapsis.Presentacion.Win
 {
@@ -40,6 +41,38 @@ namespace Binapsis.Presentacion.Win
         protected virtual void Inicializar()
         {
            
+        }
+
+        protected override void OnCreateControl()
+        {
+            base.OnCreateControl();
+
+            IComponentChangeService changeService = (IComponentChangeService)GetService(typeof(IComponentChangeService));
+            if (changeService == null) return; // not provided at runtime, only design mode
+
+            changeService.ComponentChanged -= OnComponentChanged; // to avoid multiple subscriptions
+            changeService.ComponentChanged += OnComponentChanged;
+
+            changeService.ComponentRename -= OnRename;
+            changeService.ComponentRename += OnRename;
+
+        }
+
+        private void OnComponentChanged(object sender, ComponentChangedEventArgs e) { }
+
+        private void OnRename(object sender, ComponentRenameEventArgs e)
+        {
+            if (e.Component == this)
+            {
+                OnNameChanged(e.OldName, e.NewName);
+                Name = e.NewName;                
+            }
+        }
+
+        protected virtual void OnNameChanged(string oldValue, string newValue)
+        {
+            if ((_etiqueta.Texto != null && _etiqueta.Texto == oldValue) || string.IsNullOrEmpty(_etiqueta.Texto))
+                _etiqueta.Texto = newValue;
         }
 
         internal virtual EstiloEditorBase CrearEstilo()

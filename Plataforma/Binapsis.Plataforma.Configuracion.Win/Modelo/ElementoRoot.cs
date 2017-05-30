@@ -18,7 +18,7 @@ namespace Binapsis.Plataforma.Configuracion.Win.Modelo
 
         protected override ElementoDefinicion CrearElemento(Definicion definicion)
         {
-            return new ElementoEnsamblado(this, definicion);
+            return new ElementoDefinicion(this, definicion);
         }
 
         public override Type Type
@@ -28,7 +28,7 @@ namespace Binapsis.Plataforma.Configuracion.Win.Modelo
 
         public override Type TypeItem
         {
-            get => typeof(Ensamblado);
+            get => null; //typeof(Ensamblado);
         }
     }
 }

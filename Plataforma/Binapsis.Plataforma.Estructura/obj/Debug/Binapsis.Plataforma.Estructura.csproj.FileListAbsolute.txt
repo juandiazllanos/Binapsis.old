@@ -7,3 +7,4 @@ D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Estructura\bin\Debug\Binap
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Estructura\bin\Debug\Binapsis.Plataforma.Estructura.pdb
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Estructura\obj\Debug\Binapsis.Plataforma.Estructura.dll
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Estructura\obj\Debug\Binapsis.Plataforma.Estructura.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Estructura\obj\Debug\Binapsis.Plataforma.Estructura.csprojResolveAssemblyReference.cache

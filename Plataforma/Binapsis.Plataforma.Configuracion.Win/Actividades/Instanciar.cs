@@ -1,4 +1,5 @@
 ﻿using Binapsis.Plataforma.Notificaciones.Impl;
+using FabricaConfig = Binapsis.Plataforma.Configuracion.Fabrica;
 
 namespace Binapsis.Plataforma.Configuracion.Win.Actividades
 {
@@ -6,7 +7,7 @@ namespace Binapsis.Plataforma.Configuracion.Win.Actividades
     {
         public override void Iniciar()
         {
-            FabricaConfiguracion fabrica = new FabricaConfiguracion(new FabricaNotificacion());
+            FabricaConfig fabrica = new FabricaConfig(new FabricaNotificacion());
             Estado = fabrica.Crear(Type);
             Terminar();
         }                

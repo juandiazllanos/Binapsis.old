@@ -1,16 +1,16 @@
-﻿using Binapsis.Plataforma.Estructura.Impl;
-using Binapsis.Plataforma.Serializacion.Xml;
+﻿using Binapsis.Plataforma.Serializacion.Xml;
+using System;
 
 namespace Binapsis.Plataforma.Configuracion.Serializacion
 {
-    public class SerializacionXml<T> : SerializacionBase<T> where T : ObjetoBase
+    public class SerializacionXml: SerializacionBase
     {
-        public SerializacionXml()
-            : base()
+        public SerializacionXml(Type type)
+            : base(type)
         {
         }
 
-        public SerializacionXml(T objeto) 
+        public SerializacionXml(ConfiguracionBase objeto) 
             : base(objeto)
         {
         }

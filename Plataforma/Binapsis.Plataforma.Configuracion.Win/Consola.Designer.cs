@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Consola));
             this.estadoMain = new System.Windows.Forms.StatusStrip();
+            this.estadoConfiguracion = new System.Windows.Forms.ToolStripStatusLabel();
+            this.estadoContexto = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuMain = new System.Windows.Forms.MenuStrip();
             this.menuAccion = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAccionNuevo = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,8 +57,6 @@
             this.toolAccionEliminar = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolAccionActualizar = new System.Windows.Forms.ToolStripButton();
-            this.estadoConfiguracion = new System.Windows.Forms.ToolStripStatusLabel();
-            this.estadoContexto = new System.Windows.Forms.ToolStripStatusLabel();
             this.estadoMain.SuspendLayout();
             this.menuMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -72,11 +72,23 @@
             this.estadoMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.estadoConfiguracion,
             this.estadoContexto});
-            this.estadoMain.Location = new System.Drawing.Point(0, 392);
+            this.estadoMain.Location = new System.Drawing.Point(0, 418);
             this.estadoMain.Name = "estadoMain";
             this.estadoMain.Size = new System.Drawing.Size(1046, 22);
             this.estadoMain.TabIndex = 3;
             this.estadoMain.Text = "statusStrip1";
+            // 
+            // estadoConfiguracion
+            // 
+            this.estadoConfiguracion.Name = "estadoConfiguracion";
+            this.estadoConfiguracion.Size = new System.Drawing.Size(931, 17);
+            this.estadoConfiguracion.Spring = true;
+            // 
+            // estadoContexto
+            // 
+            this.estadoContexto.AutoSize = false;
+            this.estadoContexto.Name = "estadoContexto";
+            this.estadoContexto.Size = new System.Drawing.Size(100, 17);
             // 
             // menuMain
             // 
@@ -149,7 +161,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.lvwDefinicion);
-            this.splitContainer1.Size = new System.Drawing.Size(1046, 328);
+            this.splitContainer1.Size = new System.Drawing.Size(1046, 354);
             this.splitContainer1.SplitterDistance = 380;
             this.splitContainer1.TabIndex = 5;
             // 
@@ -161,7 +173,7 @@
             this.tvwDefinicion.Location = new System.Drawing.Point(0, 0);
             this.tvwDefinicion.Name = "tvwDefinicion";
             this.tvwDefinicion.SelectedImageIndex = 0;
-            this.tvwDefinicion.Size = new System.Drawing.Size(380, 328);
+            this.tvwDefinicion.Size = new System.Drawing.Size(380, 354);
             this.tvwDefinicion.TabIndex = 0;
             this.tvwDefinicion.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvwDefinicion_AfterSelect);
             // 
@@ -174,6 +186,11 @@
             this.imagenes.Images.SetKeyName(2, "Tipo");
             this.imagenes.Images.SetKeyName(3, "Uri");
             this.imagenes.Images.SetKeyName(4, "Propiedad");
+            this.imagenes.Images.SetKeyName(5, "Conexion");
+            this.imagenes.Images.SetKeyName(6, "Tabla");
+            this.imagenes.Images.SetKeyName(7, "Columna");
+            this.imagenes.Images.SetKeyName(8, "Relacion");
+            this.imagenes.Images.SetKeyName(9, "Categoria");
             // 
             // lvwDefinicion
             // 
@@ -190,7 +207,7 @@
             this.lvwDefinicion.Location = new System.Drawing.Point(0, 0);
             this.lvwDefinicion.MultiSelect = false;
             this.lvwDefinicion.Name = "lvwDefinicion";
-            this.lvwDefinicion.Size = new System.Drawing.Size(662, 328);
+            this.lvwDefinicion.Size = new System.Drawing.Size(662, 354);
             this.lvwDefinicion.SmallImageList = this.imagenes;
             this.lvwDefinicion.TabIndex = 1;
             this.lvwDefinicion.UseCompatibleStateImageBehavior = false;
@@ -303,23 +320,11 @@
             this.toolAccionActualizar.Text = "toolStripButton2";
             this.toolAccionActualizar.ToolTipText = "Actualizar";
             // 
-            // estadoConfiguracion
-            // 
-            this.estadoConfiguracion.Name = "estadoConfiguracion";
-            this.estadoConfiguracion.Size = new System.Drawing.Size(900, 17);
-            this.estadoConfiguracion.Spring = true;
-            // 
-            // estadoContexto
-            // 
-            this.estadoContexto.AutoSize = false;
-            this.estadoContexto.Name = "estadoContexto";
-            this.estadoContexto.Size = new System.Drawing.Size(100, 17);
-            // 
             // Consola
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1046, 414);
+            this.ClientSize = new System.Drawing.Size(1046, 440);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.estadoMain);
             this.Controls.Add(this.toolMain);

@@ -1,48 +1,36 @@
 ﻿using System;
-using Microsoft.AspNetCore.Mvc.Formatters;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Text;
+using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.Net.Http.Headers;
+
 using Binapsis.Plataforma.Configuracion.Serializacion;
 using Binapsis.Plataforma.Configuracion;
-using Binapsis.Plataforma.Estructura.Impl;
-using Microsoft.Net.Http.Headers;
-using System.Collections.Generic;
 
 namespace Binapsis.Plataforma.ServicioConfiguracion.Formatters
 {
     public class XmlInputFormatter : TextInputFormatter
     {
-        Dictionary<Type, Func<IDeserializador>> _helper;
-
         public XmlInputFormatter()
         {
             SupportedMediaTypes.Add(MediaTypeHeaderValue .Parse("application/xml"));
             SupportedEncodings.Add(Encoding.UTF8);
-            SupportedEncodings.Add(Encoding.Unicode);
-
-            _helper = new Dictionary<Type, Func<IDeserializador>>();
-
-            _helper.Add(typeof(Ensamblado), () => new DeserializacionXml<Ensamblado>());
-            _helper.Add(typeof(Configuracion.Uri), () => new DeserializacionXml<Configuracion.Uri>());
-            _helper.Add(typeof(Tipo), () => new DeserializacionXml<Tipo>());
-            _helper.Add(typeof(Definicion), () => new DeserializacionXml<Definicion>());
+            SupportedEncodings.Add(Encoding.Unicode);            
         }
 
         protected override bool CanReadType(Type type)
         {
-            return _helper.ContainsKey(type);
+            return type.GetTypeInfo().IsSubclassOf(typeof(ConfiguracionBase));
         }
 
         public override Task<InputFormatterResult> ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
         {
             Type type = context.ModelType;
-            IDeserializador helper = null;
+            IDeserializador helper = new DeserializacionXml(type);
             var solicitud = context.HttpContext.Request;
-            ObjetoBase resultado = null;
-
-            if (_helper.ContainsKey(type))
-                helper = _helper[type]?.Invoke();
-
+            ConfiguracionBase resultado = null;
+            
             if (helper != null)
             {
                 byte[] buffer = new byte[(int)solicitud.ContentLength];

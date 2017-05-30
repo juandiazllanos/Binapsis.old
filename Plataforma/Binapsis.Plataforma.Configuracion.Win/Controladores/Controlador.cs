@@ -77,7 +77,7 @@ namespace Binapsis.Plataforma.Configuracion.Win.Controladores
             get => _contexto;
         }
 
-        protected ObjetoBase Estado
+        protected ConfiguracionBase Estado
         {
             get;
             set;

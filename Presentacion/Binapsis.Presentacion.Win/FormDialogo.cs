@@ -2,6 +2,7 @@
 using DevExpress.Skins;
 using System;
 using System.Windows.Forms;
+using Binapsis.Presentacion.Editores;
 
 namespace Binapsis.Presentacion.Win
 {

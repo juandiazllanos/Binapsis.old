@@ -70,7 +70,7 @@ namespace Binapsis.Plataforma.Serializacion.Interno
             IPropiedad propiedad = nodo.Propiedad;
 
             // crear nodos hijos
-            if (propiedad.Cardinalidad >= Cardinalidad.Muchos)
+            if (propiedad.Cardinalidad >= Cardinalidad.CeroAMuchos)
                 CrearObjeto(nodo, od.ObtenerColeccion(propiedad));
             else
                 CrearObjeto(nodo, od.ObtenerObjetoDatos(propiedad));
@@ -103,7 +103,7 @@ namespace Binapsis.Plataforma.Serializacion.Interno
             string ruta = ((NodoObjeto)nodo.Padre).Ruta;
             bool composicion = (nodo.Propiedad.Asociacion == Asociacion.Composicion);
             
-            if (nodo.Propiedad.Cardinalidad >= Cardinalidad.Muchos)
+            if (nodo.Propiedad.Cardinalidad >= Cardinalidad.CeroAMuchos)
                 ruta = string.Format("{0}/{1}[{2}]", ruta, nodo.Propiedad.Nombre, indice);
             else
                 ruta = string.Format("{0}/{1}", ruta, nodo.Propiedad.Nombre);

@@ -12,13 +12,7 @@ namespace Binapsis.Plataforma.Configuracion.Sql.Comandos
         {
             ComandoSql = builder.ConstruirSql();
         }
-
-        //public virtual void Ejecutar()
-        //{
-        //    if (!string.IsNullOrEmpty(ComandoSql))
-        //        Contexto.Ejecutar(this);
-        //}
-
+        
         public virtual void Ejecutar(SqlConnection conexion)
         {
             Ejecutar(conexion, null);
@@ -31,13 +25,7 @@ namespace Binapsis.Plataforma.Configuracion.Sql.Comandos
             get;
             set;
         }
-
-        //public string CadenaConexion
-        //{
-        //    get;
-        //    set;
-        //}
-
+        
         protected string ComandoSql
         {
             get;

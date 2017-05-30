@@ -29,7 +29,7 @@ namespace Binapsis.Plataforma.Configuracion.Win.Actividades
             IRepositorio repositorio = Controlador.Contexto.Repositorio;
             IElemento elemento = Controlador.Contexto.ElementoPropietario;
 
-            if (elemento == null) return null;
+            if (elemento == null || elemento.Type == null) return null;
             return repositorio.Obtener(elemento.Type, elemento.Valor);            
         }
 

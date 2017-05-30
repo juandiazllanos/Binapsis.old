@@ -6,62 +6,27 @@ namespace Binapsis.Plataforma.Configuracion.Base
 {
     internal class Tipo : ITipo
     {
-        private List<IPropiedad> propiedades;
+        List<IPropiedad> propiedades;
 
-		public Tipo()
+        public Tipo()
         {
             propiedades = new List<IPropiedad>();
-		}
-        
-		public string Alias { get; set; }
-
-		public ITipo Base { get; set; }
-
-		public bool EsTipoDeDato { get; set; }
-
-		public string Nombre { get; set; }
-
-        public string Uri { get; set; }
-
-        public IReadOnlyList<IPropiedad> Propiedades
-        {
-            get
-            {
-                return propiedades; 
-            }
         }
 
-        public IPropiedad this[string nombre]
-        {
-            get
-            {
-                return ObtenerPropiedad(nombre);
-            }
-        }
-
-        public IPropiedad this[int indice]
-        {
-            get
-            {
-                return ObtenerPropiedad(indice);
-            }
-        }
-
+        #region Metodos
         public void AgregarPropiedad(IPropiedad propiedad)
         {
-            if  (!propiedades.Any(item => item.Nombre == propiedad.Nombre))
+            if (!propiedades.Any(item => item.Nombre == propiedad.Nombre))
             {
                 ((Propiedad)propiedad).Indice = propiedades.Count;
-                propiedades.Add(propiedad);                
-            }            
+                propiedades.Add(propiedad);
+            }
         }
 
         public void RemoverPropiedad(IPropiedad propiedad)
         {
-            if (propiedades.Contains(propiedad))
-            {
-                propiedades.Remove(propiedad);
-            }
+            if (propiedades.Contains(propiedad))            
+                propiedades.Remove(propiedad);            
         }
 
         public bool ContienePropiedad(string nombre)
@@ -71,13 +36,61 @@ namespace Binapsis.Plataforma.Configuracion.Base
 
         public IPropiedad ObtenerPropiedad(string nombre)
         {
-            return propiedades.FirstOrDefault(item => item.Nombre == nombre); 
-		}
-        
-		public IPropiedad ObtenerPropiedad(int indice)
-        {
-			return propiedades[indice];
-		}
+            return propiedades.FirstOrDefault(item => item.Nombre == nombre);
+        }
 
+        public IPropiedad ObtenerPropiedad(int indice)
+        {
+            return propiedades[indice];
+        }
+        #endregion
+
+
+        #region Propiedades
+        public string Alias
+        {
+            get;
+            set;
+        }
+
+		public ITipo Base
+        {
+            get;
+            set;
+        }
+
+		public bool EsTipoDeDato
+        {
+            get;
+            set;
+        }
+
+		public string Nombre
+        {
+            get;
+            set;
+        }
+
+        public string Uri
+        {
+            get;
+            set;
+        }
+
+        public IReadOnlyList<IPropiedad> Propiedades
+        {
+            get => propiedades; 
+        }
+
+        public IPropiedad this[string nombre]
+        {
+            get => ObtenerPropiedad(nombre);
+        }
+
+        public IPropiedad this[int indice]
+        {
+            get => ObtenerPropiedad(indice);
+        }
+        #endregion  
     }    
 } 

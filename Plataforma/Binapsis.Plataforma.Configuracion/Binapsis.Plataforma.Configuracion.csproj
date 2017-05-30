@@ -41,12 +41,18 @@
   <ItemGroup>
     <Compile Include="Base\Propiedad.cs" />
     <Compile Include="Base\Tipo.cs" />
+    <Compile Include="Columna.cs" />
+    <Compile Include="Conexion.cs" />
     <Compile Include="Definicion.cs" />
     <Compile Include="Ensamblado.cs" />
     <Compile Include="Base\BaseTypes.cs" />
-    <Compile Include="FabricaConfiguracion.cs" />
+    <Compile Include="Fabrica.cs" />
+    <Compile Include="ConfiguracionBase.cs" />
+    <Compile Include="FabricaImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Propiedad.cs" />
+    <Compile Include="Relacion.cs" />
+    <Compile Include="Tabla.cs" />
     <Compile Include="Tipo.cs" />
     <Compile Include="Types.cs" />
     <Compile Include="Uri.cs" />

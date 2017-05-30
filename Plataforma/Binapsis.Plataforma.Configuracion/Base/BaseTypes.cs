@@ -4,27 +4,27 @@ using System.Collections.Generic;
 
 namespace Binapsis.Plataforma.Configuracion.Base
 {
-    internal class BaseTypes
+    internal static class BaseTypes
     {
-        Dictionary<string, Tipo> _cache;
+        static Dictionary<string, Tipo> _cache;
 
         static BaseTypes()
-        {
-            Instancia = new BaseTypes();
-        }
-
-        public BaseTypes()
         {
             _cache = new Dictionary<string, Tipo>();
             Crear();
         }
-        
-        public ITipo Obtener(Type type)
+
+        private static void Agregar(Tipo tipo)
+        {
+            _cache.Add($"{tipo.Uri}.{tipo.Nombre}", tipo);
+        }
+
+        public static ITipo Obtener(Type type)
         {
             return Obtener(type.Namespace, type.Name);
         }
 
-        public ITipo Obtener(string uri, string tipo)
+        public static ITipo Obtener(string uri, string tipo)
         {
             string clave = $"{uri}.{tipo}";
 
@@ -34,7 +34,12 @@ namespace Binapsis.Plataforma.Configuracion.Base
                 return null;
         }
 
-        private void Crear()
+        //public static ITipo this[Type type]
+        //{
+        //    get => Obtener(type);
+        //}
+
+        private static void Crear()
         {
             Agregar(new Tipo { Uri = "System", Nombre = "Boolean", Alias = "bool", EsTipoDeDato = true });
             Agregar(new Tipo { Uri = "System", Nombre = "Byte", Alias = "byte", EsTipoDeDato = true });
@@ -54,15 +59,15 @@ namespace Binapsis.Plataforma.Configuracion.Base
             Agregar(new Tipo { Uri = "System", Nombre = "UInt16", Alias = "ushort", EsTipoDeDato = true });
 
             // ensamblado
-            Tipo ensambladoTipo = new Tipo() { Uri = "Binapsis.Plataforma.Configuracion", Nombre = "Ensamblado" };
-            ensambladoTipo.AgregarPropiedad(new Propiedad() { Nombre = "Nombre", Tipo = Obtener("System", "String") });
-            Agregar(ensambladoTipo);
+            Tipo ensamblado = new Tipo() { Uri = "Binapsis.Plataforma.Configuracion", Nombre = "Ensamblado" };
+            ensamblado.AgregarPropiedad(new Propiedad() { Nombre = "Nombre", Tipo = Obtener("System", "String") });
+            Agregar(ensamblado);
 
             // uri
-            Tipo uriTipo = new Tipo() { Uri = "Binapsis.Plataforma.Configuracion", Nombre = "Uri" };
-            uriTipo.AgregarPropiedad(new Propiedad() { Nombre = "Nombre", Tipo = Obtener("System", "String") });
-            uriTipo.AgregarPropiedad(new Propiedad() { Nombre = "Ensamblado", Tipo = ensambladoTipo, Alias = "Ensamblado", Asociacion = Asociacion.Agregacion, Cardinalidad = Cardinalidad.Uno });
-            Agregar(uriTipo);
+            Tipo uri = new Tipo() { Uri = "Binapsis.Plataforma.Configuracion", Nombre = "Uri" };
+            uri.AgregarPropiedad(new Propiedad() { Nombre = "Nombre", Tipo = Obtener("System", "String") });
+            uri.AgregarPropiedad(new Propiedad() { Nombre = "Ensamblado", Tipo = ensamblado, Alias = "Ensamblado", Asociacion = Asociacion.Agregacion, Cardinalidad = Cardinalidad.Uno });
+            Agregar(uri);
             
             // tipo
             Tipo tipo = new Tipo { Uri = "Binapsis.Plataforma.Configuracion", Nombre = "Tipo", Alias = "tipo" };
@@ -80,19 +85,58 @@ namespace Binapsis.Plataforma.Configuracion.Base
             tipo.AgregarPropiedad(new Propiedad { Nombre = "Propiedades", Alias = "propiedades", Tipo = propiedad, Asociacion = Asociacion.Composicion, Cardinalidad = Cardinalidad.CeroAMuchos });
             tipo.AgregarPropiedad(new Propiedad { Nombre = "Alias", Alias = "alias", Tipo = Obtener("System", "String") });
             tipo.AgregarPropiedad(new Propiedad { Nombre = "Nombre", Alias = "nombre", Tipo = Obtener("System", "String") });
-            tipo.AgregarPropiedad(new Propiedad { Nombre = "Uri", Alias = "uri", Tipo = uriTipo, Asociacion = Asociacion.Agregacion, Cardinalidad = Cardinalidad.Uno });            
+            tipo.AgregarPropiedad(new Propiedad { Nombre = "Uri", Alias = "uri", Tipo = uri, Asociacion = Asociacion.Agregacion, Cardinalidad = Cardinalidad.Uno });            
             tipo.AgregarPropiedad(new Propiedad { Nombre = "EsTipoDeDato", Alias = "esTipoDeDato", Tipo = Obtener("System", "Boolean") });
-                        
+
             Agregar(propiedad);
             Agregar(tipo);
 
+            // definicion
+            Tipo definicion = new Tipo { Uri = "Binapsis.Plataforma.Configuracion", Nombre = "Definicion", Alias = "definicion" };
+            definicion.AgregarPropiedad( new Propiedad { Nombre = "Alias", Alias = "alias", Tipo = Obtener("System", "String") });
+            definicion.AgregarPropiedad( new Propiedad { Nombre = "Definiciones", Alias = "definiciones", Tipo = definicion, Asociacion = Asociacion.Composicion, Cardinalidad = Cardinalidad.CeroAMuchos });            
+            definicion.AgregarPropiedad( new Propiedad { Nombre = "Nombre", Alias = "nombre", Tipo = Obtener("System", "String") });
+            definicion.AgregarPropiedad( new Propiedad { Nombre = "Valor", Alias = "valor", Tipo = Obtener("System", "String") });
+
+            Agregar(definicion);
+
+
+            
+            // conexion
+            Tipo conexion = new Tipo { Uri = "Binapsis.Plataforma.Configuracion", Nombre = "Conexion", Alias = "conexion" };
+            conexion.AgregarPropiedad(new Propiedad { Nombre = "Nombre", Tipo = Obtener(typeof(string)), Alias = "nombre" });
+            conexion.AgregarPropiedad(new Propiedad { Nombre = "CadenaConexion", Tipo = Obtener(typeof(string)), Alias = "cadenaConexion" });
+
+            Agregar(conexion);
+
+            // tabla
+            Tipo tabla = new Tipo { Uri = "Binapsis.Plataforma.Configuracion", Nombre = "Tabla", Alias = "alias" };
+            tabla.AgregarPropiedad(new Propiedad { Nombre = "Nombre", Tipo = Obtener(typeof(string)), Alias = "nombre" });
+            tabla.AgregarPropiedad(new Propiedad { Nombre = "Tipo", Tipo = Obtener(typeof(string)), Alias = "tipo" });
+
+            // columna
+            Tipo columna = new Tipo { Uri = "Binapsis.Plataforma.Configuracion", Nombre = "Columna", Alias = "columna" };
+            columna.AgregarPropiedad(new Propiedad { Nombre = "ClavePrincipal", Tipo = Obtener("System", "Boolean"), Alias = "clavePrincipal" });
+            columna.AgregarPropiedad(new Propiedad { Nombre = "Nombre", Tipo = Obtener("System", "String"), Alias = "nombre" });            
+            columna.AgregarPropiedad(new Propiedad { Nombre = "Propiedad", Tipo = Obtener(typeof(string)), Alias = "propiedad" });
+
+            tabla.AgregarPropiedad(new Propiedad { Nombre = "Columnas", Tipo = columna, Alias = "columnas", Asociacion = Asociacion.Composicion, Cardinalidad = Cardinalidad.CeroAMuchos });
+
+            Agregar(columna);
+            Agregar(tabla);
+
+            // relacion
+            Tipo relacion = new Tipo { Uri = "Binapsis.Plataforma.Configuracion", Nombre = "Relacion", Alias = "alias" };
+            relacion.AgregarPropiedad(new Propiedad { Nombre = "ColumnaPrincipal", Tipo = Obtener(typeof(string)), Alias = "columnaPrincipal" });
+            relacion.AgregarPropiedad(new Propiedad { Nombre = "ColumnaSecundaria", Tipo = Obtener(typeof(string)), Alias = "columnaSecundaria" });
+            relacion.AgregarPropiedad(new Propiedad { Nombre = "Nombre", Tipo = Obtener(typeof(string)), Alias = "nombre" });
+            relacion.AgregarPropiedad(new Propiedad { Nombre = "Propiedad", Tipo = Obtener(typeof(string)), Alias = "propeidad" });
+            relacion.AgregarPropiedad(new Propiedad { Nombre = "TablaPrincipal", Tipo = Obtener(typeof(string)), Alias = "tablaPrincipal" });
+            relacion.AgregarPropiedad(new Propiedad { Nombre = "TablaSecundaria", Tipo = Obtener(typeof(string)), Alias = "tablaSecundaria" });            
+            relacion.AgregarPropiedad(new Propiedad { Nombre = "Tipo", Tipo = Obtener(typeof(string)), Alias = "tipo" });
+            
+            Agregar(relacion);
         }
 
-        private void Agregar(Tipo tipo)
-        {
-            _cache.Add($"{tipo.Uri}.{tipo.Nombre}", tipo);
-        }
-
-        public static BaseTypes Instancia { get; }
     }
 }

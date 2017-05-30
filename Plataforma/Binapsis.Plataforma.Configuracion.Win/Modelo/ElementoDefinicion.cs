@@ -2,9 +2,10 @@
 
 namespace Binapsis.Plataforma.Configuracion.Win.Modelo
 {
-    public abstract class ElementoDefinicion : Elemento
+    public class ElementoDefinicion : Elemento
     {
         Definicion _definicion;
+        Type _typeItem;
         
         public ElementoDefinicion(IRepositorio repositorio)
             : base(repositorio)
@@ -28,6 +29,8 @@ namespace Binapsis.Plataforma.Configuracion.Win.Modelo
             Alias = definicion?.Alias;
             Nombre = definicion?.Nombre;
             Valor = definicion?.Valor;
+            Type = ObtenerType(definicion);
+            TypeItem = ObtenerTypeItem(definicion);
 
             if (definicion == null)
             {
@@ -43,12 +46,40 @@ namespace Binapsis.Plataforma.Configuracion.Win.Modelo
             _definicion = definicion;
         }
 
-        
-        protected abstract ElementoDefinicion CrearElemento(Definicion definicion);
-        
-        public abstract override Type Type { get; }
+        protected virtual Type ObtenerType(Definicion definicion)
+        {
+            return Propietario?.TypeItem;
+        }
 
-        public abstract override Type TypeItem { get; }
+        protected virtual Type ObtenerTypeItem(Definicion definicion)
+        {
+            if (definicion == null) return null;
+
+            Type typeBase = typeof(ConfiguracionBase);
+            return typeBase.Assembly.GetType($"{typeBase.Namespace}.{definicion.Valor}");            
+        }
+                
+        protected virtual ElementoDefinicion CrearElemento(Definicion definicion)
+        {
+            Type type = Type.GetType($"{typeof(ElementoDefinicion).Namespace}.Elemento{definicion.Nombre}");
+
+            if (type != null)
+                return (ElementoDefinicion)Activator.CreateInstance(type, new object[] { this, definicion });
+            else
+                return new ElementoDefinicion(this, definicion);
+        }
+        
+        //public override Type Type
+        //{
+        //    get;
+        //    protected set;
+        //}
+
+        //public override Type TypeItem
+        //{
+        //    get;
+        //    protected set;
+        //}
 
     }
 }

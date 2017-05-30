@@ -8,21 +8,21 @@ namespace Binapsis.Plataforma.Configuracion.Win.Modelo
             : base(padre, definicion)
         {
         }
-        
+
+        protected override Type ObtenerType(Definicion definicion)
+        {
+            return typeof(Ensamblado);
+        }
+
+        protected override Type ObtenerTypeItem(Definicion definicion)
+        {
+            return typeof(Uri);
+        }
+
         protected override ElementoDefinicion CrearElemento(Definicion definicion)
         {
             return new ElementoUri(this, definicion);
         }
-
-        public override Type Type
-        {
-            get => typeof(Ensamblado);
-        }
-
-        public override Type TypeItem
-        {
-            get => typeof(Uri);
-        }
-
+        
     }
 }

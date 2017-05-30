@@ -10,7 +10,7 @@ namespace Binapsis.Plataforma.Configuracion.Win.Actividades
         {
             IRepositorio repositorio = Controlador.Contexto.Repositorio;
             IElemento elementoPropietario = Controlador.Contexto.ElementoPropietario;
-            ObjetoBase propietario = null;
+            ConfiguracionBase propietario = null;
             IFabricaImpl impl = new FabricaNotificacion();
 
             if (repositorio != null && elementoPropietario != null)

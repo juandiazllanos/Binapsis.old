@@ -1,24 +1,23 @@
 ﻿using System;
-using Binapsis.Plataforma.Estructura.Impl;
 using Binapsis.Plataforma.Serializacion.Binario;
 
 namespace Binapsis.Plataforma.Configuracion.Serializacion
 {
-    public class DeserializacionBinario<T> : DeserializacionBase<T> where T : ObjetoBase
+    public class DeserializacionBinario : DeserializacionBase
     {
-        public DeserializacionBinario()
-            : base()
+        public DeserializacionBinario(Type type)
+            : base(type)
         {
         }
 
-        public DeserializacionBinario(T objeto) 
+        public DeserializacionBinario(ConfiguracionBase objeto) 
             : base(objeto)
         {
         }
 
         protected override void Deserializar(Secuencia secuencia)
         {
-            Deserializar(secuencia, new LectorBinario(FabricaConfiguracion.Instancia));
+            Deserializar(secuencia, new LectorBinario(Fabrica.Instancia));
         }        
     }
 }

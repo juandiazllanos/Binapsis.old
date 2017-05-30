@@ -1,30 +1,24 @@
-﻿using Binapsis.Plataforma.Estructura.Impl;
-using Binapsis.Plataforma.Estructura;
+﻿using Binapsis.Plataforma.Estructura;
+
 
 namespace Binapsis.Plataforma.Configuracion
 {
-    public class Ensamblado : ObjetoBase
+    public class Ensamblado : ConfiguracionBase
     {
+        public Ensamblado() 
+            : base(typeof(Ensamblado))
+        {
+        }
+        
         public Ensamblado(IImplementacion impl) 
             : base(impl)
         {
         }
 
-        protected override ObjetoBase CrearObjetoDatos(IImplementacion impl)
-        {
-            return FabricaConfiguracion.Instancia.Crear(impl);
-        }
-
         public string Nombre
         {
-            get
-            {
-                return ObtenerString("Nombre");
-            }
-            set
-            {
-                EstablecerString("Nombre", value);
-            }
+            get => ObtenerString("Nombre");
+            set => EstablecerString("Nombre", value);
         }
     }
 }

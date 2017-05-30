@@ -1,6 +1,5 @@
 ﻿using Binapsis.Plataforma.AgenteConfiguracion;
 using Binapsis.Plataforma.Estructura;
-using Binapsis.Plataforma.Estructura.Impl;
 using System;
 
 namespace Binapsis.Plataforma.Configuracion.Win.Modelo
@@ -12,37 +11,37 @@ namespace Binapsis.Plataforma.Configuracion.Win.Modelo
             Url = url;
         }
                 
-        public void Establecer(ObjetoBase valor)
+        public void Establecer(ConfiguracionBase valor)
         {
             ServicioConfiguracion servicio = new ServicioConfiguracion(Url);
             servicio.Establecer(valor);
         }
 
-        public void Establecer(ObjetoBase valor, string clave)
+        public void Establecer(ConfiguracionBase valor, string clave)
         {
             ServicioConfiguracion servicio = new ServicioConfiguracion(Url);
             servicio.Establecer(valor, clave);
         }
 
 
-        public ObjetoBase Obtener(Type type, string clave)
+        public ConfiguracionBase Obtener(Type type, string clave)
         {
             ServicioConfiguracion servicio = new ServicioConfiguracion(Url);
             return servicio.Obtener(type, clave);
         }
 
-        public ObjetoBase Obtener(Type type, string clave, IFabricaImpl impl)
+        public ConfiguracionBase Obtener(Type type, string clave, IFabricaImpl impl)
         {
             ServicioConfiguracion servicio = new ServicioConfiguracion(Url, impl);
             return servicio.Obtener(type, clave);            
         }
 
-        public T Obtener<T>(string clave, IFabricaImpl impl) where T : ObjetoBase
+        public T Obtener<T>(string clave, IFabricaImpl impl) where T : ConfiguracionBase
         {
             return (T)Obtener(typeof(T), clave, impl);
         }
 
-        public T Obtener<T>(string clave) where T : ObjetoBase
+        public T Obtener<T>(string clave) where T : ConfiguracionBase
         {
             return (T)Obtener(typeof(T), clave);
         }

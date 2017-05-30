@@ -1,14 +1,12 @@
-﻿using Binapsis.Plataforma.Estructura.Impl;
-
-namespace Binapsis.Plataforma.Configuracion.Sql
+﻿namespace Binapsis.Plataforma.Configuracion.Sql
 {
     public interface IHelper
     {
-        void Actualizar(string clave, ObjetoBase obj);
-        bool Existe(ObjetoBase obj);
+        void Actualizar(string clave, ConfiguracionBase obj);
+        bool Existe(ConfiguracionBase obj);
         bool Existe(string clave);
-        void Eliminar(ObjetoBase obj);
-        void Insertar(ObjetoBase obj);        
-        ObjetoBase Recuperar(string clave);
+        void Eliminar(ConfiguracionBase obj);
+        void Insertar(ConfiguracionBase obj);        
+        ConfiguracionBase Recuperar(string clave);
     }
 }

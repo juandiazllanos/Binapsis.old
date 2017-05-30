@@ -1,5 +1,4 @@
-﻿using Binapsis.Plataforma.Estructura.Impl;
-using System;
+﻿using System;
 
 namespace Binapsis.Plataforma.Configuracion.Win
 {
@@ -10,7 +9,7 @@ namespace Binapsis.Plataforma.Configuracion.Win
         void Cancelar();
 
         IControlador Controlador { get; set; }
-        ObjetoBase Estado { get; set; }
+        ConfiguracionBase Estado { get; set; }
         Resultado Resultado { get; }
         Type Type { get; set; }
         

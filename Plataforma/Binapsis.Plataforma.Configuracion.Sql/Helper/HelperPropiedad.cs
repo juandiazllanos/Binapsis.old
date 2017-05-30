@@ -38,7 +38,7 @@ namespace Binapsis.Plataforma.Configuracion.Sql.Helper
                          select propiedad;
 
             var actualizados = from propiedad in nuevo.Propiedades.Select(item => item.Nombre)
-                               where !eliminado.ContienePropiedad(propiedad)
+                               where eliminado.ContienePropiedad(propiedad)
                                select propiedad;
 
             // eliminar

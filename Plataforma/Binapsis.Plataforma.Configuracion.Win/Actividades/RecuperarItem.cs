@@ -20,6 +20,9 @@ namespace Binapsis.Plataforma.Configuracion.Win.Actividades
             if (propietario.GetType() == typeof(Tipo))
                 Estado = ((Tipo)propietario).ObtenerPropiedad(nombre[nombre.GetUpperBound(0)]);
 
+            else if (propietario.GetType() == typeof(Tabla))
+                Estado = ((Tabla)propietario).ObtenerColumna(nombre[nombre.GetUpperBound(0)]);
+
             Terminar();
         }
     }

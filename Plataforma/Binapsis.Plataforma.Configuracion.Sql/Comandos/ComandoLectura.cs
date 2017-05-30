@@ -21,30 +21,6 @@ namespace Binapsis.Plataforma.Configuracion.Sql.Comandos
             _items = new List<ResultadoLectura>();
             _columnas = new List<string>();
         }
-
-        //public override void Ejecutar()
-        //{
-        //    if (string.IsNullOrEmpty(ComandoSql)) return;
-
-        //    using (SqlConnection cnn = new SqlConnection(CadenaConexion))
-        //    using (SqlCommand cmd = new SqlCommand(ComandoSql, cnn))            
-        //    {
-        //        SqlDataReader reader;
-
-        //        cnn.Open();
-        //        reader = cmd.ExecuteReader();
-
-        //        // leer columnas
-        //        for (int col = 0; col < reader.FieldCount; col++)
-        //            _columnas.Add(reader.GetName(col));
-                
-        //        // leer filas
-        //        while (reader.Read())
-        //            _items.Add(new ResultadoLectura(_columnas, reader));
-
-        //        reader.Dispose();
-        //    }
-        //}
         
         public override void Ejecutar(SqlConnection conexion, SqlTransaction transaccion)
         {

@@ -1,21 +1,21 @@
 ﻿using Binapsis.Plataforma.Configuracion;
 using Binapsis.Plataforma.Configuracion.Serializacion;
 using Binapsis.Plataforma.Estructura;
-using Binapsis.Plataforma.Estructura.Impl;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-//using System;
+using System;
+using EspacioNombre = Binapsis.Plataforma.Configuracion.Uri;
 
 namespace Binapsis.Plataforma.AgenteConfiguracion
 {
     public class ServicioConfiguracion
     {
-        FabricaConfiguracion _fabrica;
+        Fabrica _fabrica;
 
         public ServicioConfiguracion()
         {
-            _fabrica = FabricaConfiguracion.Instancia;
+            _fabrica = Fabrica.Instancia;
         }
 
         public ServicioConfiguracion(string url)
@@ -26,7 +26,7 @@ namespace Binapsis.Plataforma.AgenteConfiguracion
 
         public ServicioConfiguracion(IFabricaImpl impl)
         {
-            _fabrica = new FabricaConfiguracion(impl);
+            _fabrica = new Fabrica(impl);
         }
 
         public ServicioConfiguracion(string url, IFabricaImpl impl)
@@ -36,24 +36,24 @@ namespace Binapsis.Plataforma.AgenteConfiguracion
         }
 
 
-        public T Obtener<T>(string clave) where T : ObjetoBase
+        public T Obtener<T>(string clave) where T : ConfiguracionBase
         {
             return (T)Obtener(typeof(T), clave);
         }
 
-        public T Obtener<T>(string configuracion, string clave) where T : ObjetoBase
+        public T Obtener<T>(string configuracion, string clave) where T : ConfiguracionBase
         {
             return (T)Obtener(typeof(T), configuracion, clave);            
         }
                 
-        public ObjetoBase Obtener(System.Type type, string clave)
+        public ConfiguracionBase Obtener(System.Type type, string clave)
         {
             return Obtener(type, type.Name, clave);
         }
 
-        public ObjetoBase Obtener(System.Type type, string configuracion, string clave)
-        {            
-            ObjetoBase instancia = null;
+        public ConfiguracionBase Obtener(System.Type type, string configuracion, string clave)
+        {
+            ConfiguracionBase instancia = null;
             
             // crear instancia
             instancia = _fabrica.Crear(type);
@@ -64,12 +64,12 @@ namespace Binapsis.Plataforma.AgenteConfiguracion
             return instancia;
         }
                 
-        public void Recuperar(ObjetoBase instancia, string clave)
+        public void Recuperar(ConfiguracionBase instancia, string clave)
         {
             Recuperar(instancia, instancia.Tipo.Nombre, clave);
         }
 
-        public void Recuperar(ObjetoBase instancia, string configuracion, string clave)
+        public void Recuperar(ConfiguracionBase instancia, string configuracion, string clave)
         {
             // recuperar xml
             string valor = Obtener(configuracion, clave);
@@ -78,7 +78,7 @@ namespace Binapsis.Plataforma.AgenteConfiguracion
             IDeserializador deserializador = null;
                         
             // crear helper
-            deserializador = new DeserializacionXml<ObjetoBase>(instancia);
+            deserializador = new DeserializacionXml(instancia);
             // deserializar
             deserializador.Deserializar(valor);
         }
@@ -103,9 +103,9 @@ namespace Binapsis.Plataforma.AgenteConfiguracion
             return Obtener<Ensamblado>("Ensamblado", nombre);
         }
         
-        public Uri ObtenerUri(string nombre)
+        public EspacioNombre ObtenerUri(string nombre)
         {
-            return Obtener<Uri>("Uri", nombre);
+            return Obtener<EspacioNombre>("Uri", nombre);
         }
         
         public Tipo ObtenerTipo(string uri, string nombre)
@@ -146,31 +146,21 @@ namespace Binapsis.Plataforma.AgenteConfiguracion
             return body;
         }
 
-        //public void Establecer<T>(string configuracion, T valor) where T : ObjetoBase
-        //{
-        //    Establecer(configuracion, clave: null, valor: valor);
-        //}
-
-        //public void Establecer<T>(T valor) where T : ObjetoBase
-        //{
-        //    Establecer((ObjetoBase)valor);
-        //}
-
-        public void Establecer(ObjetoBase valor)
+        public void Establecer(ConfiguracionBase valor)
         {
             Establecer(valor.Tipo.Nombre, clave: null, valor: valor);
         }
         
-        public void Establecer(ObjetoBase valor, string clave)
+        public void Establecer(ConfiguracionBase valor, string clave)
         {
             Establecer(valor.Tipo.Nombre, clave, valor);
         }
 
-        public void Establecer(string configuracion, string clave, ObjetoBase valor)
+        public void Establecer(string configuracion, string clave, ConfiguracionBase valor)
         {
             if (valor == null) return;
 
-            ISerializador serializador = new SerializacionXml<ObjetoBase>(valor);
+            ISerializador serializador = new SerializacionXml(valor);
             serializador.Serializar();
             byte[] contenido = serializador.Contenido;
 
@@ -182,23 +172,10 @@ namespace Binapsis.Plataforma.AgenteConfiguracion
         
         public void Establecer(string configuracion, string clave, string valor)
         {
-            if (string.IsNullOrEmpty(Url)) throw new System.Exception("Url no es válida.");
+            if (string.IsNullOrEmpty(Url)) throw new Exception("Url no es válida.");
             Establecer(Url, configuracion, clave, valor);
         }
-
-        //private void Establecer(string url, string configuracion, string valor)
-        //{            
-        //    using (HttpClient cliente = new HttpClient())
-        //    {
-        //        cliente.BaseAddress = new System.Uri(url);
-        //        cliente.DefaultRequestHeaders.Accept.Clear();
-        //        cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/xml"));
-
-        //        HttpContent body = new StringContent(valor, Encoding.UTF8, "application/xml");
-        //        HttpResponseMessage response = cliente.PostAsync($"{url}/{configuracion}", body).Result;                               
-        //    }
-        //}
-
+        
         private void Establecer(string url, string configuracion, string clave, string valor)
         {
             using (HttpClient cliente = new HttpClient())
@@ -217,7 +194,7 @@ namespace Binapsis.Plataforma.AgenteConfiguracion
             }
         }
 
-        public void Eliminar(System.Type type, string clave)
+        public void Eliminar(Type type, string clave)
         {
             Eliminar(type.Name, clave);
         }
@@ -238,20 +215,7 @@ namespace Binapsis.Plataforma.AgenteConfiguracion
                 HttpResponseMessage response = cliente.DeleteAsync($"{url}/{configuracion}/{clave}").Result;
             }
         }
-
-        //private string Deserializar(ObjetoBase valor)
-        //{
-        //    ISerializador serializador = new SerializacionXml<ObjetoBase>(valor);
-        //    serializador.Serializar();
-        //    byte[] contenido = serializador.Contenido;
-
-        //    if (contenido == null) return null;
-        //    string data = Encoding.UTF8.GetString(contenido);
-
-        //    return data;
-        //}
-
-
+        
         public string Url
         {
             get;

@@ -14,17 +14,7 @@ namespace Binapsis.Plataforma.Configuracion.Sql.Comandos
             : base(builder)
         {
         }
-
-        //public override void Ejecutar()
-        //{
-        //    using (SqlConnection cnn = new SqlConnection(CadenaConexion))
-        //    using (SqlCommand cmd = new SqlCommand(ComandoSql, cnn))
-        //    {
-        //        cnn.Open();
-        //        _resultado = cmd.ExecuteScalar() != null;                
-        //    }
-        //}
-
+        
         public override void Ejecutar(SqlConnection conexion, SqlTransaction transaccion)
         {
             if (string.IsNullOrEmpty(ComandoSql)) return;

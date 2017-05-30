@@ -1,5 +1,4 @@
-﻿using Binapsis.Plataforma.Estructura.Impl;
-using System;
+﻿using System;
 
 namespace Binapsis.Plataforma.Configuracion.Win.Actividades
 {
@@ -19,7 +18,7 @@ namespace Binapsis.Plataforma.Configuracion.Win.Actividades
             Controlador?.Siguiente();
         }
 
-        public ObjetoBase Estado
+        public ConfiguracionBase Estado
         {
             get;
             set;

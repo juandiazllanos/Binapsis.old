@@ -59,7 +59,7 @@ namespace Binapsis.Plataforma.Estructura.Impl
         {
             IObjetoDatos od = CrearObjetoDatos(_impl.Crear(propiedad.Tipo, this)); 
 
-            if (propiedad.Cardinalidad >= Cardinalidad.Muchos)
+            if (propiedad.Cardinalidad >= Cardinalidad.CeroAMuchos)
                 _impl.AgregarObjetoDatos(propiedad, od);
             else
                 _impl.EstablecerObjetoDatos(propiedad, od);

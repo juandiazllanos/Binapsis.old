@@ -1,16 +1,16 @@
-﻿using Binapsis.Plataforma.Estructura.Impl;
-using Binapsis.Plataforma.Serializacion.Binario;
+﻿using Binapsis.Plataforma.Serializacion.Binario;
+using System;
 
 namespace Binapsis.Plataforma.Configuracion.Serializacion
 {
-    public class SerializacionBinario<T> : SerializacionBase<T> where T : ObjetoBase
+    public class SerializacionBinario : SerializacionBase
     {
-        public SerializacionBinario()
-            : base()
+        public SerializacionBinario(Type type)
+            : base(type)
         {
         }
 
-        public SerializacionBinario(T objeto) 
+        public SerializacionBinario(ConfiguracionBase objeto) 
             : base(objeto)
         {
         }

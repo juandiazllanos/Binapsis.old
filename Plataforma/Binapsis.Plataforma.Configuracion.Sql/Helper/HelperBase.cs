@@ -1,9 +1,8 @@
 ﻿using Binapsis.Plataforma.Configuracion.Sql.Comandos;
-using Binapsis.Plataforma.Estructura.Impl;
 
 namespace Binapsis.Plataforma.Configuracion.Sql.Helper
 {
-    public abstract class HelperBase<T> : IHelper where T : ObjetoBase
+    public abstract class HelperBase<T> : IHelper where T : ConfiguracionBase
     {
         public HelperBase(string cadenaConexion)
         {
@@ -49,12 +48,12 @@ namespace Binapsis.Plataforma.Configuracion.Sql.Helper
         public string CadenaConexion { get; }
 
         #region IHelper
-        void IHelper.Actualizar(string clave, ObjetoBase obj)
+        void IHelper.Actualizar(string clave, ConfiguracionBase obj)
         {
             Actualizar(clave, (T)obj);
         }
 
-        void IHelper.Eliminar(ObjetoBase obj)
+        void IHelper.Eliminar(ConfiguracionBase obj)
         {
             Eliminar((T)obj);
         }
@@ -64,17 +63,17 @@ namespace Binapsis.Plataforma.Configuracion.Sql.Helper
             return Existe(clave);
         }
 
-        bool IHelper.Existe(ObjetoBase obj)
+        bool IHelper.Existe(ConfiguracionBase obj)
         {
             return Existe((T)obj);
         }
 
-        void IHelper.Insertar(ObjetoBase obj)
+        void IHelper.Insertar(ConfiguracionBase obj)
         {
             Insertar((T)obj);
         }
-                
-        ObjetoBase IHelper.Recuperar(string clave)
+
+        ConfiguracionBase IHelper.Recuperar(string clave)
         {
             return Recuperar(clave);
         }        

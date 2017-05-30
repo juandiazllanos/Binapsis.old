@@ -17,6 +17,9 @@ namespace Binapsis.Plataforma.Configuracion.Win.Actividades
             if (propietario.GetType() == typeof(Tipo))
                 Estado = ((Tipo)propietario).CrearPropiedad();
 
+            else if (propietario.GetType() == typeof(Tabla))
+                Estado = ((Tabla)propietario).CrearColumna();
+
             Terminar();
         }
     }

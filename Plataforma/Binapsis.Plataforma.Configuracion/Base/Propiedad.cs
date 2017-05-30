@@ -17,7 +17,7 @@ namespace Binapsis.Plataforma.Configuracion.Base
 		
 		public Cardinalidad Cardinalidad { get; set; }
 
-        public bool EsColeccion { get { return Cardinalidad >= Cardinalidad.Muchos; } }
+        public bool EsColeccion { get { return Cardinalidad >= Cardinalidad.CeroAMuchos; } }
 
         public int Indice { get; set; }
 

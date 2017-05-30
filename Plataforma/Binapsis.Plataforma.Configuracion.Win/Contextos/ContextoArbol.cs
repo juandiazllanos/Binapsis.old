@@ -14,8 +14,9 @@ namespace Binapsis.Plataforma.Configuracion.Win.Contextos
         protected virtual void Inicializar()
         {
             ElementoSeleccionado = (Nodo.Tag as IElemento);
-            if (ElementoSeleccionado == null) return;
+            if (ElementoSeleccionado == null) return;            
             ElementoPropietario = ElementoSeleccionado.Propietario;
+
             ElementoRoot = ElementoPropietario.Root;
             Type = ElementoSeleccionado.Type;
         }

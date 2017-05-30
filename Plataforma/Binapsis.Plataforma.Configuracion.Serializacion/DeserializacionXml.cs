@@ -1,23 +1,23 @@
-﻿using Binapsis.Plataforma.Estructura.Impl;
-using Binapsis.Plataforma.Serializacion.Xml;
+﻿using Binapsis.Plataforma.Serializacion.Xml;
+using System;
 
 namespace Binapsis.Plataforma.Configuracion.Serializacion
 {
-    public class DeserializacionXml<T> : DeserializacionBase<T> where T : ObjetoBase
+    public class DeserializacionXml : DeserializacionBase 
     {
-        public DeserializacionXml() 
-            : base()
+        public DeserializacionXml(Type type) 
+            : base(type)
         {
         }
 
-        public DeserializacionXml(T objeto) 
+        public DeserializacionXml(ConfiguracionBase objeto) 
             : base(objeto)
         {
         }
 
         protected override void Deserializar(Secuencia secuencia)
         {
-            Deserializar(secuencia, new LectorXml(FabricaConfiguracion.Instancia));
+            Deserializar(secuencia, new LectorXml(Fabrica.Instancia));
         }        
     }
 }
