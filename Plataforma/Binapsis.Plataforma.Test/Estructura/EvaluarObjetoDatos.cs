@@ -15,9 +15,9 @@ namespace Binapsis.Plataforma.Test.Estructura
         
         public EvaluarObjetoDatos()
         {
-            _tipo = FabricaConfiguracion.Instancia.CrearTipo();
+            _tipo = (ITipo)Fabrica.Instancia.Crear(typeof(Tipo));
             BuilderTipo.Construir((Tipo)_tipo);
-            _tipox = FabricaConfiguracion.Instancia.CrearTipo();
+            _tipox = (ITipo)Fabrica.Instancia.Crear(typeof(Tipo));
             BuilderTipo.Construir2((Tipo)_tipox);
             
             // eliminar propiedad "id"
@@ -255,24 +255,24 @@ namespace Binapsis.Plataforma.Test.Estructura
         [TestMethod, TestCategory("Evaluar ObjetoDatos")]
         public void EvaluarObjetoDatosComplejoItemsIgualATres()
         {
-            IObjetoDatos od = Helper.Crear(_tipox); //ConstruirObjetoDatosComplejo();
-            Helper.Construir(od, 1, 3);
+            IObjetoDatos od = TestHelper.Crear(_tipox); //ConstruirObjetoDatosComplejo();
+            TestHelper.Construir(od, 1, 3);
             Assert.AreEqual(od.ObtenerColeccion("ReferenciaObjetoDatosItem").Longitud, 3);
         }
 
         [TestMethod, TestCategory("Evaluar ObjetoDatos")]
         public void EvaluarObjetoDatosComplejoReferenciaItemsIgualACero()
         {
-            IObjetoDatos od = Helper.Crear(_tipox); 
-            Helper.Construir(od, 1, 0);
+            IObjetoDatos od = TestHelper.Crear(_tipox); 
+            TestHelper.Construir(od, 1, 0);
             Assert.AreEqual(od.ObtenerObjetoDatos("ReferenciaObjetoDatos").ObtenerColeccion("ReferenciaObjetoDatosItem").Longitud, 0);
         }
 
         [TestMethod, TestCategory("Evaluar ObjetoDatos")]
         public void EvaluarObjetoDatosComplejoRemoverUnItem()
         {
-            IObjetoDatos od = Helper.Crear(_tipox);
-            Helper.Construir(od, 1, 3);
+            IObjetoDatos od = TestHelper.Crear(_tipox);
+            TestHelper.Construir(od, 1, 3);
             od.RemoverObjetoDatos("ReferenciaObjetoDatosItem", od.ObtenerColeccion("ReferenciaObjetoDatosItem")[0]);
             Assert.AreEqual(od.ObtenerColeccion("ReferenciaObjetoDatosItem").Longitud, 2);
         }
@@ -280,8 +280,8 @@ namespace Binapsis.Plataforma.Test.Estructura
         [TestMethod, TestCategory("Evaluar ObjetoDatos")]
         public void EvaluarObjetoDatosComplejoRemoverDosItems()
         {
-            IObjetoDatos od = Helper.Crear(_tipox);
-            Helper.Construir(od, 1, 3);
+            IObjetoDatos od = TestHelper.Crear(_tipox);
+            TestHelper.Construir(od, 1, 3);
             IObjetoDatos primerItem = od.ObtenerColeccion("ReferenciaObjetoDatosItem")[0];
             IObjetoDatos segundoItem = od.ObtenerColeccion("ReferenciaObjetoDatosItem")[1];
 
@@ -294,8 +294,8 @@ namespace Binapsis.Plataforma.Test.Estructura
         [TestMethod, TestCategory("Evaluar ObjetoDatos")]
         public void EvaluarObjetoDatosComplejoRemoverTresItems()
         {
-            IObjetoDatos od = Helper.Crear(_tipox);
-            Helper.Construir(od, 1, 3);
+            IObjetoDatos od = TestHelper.Crear(_tipox);
+            TestHelper.Construir(od, 1, 3);
             IObjetoDatos primerItem = od.ObtenerColeccion("ReferenciaObjetoDatosItem")[0];
             IObjetoDatos segundoItem = od.ObtenerColeccion("ReferenciaObjetoDatosItem")[1];
             IObjetoDatos tercerItem = od.ObtenerColeccion("ReferenciaObjetoDatosItem")[2];
@@ -315,13 +315,13 @@ namespace Binapsis.Plataforma.Test.Estructura
             string ruta3 = "ReferenciaObjetoDatos/ReferenciaObjetoDatos/ReferenciaObjetoDatos";
             string ruta4 = "ReferenciaObjetoDatos";
             string ruta5 = "ReferenciaObjetoDatos/ReferenciaObjetoDatosItem[1]";
-            string ruta6 = "ReferenciaObjetoDatos/ReferenciaObjetoDatosItem[1]/ReferenciaObjetoDatos[1]";
+            string ruta6 = "ReferenciaObjetoDatos/ReferenciaObjetoDatosItem[1]/ReferenciaObjetoDatosItem[1]";
             string ruta7 = "ReferenciaObjetoDatosItem[0]";
             string ruta8 = "ReferenciaObjetoDatosItem[1]/ReferenciaObjetoDatosItem[2]";
-            string ruta9 = "ReferenciaObjetoDatosItem[2]/ReferenciaObjetoDatosItem[2]/ReferenciaObjetoDatos[2]";
+            string ruta9 = "ReferenciaObjetoDatosItem[2]/ReferenciaObjetoDatosItem[2]/ReferenciaObjetoDatosItem[2]";
 
-            IObjetoDatos od = Helper.Crear(_tipox);
-            Helper.Construir(od, 3, 3);
+            IObjetoDatos od = TestHelper.Crear(_tipox);
+            TestHelper.Construir(od, 3, 3);
 
             IObjetoDatos item1 = od.ObtenerObjetoDatos(ruta1);
             IObjetoDatos item2 = od.ObtenerObjetoDatos(ruta2);
@@ -348,8 +348,8 @@ namespace Binapsis.Plataforma.Test.Estructura
         [TestMethod, TestCategory("Evaluar ObjetoDatos")]
         public void EvaluarObjetoDatosPathObtener()
         {
-            IObjetoDatos od = Helper.Crear(_tipox);
-            Helper.Construir(od, 2, 0);
+            IObjetoDatos od = TestHelper.Crear(_tipox);
+            TestHelper.Construir(od, 2, 0);
 
             string ruta = "ReferenciaObjetoDatos";
 
@@ -406,8 +406,8 @@ namespace Binapsis.Plataforma.Test.Estructura
         [TestMethod, TestCategory("Evaluar ObjetoDatos")]
         public void EvaluarObjetoDatosPathObtenerPorTipo()
         {
-            IObjetoDatos od = Helper.Crear(_tipox);
-            Helper.Construir(od, 2, 0);
+            IObjetoDatos od = TestHelper.Crear(_tipox);
+            TestHelper.Construir(od, 2, 0);
 
             string ruta = "ReferenciaObjetoDatos";
 

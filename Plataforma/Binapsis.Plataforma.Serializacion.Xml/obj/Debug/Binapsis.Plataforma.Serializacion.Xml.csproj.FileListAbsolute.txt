@@ -16,3 +16,7 @@ D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Xml\bin\Debu
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Xml\obj\Debug\Binapsis.Plataforma.Serializacion.Xml.csprojResolveAssemblyReference.cache
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Xml\obj\Debug\Binapsis.Plataforma.Serializacion.Xml.dll
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Xml\obj\Debug\Binapsis.Plataforma.Serializacion.Xml.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Xml\bin\Debug\Binapsis.Plataforma.Cambios.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Xml\bin\Debug\Binapsis.Plataforma.Cambios.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Xml\bin\Debug\Binapsis.Plataforma.Helper.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Xml\bin\Debug\Binapsis.Plataforma.Helper.pdb

@@ -21,6 +21,7 @@ namespace Binapsis.Plataforma.Estructura.Interno
         public override void EstablecerBoolean(bool valor)
         {
             _valor = valor;
+            _establecido = true;
 		}
 
         public override object Obtener()
@@ -32,11 +33,6 @@ namespace Binapsis.Plataforma.Estructura.Interno
         {
 			return _valor;
 		}
-
-        public override bool Establecido()
-        {
-            return !default(bool).Equals(_valor);
-        }
 
     }
 }

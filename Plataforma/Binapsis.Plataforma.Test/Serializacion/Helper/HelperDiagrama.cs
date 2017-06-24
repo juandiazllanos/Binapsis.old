@@ -15,12 +15,12 @@ namespace Binapsis.Plataforma.Test.Serializacion.Helpers
 
         static HelperDiagrama()
         {
-            Tipo tipo = FabricaConfiguracion.Instancia.CrearTipo();
+            Tipo tipo = Fabrica.Instancia.Crear<Tipo>();
             tipo.CrearPropiedad("ruta", Types.Instancia.Obtener(typeof(String)));
             BuilderTipo.Construir2(tipo);
             _tipo = tipo;
 
-            tipo = FabricaConfiguracion.Instancia.CrearTipo();
+            tipo = Fabrica.Instancia.Crear<Tipo>();
             tipo.CrearPropiedad("ruta", Types.Instancia.Obtener(typeof(string)));
             BuilderTipo.Construir3(tipo);
             _tipox = tipo;
@@ -32,20 +32,20 @@ namespace Binapsis.Plataforma.Test.Serializacion.Helpers
         
         public static IObjetoDatos CrearObjetoDatos()
         {
-            return Helper.Crear(_tipo);            
+            return TestHelper.Crear(_tipo);            
         }
 
         public static IObjetoDatos CrearObjetoDatosX()
         {
-            return Helper.Crear(_tipox);
+            return TestHelper.Crear(_tipox);
         }
 
         public static void ConstruirObjetoDatos(IObjetoDatos od)
         {
             if (od.Tipo == _tipo)
-                Test.Helper.Construir(od);
+                TestHelper.Construir(od);
             else if (od.Tipo == _tipox)
-                Test.Helper.Construir(od, 2, 5);
+                TestHelper.Construir(od, 2, 5);
         }
 
         public static void EstablecerAtributoRuta(IObjetoDatos od)

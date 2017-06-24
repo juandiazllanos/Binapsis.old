@@ -7,8 +7,11 @@ namespace Binapsis.Plataforma.Test.Builders
     {
         public static ITipo Construir(Tipo tipo)
         {
-            Ensamblado ensam = FabricaConfiguracion.Instancia.CrearEnsamblado("Binapsis.Plataforma.Estructura");
-            Uri uri = FabricaConfiguracion.Instancia.CrearUri(ensam, "Binapsis.Plataforma.Estructura.Impl");
+            Ensamblado ensam = Fabrica.Instancia.Crear<Ensamblado>();
+            ensam.Nombre = "Binapsis.Plataforma.Estructura";
+            Uri uri = Fabrica.Instancia.Crear<Uri>();
+            uri.Ensamblado = ensam;
+            uri.Nombre = "Binapsis.Plataforma.Estructura.Impl";
 
             tipo.Nombre = "ObjetoDatos";
             tipo.Alias = "ObjetoDatos";
@@ -37,7 +40,7 @@ namespace Binapsis.Plataforma.Test.Builders
 
             propiedad = tipo.CrearPropiedad("ReferenciaObjetoDatosItem", tipo);
             propiedad.Asociacion = Asociacion.Composicion;
-            propiedad.Cardinalidad = Cardinalidad.Cero_Muchos;
+            propiedad.Cardinalidad = Cardinalidad.CeroAMuchos;
 
             return tipo;
         }

@@ -10,7 +10,7 @@ namespace Binapsis.Plataforma.Test
         public static void Comparar(IObjetoDatos od1, IObjetoDatos od2)
         {
             Assert.AreEqual(od1.ObtenerInteger("atributoId"), od2.ObtenerInteger("atributoId"));
-            Assert.AreEqual(od1.ObtenerByte("atributoBoolean"), od2.ObtenerByte("atributoBoolean"));
+            Assert.AreEqual(od1.ObtenerBoolean("atributoBoolean"), od2.ObtenerBoolean("atributoBoolean"));
             Assert.AreEqual(od1.ObtenerByte("atributoByte"), od2.ObtenerByte("atributoByte"));
             Assert.AreEqual(od1.ObtenerChar("atributoChar"), od2.ObtenerChar("atributoChar"));
             Assert.AreEqual(od1.ObtenerDateTime("atributoDateTime").Date, od2.ObtenerDateTime("atributoDateTime").Date);

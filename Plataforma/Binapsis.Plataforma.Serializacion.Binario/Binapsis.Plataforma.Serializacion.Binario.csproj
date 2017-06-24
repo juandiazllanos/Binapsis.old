@@ -44,6 +44,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Binapsis.Plataforma.Cambios\Binapsis.Plataforma.Cambios.csproj">
+      <Project>{d0315649-1489-4759-9139-03aa3e4c40ce}</Project>
+      <Name>Binapsis.Plataforma.Cambios</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Binapsis.Plataforma.Estructura\Binapsis.Plataforma.Estructura.csproj">
       <Project>{1095c376-0173-487d-bd2e-54991e05f539}</Project>
       <Name>Binapsis.Plataforma.Estructura</Name>

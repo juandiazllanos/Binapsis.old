@@ -117,3 +117,7 @@ D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Win\obj\Debu
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Win\obj\Debug\Binapsis.Plataforma.Configuracion.Win.Vistas.VistaBase.resources
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Win\obj\Debug\Binapsis.Plataforma.Configuracion.Win.Vistas.VistaRelacion.resources
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Win\obj\Debug\Binapsis.Plataforma.Configuracion.Win.Vistas.VistaColumna.resources
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Win\bin\Debug\Binapsis.Plataforma.Cambios.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Win\bin\Debug\Binapsis.Plataforma.Cambios.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Win\bin\Debug\Binapsis.Plataforma.Helper.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Win\bin\Debug\Binapsis.Plataforma.Helper.pdb

@@ -2,36 +2,49 @@
 
 namespace Binapsis.Plataforma.Serializacion.Interno
 {
-    internal abstract class Nodo
-    {
-        Nodo _padre;
+    internal abstract class Nodo 
+    {        
         List<Nodo> _nodos;
 
+        #region Constructores
         public Nodo()
         {
             _nodos = new List<Nodo>();
         }
-
+        
         public Nodo(Nodo padre)
             : this()
         {
-            _padre = padre;
+            NodoPadre = padre;
         }
+        #endregion
 
+
+        #region Metodos
         public virtual void Agregar(Nodo nodo)
         {
             _nodos.Add(nodo);            
         }
+        #endregion
 
+
+        #region Propiedades
+        public Nodo NodoPadre
+        {
+            get;
+        }
+        
         public IReadOnlyList<Nodo> Nodos
         {
-            get { return _nodos; }
+            get => _nodos; 
         }
 
-        public Nodo Padre
+        public string Nombre
         {
-            get { return _padre; }
+            get;
+            set;
         }
-
+        #endregion
+        
     }
 }

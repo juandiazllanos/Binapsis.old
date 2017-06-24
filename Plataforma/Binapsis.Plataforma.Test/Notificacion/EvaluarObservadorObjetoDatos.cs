@@ -15,15 +15,15 @@ namespace Binapsis.Plataforma.Test.Notificacion
         public void ObservarObjetoDatos()
         {
             IFabrica fabrica = new FabricaDatos(FabricaNotificacion.Instancia);
-            IObjetoDatos od1 = Helper.Crear(HelperTipo.ObtenerTipo2(), fabrica);
-            IObjetoDatos od2 = Helper.Crear(HelperTipo.ObtenerTipo2());
+            IObjetoDatos od1 = TestHelper.Crear(HelperTipo.ObtenerTipo2(), fabrica);
+            IObjetoDatos od2 = TestHelper.Crear(HelperTipo.ObtenerTipo2());
 
             Observable observable = ((ObjetoBase)od1).Observable();
             Observador observador = new Observador(od2);
 
             observable.Agregar(observador);
 
-            Helper.Construir(od1, 2, 5);
+            TestHelper.Construir(od1, 2, 5);
 
             Evaluar.Comparar(od1, od2);
 

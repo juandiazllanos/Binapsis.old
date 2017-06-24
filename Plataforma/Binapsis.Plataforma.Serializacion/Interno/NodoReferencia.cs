@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using Binapsis.Plataforma.Estructura;
-using System.Linq;
+﻿using Binapsis.Plataforma.Estructura;
+using System.Reflection;
 
 namespace Binapsis.Plataforma.Serializacion.Interno
 {
-    internal class NodoReferencia : Nodo, INodoReferencia
+    internal class NodoReferencia : Nodo
     {
-        public NodoReferencia(NodoObjeto padre, IPropiedad propiedad)
+        public NodoReferencia(NodoObjetoDatos padre, IPropiedad propiedad)
             : base(padre)
         {
             Propiedad = propiedad;            
@@ -14,28 +13,35 @@ namespace Binapsis.Plataforma.Serializacion.Interno
         
         public override void Agregar(Nodo nodo)
         {
-            if (nodo == null || typeof(NodoObjeto) != nodo.GetType()) return;
+            if (nodo == null) return;
 
-            NodoObjeto nodoobj = (NodoObjeto)nodo;
+            NodoObjetoDatos nodoobj = nodo as NodoObjetoDatos;
+            
             string ruta = string.Empty;
             int indice = Nodos.Count;
 
             if (Propiedad.Asociacion == Asociacion.Composicion)
-                ruta = string.Format("{0}/{1}[{2}]", ((NodoObjeto)Padre).Ruta, Propiedad.Nombre, indice);
+                ruta = string.Format("{0}/{1}[{2}]", ((NodoObjetoDatos)NodoPadre).Ruta, Propiedad.Nombre, indice);
             else
-                ruta = string.Format("{0}/{1}", ((NodoObjeto)Padre).Ruta, Propiedad.Nombre);
+                ruta = string.Format("{0}/{1}", ((NodoObjetoDatos)NodoPadre).Ruta, Propiedad.Nombre);
 
-            nodoobj.Ruta = ruta;
-            nodoobj.Indice = indice;
+            if (nodoobj != null)
+            {
+                nodoobj.Ruta = ruta;
+                nodoobj.Indice = indice;
+            }            
 
             base.Agregar(nodo); 
         }
         
-        public IPropiedad Propiedad { get; }
-
-        IEnumerable<INodoObjeto> INodoReferencia.Objetos
+        public IPropiedad Propiedad
         {
-            get { return Nodos.OfType<INodoObjeto>(); }
+            get;
         }
+
+        //public IEnumerable<NodoObjetoDatos> Objetos
+        //{
+        //    get => Nodos.OfType<NodoObjetoDatos>(); 
+        //}
     }
 }

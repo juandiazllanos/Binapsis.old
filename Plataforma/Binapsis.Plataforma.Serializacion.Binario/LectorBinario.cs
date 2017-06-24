@@ -2,6 +2,7 @@
 using Binapsis.Plataforma.Estructura;
 using System.IO;
 using Binapsis.Plataforma.Serializacion.Impl;
+using Binapsis.Plataforma.Cambios;
 
 namespace Binapsis.Plataforma.Serializacion.Binario
 {
@@ -9,18 +10,7 @@ namespace Binapsis.Plataforma.Serializacion.Binario
     {
         BinaryReader _reader;
         int _id;
-
-        public LectorBinario(IFabrica fabrica)
-            : base(fabrica)
-        {
-        }
-
-        protected LectorBinario(LectorBase lector, BinaryReader reader) 
-            : base(lector)
-        {
-            EstablecerReader(reader);
-        }
-
+        
         protected override void EstablecerStream(Stream stream)
         {
             if (_reader == null)
@@ -30,38 +20,45 @@ namespace Binapsis.Plataforma.Serializacion.Binario
         void EstablecerReader(BinaryReader reader)
         {
             _reader = reader;
-            _id = _reader.ReadInt32(); // leer id (una sola vez)
         }
-
-        public override void Leer(IObjetoDatos od)
-        {
-            if (od == null) return;
-            
-            System.Diagnostics.Debug.WriteLine(string.Format("id={0}", _id));
-
-            // leer objeto
-            base.Leer(od);
-        }
-
-        public override IPropiedad Leer()
+        
+        public override IPropiedad Leer(ITipo tipo)
         {
             if (_reader.BaseStream.Position >= _reader.BaseStream.Length) return null;
 
             ushort i = _reader.ReadUInt16();
             IPropiedad propiedad = null;
 
-            if (i >= 0 && i < Tipo.Propiedades.Count)
-                propiedad = Tipo.ObtenerPropiedad(i);
-            
-            System.Diagnostics.Debug.WriteLine(string.Format("{0}.{1}.[{2}]", Tipo.Nombre, _id, propiedad?.Nombre));
-                                        
+            if (i >= 0 && i < tipo.Propiedades.Count)
+                propiedad = tipo.ObtenerPropiedad(i);
+                              
             return propiedad;
         }
 
 
+        public override bool Leer()
+        {
+            return _reader.BaseStream.Position < _reader.BaseStream.Length;
+        }
+
+        public override int LeerItems()
+        {
+            return _reader.ReadInt32();
+        }
+
         public override int LeerId()
         {
-            return _id;
+            return _id = _reader.ReadInt32(); 
+        }
+
+        public override string LeerRuta()
+        {
+            return _reader.ReadString();
+        }
+
+        public override Cambio LeerCambio()
+        {
+            return (Cambio)_reader.ReadByte();
         }
 
         public override bool LeerBoolean()
@@ -143,10 +140,6 @@ namespace Binapsis.Plataforma.Serializacion.Binario
         {
             return _reader.ReadUInt16();
         }
-
-        protected override ILector Crear()
-        {
-            return new LectorBinario(this, _reader);
-        }
+        
     }
 }

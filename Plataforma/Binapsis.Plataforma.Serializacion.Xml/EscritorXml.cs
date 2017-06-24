@@ -4,16 +4,18 @@ using System.Xml;
 using System.IO;
 using System.Globalization;
 using Binapsis.Plataforma.Serializacion.Impl;
+using Binapsis.Plataforma.Cambios;
 
 namespace Binapsis.Plataforma.Serializacion.Xml
 {
     public class EscritorXml : EscritorBase
     {
         XmlWriter _writer;
+        string _ns;
 
         public EscritorXml()
         {
-
+            _ns = "https://binapsis.com/plataforma/serializacion";
         }
 
         protected EscritorXml(XmlWriter writer)
@@ -28,33 +30,93 @@ namespace Binapsis.Plataforma.Serializacion.Xml
             if (_writer == null)
                 _writer = XmlWriter.Create(stream);
         }
-
-        public override void Escribir(INodoObjeto objeto)
+        
+        public override void EscribirColeccion(int items)
         {
-            Escribir(objeto, objeto.Tipo.Nombre);            
+            EscribirElemento("Coleccion");
+            EscribirItems(items);
         }
 
-        public void Escribir(INodoObjeto objeto, string nombreElemento)
+        public override void EscribirColeccionCierre()
         {
-            _writer.WriteStartElement(nombreElemento);
-            base.Escribir(objeto);
-            _writer.WriteEndElement();
-            _writer.Flush();
+            EscribirElementoCierre();
         }
 
-        public void Escribir(int id, string nombreElemento)
+        public override void EscribirDiagramaDatos()
         {
-            _writer.WriteStartElement(nombreElemento);
-            EscribirId(id);
-            _writer.WriteEndElement();
-            _writer.Flush();
+            EscribirElemento("DiagramaDatos");
         }
 
-        public override void EscribirId(int id)
+        public override void EscribirDiagramaDatosCierre()
         {
-            EscribirAtributoXml("id", id.ToString());
+            EscribirElementoCierre();
+        }
+
+        public override void EscribirObjetoDatos(ITipo tipo, int id, string ruta, Cambio cambio)
+        {
+            EscribirElemento("ResumenCambios", id);
+            EscribirAtributoXml(_ns, "ruta", ruta);
+            EscribirAtributoXml(_ns, "cambio", cambio.ToString());
+        }
+
+        public override void EscribirObjetoDatos(IPropiedad propiedad, int id, string ruta, Cambio cambio)
+        {
+            EscribirElemento(propiedad.Nombre, id);
+            EscribirAtributoXml(_ns, "ruta", ruta);
+            EscribirAtributoXml(_ns, "cambio", cambio.ToString());
         }
         
+        public override void EscribirObjetoDatos(ITipo tipo, int id)
+        {
+            EscribirElemento(tipo.Nombre, id);            
+        }
+        
+        public override void EscribirObjetoDatos(IPropiedad propiedad, int id)
+        {
+            EscribirElemento(propiedad.Nombre, id);            
+        }
+
+        public override void EscribirObjetoDatosCierre()
+        {
+            EscribirElementoCierre();
+        }
+
+        public void EscribirElemento(string nombreElemento, int id)
+        {
+            EscribirElemento(nombreElemento);
+            EscribirId(id);
+        }
+
+        public void EscribirElemento(string nombreElemento)
+        {
+            _writer.WriteStartElement(nombreElemento);
+
+            //escribir xml namespace
+            if (_writer.LookupPrefix(_ns) == null)
+                EscribirNamespace();
+        }
+
+        public void EscribirElementoCierre()
+        {
+            _writer.WriteEndElement();
+            _writer.Flush();
+        }
+
+        public void EscribirNamespace()
+        {
+            _writer.WriteAttributeString("xmlns", "x", null, _ns);
+        }
+
+        private void EscribirItems(int items)
+        {
+            EscribirAtributoXml(_ns, "items", items.ToString());
+        }
+
+        private void EscribirId(int id)
+        {
+            EscribirAtributoXml(_ns, "ref", id.ToString());
+        }
+
         private void EscribirAtributoXml(IPropiedad propiedad, string valor)
         {
             EscribirAtributoXml(propiedad.Nombre, valor);
@@ -63,6 +125,11 @@ namespace Binapsis.Plataforma.Serializacion.Xml
         private void EscribirAtributoXml(string nombre, string valor)
         {
             _writer.WriteAttributeString(nombre, valor);
+        }
+
+        private void EscribirAtributoXml(string ns, string nombre, string valor)
+        {
+            _writer.WriteAttributeString(nombre, ns, valor);
         }
 
         public override void EscribirBoolean(IPropiedad propiedad, bool valor)
@@ -145,9 +212,5 @@ namespace Binapsis.Plataforma.Serializacion.Xml
             EscribirAtributoXml(propiedad, valor.ToString());
         }
 
-        public override void EscribirObjetoDatos(IPropiedad propiedad, INodoObjeto valor)
-        {
-            Escribir(valor, propiedad.Nombre);            
-        }
     }
 }

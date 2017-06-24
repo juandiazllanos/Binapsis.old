@@ -17,10 +17,10 @@ namespace Binapsis.Plataforma.Test.Serializacion.Modelo
         
         protected override ObjetoBase CrearObjetoDatos(IImplementacion impl)
         {
-            return FabricaConfiguracion.Instancia.Crear(impl);
+            return Fabrica.Instancia.Crear(impl);
         }
 
-        public void AgregarTipo(Plataforma.Configuracion.Tipo tipo)
+        public void AgregarTipo(Tipo tipo)
         {
             AgregarObjetoDatos("Tipos", tipo);
         }

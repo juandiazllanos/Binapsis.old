@@ -27,7 +27,16 @@ namespace Binapsis.Plataforma.Test.Serializacion.Impl
             return new FileStream(_ruta, FileMode.OpenOrCreate, FileAccess.ReadWrite);            
         }
 
-        public Stream Stream { get; }
+        public string Ruta
+        {
+            get => _ruta;
+        }
+
+        public Stream Stream
+        {
+            get;
+        }
+
 
     }
 }

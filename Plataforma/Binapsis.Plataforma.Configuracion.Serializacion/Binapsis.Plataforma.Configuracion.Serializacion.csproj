@@ -51,6 +51,10 @@
     <Compile Include="SerializacionXml.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Binapsis.Plataforma.Cambios\Binapsis.Plataforma.Cambios.csproj">
+      <Project>{d0315649-1489-4759-9139-03aa3e4c40ce}</Project>
+      <Name>Binapsis.Plataforma.Cambios</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Binapsis.Plataforma.Configuracion\Binapsis.Plataforma.Configuracion.csproj">
       <Project>{431FB5CB-564F-4259-9E38-FA2CFB733625}</Project>
       <Name>Binapsis.Plataforma.Configuracion</Name>

@@ -275,8 +275,8 @@ namespace Binapsis.Presentacion.Test.MVVM
         public void EstablecerVistaModelo1()
         {
             // modelo            
-            IObjetoDatos od = Helper.Crear(HelperTipo.ObtenerTipo(), new FabricaDatos(FabricaNotificacion.Instancia));
-            Helper.Construir(od);
+            IObjetoDatos od = TestHelper.Crear(HelperTipo.ObtenerTipo(), new FabricaDatos(FabricaNotificacion.Instancia));
+            TestHelper.Construir(od);
 
             // vista
             EditorObjeto editor = new EditorObjeto() { Nombre = "EditorObjeto" };
@@ -294,8 +294,8 @@ namespace Binapsis.Presentacion.Test.MVVM
         public void EstablecerVistaModelo2()
         {
             // modelo            
-            IObjetoDatos od = Helper.Crear(HelperTipo.ObtenerTipo(), new FabricaDatos(FabricaNotificacion.Instancia));
-            Helper.Construir(od, 1);
+            IObjetoDatos od = TestHelper.Crear(HelperTipo.ObtenerTipo(), new FabricaDatos(FabricaNotificacion.Instancia));
+            TestHelper.Construir(od, 1);
 
             // vista
             EditorObjeto editor = new EditorObjeto() { Nombre = "EditorReferencia" };
@@ -313,10 +313,10 @@ namespace Binapsis.Presentacion.Test.MVVM
         public void EstablecerVistaModelo3()
         {
             // modelo            
-            IObjetoDatos od = Helper.Crear(HelperTipo.ObtenerTipo2(), new FabricaDatos(FabricaNotificacion.Instancia));
-            IObjetoDatos od2 = Helper.Crear(HelperTipo.ObtenerTipo());
-            Helper.Construir(od, 1);
-            Helper.Construir(od2, 1);
+            IObjetoDatos od = TestHelper.Crear(HelperTipo.ObtenerTipo2(), new FabricaDatos(FabricaNotificacion.Instancia));
+            IObjetoDatos od2 = TestHelper.Crear(HelperTipo.ObtenerTipo());
+            TestHelper.Construir(od, 1);
+            TestHelper.Construir(od2, 1);
 
             // vista
             EditorObjeto editor = new EditorObjeto() { Nombre = "EditorReferencia" };
@@ -348,8 +348,8 @@ namespace Binapsis.Presentacion.Test.MVVM
         public void EstablecerVistaModelo4()
         {
             // modelo            
-            IObjetoDatos od = Helper.Crear(HelperTipo.ObtenerTipo(), new FabricaDatos(FabricaNotificacion.Instancia));
-            Helper.Construir(od, 1, 2);
+            IObjetoDatos od = TestHelper.Crear(HelperTipo.ObtenerTipo(), new FabricaDatos(FabricaNotificacion.Instancia));
+            TestHelper.Construir(od, 1, 2);
 
             // vista
             EditorColeccion editor = new EditorColeccion() { Nombre = "EditorColeccion" };
@@ -383,8 +383,8 @@ namespace Binapsis.Presentacion.Test.MVVM
         public void EstablecerVistaModelo5()
         {
             // modelo            
-            IObjetoDatos od = Helper.Crear(HelperTipo.ObtenerTipo(), new FabricaDatos(FabricaNotificacion.Instancia));
-            Helper.Construir(od, 1, 2);
+            IObjetoDatos od = TestHelper.Crear(HelperTipo.ObtenerTipo(), new FabricaDatos(FabricaNotificacion.Instancia));
+            TestHelper.Construir(od, 1, 2);
 
             // vista
             EditorColeccion editor = new EditorColeccion() { Nombre = "EditorColeccion" };
@@ -398,7 +398,7 @@ namespace Binapsis.Presentacion.Test.MVVM
             od.ObtenerColeccion("ReferenciaObjetoDatosItem")[0].CrearObjetoDatos("ReferenciaObjetoDatos");
 
             // establecer valores 
-            Helper.Construir(od.ObtenerColeccion("ReferenciaObjetoDatosItem")[0].ObtenerObjetoDatos("ReferenciaObjetoDatos"));
+            TestHelper.Construir(od.ObtenerColeccion("ReferenciaObjetoDatosItem")[0].ObtenerObjetoDatos("ReferenciaObjetoDatos"));
 
             // evaluar
             Evaluar(od.ObtenerColeccion("ReferenciaObjetoDatosItem")[0].ObtenerObjetoDatos("ReferenciaObjetoDatos"), editor.Items[0], "EditorColeccionReferencia.");
@@ -414,8 +414,8 @@ namespace Binapsis.Presentacion.Test.MVVM
         public void EstablecerVistaModelo6()
         {
             // modelo            
-            IObjetoDatos od = Helper.Crear(HelperTipo.ObtenerTipo(), new FabricaDatos(FabricaNotificacion.Instancia));
-            Helper.Construir(od, 1, 2);
+            IObjetoDatos od = TestHelper.Crear(HelperTipo.ObtenerTipo(), new FabricaDatos(FabricaNotificacion.Instancia));
+            TestHelper.Construir(od, 1, 2);
 
             // vista
             EditorColeccion editor = new EditorColeccion() { Nombre = "EditorColeccion" };

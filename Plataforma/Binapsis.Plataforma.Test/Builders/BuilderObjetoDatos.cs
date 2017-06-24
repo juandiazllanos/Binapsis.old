@@ -96,7 +96,7 @@ namespace Binapsis.Plataforma.Test.Builders
 
             if (propiedad.Tipo.EsTipoDeDato)
                 ConstruirAtributo(od, propiedad);
-            else if (propiedad.Cardinalidad >= Cardinalidad.Muchos)
+            else if (propiedad.Cardinalidad >= Cardinalidad.CeroAMuchos)
                 ConstruirColeccion(od, propiedad, niveles, items);
             else
                 ConstruirReferencia(od, propiedad, niveles, items);

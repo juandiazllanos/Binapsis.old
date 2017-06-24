@@ -1,88 +1,29 @@
-﻿using System.Collections.Generic;
-using Binapsis.Plataforma.Estructura;
-using System.Linq;
+﻿using System;
 
 namespace Binapsis.Plataforma.Serializacion.Interno
 {
-    internal class NodoObjeto : Nodo, INodoObjeto
+    class NodoObjeto : Nodo
     {
-        IEnumerable<IPropiedad> _atrib;
-        IEnumerable<INodoReferencia> _refer;
-
-        protected NodoObjeto(ObjetoMap omap)
+        public NodoObjeto()
+            : base()
         {
-            Objeto = omap;
+
         }
 
-        public NodoObjeto(NodoReferencia padre, ObjetoMap omap) 
+        public NodoObjeto(Nodo padre) 
             : base(padre)
         {
-            Objeto = omap;
         }
-        
-        public bool EsProxy { get; set; }
 
-        public int Indice { get; set; }
-
-        public ObjetoMap Objeto { get; }
-
-        public string Ruta { get; set; }
-
-        public ITipo Tipo
+        public object Objeto
         {
-            get { return Objeto.ObjetoDatos.Tipo; }
+            get;
+            set;
         }
 
-        #region INodoObjeto
-        int INodoObjeto.Id
+        public Type Type
         {
-            get { return Objeto.Id; }
+            get => Objeto?.GetType();
         }
-
-        string INodoObjeto.Propietario
-        {
-            get { return Objeto.Propietario; }
-        }
-
-        IObjetoDatos INodoObjeto.ObjetoDatos
-        {
-            get { return Objeto.ObjetoDatos; }
-        }
-
-        IEnumerable<IPropiedad> INodoObjeto.Atributos
-        {
-            get
-            {
-                if (EsProxy) return new List<IPropiedad>();
-
-                if (_atrib == null)
-                {
-                    _atrib = from IPropiedad propiedad in Objeto.ObjetoDatos.Tipo.Propiedades
-                             where propiedad.Tipo.EsTipoDeDato && Objeto.ObjetoDatos.Establecido(propiedad)
-                             select propiedad;
-                }
-
-                return _atrib;
-            }
-        }
-
-        IEnumerable<INodoReferencia> INodoObjeto.Referencias
-        {
-            get
-            {
-                if (EsProxy) return new List<INodoReferencia>();
-
-                if (_refer == null)
-                {
-                    _refer = from NodoReferencia item in Nodos
-                             where !item.Propiedad.Tipo.EsTipoDeDato
-                             select item;
-                }
-
-                return _refer;
-            }
-        }
-        #endregion
-
     }
 }

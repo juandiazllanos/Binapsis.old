@@ -6,7 +6,7 @@ namespace Binapsis.Plataforma.Configuracion
 {
     public class Tipo : ConfiguracionBase, ITipo
     {
-        public Tipo()
+        internal Tipo()
             : base(typeof(Tipo))
         {
         }
@@ -41,19 +41,30 @@ namespace Binapsis.Plataforma.Configuracion
 
         public void RemoverPropiedad(string nombre)
         {
-            if (!ContienePropiedad(nombre)) return;
+            if (!ContienePropiedad(nombre)) return;            
             RemoverPropiedad(ObtenerPropiedad(nombre));
         }
 
         private void RemoverPropiedad(Propiedad propiedad)
         {
+            IColeccion propiedades = ObtenerColeccion("Propiedades");
+
+            if (propiedad == null || !propiedades.Contiene(propiedad)) return;
+            
+            int indice = propiedades.Indice(propiedad);
             RemoverObjetoDatos("Propiedades", propiedad);
+
+            if (indice >= propiedades.Longitud) return;
+
+            for (int i = indice; i < propiedades.Longitud; i++)
+                ((Propiedad)propiedades[i]).Indice = i;
         }
 
         public Propiedad CrearPropiedad(string nombre, Tipo tipo)
         {
             Propiedad propiedad = CrearPropiedad(nombre);
             propiedad.TipoAsociado = tipo;
+            propiedad.Indice = ObtenerColeccion("Propiedades").Indice(propiedad);
             return propiedad;
         }
 

@@ -1,25 +1,51 @@
 ﻿using System;
 using System.Linq;
-using Binapsis.Plataforma.Estructura.Impl;
 
 namespace Binapsis.Plataforma.Estructura.Helpers
 {
     static class PathHelper
     {
+        static char[] CHARS_SLASH_POINT_BRACKETS = new char[] { '/', '.', '[', ']' };
+        static char[] CHARS_POINT_BRACKETS = new char[] { '.', '[', ']' };
+         
         public static bool ComprobarRuta(ref string ruta)
         {
-            return (ruta.IndexOfAny(new char[] { '/', '.', '[' }) > 0);
+            return (ruta != null && ruta.IndexOfAny(CHARS_SLASH_POINT_BRACKETS) != -1);
         }
 
         private static void Resolver(IObjetoDatos od, string ruta, out IObjetoDatos referencia, out IPropiedad propiedad)
         {
             string[] pasos = ruta.Split('/');
+            referencia = ResolverReferencia(od, ref pasos);
+            propiedad = null;            
+
+            if (referencia == null) return;
+
+            propiedad = referencia.Tipo.ObtenerPropiedad(pasos[pasos.GetUpperBound(0)]);
+        }
+
+        private static void Resolver(IObjetoDatos od, string ruta, out IObjetoDatos referencia, out IPropiedad propiedad, out int indice)
+        {
+            string[] pasos = ruta.Split('/');
+            
+            referencia = ResolverReferencia(od, ref pasos);
+            propiedad = null;
+            indice = -1;
+            
+            if (referencia == null) return;
+
+            ResolverPropiedadIndice(referencia.Tipo, pasos[pasos.Length - 1], out propiedad, out indice);
+        }
+
+        private static IObjetoDatos ResolverReferencia(IObjetoDatos od, ref string[] pasos)
+        {            
+            IObjetoDatos referencia = od;
             int longitud = pasos.GetLength(0);
             int i = 0;
-
-            // referencia inicial
-            referencia = od;
-
+                        
+            // verificar que la ruta tenga referencia/propiedad
+            if (longitud < 2) return referencia;
+            
             // resolver referencia (se resuelve la primera referencia[i])
             do
             {
@@ -29,18 +55,24 @@ namespace Binapsis.Plataforma.Estructura.Helpers
             }
             while (i < (longitud - 1));
 
-            // resolver propiedad
-            if (referencia != null && longitud > 1)
-                propiedad = referencia.Tipo.ObtenerPropiedad(pasos[longitud - 1]);
-            else
-                propiedad = null;
+            return referencia;
+            //if (referencia == null) return;
+            
+            //// resolver propiedad
+            //if (pasos[longitud - 1].IndexOfAny(CHARS_POINT_BRACKETS) == -1)
+            //    propiedad = referencia.Tipo.ObtenerPropiedad(pasos[longitud - 1]);
+            //else
+            //    ResolverPropiedadIndice(referencia.Tipo, pasos[longitud - 1], out propiedad, out indice);
         }
         
         private static IObjetoDatos ResolverReferencia(IObjetoDatos od, string ruta)
         {
+            if (ruta == null || ruta.Length == 0) return od;
+
             IObjetoDatos referencia = default(IObjetoDatos);
             IPropiedad propiedad = null;
-            string[] pasos = ruta.Split(new char[] { '.', '[', ']' });
+
+            string[] pasos = ruta.Split(CHARS_POINT_BRACKETS, StringSplitOptions.RemoveEmptyEntries);
             int indice;
 
             propiedad = od.Tipo.ObtenerPropiedad(pasos[0]);
@@ -78,6 +110,19 @@ namespace Binapsis.Plataforma.Estructura.Helpers
             return referencia;
         }
 
+        private static void ResolverPropiedadIndice(ITipo tipo, string ruta, out IPropiedad propiedad, out int indice)
+        {
+            string[] pasos = ruta.Split(CHARS_POINT_BRACKETS, StringSplitOptions.RemoveEmptyEntries);
+
+            indice = -1;
+            propiedad = null;
+
+            if (pasos.Length >= 1) 
+                propiedad = tipo.ObtenerPropiedad(pasos[0]);
+
+            if (pasos.Length >= 2)
+                int.TryParse(pasos[1], out indice);            
+        }
 
         internal static void AgregarObjetoDatos(IObjetoDatos od, string ruta, IObjetoDatos item)
         {
@@ -574,14 +619,17 @@ namespace Binapsis.Plataforma.Estructura.Helpers
         {
             IObjetoDatos referencia;
             IPropiedad propiedad;
+            int indice;
             //ObjetoDatos valor = default(ObjetoDatos);
 
-            Resolver(od, ruta, out referencia, out propiedad);
+            Resolver(od, ruta, out referencia, out propiedad, out indice);
 
-            if (referencia != null && propiedad != null)
-            {
+            if (referencia == null || propiedad == null) return null;
+
+            if (indice == -1)
                 referencia = referencia.ObtenerObjetoDatos(propiedad);
-            }
+            else
+                referencia = referencia.ObtenerColeccion(propiedad)[indice];
 
             return referencia;
         }

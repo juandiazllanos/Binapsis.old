@@ -60,7 +60,6 @@ D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Test\bin\Debug\es\DevE
 D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Test\bin\Debug\ja\DevExpress.Sparkline.v16.2.Core.resources.dll
 D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Test\bin\Debug\ru\DevExpress.Sparkline.v16.2.Core.resources.dll
 D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Test\obj\Debug\Binapsis.Presentacion.Test.Properties.Resources.resources
-D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Test\obj\Debug\Binapsis.Presentacion.Test.Win.EvaluarEditores.resources
 D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Test\obj\Debug\Binapsis.Presentacion.Test.csproj.GenerateResource.Cache
 D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Test\obj\Debug\Binapsis.Presentacion.Test.dll.licenses
 D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Test\bin\Debug\Binapsis.Plataforma.Configuracion.dll
@@ -113,4 +112,7 @@ D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Test\bin\Debug\Binapsi
 D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Test\bin\Debug\Binapsis.Plataforma.AgenteConfiguracion.dll
 D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Test\bin\Debug\Binapsis.Plataforma.Test.dll.config
 D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Test\bin\Debug\Binapsis.Plataforma.AgenteConfiguracion.pdb
-D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Test\bin\Debug\System.ValueTuple.dll
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Test\bin\Debug\Binapsis.Plataforma.Helper.dll
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Test\bin\Debug\Binapsis.Plataforma.Cambios.dll
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Test\bin\Debug\Binapsis.Plataforma.Helper.pdb
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Test\bin\Debug\Binapsis.Plataforma.Cambios.pdb

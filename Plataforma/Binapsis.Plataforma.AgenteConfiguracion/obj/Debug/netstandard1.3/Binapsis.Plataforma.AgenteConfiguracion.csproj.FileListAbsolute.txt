@@ -17,3 +17,7 @@ D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.AgenteConfiguracion\bin\De
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.AgenteConfiguracion\bin\Debug\netstandard1.3\Binapsis.Plataforma.Serializacion.Binario.pdb
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.AgenteConfiguracion\bin\Debug\netstandard1.3\Binapsis.Plataforma.Serializacion.Xml.pdb
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.AgenteConfiguracion\bin\Debug\netstandard1.3\Binapsis.Plataforma.Serializacion.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.AgenteConfiguracion\bin\Debug\netstandard1.3\Binapsis.Plataforma.Cambios.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.AgenteConfiguracion\bin\Debug\netstandard1.3\Binapsis.Plataforma.Cambios.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.AgenteConfiguracion\bin\Debug\netstandard1.3\Binapsis.Plataforma.Helper.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.AgenteConfiguracion\bin\Debug\netstandard1.3\Binapsis.Plataforma.Helper.pdb

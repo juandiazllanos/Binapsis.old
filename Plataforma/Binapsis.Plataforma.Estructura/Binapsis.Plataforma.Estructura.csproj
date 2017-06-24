@@ -43,6 +43,7 @@
     <Compile Include="Cache\CacheTipo.cs" />
     <Compile Include="Enum\Asociacion.cs" />
     <Compile Include="IFabricaImpl.cs" />
+    <Compile Include="Impl\Coleccion.cs" />
     <Compile Include="Impl\Extension.cs" />
     <Compile Include="Impl\FabricaBase.cs" />
     <Compile Include="Impl\FabricaDatos.cs" />

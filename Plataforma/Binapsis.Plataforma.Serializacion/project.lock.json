@@ -833,12 +833,29 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
+      "Binapsis.Plataforma.Cambios/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.3",
+        "dependencies": {
+          "Binapsis.Plataforma.Estructura": "1.0.0",
+          "Binapsis.Plataforma.Helper": "1.0.0",
+          "NETStandard.Library": "1.6.1"
+        }
+      },
       "Binapsis.Plataforma.Estructura/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.3",
         "dependencies": {
           "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
           "NETStandard.Library": "1.6.0"
+        }
+      },
+      "Binapsis.Plataforma.Helper/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v1.3",
+        "dependencies": {
+          "Binapsis.Plataforma.Estructura": "1.0.0",
+          "NETStandard.Library": "1.6.1"
         }
       }
     }
@@ -3640,10 +3657,20 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
+    "Binapsis.Plataforma.Cambios/1.0.0": {
+      "type": "project",
+      "path": "../Binapsis.Plataforma.Cambios/Binapsis.Plataforma.Cambios.csproj",
+      "msbuildProject": "../Binapsis.Plataforma.Cambios/Binapsis.Plataforma.Cambios.csproj"
+    },
     "Binapsis.Plataforma.Estructura/1.0.0": {
       "type": "project",
       "path": "../Binapsis.Plataforma.Estructura/project.json",
       "msbuildProject": "../Binapsis.Plataforma.Estructura/Binapsis.Plataforma.Estructura.csproj"
+    },
+    "Binapsis.Plataforma.Helper/1.0.0": {
+      "type": "project",
+      "path": "../../Binapsis.Plataforma.Helper/Binapsis.Plataforma.Helper.csproj",
+      "msbuildProject": "../../Binapsis.Plataforma.Helper/Binapsis.Plataforma.Helper.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -3666,6 +3693,9 @@
       "frameworks": {
         "netstandard1.3": {
           "projectReferences": {
+            "D:\\Desarrollo\\Binapsis\\Plataforma\\Binapsis.Plataforma.Cambios\\Binapsis.Plataforma.Cambios.csproj": {
+              "projectPath": "D:\\Desarrollo\\Binapsis\\Plataforma\\Binapsis.Plataforma.Cambios\\Binapsis.Plataforma.Cambios.csproj"
+            },
             "D:\\Desarrollo\\Binapsis\\Plataforma\\Binapsis.Plataforma.Estructura\\Binapsis.Plataforma.Estructura.csproj": {
               "projectPath": "D:\\Desarrollo\\Binapsis\\Plataforma\\Binapsis.Plataforma.Estructura\\Binapsis.Plataforma.Estructura.csproj"
             }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Binapsis.Plataforma.Cambios;
 using Binapsis.Plataforma.Estructura;
 using Binapsis.Plataforma.Serializacion.Impl;
 
@@ -27,18 +28,76 @@ namespace Binapsis.Plataforma.Serializacion.Binario
                 _writer = new BinaryWriter(stream);
         }
 
-        public override void Escribir(INodoObjeto objeto)
+
+        public override void EscribirColeccion(int items)
         {
-            // escribir objeto
-            base.Escribir(objeto);
+            EscribirItems(items);
+        }
+
+        public override void EscribirColeccionCierre()
+        {
+            
+        }
+
+        public override void EscribirDiagramaDatos()
+        {
+            
+        }
+
+        public override void EscribirDiagramaDatosCierre()
+        {
+            
+        }
+
+        public override void EscribirObjetoDatos(ITipo tipo, int id)
+        {
+            EscribirId(id);
+        }
+
+        public override void EscribirObjetoDatos(ITipo tipo, int id, string ruta, Cambio cambio)
+        {
+            EscribirObjetoDatos(tipo, id);
+            EscribirRuta(ruta);
+            EscribirCambio(cambio);
+        }
+
+        public override void EscribirObjetoDatos(IPropiedad propiedad, int id)
+        {
+            EscribirPropiedad(propiedad);
+            EscribirId(id);
+        }
+
+        public override void EscribirObjetoDatos(IPropiedad propiedad, int id, string ruta, Cambio cambio)
+        {
+            EscribirObjetoDatos(propiedad, id);
+            EscribirRuta(ruta);
+            EscribirCambio(cambio);
+        }
+
+        public override void EscribirObjetoDatosCierre()
+        {
             // escribir cierre
             _writer.Write((short)-1);
         }
-
-        public override void EscribirId(int id)
+        
+        private void EscribirItems(int items)
         {
-            _writer.Write(id);
-            System.Diagnostics.Debug.WriteLine(string.Format("id={0}", id));
+            _writer.Write(items);
+        }
+
+        private void EscribirId(int id)
+        {
+            _writer.Write(id);            
+        }
+
+        private void EscribirCambio(Cambio cambio)
+        {
+            _writer.Write((byte)cambio);
+        }
+
+        private void EscribirRuta(string ruta)
+        {
+            _writer.Write(ruta ?? string.Empty);
         }
 
         void EscribirPropiedad(IPropiedad propiedad)
@@ -105,13 +164,7 @@ namespace Binapsis.Plataforma.Serializacion.Binario
         {
             
         }
-
-        public override void EscribirObjetoDatos(IPropiedad propiedad, INodoObjeto valor)
-        {
-            EscribirPropiedad(propiedad);
-            Escribir(valor);
-        }
-
+        
         public override void EscribirSByte(IPropiedad propiedad, sbyte valor)
         {
             EscribirPropiedad(propiedad);
@@ -147,5 +200,7 @@ namespace Binapsis.Plataforma.Serializacion.Binario
             EscribirPropiedad(propiedad);
             _writer.Write(valor);
         }
+
+        
     }
 }

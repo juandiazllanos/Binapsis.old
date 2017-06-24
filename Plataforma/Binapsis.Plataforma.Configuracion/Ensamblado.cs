@@ -5,11 +5,11 @@ namespace Binapsis.Plataforma.Configuracion
 {
     public class Ensamblado : ConfiguracionBase
     {
-        public Ensamblado() 
+        internal Ensamblado()
             : base(typeof(Ensamblado))
         {
         }
-        
+
         public Ensamblado(IImplementacion impl) 
             : base(impl)
         {

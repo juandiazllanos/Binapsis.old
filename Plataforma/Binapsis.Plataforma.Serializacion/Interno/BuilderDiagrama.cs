@@ -1,46 +1,114 @@
-﻿using Binapsis.Plataforma.Estructura;
+﻿using Binapsis.Plataforma.Cambios;
+using Binapsis.Plataforma.Cambios.Impl;
+using Binapsis.Plataforma.Estructura;
 using System.Collections.Generic;
 
 namespace Binapsis.Plataforma.Serializacion.Interno
-{    
+{
     internal class BuilderDiagrama
     {
         Diagrama _diag;
         Heap _heap;
-        Dictionary<IObjetoDatos, NodoObjeto> _agre;
+        Dictionary<IObjetoDatos, NodoObjetoDatos> _agre;
 
         bool _resol;
 
-        public Diagrama Crear(IObjetoDatos od)
+        #region Constructores
+        public BuilderDiagrama(Diagrama diagrama)
         {
-            _heap = new Heap(); 
-            _diag = new Diagrama();
-            _agre = new Dictionary<IObjetoDatos, NodoObjeto>();
+            _heap = new Heap();            
+            _agre = new Dictionary<IObjetoDatos, NodoObjetoDatos>();
 
-            CrearRoot(od);
-            ConstruirNodos(_diag.Root);
-            ResolverNodos();
-
-            return _diag;
+            Diagrama = diagrama;
         }
+        #endregion
+
+
+        #region Propiedades
+        public Diagrama Diagrama
+        {
+            get;
+        }
+        #endregion
+
+
+        public void Construir(IDiagramaDatos[] diagramaDatos)
+        {
+            // crear nodo
+            NodoColeccion nco = new NodoColeccion() { Nombre = "Coleccion" };
+            // crear nodos
+            foreach (IDiagramaDatos item in diagramaDatos)
+            {
+                NodoObjeto ndd = CrearNodoDiagramaDatos(nco, item);
+                ConstruirNodoDiagramaDatos(ndd);
+                nco.Agregar(ndd);
+            }
+            // resolver nodos
+            ResolverNodos();
+            // establecer root
+            Diagrama.Root = nco;
+        }
+
+        public void Construir(IObjetoDatos[] od)
+        {
+            // crear nodo
+            NodoColeccion nco = new NodoColeccion() { Nombre = "Coleccion" };
+            // crear nodos
+            foreach(IObjetoDatos item in od)
+            {
+                NodoObjetoDatos nod = CrearNodoObjetoDatos(nco, item);
+                ConstruirNodoObjetoDatos(nod);
+                nco.Agregar(nod);
+            }
+            // resolver nodos
+            ResolverNodos();
+            // establecer root
+            Diagrama.Root = nco;
+        }
+
+        public void Construir(IDiagramaDatos diagramaDatos)
+        {
+            // crear nodo
+            NodoObjeto ndd = CrearNodoDiagramaDatos(diagramaDatos);
+            // construir nodo
+            ConstruirNodoDiagramaDatos(ndd);
+            // resolver nodos
+            ResolverNodos();
+            // establecer root
+            Diagrama.Root = ndd;
+        }
+
+        
+        public void Construir(IObjetoDatos od)
+        {
+            // crear nodo
+            NodoObjetoDatos nod = CrearNodoObjetoDatos(od);           
+            // construir nodo
+            ConstruirNodoObjetoDatos(nod);
+            // resolver nodos
+            ResolverNodos();
+            // establecer root
+            Diagrama.Root = nod;
+        }
+
 
         private void ResolverNodos()
         {
             _resol = true;
 
-            NodoObjeto[] nodos = new NodoObjeto[_agre.Count];
+            NodoObjetoDatos[] nodos = new NodoObjetoDatos[_agre.Count];
             _agre.Values.CopyTo(nodos, 0);
 
-            foreach (NodoObjeto nodo in nodos)
+            foreach (NodoObjetoDatos nodo in nodos)
                 ResolverNodo(nodo);
         }
 
-        private void ResolverNodo(NodoObjeto nodo)
+        private void ResolverNodo(NodoObjetoDatos nodo)
         {
             // resolver referencias agregacion
-            if (string.IsNullOrEmpty(nodo.Objeto.Propietario))
+            if (string.IsNullOrEmpty(nodo.ObjetoMap.Propietario))
             {
-                nodo.Objeto.Propietario = nodo.Ruta;
+                nodo.ObjetoMap.Propietario = nodo.Ruta;
                 nodo.EsProxy = false; 
             }
                 
@@ -48,25 +116,62 @@ namespace Binapsis.Plataforma.Serializacion.Interno
             CrearPropiedad(nodo);
         }
 
-        private void ConstruirNodos(Root root)
+        
+        private NodoObjeto CrearNodoDiagramaDatos(IDiagramaDatos diagramaDatos)
         {
-            IObjetoDatos od = root.Objeto.ObjetoDatos;
-
-            foreach (IPropiedad propiedad in od.Tipo.Propiedades)
-                CrearPropiedad(root, propiedad);
+            return CrearNodoDiagramaDatos(null, diagramaDatos);
         }
 
-        private void CrearRoot(IObjetoDatos od)
+        private NodoObjeto CrearNodoDiagramaDatos(Nodo padre, IDiagramaDatos diagramaDatos)
+        {
+            // crear nodo diagrama de datos
+            return new NodoObjeto(padre) { Objeto = diagramaDatos, Nombre = "DiagramaDatos" };             
+        }
+
+        private NodoObjetoDatos CrearNodoObjetoDatos(IObjetoDatos od)
+        {
+            return CrearNodoObjetoDatos(null, od);
+        }
+
+        private NodoObjetoDatos CrearNodoObjetoDatos(Nodo padre, IObjetoDatos od)
         {
             ObjetoMap omap = _heap.Obtener(od);
-            omap.Propietario = "/";
-            Root root = new Root(omap);
-            _diag.Root = root;
+            omap.Propietario = padre == null ? "/" : padre.Nombre;
+            return new NodoObjetoDatos(padre, omap) { Nombre = od.Tipo.Nombre };
         }
 
+
+        private void ConstruirNodoDiagramaDatos(NodoObjeto ndd)
+        {
+            IDiagramaDatos dd = ndd.Objeto as IDiagramaDatos;
+            if (dd == null) return;
+
+            IObjetoDatos od = dd.ObjetoDatos;
+            ResumenCambios resumen = dd.ResumenCambios as ResumenCambios;
+            IObjetoCambios cambios = resumen?[od];
+            
+            // nodo objeto de datos
+            NodoObjetoDatos nod = CrearNodoObjetoDatos(ndd, od);
+            ndd.Agregar(nod);
+            ConstruirNodoObjetoDatos(nod);
+
+            // nodo objeto de cambios
+            NodoObjetoDatos noc = CrearNodoObjetoDatos(ndd, cambios);
+            ndd.Agregar(noc);
+            ConstruirNodoObjetoDatos(noc);
+        }
+        
+        private void ConstruirNodoObjetoDatos(NodoObjetoDatos nodo)
+        {
+            IObjetoDatos od = nodo.ObjetoMap.ObjetoDatos;
+
+            foreach (IPropiedad propiedad in od.Tipo.Propiedades)
+                CrearPropiedad(nodo, propiedad);
+        }
+        
         private void CrearObjeto(NodoReferencia nodo)
         {
-            IObjetoDatos od = ((NodoObjeto)nodo.Padre).Objeto.ObjetoDatos;
+            IObjetoDatos od = ((NodoObjetoDatos)nodo.NodoPadre).ObjetoMap.ObjetoDatos;
             IPropiedad propiedad = nodo.Propiedad;
 
             // crear nodos hijos
@@ -96,11 +201,11 @@ namespace Binapsis.Plataforma.Serializacion.Interno
             if (omap == null) return;
 
             // crear nodo
-            NodoObjeto nodoobj = new NodoObjeto(nodo, omap);
+            NodoObjetoDatos nodoobj = new NodoObjetoDatos(nodo, omap);
             nodo.Agregar(nodoobj);
 
             // establecer valores
-            string ruta = ((NodoObjeto)nodo.Padre).Ruta;
+            string ruta = ((NodoObjetoDatos)nodo.NodoPadre).Ruta;
             bool composicion = (nodo.Propiedad.Asociacion == Asociacion.Composicion);
             
             if (nodo.Propiedad.Cardinalidad >= Cardinalidad.CeroAMuchos)
@@ -135,17 +240,17 @@ namespace Binapsis.Plataforma.Serializacion.Interno
             CrearPropiedad(nodoobj);
         }
         
-        private void CrearPropiedad(NodoObjeto nodo)
+        private void CrearPropiedad(NodoObjetoDatos nodo)
         {
-            foreach (IPropiedad prop in nodo.Objeto.ObjetoDatos.Tipo.Propiedades)
+            foreach (IPropiedad prop in nodo.ObjetoMap.ObjetoDatos.Tipo.Propiedades)
                 CrearPropiedad(nodo, prop);
         }
 
-        private void CrearPropiedad(NodoObjeto nodo, IPropiedad propiedad)
+        private void CrearPropiedad(NodoObjetoDatos nodo, IPropiedad propiedad)
         {
             if (propiedad.Tipo.EsTipoDeDato) return;
 
-            IObjetoDatos od = nodo.Objeto.ObjetoDatos;
+            IObjetoDatos od = nodo.ObjetoMap.ObjetoDatos;
 
             if (!od.Establecido(propiedad)) return;
 

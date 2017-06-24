@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Binapsis.Plataforma.Estructura;
 using Binapsis.Plataforma.Serializacion.Interno;
 using Binapsis.Plataforma.Test.Serializacion.Helpers;
@@ -14,14 +13,17 @@ namespace Binapsis.Plataforma.Test.Serializacion
         {
             IObjetoDatos od = HelperDiagrama.CrearObjetoDatosX();
 
-            Helper.Construir(od, 2, 5);
+            TestHelper.Construir(od, 2, 5);
             HelperDiagrama.EstablecerAtributoRuta(od);
 
             // establecer referencia2
             od.EstablecerObjetoDatos("ReferenciaObjetoDatosItem2", od.ObtenerColeccion("ReferenciaObjetoDatosItem")[0]);
 
-            BuilderDiagrama helper = new BuilderDiagrama();
-            Diagrama diag = helper.Crear(od);
+            Diagrama diag = new Diagrama();
+            BuilderDiagrama builder = new BuilderDiagrama(diag);
+            builder.Construir(od);
+
+            NodoObjetoDatos root = (diag.Root as NodoObjetoDatos);
 
             IPropiedad prop1 = od.Tipo.ObtenerPropiedad("ReferenciaObjetoDatos");
             IPropiedad prop2 = od.Tipo.ObtenerPropiedad("ReferenciaObjetoDatosItem");
@@ -40,16 +42,16 @@ namespace Binapsis.Plataforma.Test.Serializacion
             NodoReferencia nodoprop3 = (NodoReferencia)diag.Root.Nodos[2];
             NodoReferencia nodoprop4 = (NodoReferencia)diag.Root.Nodos[3];
             
-            NodoObjeto nodoobj1 = (NodoObjeto)nodoprop1.Nodos[0];
-            NodoObjeto nodoobj4 = (NodoObjeto)nodoprop4.Nodos[0];
+            NodoObjetoDatos nodoobj1 = (NodoObjetoDatos)nodoprop1.Nodos[0];
+            NodoObjetoDatos nodoobj4 = (NodoObjetoDatos)nodoprop4.Nodos[0];
 
-            NodoObjeto nodoitem1 = (NodoObjeto)nodoprop2.Nodos[0];
-            NodoObjeto nodoitem2 = (NodoObjeto)nodoprop2.Nodos[1];
-            NodoObjeto nodoitem3 = (NodoObjeto)nodoprop2.Nodos[2];
+            NodoObjetoDatos nodoitem1 = (NodoObjetoDatos)nodoprop2.Nodos[0];
+            NodoObjetoDatos nodoitem2 = (NodoObjetoDatos)nodoprop2.Nodos[1];
+            NodoObjetoDatos nodoitem3 = (NodoObjetoDatos)nodoprop2.Nodos[2];
             
 
             Assert.IsNotNull(diag.Root);
-            Assert.AreEqual(od, diag.Root.Objeto.ObjetoDatos);
+            Assert.AreEqual(od, root.ObjetoDatos);
 
             Assert.IsNotNull(nodoprop1);
             Assert.IsNotNull(prop1);
@@ -57,8 +59,8 @@ namespace Binapsis.Plataforma.Test.Serializacion
 
             Assert.IsNotNull(nodoobj1);
             Assert.IsNotNull(od1);
-            Assert.AreEqual(od1, nodoobj1.Objeto.ObjetoDatos);
-            Assert.AreEqual("/ReferenciaObjetoDatos", nodoobj1.Objeto.Propietario);
+            Assert.AreEqual(od1, nodoobj1.ObjetoMap.ObjetoDatos);
+            Assert.AreEqual("/ReferenciaObjetoDatos", nodoobj1.ObjetoMap.Propietario);
 
             Assert.IsNotNull(prop3);
             Assert.IsNotNull(nodoprop3);
@@ -66,18 +68,18 @@ namespace Binapsis.Plataforma.Test.Serializacion
 
             Assert.IsNotNull(nodoitem1);
             Assert.IsNotNull(item1);
-            Assert.AreEqual(item1, nodoitem1.Objeto.ObjetoDatos);
-            Assert.AreEqual("/ReferenciaObjetoDatosItem[0]", nodoitem1.Objeto.Propietario);
+            Assert.AreEqual(item1, nodoitem1.ObjetoMap.ObjetoDatos);
+            Assert.AreEqual("/ReferenciaObjetoDatosItem[0]", nodoitem1.ObjetoMap.Propietario);
 
             Assert.IsNotNull(nodoitem2);
             Assert.IsNotNull(item2);
-            Assert.AreEqual(item2, nodoitem2.Objeto.ObjetoDatos);
-            Assert.AreEqual("/ReferenciaObjetoDatosItem[1]", nodoitem2.Objeto.Propietario);
+            Assert.AreEqual(item2, nodoitem2.ObjetoMap.ObjetoDatos);
+            Assert.AreEqual("/ReferenciaObjetoDatosItem[1]", nodoitem2.ObjetoMap.Propietario);
 
             Assert.IsNotNull(nodoitem3);
             Assert.IsNotNull(item3);
-            Assert.AreEqual(item3, nodoitem3.Objeto.ObjetoDatos);
-            Assert.AreEqual("/ReferenciaObjetoDatosItem[2]", nodoitem3.Objeto.Propietario);
+            Assert.AreEqual(item3, nodoitem3.ObjetoMap.ObjetoDatos);
+            Assert.AreEqual("/ReferenciaObjetoDatosItem[2]", nodoitem3.ObjetoMap.Propietario);
 
             // comprobar referencia agregacion 
             Assert.IsNotNull(prop3);
@@ -86,8 +88,8 @@ namespace Binapsis.Plataforma.Test.Serializacion
 
             Assert.AreEqual(od4, item1);
             Assert.IsNotNull(nodoobj4);
-            Assert.AreEqual(item1, nodoobj4.Objeto.ObjetoDatos);
-            Assert.AreEqual("/ReferenciaObjetoDatosItem[0]", nodoobj4.Objeto.Propietario);
+            Assert.AreEqual(item1, nodoobj4.ObjetoMap.ObjetoDatos);
+            Assert.AreEqual("/ReferenciaObjetoDatosItem[0]", nodoobj4.ObjetoMap.Propietario);
 
         }
 
@@ -96,13 +98,13 @@ namespace Binapsis.Plataforma.Test.Serializacion
         {
             IObjetoDatos od = HelperDiagrama.CrearObjetoDatosX();
 
-            Helper.Construir(od, 2, 5);
+            TestHelper.Construir(od, 2, 5);
             HelperDiagrama.EstablecerAtributoRuta(od);
 
             ITipo tipoagr = od.Tipo.ObtenerPropiedad("ReferenciaObjetoDatos2").Tipo;
 
-            IObjetoDatos odagr = Helper.Crear(tipoagr);
-            IObjetoDatos odagr2 = Helper.Crear(tipoagr);
+            IObjetoDatos odagr = TestHelper.Crear(tipoagr);
+            IObjetoDatos odagr2 = TestHelper.Crear(tipoagr);
 
             odagr.CrearObjetoDatos("ReferenciaObjetoDatos");
             odagr.EstablecerObjetoDatos("ReferenciaObjetoDatos2", odagr2);
@@ -110,13 +112,14 @@ namespace Binapsis.Plataforma.Test.Serializacion
 
             od.EstablecerObjetoDatos("ReferenciaObjetoDatos2", odagr);
 
-            BuilderDiagrama helper = new BuilderDiagrama();
-            Diagrama diag = helper.Crear(od);
+            Diagrama diag = new Diagrama();
+            BuilderDiagrama builder = new BuilderDiagrama(diag);
+            builder.Construir(od);
 
             NodoReferencia nodoprop1 = (NodoReferencia)diag.Root.Nodos[0];
             NodoReferencia nodoprop3 = (NodoReferencia)diag.Root.Nodos[2];
-            NodoObjeto nodoobj1 = (NodoObjeto)nodoprop1.Nodos[0];
-            NodoObjeto nodoobj3 = (NodoObjeto)nodoprop3.Nodos[0];
+            NodoObjetoDatos nodoobj1 = (NodoObjetoDatos)nodoprop1.Nodos[0];
+            NodoObjetoDatos nodoobj3 = (NodoObjetoDatos)nodoprop3.Nodos[0];
 
             IPropiedad prop1 = od.Tipo.ObtenerPropiedad("ReferenciaObjetoDatos");
             IPropiedad prop3 = od.Tipo.ObtenerPropiedad("ReferenciaObjetoDatos2");
@@ -132,17 +135,17 @@ namespace Binapsis.Plataforma.Test.Serializacion
 
             Assert.AreEqual(prop1, nodoprop1.Propiedad);
             Assert.AreEqual(prop3, nodoprop3.Propiedad);
-            Assert.AreEqual(obj1, nodoobj1.Objeto.ObjetoDatos);
-            Assert.AreEqual(obj3, nodoobj3.Objeto.ObjetoDatos);
+            Assert.AreEqual(obj1, nodoobj1.ObjetoMap.ObjetoDatos);
+            Assert.AreEqual(obj3, nodoobj3.ObjetoMap.ObjetoDatos);
 
-            Assert.AreEqual("/ReferenciaObjetoDatos", nodoobj1.Objeto.Propietario);
-            Assert.AreEqual("/ReferenciaObjetoDatos2", nodoobj3.Objeto.Propietario);
+            Assert.AreEqual("/ReferenciaObjetoDatos", nodoobj1.ObjetoMap.Propietario);
+            Assert.AreEqual("/ReferenciaObjetoDatos2", nodoobj3.ObjetoMap.Propietario);
 
 
             nodoprop1 = (NodoReferencia)nodoobj3.Nodos[0];
             nodoprop3 = (NodoReferencia)nodoobj3.Nodos[1];
-            nodoobj1 = (NodoObjeto)nodoprop1.Nodos[0];
-            nodoobj3 = (NodoObjeto)nodoprop3.Nodos[0];
+            nodoobj1 = (NodoObjetoDatos)nodoprop1.Nodos[0];
+            nodoobj3 = (NodoObjetoDatos)nodoprop3.Nodos[0];
 
             prop1 = odagr.Tipo.ObtenerPropiedad("ReferenciaObjetoDatos");
             prop3 = odagr.Tipo.ObtenerPropiedad("ReferenciaObjetoDatos2");
@@ -158,20 +161,20 @@ namespace Binapsis.Plataforma.Test.Serializacion
 
             Assert.AreEqual(prop1, nodoprop1.Propiedad);
             Assert.AreEqual(prop3, nodoprop3.Propiedad);
-            Assert.AreEqual(obj1, nodoobj1.Objeto.ObjetoDatos);
-            Assert.AreEqual(odagr2, nodoobj3.Objeto.ObjetoDatos);
+            Assert.AreEqual(obj1, nodoobj1.ObjetoMap.ObjetoDatos);
+            Assert.AreEqual(odagr2, nodoobj3.ObjetoMap.ObjetoDatos);
 
-            Assert.AreEqual("/ReferenciaObjetoDatos2/ReferenciaObjetoDatos", nodoobj1.Objeto.Propietario);
-            Assert.AreEqual("/ReferenciaObjetoDatos2/ReferenciaObjetoDatos2", nodoobj3.Objeto.Propietario);
+            Assert.AreEqual("/ReferenciaObjetoDatos2/ReferenciaObjetoDatos", nodoobj1.ObjetoMap.Propietario);
+            Assert.AreEqual("/ReferenciaObjetoDatos2/ReferenciaObjetoDatos2", nodoobj3.ObjetoMap.Propietario);
 
             // verificar la referencia odgr2.ReferenciaObjetoDatos2 => odagr
             nodoprop1 = (NodoReferencia)nodoobj3.Nodos[0];
-            nodoobj1 = (NodoObjeto)nodoprop1.Nodos[0];
+            nodoobj1 = (NodoObjetoDatos)nodoprop1.Nodos[0];
             obj1 = odagr2.ObtenerObjetoDatos("ReferenciaObjetoDatos2");
 
             Assert.AreEqual(odagr, obj1);
 
-            Assert.AreEqual("/ReferenciaObjetoDatos2", nodoobj1.Objeto.Propietario);
+            Assert.AreEqual("/ReferenciaObjetoDatos2", nodoobj1.ObjetoMap.Propietario);
         }
     }
 }

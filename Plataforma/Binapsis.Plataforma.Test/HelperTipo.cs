@@ -12,9 +12,9 @@ namespace Binapsis.Plataforma.Test
 
         static HelperTipo()
         {
-            BuilderTipo.Construir((_tipo = FabricaConfiguracion.Instancia.CrearTipo()));
-            BuilderTipo.Construir2((_tipo2 = FabricaConfiguracion.Instancia.CrearTipo()), _tipo);
-            BuilderTipo.Construir3((_tipo3 = FabricaConfiguracion.Instancia.CrearTipo()), _tipo);
+            BuilderTipo.Construir((_tipo = Fabrica.Instancia.Crear<Tipo>()));
+            BuilderTipo.Construir2((_tipo2 = Fabrica.Instancia.Crear<Tipo>()), _tipo);
+            BuilderTipo.Construir3((_tipo3 = Fabrica.Instancia.Crear<Tipo>()), _tipo);
         }
 
         public static ITipo ObtenerTipo()

@@ -27,21 +27,21 @@ namespace Binapsis.Plataforma.Test.Serializacion
             int anidamiento = 2;
             int items = 5;
 
-            _od = Helper.Crear(HelperTipo.ObtenerTipo());
-            _od2 = Helper.Crear(HelperTipo.ObtenerTipo2());
-            _od3 = Helper.Crear(HelperTipo.ObtenerTipo3());
+            _od = TestHelper.Crear(HelperTipo.ObtenerTipo());
+            _od2 = TestHelper.Crear(HelperTipo.ObtenerTipo2());
+            _od3 = TestHelper.Crear(HelperTipo.ObtenerTipo3());
 
-            _odx = Helper.Crear(HelperTipo.ObtenerTipo());
-            _odx2 = Helper.Crear(HelperTipo.ObtenerTipo2());
-            _odx3 = Helper.Crear(HelperTipo.ObtenerTipo3());
+            _odx = TestHelper.Crear(HelperTipo.ObtenerTipo());
+            _odx2 = TestHelper.Crear(HelperTipo.ObtenerTipo2());
+            _odx3 = TestHelper.Crear(HelperTipo.ObtenerTipo3());
 
-            Helper.Construir(_od);
-            Helper.Construir(_od2);
-            Helper.Construir(_od3);
+            TestHelper.Construir(_od);
+            TestHelper.Construir(_od2);
+            TestHelper.Construir(_od3);
 
-            Helper.Construir(_od, anidamiento, items);
-            Helper.Construir(_od2, anidamiento, items);
-            Helper.Construir(_od3, anidamiento, items);
+            TestHelper.Construir(_odx, anidamiento, items);
+            TestHelper.Construir(_odx2, anidamiento, items);
+            TestHelper.Construir(_odx3, anidamiento, items);
 
             //_od = BuilderObjetoDatos.Construir();
             //_odx = BuilderObjetoDatos.Construir(2, 5);
@@ -58,7 +58,7 @@ namespace Binapsis.Plataforma.Test.Serializacion
         {
             ISecuencia fichero = new FicheroImpl("od.xml");
             IEscritor escritor = new EscritorXml();            
-            ILector lector = new LectorXml(FabricaDatos.Instancia);
+            ILector lector = new LectorXml();
 
             SerializarObjetoDatos(fichero, escritor, lector);
         }
@@ -68,7 +68,7 @@ namespace Binapsis.Plataforma.Test.Serializacion
         {
             ISecuencia fichero = new FicheroImpl("odx.xml");
             IEscritor escritor = new EscritorXml();            
-            ILector lector = new LectorXml(FabricaDatos.Instancia);
+            ILector lector = new LectorXml();
 
             SerializarObjetoDatosX(fichero, escritor, lector);
         }
@@ -78,7 +78,7 @@ namespace Binapsis.Plataforma.Test.Serializacion
         {
             ISecuencia fichero = new FicheroImpl("od2.xml");
             IEscritor escritor = new EscritorXml();
-            ILector lector = new LectorXml(FabricaDatos.Instancia);
+            ILector lector = new LectorXml();
 
             SerializarObjetoDatos2(fichero, escritor, lector);
         }
@@ -88,7 +88,7 @@ namespace Binapsis.Plataforma.Test.Serializacion
         {
             ISecuencia fichero = new FicheroImpl("odx2.xml");
             IEscritor escritor = new EscritorXml();
-            ILector lector = new LectorXml(FabricaDatos.Instancia);
+            ILector lector = new LectorXml();
 
             SerializarObjetoDatosX2(fichero, escritor, lector);
         }
@@ -98,7 +98,7 @@ namespace Binapsis.Plataforma.Test.Serializacion
         {
             ISecuencia fichero = new FicheroImpl("od3.xml");
             IEscritor escritor = new EscritorXml();
-            ILector lector = new LectorXml(FabricaDatos.Instancia);
+            ILector lector = new LectorXml();
 
             SerializarObjetoDatos3(fichero, escritor, lector);
         }
@@ -108,7 +108,7 @@ namespace Binapsis.Plataforma.Test.Serializacion
         {
             ISecuencia fichero = new FicheroImpl("odx3.xml");
             IEscritor escritor = new EscritorXml();
-            ILector lector = new LectorXml(FabricaDatos.Instancia);
+            ILector lector = new LectorXml();
 
             SerializarObjetoDatosX3(fichero, escritor, lector);
         }
@@ -119,7 +119,7 @@ namespace Binapsis.Plataforma.Test.Serializacion
         {
             ISecuencia fichero = new FicheroImpl("od.bin");
             IEscritor escritor = new EscritorBinario();
-            ILector lector = new LectorBinario(FabricaDatos.Instancia);
+            ILector lector = new LectorBinario();
 
             SerializarObjetoDatos(fichero, escritor, lector);
         }
@@ -129,7 +129,7 @@ namespace Binapsis.Plataforma.Test.Serializacion
         {
             ISecuencia fichero = new FicheroImpl("odx.bin");
             IEscritor escritor = new EscritorBinario();
-            ILector lector = new LectorBinario(FabricaDatos.Instancia);
+            ILector lector = new LectorBinario();
 
             SerializarObjetoDatosX(fichero, escritor, lector);
         }
@@ -139,7 +139,7 @@ namespace Binapsis.Plataforma.Test.Serializacion
         {
             ISecuencia fichero = new FicheroImpl("od2.bin");
             IEscritor escritor = new EscritorBinario();
-            ILector lector = new LectorBinario(FabricaDatos.Instancia);
+            ILector lector = new LectorBinario();
 
             SerializarObjetoDatos2(fichero, escritor, lector);
         }
@@ -149,7 +149,7 @@ namespace Binapsis.Plataforma.Test.Serializacion
         {
             ISecuencia fichero = new FicheroImpl("odx2.bin");
             IEscritor escritor = new EscritorBinario();
-            ILector lector = new LectorBinario(FabricaDatos.Instancia);
+            ILector lector = new LectorBinario();
 
             SerializarObjetoDatosX2(fichero, escritor, lector);
         }
@@ -159,7 +159,7 @@ namespace Binapsis.Plataforma.Test.Serializacion
         {
             ISecuencia fichero = new FicheroImpl("od3.bin");
             IEscritor escritor = new EscritorBinario();
-            ILector lector = new LectorBinario(FabricaDatos.Instancia);
+            ILector lector = new LectorBinario();
 
             SerializarObjetoDatos3(fichero, escritor, lector);
         }
@@ -169,7 +169,7 @@ namespace Binapsis.Plataforma.Test.Serializacion
         {
             ISecuencia fichero = new FicheroImpl("odx3.bin");
             IEscritor escritor = new EscritorBinario();
-            ILector lector = new LectorBinario(FabricaDatos.Instancia);
+            ILector lector = new LectorBinario();
 
             SerializarObjetoDatosX3(fichero, escritor, lector);
         }
@@ -213,11 +213,15 @@ namespace Binapsis.Plataforma.Test.Serializacion
         [TestMethod]
         void Serializar(ISecuencia secuencia, IEscritor escritor, ILector lector, IObjetoDatos od)
         {
-            Serializador serializador = new Serializador(secuencia, escritor);
+            FicheroImpl fichero = (secuencia as FicheroImpl);
+            
+            Serializador serializador = new Serializador(fichero, escritor);
             serializador.Serializar(od);
 
+            FicheroImpl fichero2 = new FicheroImpl(fichero.Ruta);
+
             IObjetoDatos od2 = FabricaDatos.Instancia.Crear(od.Tipo);
-            Deserializador deserializador = new Deserializador(secuencia, lector);
+            Deserializador deserializador = new Deserializador(fichero2, lector);
             deserializador.Deserializar(od2);
 
             Evaluar.Comparar(od, od2);

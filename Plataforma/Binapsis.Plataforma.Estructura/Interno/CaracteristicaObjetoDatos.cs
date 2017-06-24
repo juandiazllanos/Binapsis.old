@@ -18,6 +18,7 @@ namespace Binapsis.Plataforma.Estructura.Interno
         public override void EstablecerObjetoDatos(IObjetoDatos valor)
         {
             _valor = valor;
+            _establecido = true;
 		}
 
         public override object Obtener()
@@ -29,10 +30,5 @@ namespace Binapsis.Plataforma.Estructura.Interno
         {
 			return _valor;
 		}
-
-        public override bool Establecido()
-        {
-            return (_valor != null);
-        }
     }
 }

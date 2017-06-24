@@ -14,34 +14,18 @@ namespace Binapsis.Plataforma.Historial.Impl
         {            
             
 		}
-
-        //internal HistorialImpl(IImplementacion impl, Log controlador)
-        //   : this(impl)
-        //{
-        //    controlador.Historial = _historial;
-        //}
-
+        
         internal HistorialImpl(IImplementacion impl, HistorialObjetoDatos historial)
             : base(impl)
         {
             _historial = historial;
         }
         
-        //public override IImplementacion Crear(ITipo tipo)
-        //{
-        //    return new HistorialImpl(_impl.Crear(tipo), _historial); 
-        //}
-
         public override IImplementacion Crear(ITipo tipo, IObjetoDatos propietario)
         {
             return new HistorialImpl(_impl.Crear(tipo, propietario), _historial);
         }
-                
-        //public override ObjetoDatos CrearObjetoDatos(IPropiedad propiedad, ObjetoDatos propietario)
-        //{
-        //    return _impl.CrearObjetoDatos(propiedad, propietario); 
-        //}
-
+           
         public override void Eliminar()
         {
             throw new NotImplementedException();
@@ -267,7 +251,7 @@ namespace Binapsis.Plataforma.Historial.Impl
         {
             int indice = 0;
 
-            if (propiedad.Cardinalidad >= Cardinalidad.Muchos)
+            if (propiedad.Cardinalidad >= Cardinalidad.CeroAMuchos)
             {
                 indice = _impl.ObtenerColeccion(propiedad).Indice(item);
             }

@@ -17,7 +17,7 @@ namespace Binapsis.Plataforma.Configuracion.Serializacion
 
         protected override void Deserializar(Secuencia secuencia)
         {
-            Deserializar(secuencia, new LectorBinario(Fabrica.Instancia));
+            Deserializar(secuencia, new LectorBinario());
         }        
     }
 }

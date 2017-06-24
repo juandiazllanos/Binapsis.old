@@ -19,9 +19,9 @@ namespace Binapsis.Plataforma.Test.Historial
 
             // crear un estado
             Estado estado = new Estado(od);
-            
+
             // establecer valores            
-            Helper.Construir(od);
+            TestHelper.Construir(od);
 
             // deshacer cambios 
             controlador.Deshacer();
@@ -38,7 +38,7 @@ namespace Binapsis.Plataforma.Test.Historial
             IObjetoDatos od = fabrica.Crear(HelperTipo.ObtenerTipo2());
 
             // establecer valores
-            Helper.Construir(od, 1, 2);
+            TestHelper.Construir(od, 1, 2);
 
             // deshacer 
             controlador.Deshacer();
@@ -56,25 +56,25 @@ namespace Binapsis.Plataforma.Test.Historial
             var estado0 = new Estado(od);
 
             // establecer valores
-            Helper.Construir(od); 
+            TestHelper.Construir(od); 
 
             // establecer punto de referencia
             var estado1 = new Estado(od);
             var instantanea1 = log.CrearInstantanea();
             // establecer valores
-            Helper.Construir(od);
+            TestHelper.Construir(od);
 
             var estado2 = new Estado(od);
             var instantanea2 = log.CrearInstantanea();
-            Helper.Construir(od);
+            TestHelper.Construir(od);
 
             var estado3 = new Estado(od);
             var instantanea3 = log.CrearInstantanea();
-            Helper.Construir(od);
+            TestHelper.Construir(od);
 
             var estado4 = new Estado(od);
             var instantanea4 = log.CrearInstantanea();
-            Helper.Construir(od);
+            TestHelper.Construir(od);
 
             // recuperar
             log.Recuperar(instantanea3);

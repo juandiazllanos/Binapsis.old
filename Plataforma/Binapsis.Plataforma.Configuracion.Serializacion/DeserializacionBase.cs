@@ -40,6 +40,7 @@ namespace Binapsis.Plataforma.Configuracion.Serializacion
         protected void Deserializar(Secuencia secuencia, ILector lector)
         {
             Deserializador helper = new Deserializador(secuencia, lector);
+            helper.Fabrica = Fabrica.Instancia;
             helper.Deserializar(_objeto);
             _contenido = secuencia.Contenido;
         }

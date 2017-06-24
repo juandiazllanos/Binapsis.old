@@ -70,18 +70,24 @@
   <ItemGroup>
     <Compile Include="Builders\BuilderObjetoDatos.cs" />
     <Compile Include="Builders\BuilderTipo.cs" />
+    <Compile Include="Cambios\EvaluarResumenCambios.cs" />
     <Compile Include="Configuracion\EvaluarAgenteConfiguracion.cs" />
     <Compile Include="Estructura\EvaluarConfiguracion.cs" />
     <Compile Include="Estructura\EvaluarObjetoDatos.cs" />
     <Compile Include="Estructura\EvaluarTypeHelper.cs" />
     <Compile Include="EvaluarComparacionObjetoDatos.cs" />
+    <Compile Include="Helper\EvaluarEqualityHelper.cs" />
     <Compile Include="Historial\EvaluarObjetoDatosHistorial.cs" />
     <Compile Include="Historial\Helpers\Estado.cs" />
     <Compile Include="Notificacion\Impl\Observador.cs" />
     <Compile Include="Notificacion\EvaluarObservadorObjetoDatos.cs" />
+    <Compile Include="Serializacion\EvaluarSerializacionCambios.cs" />
+    <Compile Include="Serializacion\EvaluarSerializacionColeccionDiagramaDatos.cs" />
+    <Compile Include="Serializacion\EvaluarSerializacionColeccionObjetoDatos.cs" />
     <Compile Include="Serializacion\EvaluarSerializacionDiagrama.cs" />
     <Compile Include="Serializacion\EvaluarSerializacionTypes.cs" />
     <Compile Include="Serializacion\Helper\HelperConfig.cs" />
+    <Compile Include="Serializacion\Helper\HelperDiagramaDatos.cs" />
     <Compile Include="Serializacion\Impl\FicheroImpl.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Serializacion\Helper\HelperDiagrama.cs" />
@@ -92,9 +98,17 @@
     <Compile Include="Serializacion\Modelo\FabricaConfig.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Binapsis.Plataforma.Helper\Binapsis.Plataforma.Helper.csproj">
+      <Project>{77372CA5-222A-4B97-95C7-ED6CB382BB23}</Project>
+      <Name>Binapsis.Plataforma.Helper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Binapsis.Plataforma.AgenteConfiguracion\Binapsis.Plataforma.AgenteConfiguracion.csproj">
       <Project>{71753498-7f80-4d33-ba78-1d574230555d}</Project>
       <Name>Binapsis.Plataforma.AgenteConfiguracion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Binapsis.Plataforma.Cambios\Binapsis.Plataforma.Cambios.csproj">
+      <Project>{d0315649-1489-4759-9139-03aa3e4c40ce}</Project>
+      <Name>Binapsis.Plataforma.Cambios</Name>
     </ProjectReference>
     <ProjectReference Include="..\Binapsis.Plataforma.Configuracion.Serializacion\Binapsis.Plataforma.Configuracion.Serializacion.csproj">
       <Project>{b840b399-fd12-4007-8b42-c61656908f89}</Project>

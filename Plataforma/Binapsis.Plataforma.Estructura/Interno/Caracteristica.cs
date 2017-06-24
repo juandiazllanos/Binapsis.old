@@ -4,6 +4,8 @@ namespace Binapsis.Plataforma.Estructura.Interno
 {
 	internal abstract class Caracteristica
     {
+        protected bool _establecido;
+
         public Caracteristica(IPropiedad propiedad)
         {
             Propiedad = propiedad;
@@ -11,7 +13,7 @@ namespace Binapsis.Plataforma.Estructura.Interno
 
         public virtual bool Establecido()
         {
-            return false;
+            return _establecido;
         }
 
         public virtual void AgregarObjetoDatos(IObjetoDatos item)

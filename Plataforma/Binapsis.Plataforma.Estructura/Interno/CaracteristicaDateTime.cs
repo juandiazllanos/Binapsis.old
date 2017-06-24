@@ -19,8 +19,10 @@ namespace Binapsis.Plataforma.Estructura.Interno
 
         public override void EstablecerDateTime(DateTime valor)
         {
-            _valor = valor;
-		}
+            // eliminar milisegundos
+            _valor = valor.Millisecond == 0 ? valor : valor.AddTicks(-(valor.Ticks % TimeSpan.TicksPerSecond));
+            _establecido = true;
+        }
 
         public override object Obtener()
         {
@@ -32,9 +34,5 @@ namespace Binapsis.Plataforma.Estructura.Interno
 			return _valor;
 		}
 
-        public override bool Establecido()
-        {
-            return !default(DateTime).Equals(_valor);
-        }
     }
 }

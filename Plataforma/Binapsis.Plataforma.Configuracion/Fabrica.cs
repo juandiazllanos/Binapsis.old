@@ -39,7 +39,7 @@ namespace Binapsis.Plataforma.Configuracion
 
         internal ConfiguracionBase Crear(Type type, IFabricaImpl impl)
         {
-            Tipo tipo = Types.Instancia.Obtener(type);
+            ITipo tipo = BaseTypes.Obtener(type);
             if (tipo != null)
                 return Crear(impl.Crear(tipo));
             else

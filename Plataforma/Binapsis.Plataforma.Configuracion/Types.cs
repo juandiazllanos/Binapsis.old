@@ -7,7 +7,6 @@ namespace Binapsis.Plataforma.Configuracion
     public class Types
     {
         Dictionary<string, Tipo> _cache;
-        //BaseTypes _types;
 
         static Types()
         {

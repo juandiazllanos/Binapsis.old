@@ -1,19 +1,21 @@
 using System;
 using Binapsis.Plataforma.Estructura;
 using System.IO;
+using Binapsis.Plataforma.Cambios;
 
 namespace Binapsis.Plataforma.Serializacion
 {
 	public interface ILector
     {
         Stream Stream { get; set; }
-        ITipo Tipo { get; }
-        
-        void Leer(IObjetoDatos od);        
+
+        bool Leer();
         int LeerId();
-
-        IPropiedad Leer();
-
+        int LeerItems();
+        string LeerRuta();
+        Cambio LeerCambio();
+        
+        IPropiedad Leer(ITipo tipo);
 		bool LeerBoolean();
 		byte LeerByte();
 		char LeerChar();

@@ -1,7 +1,7 @@
 ﻿using Binapsis.Plataforma.Estructura.Impl;
 using Binapsis.Plataforma.Estructura;
 using Binapsis.Plataforma.Configuracion;
-using System;
+using EspacioNombres = Binapsis.Plataforma.Configuracion.Uri;
 
 namespace Binapsis.Plataforma.Test.Serializacion.Modelo
 {
@@ -18,12 +18,20 @@ namespace Binapsis.Plataforma.Test.Serializacion.Modelo
 
         public Config Crear()
         {
-            Ensamblado ensam = FabricaConfiguracion.Instancia.CrearEnsamblado("Binapsis.Plataforma.Test");
-            Plataforma.Configuracion.Uri uri = FabricaConfiguracion.Instancia.CrearUri(ensam, "Binapsis.Plataforma.Test.Serializacion.Modelo");
-            Plataforma.Configuracion.Tipo tipo = FabricaConfiguracion.Instancia.CrearTipo(uri, "Config", "config");
-            Plataforma.Configuracion.Propiedad propiedad = tipo.CrearPropiedad("Tipos", Types.Instancia.Obtener(typeof(Plataforma.Configuracion.Tipo)));
+            Ensamblado ensam = Fabrica.Instancia.Crear<Ensamblado>();
+            ensam.Nombre = "Binapsis.Plataforma.Test";
+
+            EspacioNombres uri = Fabrica.Instancia.Crear<EspacioNombres>();
+            uri.Ensamblado = ensam;
+            uri.Nombre = "Binapsis.Plataforma.Test.Serializacion.Modelo";
+            Tipo tipo = Fabrica.Instancia.Crear<Tipo>();
+            tipo.Uri = uri;
+            tipo.Nombre = "Config";
+            tipo.Alias = "config";
+
+            Propiedad propiedad = tipo.CrearPropiedad("Tipos", Types.Instancia.Obtener(typeof(Tipo)));
             propiedad.Asociacion = Asociacion.Agregacion;
-            propiedad.Cardinalidad = Cardinalidad.Cero_Muchos;
+            propiedad.Cardinalidad = Cardinalidad.CeroAMuchos;
 
             return Crear(tipo);
         }

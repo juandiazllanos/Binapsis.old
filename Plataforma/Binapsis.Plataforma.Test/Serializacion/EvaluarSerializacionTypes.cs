@@ -24,7 +24,7 @@ namespace Binapsis.Plataforma.Test.Serializacion
             serializador.Serializar(configSalida);
 
             fichero = new FicheroImpl("config.xml");
-            ILector lector = new LectorXml(FabricaConfiguracion.Instancia);
+            ILector lector = new LectorXml();
             Config configEntrada = FabricaConfig.Instancia.Crear();
             Deserializador deserializador = new Deserializador(fichero, lector);
             deserializador.Deserializar(configEntrada);
@@ -36,59 +36,69 @@ namespace Binapsis.Plataforma.Test.Serializacion
         [TestMethod, TestCategory("Serializacion Types")]
         public void EvaluarEnsambladoEnBinario()
         {
-            Ensamblado ensamSystem = FabricaConfiguracion.Instancia.CrearEnsamblado("System");
+            Ensamblado ensamSystem = Fabrica.Instancia.Crear<Ensamblado>();
+            ensamSystem.Nombre = "System";
 
             // serializar 
-            SerializacionBase<Ensamblado> serializador = new SerializacionBinario<Ensamblado>(ensamSystem);
+            ISerializador serializador = new SerializacionBinario(ensamSystem);
             serializador.Serializar();
 
             byte[] output = serializador.Contenido;
 
             // deserializar
-            DeserializacionBase<Ensamblado> deserializador = new DeserializacionBinario<Ensamblado>();            
+            IDeserializador deserializador = new DeserializacionBinario(typeof(Ensamblado));            
             deserializador.Deserializar(output);
+            Ensamblado ensamRecuperado = (deserializador.Objeto as Ensamblado);
 
-            Assert.AreEqual(ensamSystem.Nombre, serializador.Objeto.Nombre);
+            Assert.AreEqual(ensamSystem.Nombre, ensamRecuperado.Nombre);
         }
 
 
         [TestMethod, TestCategory("Serializacion Types")]
         public void EvaluarEnsambladoEnXml()
         {
-            Ensamblado ensamSystem = FabricaConfiguracion.Instancia.CrearEnsamblado("System");
+            Ensamblado ensamSystem = Fabrica.Instancia.Crear<Ensamblado>();
+            ensamSystem.Nombre = "System";
 
             // serializar
-            SerializacionBase<Ensamblado> serializador = new SerializacionXml<Ensamblado>(ensamSystem);
+            ISerializador serializador = new SerializacionXml(ensamSystem);
             serializador.Serializar();
 
             byte[] output = serializador.Contenido;
 
             // deserializar
-            DeserializacionBase<Ensamblado> deserializador = new DeserializacionXml<Ensamblado>();
+            IDeserializador deserializador = new DeserializacionXml(typeof(Ensamblado));
             deserializador.Deserializar(output);
+            Ensamblado ensamRecuperado = (deserializador.Objeto as Ensamblado);
 
-            Assert.AreEqual(ensamSystem.Nombre, serializador.Objeto.Nombre);
+            Assert.AreEqual(ensamSystem.Nombre, ensamRecuperado.Nombre);
         }
 
 
         [TestMethod, TestCategory("Serializacion Types")]
         public void EvaluarUriEnBinario()
         {
-            Ensamblado ensamConfig = FabricaConfiguracion.Instancia.CrearEnsamblado("Binapsis.Plataforma.Configuracion");
-            Uri uriConfig = FabricaConfiguracion.Instancia.CrearUri(ensamConfig, "Binapsis.Plataforma.Configuracion");
+            Ensamblado ensamConfig = Fabrica.Instancia.Crear<Ensamblado>();
+            ensamConfig.Nombre = "Binapsis.Plataforma.Configuracion";
+
+            Uri uriConfig = Fabrica.Instancia.Crear<Uri>();
+            uriConfig.Ensamblado = ensamConfig;
+            uriConfig.Nombre = "Binapsis.Plataforma.Configuracion";
 
             //serializar
-            SerializacionBase<Uri> serializador = new SerializacionBinario<Uri>(uriConfig);
+            ISerializador serializador = new SerializacionBinario(uriConfig);
             serializador.Serializar();
 
             byte[] output = serializador.Contenido;
 
             // deserializar
-            DeserializacionBase<Uri> deserializador = new DeserializacionBinario<Uri>();
+            IDeserializador deserializador = new DeserializacionBinario(typeof(Uri));
             deserializador.Deserializar(output);
 
-            Assert.AreEqual(uriConfig.Ensamblado.Nombre, serializador.Objeto.Ensamblado.Nombre);
-            Assert.AreEqual(uriConfig.Nombre, serializador.Objeto.Nombre);
+            Uri uriRecuperado = (deserializador.Objeto as Uri);
+
+            Assert.AreEqual(uriConfig.Ensamblado.Nombre, uriRecuperado.Ensamblado.Nombre);
+            Assert.AreEqual(uriConfig.Nombre, uriRecuperado.Nombre);
         }
     }
 }

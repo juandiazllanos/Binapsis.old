@@ -4,7 +4,7 @@ namespace Binapsis.Plataforma.Serializacion.Interno
 {
 	internal class Diagrama
     {		
-        public Root Root { get; set; }
+        public Nodo Root { get; set; }
 
 	}
 }

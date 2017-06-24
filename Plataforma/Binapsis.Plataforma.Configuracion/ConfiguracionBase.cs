@@ -1,6 +1,7 @@
 ﻿using Binapsis.Plataforma.Estructura.Impl;
 using System;
 using Binapsis.Plataforma.Estructura;
+using Binapsis.Plataforma.Configuracion.Base;
 
 namespace Binapsis.Plataforma.Configuracion
 {
@@ -12,7 +13,7 @@ namespace Binapsis.Plataforma.Configuracion
         }
 
         protected ConfiguracionBase(Type type, IFabricaImpl impl)
-            : this(impl.Crear(Types.Instancia.Obtener(type)))
+            : this(impl.Crear(BaseTypes.Obtener(type)))
         {
         }
 

@@ -4,11 +4,16 @@ using Binapsis.Plataforma.Test.Builders;
 
 namespace Binapsis.Plataforma.Test
 {
-    public static class Helper
+    public static class TestHelper
     {
+        public static IFabrica Fabrica
+        {
+            get => FabricaDatos.Instancia;
+        }
+
         public static IObjetoDatos Crear(ITipo tipo)
         {
-            return FabricaDatos.Instancia.Crear(tipo);
+            return Fabrica.Crear(tipo);
         }
 
         public static IObjetoDatos Crear(ITipo tipo, IFabrica fabrica)
