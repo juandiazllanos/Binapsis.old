@@ -2,6 +2,7 @@
 using Binapsis.Plataforma.Configuracion.Sql.Clave;
 using Binapsis.Plataforma.Configuracion.Sql.Comandos;
 using Binapsis.Plataforma.Configuracion.Sql.SqlBuilder;
+using System.Collections.Generic;
 
 namespace Binapsis.Plataforma.Configuracion.Sql.Helper
 {
@@ -49,9 +50,19 @@ namespace Binapsis.Plataforma.Configuracion.Sql.Helper
             }
         }
 
+        public IList<Tabla> RecuperarTodo()
+        {
+            return new HelperRecuperacion(CadenaConexion).RecuperarTablas();
+        }
+
         public override Tabla Recuperar(string clave)
         {
             return new HelperRecuperacion(CadenaConexion).RecuperarTabla(clave);
+        }
+
+        public IList<Tabla> Recuperar(string uri, string tipo)
+        {
+            return new HelperRecuperacion(CadenaConexion).RecuperarTabla(uri, tipo);
         }
     }
 }

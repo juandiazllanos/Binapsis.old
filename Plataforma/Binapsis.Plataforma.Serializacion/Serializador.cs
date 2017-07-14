@@ -1,57 +1,42 @@
-using Binapsis.Plataforma.Cambios;
-using Binapsis.Plataforma.Estructura;
 using Binapsis.Plataforma.Serializacion.Estrategia;
-using Binapsis.Plataforma.Serializacion.Interno;
 using System.IO;
 
 namespace Binapsis.Plataforma.Serializacion
 {
-    public class Serializador
+    public abstract class Serializador
     {
-        IEscritor _escritor;
-        ISecuencia _secuencia;
-
         public Serializador(ISecuencia secuencia, IEscritor escritor)
         {
-            _secuencia = secuencia;
-            _escritor = escritor;            
+            Secuencia = secuencia;
+            Escritor = escritor;            
+        }
+
+        public IEscritor Escritor
+        {
+            get;
+        }
+
+        public ISecuencia Secuencia
+        {
+            get;
         }
 
         /// <summary>
         /// Serializa el Objeto de datos enviado como parametro. Usando el escritor indicado el objeto de datos es representado en la secuencia establecida.
-        /// </summary>		
-        public void Serializar(IObjetoDatos od)
-        {
-            Serializar estrategia = new SerializarObjetoDatos(od, _escritor);
-            Serializar(estrategia);            
-        }
+        /// </summary>
+        public abstract void Serializar(object obj);
 
-        public void Serializar(IDiagramaDatos dd)
-        {
-            Serializar estrategia = new SerializarDiagramaDatos(dd, _escritor);
-            Serializar(estrategia);
-        }
-
-        public void Serializar(IObjetoDatos[] items)
-        {
-            Serializar estrategia = new SerializarColeccionObjetoDatos(items, _escritor);
-            Serializar(estrategia);
-        }
-
-        public void Serializar(IDiagramaDatos[] items)
-        {
-            Serializar estrategia = new SerializarColeccionDiagramaDatos(items, _escritor);
-            Serializar(estrategia);
-        }
-
-        private void Serializar(Serializar estrategia)
+                
+        internal void Serializar(Serializar estrategia)
         {
             Stream stream = null;
+
+            if (Secuencia == null) return;
 
             try
             {
                 // crear stream
-                stream = _secuencia.Stream;
+                stream = Secuencia.Stream;
                 stream.SetLength(0);
 
                 // establecer stream al escritor
@@ -62,7 +47,7 @@ namespace Binapsis.Plataforma.Serializacion
             }
             finally
             {
-                _secuencia.Cerrar();
+                Secuencia.Cerrar();
             }
         }
         

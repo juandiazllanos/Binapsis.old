@@ -1,98 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1095C376-0173-487D-BD2E-54991E05F539}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Binapsis.Plataforma.Estructura</RootNamespace>
-    <AssemblyName>Binapsis.Plataforma.Estructura</AssemblyName>
-    <DefaultLanguage>es-ES</DefaultLanguage>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <TargetFramework>netstandard1.3</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <None Include="project.json" />
-    <!-- A reference to the entire .NET Framework is automatically included -->
+    <Folder Include="Properties\" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Cache\CacheUri.cs" />
-    <Compile Include="Cache\CacheTipo.cs" />
-    <Compile Include="Enum\Asociacion.cs" />
-    <Compile Include="IFabricaImpl.cs" />
-    <Compile Include="Impl\Coleccion.cs" />
-    <Compile Include="Impl\Extension.cs" />
-    <Compile Include="Impl\FabricaBase.cs" />
-    <Compile Include="Impl\FabricaDatos.cs" />
-    <Compile Include="IFabrica.cs" />
-    <Compile Include="Impl\FabricaImpl.cs" />
-    <Compile Include="Impl\FabricaImplBase.cs" />
-    <Compile Include="Impl\ImplementacionBase.cs" />
-    <Compile Include="Impl\ObjetoDatos.cs" />
-    <Compile Include="Enum\Cardinalidad.cs" />
-    <Compile Include="IColeccion.cs" />
-    <Compile Include="Helper\PathHelper.cs" />
-    <Compile Include="Helper\TipoHelper.cs" />
-    <Compile Include="Interno\Caracteristica.cs" />
-    <Compile Include="Interno\CaracteristicaBoolean.cs" />
-    <Compile Include="Interno\CaracteristicaByte.cs" />
-    <Compile Include="Interno\CaracteristicaChar.cs" />
-    <Compile Include="Interno\CaracteristicaColeccion.cs" />
-    <Compile Include="Interno\CaracteristicaDateTime.cs" />
-    <Compile Include="Interno\CaracteristicaDecimal.cs" />
-    <Compile Include="Interno\CaracteristicaDouble.cs" />
-    <Compile Include="Interno\CaracteristicaFloat.cs" />
-    <Compile Include="Interno\CaracteristicaInteger.cs" />
-    <Compile Include="Interno\CaracteristicaLong.cs" />
-    <Compile Include="Interno\CaracteristicaObject.cs" />
-    <Compile Include="Interno\CaracteristicaObjetoDatos.cs" />
-    <Compile Include="Interno\CaracteristicaSByte.cs" />
-    <Compile Include="Interno\CaracteristicaShort.cs" />
-    <Compile Include="Interno\CaracteristicaString.cs" />
-    <Compile Include="Interno\CaracteristicaUInteger.cs" />
-    <Compile Include="Interno\CaracteristicaULong.cs" />
-    <Compile Include="Interno\CaracteristicaUShort.cs" />
-    <Compile Include="Interno\FabricaCaracteristica.cs" />
-    <Compile Include="Interno\Contenido.cs" />
-    <Compile Include="Impl\Implementacion.cs" />
-    <Compile Include="IImplementacion.cs" />
-    <Compile Include="IObjetoDatos.cs" />
-    <Compile Include="IPropiedad.cs" />
-    <Compile Include="ITipo.cs" />
-    <Compile Include="Impl\ObjetoBase.cs" />
-    <Compile Include="ITypeHelper.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

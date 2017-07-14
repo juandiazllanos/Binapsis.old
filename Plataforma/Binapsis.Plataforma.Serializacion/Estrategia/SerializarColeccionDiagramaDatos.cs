@@ -1,28 +1,29 @@
 ﻿using Binapsis.Plataforma.Cambios;
 using Binapsis.Plataforma.Serializacion.Interno;
+using System.Collections;
 
 namespace Binapsis.Plataforma.Serializacion.Estrategia
 {
     class SerializarColeccionDiagramaDatos : SerializarColeccion
     {
-        public SerializarColeccionDiagramaDatos(IDiagramaDatos[] items, IEscritor escritor) 
+        public SerializarColeccionDiagramaDatos(IList items, IEscritor escritor) 
             : base(escritor)
         {
             Items = items;
         }
 
-        public IDiagramaDatos[] Items
+        public IList Items
         {
             get;
         }
         
         public override void Escribir()
         {
-            Diagrama diagrama = new Diagrama();
-            BuilderDiagrama builder = new BuilderDiagrama(diagrama);
+            NodoColeccion nco = new NodoColeccion();
+            BuilderNodoDiagramaDatos builder = new BuilderNodoDiagramaDatos(nco);
             builder.Construir(Items);
 
-            Escribir(diagrama);
+            Escribir(nco);
         }
 
         protected override void EscribirItem(Nodo item)

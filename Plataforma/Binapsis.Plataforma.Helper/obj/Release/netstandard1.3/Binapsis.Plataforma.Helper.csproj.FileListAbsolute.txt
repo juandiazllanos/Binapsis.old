@@ -1,0 +1,9 @@
+D:\Desarrollo\Binapsis\Binapsis.Plataforma.Helper\bin\Release\netstandard1.3\Binapsis.Plataforma.Helper.deps.json
+D:\Desarrollo\Binapsis\Binapsis.Plataforma.Helper\bin\Release\netstandard1.3\Binapsis.Plataforma.Helper.dll
+D:\Desarrollo\Binapsis\Binapsis.Plataforma.Helper\bin\Release\netstandard1.3\Binapsis.Plataforma.Helper.pdb
+D:\Desarrollo\Binapsis\Binapsis.Plataforma.Helper\bin\Release\netstandard1.3\Binapsis.Plataforma.Estructura.dll
+D:\Desarrollo\Binapsis\Binapsis.Plataforma.Helper\bin\Release\netstandard1.3\Binapsis.Plataforma.Estructura.pdb
+D:\Desarrollo\Binapsis\Binapsis.Plataforma.Helper\obj\Release\netstandard1.3\Binapsis.Plataforma.Helper.csprojResolveAssemblyReference.cache
+D:\Desarrollo\Binapsis\Binapsis.Plataforma.Helper\obj\Release\netstandard1.3\Binapsis.Plataforma.Helper.AssemblyInfo.cs
+D:\Desarrollo\Binapsis\Binapsis.Plataforma.Helper\obj\Release\netstandard1.3\Binapsis.Plataforma.Helper.dll
+D:\Desarrollo\Binapsis\Binapsis.Plataforma.Helper\obj\Release\netstandard1.3\Binapsis.Plataforma.Helper.pdb

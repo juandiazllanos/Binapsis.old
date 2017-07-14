@@ -33,6 +33,8 @@ namespace Binapsis.Plataforma.Cambios.Builder
 
         private void Construir(IPropiedad propiedad, IObjetoCambios cambios)
         {
+            if (propiedad.Asociacion != Asociacion.Composicion) return;
+
             if (propiedad.EsColeccion)
                 ConstruirColeccion(propiedad, cambios);
             else
@@ -48,10 +50,8 @@ namespace Binapsis.Plataforma.Cambios.Builder
 
         private void ConstruirReferencia(IPropiedad propiedad, IObjetoCambios cambios)
         {
-            //if (cambios == null) return;
-
             IObjetoDatos referenciaDatos = null;
-            IObjetoCambios referenciaCambios = cambios; //.ObtenerObjetoDatos(propiedad) as IObjetoCambios;
+            IObjetoCambios referenciaCambios = cambios; 
 
             if (referenciaCambios.Cambio == Cambio.Eliminado)
                 referenciaDatos = referenciaCambios;

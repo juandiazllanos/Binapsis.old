@@ -209,13 +209,13 @@ namespace Binapsis.Plataforma.Test.Serializacion
 
         void Serializar(IDiagramaDatos dd, ISecuencia secuencia, IEscritor escritor)
         {
-            Serializador serializador = new Serializador(secuencia, escritor);
+            Serializador serializador = new SerializadorDiagramaDatos(secuencia, escritor);
             serializador.Serializar(dd);
         }
 
         void Deserializar(IDiagramaDatos dd, ISecuencia secuencia, ILector lector)
         {            
-            Deserializador deserializador = new Deserializador(secuencia, lector);
+            Deserializador deserializador = new DeserializadorDiagramaDatos(secuencia, lector);
             deserializador.Deserializar(dd);
         }
 

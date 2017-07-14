@@ -1,13 +1,13 @@
 ﻿using Binapsis.Plataforma.Cambios;
 using Binapsis.Plataforma.Cambios.Impl;
 using Binapsis.Plataforma.Estructura;
-using System.Collections.Generic;
+using System.Collections;
 
 namespace Binapsis.Plataforma.Serializacion.Estrategia
 {
-    class DeserializarColeccionDiagramaDatos : DeserializarColeccion<IDiagramaDatos>
+    class DeserializarColeccionDiagramaDatos : DeserializarColeccion
     {
-        public DeserializarColeccionDiagramaDatos(ITipo tipo, List<IDiagramaDatos> items, ILector lector) 
+        public DeserializarColeccionDiagramaDatos(ITipo tipo, IList items, ILector lector) 
             : base(items, lector)
         {
             Tipo = tipo;
@@ -22,12 +22,9 @@ namespace Binapsis.Plataforma.Serializacion.Estrategia
         {
             //leer items
             int longitud = Lector.LeerItems();
-            IDiagramaDatos[] items = new IDiagramaDatos[longitud];
 
             for (int i = 0; i < longitud; i++)
-                items[i] = LeerItem();
-
-            Items.AddRange(items);
+                Items.Add(LeerItem());            
         }
 
         private IDiagramaDatos LeerItem()

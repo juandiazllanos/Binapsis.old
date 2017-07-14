@@ -9,7 +9,10 @@
 
         public override string CrearClave(ConfiguracionBase obj)
         {
-            return (obj as Relacion)?.Nombre;
+            Relacion rel = obj as Relacion;
+            if (obj == null) return null;
+
+            return $"{rel.Nombre}";
         }
     }
 }

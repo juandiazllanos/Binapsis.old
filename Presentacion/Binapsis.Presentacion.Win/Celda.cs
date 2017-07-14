@@ -44,7 +44,7 @@ namespace Binapsis.Presentacion.Win
             get { return Obtener(); }
             set { Establecer(value); }
         }
-        
+
         public event NotificarHandler Notificar;
     }
 }

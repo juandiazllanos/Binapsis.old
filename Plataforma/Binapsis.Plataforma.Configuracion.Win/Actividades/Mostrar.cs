@@ -1,12 +1,6 @@
 ﻿using Binapsis.Plataforma.Configuracion.Win.Vistas;
-using Binapsis.Plataforma.Estructura.Impl;
 using Binapsis.Presentacion.Editores;
 using Binapsis.Presentacion.Win;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Binapsis.Plataforma.Configuracion.Win.Actividades
 {

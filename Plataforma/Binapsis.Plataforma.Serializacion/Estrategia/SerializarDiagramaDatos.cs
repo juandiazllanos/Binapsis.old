@@ -1,6 +1,5 @@
 ﻿using Binapsis.Plataforma.Cambios;
 using Binapsis.Plataforma.Serializacion.Interno;
-using System.Reflection;
 
 namespace Binapsis.Plataforma.Serializacion.Estrategia
 {
@@ -19,11 +18,11 @@ namespace Binapsis.Plataforma.Serializacion.Estrategia
 
         public override void Escribir()
         {
-            Diagrama diagrama = new Diagrama();
-            BuilderDiagrama builder = new BuilderDiagrama(diagrama);
+            NodoObjeto ndd = new NodoObjeto();
+            BuilderNodoDiagramaDatos builder = new BuilderNodoDiagramaDatos(ndd);
             builder.Construir(DiagramaDatos);
 
-            Escribir(diagrama.Root as NodoObjeto);            
+            Escribir(ndd);
         }
 
         public void Escribir(NodoObjeto ndd)
@@ -54,11 +53,7 @@ namespace Binapsis.Plataforma.Serializacion.Estrategia
         private void EscribirObjetoDatos(NodoObjetoDatos nod)
         {
             SerializarObjetoDatos estrategia = new SerializarObjetoDatos(nod.ObjetoDatos, Escritor);
-            estrategia.Escribir(nod);
-
-            //Escritor.EscribirObjetoDatos(nod.Tipo, nod.Id);
-            //estrategia.EscribirObjetoDatos(nod);
-            //Escritor.EscribirObjetoDatosCierre();
+            estrategia.Escribir(nod);            
         }
 
         private void EscribirObjetoCambios(NodoObjetoDatos nod)
@@ -68,10 +63,6 @@ namespace Binapsis.Plataforma.Serializacion.Estrategia
 
             SerializarObjetoCambios estrategia = new SerializarObjetoCambios(cambios, Escritor);
             estrategia.Escribir(nod);
-
-            //Escritor.EscribirObjetoDatos(nod.Tipo, nod.Id, cambios.Referencia, cambios.Cambio);
-            //estrategia.EscribirObjetoDatos(nod);
-            //Escritor.EscribirObjetoDatosCierre();
         }
         
     }

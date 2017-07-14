@@ -5,7 +5,7 @@ namespace Binapsis.Plataforma.Configuracion.Win.Modelo
     public class ElementoDefinicion : Elemento
     {
         Definicion _definicion;
-        Type _typeItem;
+        //Type _typeItem;
         
         public ElementoDefinicion(IRepositorio repositorio)
             : base(repositorio)

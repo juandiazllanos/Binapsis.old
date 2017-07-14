@@ -42,6 +42,60 @@ namespace Binapsis.Plataforma.Configuracion.Sql.Helper
             return Recuperar(new SqlBuilderSeleccionar(typeof(Tabla), clave), new BuilderTabla(this), clave);
         }
 
+        public IList<Tabla> RecuperarTabla(string uri, string tipo)
+        {
+            ISqlBuilder sql = new SqlBuilderSeleccionarTabla() { Uri = uri, Tipo = tipo };
+            BuilderTabla builder = new BuilderTabla(this);
+
+            return RecuperarColeccion(sql, builder);
+        }
+
+        public IList<Tabla> RecuperarTablas()
+        {
+            ISqlBuilder sql = new SqlBuilderSeleccionarTabla();
+            BuilderTabla builder = new BuilderTabla(this);
+
+            return RecuperarColeccion(sql, builder);
+        }
+
+        public IList<Relacion> RecuperarRelaciones()
+        {
+            ISqlBuilder sql = new SqlBuilderSeleccionarRelacion();
+            BuilderConfiguracion<Relacion> builder = new BuilderConfiguracion<Relacion>(this);
+
+            return RecuperarColeccion(sql, builder);
+        }
+
+        public IList<Relacion> RecuperarRelaciones(string uri, string tipo, string propiedad, string tablaPrincipal, string tablaSecundaria)
+        {
+            ISqlBuilder sql = new SqlBuilderSeleccionarRelacion()
+            {
+                Uri = uri,
+                Tipo = tipo,
+                Propiedad = propiedad,
+                TablaPrincipal = tablaPrincipal,
+                TablaSecundaria = tablaSecundaria
+            };
+            
+            BuilderConfiguracion<Relacion> builder = new BuilderConfiguracion<Relacion>(this);
+
+            return RecuperarColeccion(sql, builder);
+        }
+
+        //public IList<Relacion> RecuperarRelaciones(string tablaPrincipal, string tablaSecundaria)
+        //{
+        //    ISqlBuilder sql = new SqlBuilderSeleccionarRelacion()
+        //    {
+        //        TablaPrincipal = tablaPrincipal,
+        //        TablaSecundaria = tablaSecundaria
+        //    };
+
+        //    BuilderConfiguracion<Relacion> builder = new BuilderConfiguracion<Relacion>(this);
+
+        //    return RecuperarColeccion(sql, builder);
+        //}
+
+
         public Tipo RecuperarTipo(string clave)
         {
             return Recuperar(new SqlBuilderSeleccionarTipo(clave), new BuilderTipo(this), clave);
@@ -62,6 +116,29 @@ namespace Binapsis.Plataforma.Configuracion.Sql.Helper
             BuilderConfiguracion<T> builder = new BuilderConfiguracion<T>(this);
             ISqlBuilder sql = new SqlBuilderSeleccionar(typeof(T), clave);
             return Recuperar(sql, builder, clave);
+        }
+
+        public IList<T> RecuperarColeccion<T>(ISqlBuilder builderSql, BuilderConfiguracion<T> builder) where T : ConfiguracionBase
+        {
+            List<T> items = new List<T>();
+
+            // ejecutar consulta            
+            ComandoLectura comando = new ComandoLectura(builderSql);
+            _contexto.Ejecutar(comando);
+
+            if (comando.Resultado.Length == 0) return items;
+
+            foreach(ResultadoLectura resultado in comando.Resultado)
+            {
+                // crear objeto             
+                T item = (T)Fabrica.Instancia.Crear(typeof(T));
+                // construir objeto
+                builder.Construir(item, resultado);
+                // agregar item
+                items.Add(item);
+            }
+                        
+            return items;
         }
 
         public T Recuperar<T>(ISqlBuilder builderSql, BuilderConfiguracion<T> builder, string clave) where T : ConfiguracionBase

@@ -1,16 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
 
 namespace Binapsis.Plataforma.Serializacion.Estrategia
 {
-    class DeserializarColeccion<T> : Deserializar
+    class DeserializarColeccion : Deserializar
     {
-        public DeserializarColeccion(List<T> items, ILector lector) 
+        public DeserializarColeccion(IList items, ILector lector) 
             : base(lector)
         {
             Items = items;
         }
         
-        public List<T> Items
+        public IList Items
         {
             get;
         }

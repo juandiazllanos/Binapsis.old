@@ -43,5 +43,11 @@ namespace Binapsis.Plataforma.Configuracion
             set => EstablecerString("Nombre", value);
 		}
 
+        public string TipoAsociado
+        {
+            get => ObtenerString("Tipo");
+            set => EstablecerString("Tipo", value);
+        }
+
     }
 }

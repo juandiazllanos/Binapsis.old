@@ -13,7 +13,9 @@ namespace Binapsis.Plataforma.Configuracion.Sql.Clave
         public override string CrearClave(ConfiguracionBase obj)
         {
             Columna columna = (obj as Columna);
-            return $"{(columna.Propietario as Tabla).Nombre}.{columna.Nombre}";
+            Tabla tabla = columna?.Propietario as Tabla;
+
+            return $"{new ClaveTabla(tabla)}.{columna.Nombre}";
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Binapsis.Plataforma.Cambios.Impl;
 using Binapsis.Plataforma.Estructura;
+using Binapsis.Plataforma.Estructura.Impl;
 
 namespace Binapsis.Plataforma.Cambios.Builder
 {
@@ -14,14 +15,19 @@ namespace Binapsis.Plataforma.Cambios.Builder
         {
             IObjetoCambios cambios = new Fabrica().Crear(DiagramaDatos.Tipo);
             BuilderObjetoCambios builder = new BuilderObjetoCambios(cambios);
+
             builder.Construir(nuevo, antiguo);
-            Construir(nuevo, cambios);
+
+            IObjetoDatos datos = nuevo ?? antiguo;
+
+            Construir(datos, cambios);
         }
 
         public void Construir(IObjetoDatos datos, IObjetoCambios cambios)
         {
             ResumenCambios resumen = new ResumenCambios();
             BuilderResumenCambios builder = new BuilderResumenCambios(resumen, datos);
+
             builder.Construir(cambios);
 
             DiagramaDatos.ObjetoDatos = datos;

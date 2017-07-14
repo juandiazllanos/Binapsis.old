@@ -1,0 +1,9 @@
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Notificaciones\bin\Debug\netstandard1.3\Binapsis.Plataforma.Notificaciones.deps.json
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Notificaciones\bin\Debug\netstandard1.3\Binapsis.Plataforma.Notificaciones.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Notificaciones\bin\Debug\netstandard1.3\Binapsis.Plataforma.Notificaciones.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Notificaciones\bin\Debug\netstandard1.3\Binapsis.Plataforma.Estructura.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Notificaciones\bin\Debug\netstandard1.3\Binapsis.Plataforma.Estructura.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Notificaciones\obj\Debug\netstandard1.3\Binapsis.Plataforma.Notificaciones.csprojResolveAssemblyReference.cache
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Notificaciones\obj\Debug\netstandard1.3\Binapsis.Plataforma.Notificaciones.AssemblyInfo.cs
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Notificaciones\obj\Debug\netstandard1.3\Binapsis.Plataforma.Notificaciones.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Notificaciones\obj\Debug\netstandard1.3\Binapsis.Plataforma.Notificaciones.pdb

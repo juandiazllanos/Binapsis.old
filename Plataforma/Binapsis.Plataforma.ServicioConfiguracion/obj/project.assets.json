@@ -1410,41 +1410,6 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.Portable.Compatibility/1.0.1": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2"
-        },
-        "compile": {
-          "ref/netstandard1.0/System.ComponentModel.DataAnnotations.dll": {},
-          "ref/netstandard1.0/System.Core.dll": {},
-          "ref/netstandard1.0/System.Net.dll": {},
-          "ref/netstandard1.0/System.Numerics.dll": {},
-          "ref/netstandard1.0/System.Runtime.Serialization.dll": {},
-          "ref/netstandard1.0/System.ServiceModel.Web.dll": {},
-          "ref/netstandard1.0/System.ServiceModel.dll": {},
-          "ref/netstandard1.0/System.Windows.dll": {},
-          "ref/netstandard1.0/System.Xml.Linq.dll": {},
-          "ref/netstandard1.0/System.Xml.Serialization.dll": {},
-          "ref/netstandard1.0/System.Xml.dll": {},
-          "ref/netstandard1.0/System.dll": {},
-          "ref/netstandard1.0/mscorlib.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.0/System.ComponentModel.DataAnnotations.dll": {},
-          "lib/netstandard1.0/System.Core.dll": {},
-          "lib/netstandard1.0/System.Net.dll": {},
-          "lib/netstandard1.0/System.Numerics.dll": {},
-          "lib/netstandard1.0/System.Runtime.Serialization.dll": {},
-          "lib/netstandard1.0/System.ServiceModel.Web.dll": {},
-          "lib/netstandard1.0/System.ServiceModel.dll": {},
-          "lib/netstandard1.0/System.Windows.dll": {},
-          "lib/netstandard1.0/System.Xml.Linq.dll": {},
-          "lib/netstandard1.0/System.Xml.Serialization.dll": {},
-          "lib/netstandard1.0/System.Xml.dll": {},
-          "lib/netstandard1.0/System.dll": {}
-        }
-      },
       "Microsoft.NETCore.Runtime.CoreCLR/1.1.1": {
         "type": "package",
         "dependencies": {
@@ -3778,8 +3743,7 @@
         "framework": ".NETStandard,Version=v1.3",
         "dependencies": {
           "Binapsis.Plataforma.Estructura": "1.0.0",
-          "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-          "NETStandard.Library": "1.6.0"
+          "NETStandard.Library": "1.6.1"
         }
       },
       "Binapsis.Plataforma.Configuracion.Serializacion/1.0.0": {
@@ -3792,8 +3756,7 @@
           "Binapsis.Plataforma.Serializacion": "1.0.0",
           "Binapsis.Plataforma.Serializacion.Binario": "1.0.0",
           "Binapsis.Plataforma.Serializacion.Xml": "1.0.0",
-          "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-          "NETStandard.Library": "1.6.0"
+          "NETStandard.Library": "1.6.1"
         }
       },
       "Binapsis.Plataforma.Configuracion.Sql/1.0.0": {
@@ -3810,8 +3773,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v1.3",
         "dependencies": {
-          "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-          "NETStandard.Library": "1.6.0"
+          "NETStandard.Library": "1.6.1"
         }
       },
       "Binapsis.Plataforma.Helper/1.0.0": {
@@ -3828,8 +3790,7 @@
         "dependencies": {
           "Binapsis.Plataforma.Cambios": "1.0.0",
           "Binapsis.Plataforma.Estructura": "1.0.0",
-          "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-          "NETStandard.Library": "1.6.0"
+          "NETStandard.Library": "1.6.1"
         }
       },
       "Binapsis.Plataforma.Serializacion.Binario/1.0.0": {
@@ -3839,8 +3800,7 @@
           "Binapsis.Plataforma.Cambios": "1.0.0",
           "Binapsis.Plataforma.Estructura": "1.0.0",
           "Binapsis.Plataforma.Serializacion": "1.0.0",
-          "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-          "NETStandard.Library": "1.6.0"
+          "NETStandard.Library": "1.6.1"
         }
       },
       "Binapsis.Plataforma.Serializacion.Xml/1.0.0": {
@@ -3850,8 +3810,7 @@
           "Binapsis.Plataforma.Cambios": "1.0.0",
           "Binapsis.Plataforma.Estructura": "1.0.0",
           "Binapsis.Plataforma.Serializacion": "1.0.0",
-          "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-          "NETStandard.Library": "1.6.0"
+          "NETStandard.Library": "1.6.1"
         }
       }
     }
@@ -4994,88 +4953,6 @@
         "dotnet_library_license.txt",
         "lib/netstandard1.0/_._",
         "runtime.json"
-      ]
-    },
-    "Microsoft.NETCore.Portable.Compatibility/1.0.1": {
-      "sha512": "Vd+lvLcGwvkedxtKn0U8s9uR4p0Lm+0U2QvDsLaw7g4S1W4KfPDbaW+ROhhLCSOx/gMYC72/b+z+o4fqS/oxVg==",
-      "type": "package",
-      "path": "microsoft.netcore.portable.compatibility/1.0.1",
-      "files": [
-        "Microsoft.NETCore.Portable.Compatibility.1.0.1.nupkg.sha512",
-        "Microsoft.NETCore.Portable.Compatibility.nuspec",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/net45/_._",
-        "lib/netcore50/System.ComponentModel.DataAnnotations.dll",
-        "lib/netcore50/System.Core.dll",
-        "lib/netcore50/System.Net.dll",
-        "lib/netcore50/System.Numerics.dll",
-        "lib/netcore50/System.Runtime.Serialization.dll",
-        "lib/netcore50/System.ServiceModel.Web.dll",
-        "lib/netcore50/System.ServiceModel.dll",
-        "lib/netcore50/System.Windows.dll",
-        "lib/netcore50/System.Xml.Linq.dll",
-        "lib/netcore50/System.Xml.Serialization.dll",
-        "lib/netcore50/System.Xml.dll",
-        "lib/netcore50/System.dll",
-        "lib/netstandard1.0/System.ComponentModel.DataAnnotations.dll",
-        "lib/netstandard1.0/System.Core.dll",
-        "lib/netstandard1.0/System.Net.dll",
-        "lib/netstandard1.0/System.Numerics.dll",
-        "lib/netstandard1.0/System.Runtime.Serialization.dll",
-        "lib/netstandard1.0/System.ServiceModel.Web.dll",
-        "lib/netstandard1.0/System.ServiceModel.dll",
-        "lib/netstandard1.0/System.Windows.dll",
-        "lib/netstandard1.0/System.Xml.Linq.dll",
-        "lib/netstandard1.0/System.Xml.Serialization.dll",
-        "lib/netstandard1.0/System.Xml.dll",
-        "lib/netstandard1.0/System.dll",
-        "lib/win8/_._",
-        "lib/wp80/_._",
-        "lib/wpa81/_._",
-        "ref/net45/_._",
-        "ref/netcore50/System.ComponentModel.DataAnnotations.dll",
-        "ref/netcore50/System.Core.dll",
-        "ref/netcore50/System.Net.dll",
-        "ref/netcore50/System.Numerics.dll",
-        "ref/netcore50/System.Runtime.Serialization.dll",
-        "ref/netcore50/System.ServiceModel.Web.dll",
-        "ref/netcore50/System.ServiceModel.dll",
-        "ref/netcore50/System.Windows.dll",
-        "ref/netcore50/System.Xml.Linq.dll",
-        "ref/netcore50/System.Xml.Serialization.dll",
-        "ref/netcore50/System.Xml.dll",
-        "ref/netcore50/System.dll",
-        "ref/netcore50/mscorlib.dll",
-        "ref/netstandard1.0/System.ComponentModel.DataAnnotations.dll",
-        "ref/netstandard1.0/System.Core.dll",
-        "ref/netstandard1.0/System.Net.dll",
-        "ref/netstandard1.0/System.Numerics.dll",
-        "ref/netstandard1.0/System.Runtime.Serialization.dll",
-        "ref/netstandard1.0/System.ServiceModel.Web.dll",
-        "ref/netstandard1.0/System.ServiceModel.dll",
-        "ref/netstandard1.0/System.Windows.dll",
-        "ref/netstandard1.0/System.Xml.Linq.dll",
-        "ref/netstandard1.0/System.Xml.Serialization.dll",
-        "ref/netstandard1.0/System.Xml.dll",
-        "ref/netstandard1.0/System.dll",
-        "ref/netstandard1.0/mscorlib.dll",
-        "ref/win8/_._",
-        "ref/wp80/_._",
-        "ref/wpa81/_._",
-        "runtimes/aot/lib/netcore50/System.ComponentModel.DataAnnotations.dll",
-        "runtimes/aot/lib/netcore50/System.Core.dll",
-        "runtimes/aot/lib/netcore50/System.Net.dll",
-        "runtimes/aot/lib/netcore50/System.Numerics.dll",
-        "runtimes/aot/lib/netcore50/System.Runtime.Serialization.dll",
-        "runtimes/aot/lib/netcore50/System.ServiceModel.Web.dll",
-        "runtimes/aot/lib/netcore50/System.ServiceModel.dll",
-        "runtimes/aot/lib/netcore50/System.Windows.dll",
-        "runtimes/aot/lib/netcore50/System.Xml.Linq.dll",
-        "runtimes/aot/lib/netcore50/System.Xml.Serialization.dll",
-        "runtimes/aot/lib/netcore50/System.Xml.dll",
-        "runtimes/aot/lib/netcore50/System.dll",
-        "runtimes/aot/lib/netcore50/mscorlib.dll"
       ]
     },
     "Microsoft.NETCore.Runtime.CoreCLR/1.1.1": {
@@ -10202,12 +10079,12 @@
     },
     "Binapsis.Plataforma.Configuracion/1.0.0": {
       "type": "project",
-      "path": "../Binapsis.Plataforma.Configuracion/project.json",
+      "path": "../Binapsis.Plataforma.Configuracion/Binapsis.Plataforma.Configuracion.csproj",
       "msbuildProject": "../Binapsis.Plataforma.Configuracion/Binapsis.Plataforma.Configuracion.csproj"
     },
     "Binapsis.Plataforma.Configuracion.Serializacion/1.0.0": {
       "type": "project",
-      "path": "../Binapsis.Plataforma.Configuracion.Serializacion/project.json",
+      "path": "../Binapsis.Plataforma.Configuracion.Serializacion/Binapsis.Plataforma.Configuracion.Serializacion.csproj",
       "msbuildProject": "../Binapsis.Plataforma.Configuracion.Serializacion/Binapsis.Plataforma.Configuracion.Serializacion.csproj"
     },
     "Binapsis.Plataforma.Configuracion.Sql/1.0.0": {
@@ -10217,27 +10094,27 @@
     },
     "Binapsis.Plataforma.Estructura/1.0.0": {
       "type": "project",
-      "path": "../Binapsis.Plataforma.Estructura/project.json",
+      "path": "../Binapsis.Plataforma.Estructura/Binapsis.Plataforma.Estructura.csproj",
       "msbuildProject": "../Binapsis.Plataforma.Estructura/Binapsis.Plataforma.Estructura.csproj"
     },
     "Binapsis.Plataforma.Helper/1.0.0": {
       "type": "project",
-      "path": "../../Binapsis.Plataforma.Helper/Binapsis.Plataforma.Helper.csproj",
-      "msbuildProject": "../../Binapsis.Plataforma.Helper/Binapsis.Plataforma.Helper.csproj"
+      "path": "../Binapsis.Plataforma.Helper/Binapsis.Plataforma.Helper.csproj",
+      "msbuildProject": "../Binapsis.Plataforma.Helper/Binapsis.Plataforma.Helper.csproj"
     },
     "Binapsis.Plataforma.Serializacion/1.0.0": {
       "type": "project",
-      "path": "../Binapsis.Plataforma.Serializacion/project.json",
+      "path": "../Binapsis.Plataforma.Serializacion/Binapsis.Plataforma.Serializacion.csproj",
       "msbuildProject": "../Binapsis.Plataforma.Serializacion/Binapsis.Plataforma.Serializacion.csproj"
     },
     "Binapsis.Plataforma.Serializacion.Binario/1.0.0": {
       "type": "project",
-      "path": "../Binapsis.Plataforma.Serializacion.Binario/project.json",
+      "path": "../Binapsis.Plataforma.Serializacion.Binario/Binapsis.Plataforma.Serializacion.Binario.csproj",
       "msbuildProject": "../Binapsis.Plataforma.Serializacion.Binario/Binapsis.Plataforma.Serializacion.Binario.csproj"
     },
     "Binapsis.Plataforma.Serializacion.Xml/1.0.0": {
       "type": "project",
-      "path": "../Binapsis.Plataforma.Serializacion.Xml/project.json",
+      "path": "../Binapsis.Plataforma.Serializacion.Xml/Binapsis.Plataforma.Serializacion.Xml.csproj",
       "msbuildProject": "../Binapsis.Plataforma.Serializacion.Xml/Binapsis.Plataforma.Serializacion.Xml.csproj"
     }
   },

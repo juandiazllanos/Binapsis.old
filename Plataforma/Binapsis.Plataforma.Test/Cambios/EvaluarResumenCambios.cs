@@ -14,6 +14,27 @@ namespace Binapsis.Plataforma.Test.Cambios
     public class EvaluarResumenCambios
     {
         [TestMethod, TestCategory("Evaluar Resumen de cambios")]
+        public void EvaluarDiagramaDatosSimpleCreado()
+        {
+            ITipo tipo = HelperTipo.ObtenerTipo();
+            IObjetoDatos nuevo = TestHelper.Crear(tipo);
+            TestHelper.Construir(nuevo);
+            
+            nuevo.EstablecerString("atributoString", "valor cambiado");
+            nuevo.EstablecerInteger("atributoInteger", 1000);
+
+            IDiagramaDatos diagrama = new DiagramaDatos(tipo);
+            BuilderDiagramaDatos builder = new BuilderDiagramaDatos(diagrama);
+            builder.Construir(nuevo, null as IObjetoDatos);
+
+            IResumenCambios resumen = diagrama.ResumenCambios;
+
+            Assert.AreEqual(1, resumen.ObtenerObjetoDatosCambiados().Longitud);
+            Assert.IsTrue(resumen.Creado(nuevo));
+            Assert.AreEqual(nuevo, resumen.ObtenerObjetoDatosCambiados()[0]);
+        }
+
+        [TestMethod, TestCategory("Evaluar Resumen de cambios")]
         public void EvaluarDiagramaDatosCambiosSimple()
         {
             ITipo tipo = HelperTipo.ObtenerTipo();

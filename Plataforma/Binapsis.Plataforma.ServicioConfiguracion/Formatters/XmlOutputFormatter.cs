@@ -6,6 +6,9 @@ using Binapsis.Plataforma.Configuracion;
 using Binapsis.Plataforma.Configuracion.Serializacion;
 using Microsoft.Net.Http.Headers;
 using System.Reflection;
+using System.Collections.Generic;
+using System.Linq;
+using System.Collections;
 
 namespace Binapsis.Plataforma.ServicioConfiguracion.Formatters
 {
@@ -20,16 +23,23 @@ namespace Binapsis.Plataforma.ServicioConfiguracion.Formatters
 
         protected override bool CanWriteType(Type type)
         {
-            return type.GetTypeInfo().IsSubclassOf(typeof(ConfiguracionBase));
+            bool resul = type.GetTypeInfo().IsSubclassOf(typeof(ConfiguracionBase));
+            if (resul) return resul;
+
+            return EsColeccion(type);
         }
 
         public override Task WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
         {
             Type type = context.ObjectType;
             var respuesta = context.HttpContext.Response;
-            ConfiguracionBase obj = (ConfiguracionBase)context.Object;
+            ISerializador helper;
 
-            ISerializador helper = new SerializacionXml(obj);
+            if (!EsColeccion(type))
+                helper = new SerializacionXml(context.Object as ConfiguracionBase);
+            else
+                helper = new SerializacionColeccionXml(context.Object as IList); //?.Cast<ConfiguracionBase>().ToList());
+                        
             byte[] resultado = null;
             
             if (helper != null)
@@ -39,6 +49,24 @@ namespace Binapsis.Plataforma.ServicioConfiguracion.Formatters
             }
 
             return respuesta.Body.WriteAsync(resultado, 0, resultado.Length);
+        }
+
+
+        private bool EsColeccion(Type type)
+        {
+            TypeInfo info = type.GetTypeInfo();
+
+            if (type.GetTypeInfo().IsInterface)
+                return info.IsGenericType && 
+                       info.GetGenericTypeDefinition() == typeof(IList<>) &&
+                       info.GetGenericArguments().Length == 1 && 
+                       info.GetGenericArguments()[0].GetTypeInfo().IsSubclassOf(typeof(ConfiguracionBase));
+            else
+                return info.GetInterfaces()
+                    .FirstOrDefault(i => i.GetTypeInfo().IsGenericType &&
+                                         i.GetTypeInfo().GetGenericTypeDefinition() == typeof(IList<>) &&
+                                         i.GetGenericArguments().Length == 1)?
+                    .GetGenericArguments()[0].GetTypeInfo().IsSubclassOf(typeof(ConfiguracionBase)) ?? false;
         }
     }
 }

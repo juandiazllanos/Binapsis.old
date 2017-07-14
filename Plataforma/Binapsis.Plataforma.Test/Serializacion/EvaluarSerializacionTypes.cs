@@ -19,14 +19,14 @@ namespace Binapsis.Plataforma.Test.Serializacion
             IEscritor escritor = new EscritorXml();            
             Config configSalida = FabricaConfig.Instancia.Crear();
             HelperConfig.Instancia.Construir(configSalida);
-            Serializador serializador = new Serializador(fichero, escritor);
+            Serializador serializador = new SerializadorObjetoDatos(fichero, escritor);
             
             serializador.Serializar(configSalida);
 
             fichero = new FicheroImpl("config.xml");
             ILector lector = new LectorXml();
             Config configEntrada = FabricaConfig.Instancia.Crear();
-            Deserializador deserializador = new Deserializador(fichero, lector);
+            Deserializador deserializador = new DeserializadorObjetoDatos(fichero, lector);
             deserializador.Deserializar(configEntrada);
 
             Assert.AreEqual(configSalida.Tipos.Longitud, configEntrada.Tipos.Longitud);
@@ -46,7 +46,7 @@ namespace Binapsis.Plataforma.Test.Serializacion
             byte[] output = serializador.Contenido;
 
             // deserializar
-            IDeserializador deserializador = new DeserializacionBinario(typeof(Ensamblado));            
+            DeserializacionBase deserializador = new DeserializacionBinario(typeof(Ensamblado));            
             deserializador.Deserializar(output);
             Ensamblado ensamRecuperado = (deserializador.Objeto as Ensamblado);
 
@@ -67,7 +67,7 @@ namespace Binapsis.Plataforma.Test.Serializacion
             byte[] output = serializador.Contenido;
 
             // deserializar
-            IDeserializador deserializador = new DeserializacionXml(typeof(Ensamblado));
+            DeserializacionBase deserializador = new DeserializacionXml(typeof(Ensamblado));
             deserializador.Deserializar(output);
             Ensamblado ensamRecuperado = (deserializador.Objeto as Ensamblado);
 
@@ -92,7 +92,7 @@ namespace Binapsis.Plataforma.Test.Serializacion
             byte[] output = serializador.Contenido;
 
             // deserializar
-            IDeserializador deserializador = new DeserializacionBinario(typeof(Uri));
+            DeserializacionBase deserializador = new DeserializacionBinario(typeof(Uri));
             deserializador.Deserializar(output);
 
             Uri uriRecuperado = (deserializador.Objeto as Uri);

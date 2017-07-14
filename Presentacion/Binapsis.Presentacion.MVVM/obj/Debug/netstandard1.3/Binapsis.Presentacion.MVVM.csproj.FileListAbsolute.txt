@@ -1,0 +1,13 @@
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.MVVM\bin\Debug\netstandard1.3\Binapsis.Presentacion.MVVM.deps.json
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.MVVM\obj\Debug\netstandard1.3\Binapsis.Presentacion.MVVM.csprojResolveAssemblyReference.cache
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.MVVM\obj\Debug\netstandard1.3\Binapsis.Presentacion.MVVM.AssemblyInfo.cs
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.MVVM\bin\Debug\netstandard1.3\Binapsis.Presentacion.MVVM.dll
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.MVVM\bin\Debug\netstandard1.3\Binapsis.Presentacion.MVVM.pdb
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.MVVM\bin\Debug\netstandard1.3\Binapsis.Plataforma.Estructura.dll
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.MVVM\bin\Debug\netstandard1.3\Binapsis.Plataforma.Notificaciones.dll
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.MVVM\bin\Debug\netstandard1.3\Binapsis.Presentacion.Editores.dll
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.MVVM\bin\Debug\netstandard1.3\Binapsis.Plataforma.Estructura.pdb
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.MVVM\bin\Debug\netstandard1.3\Binapsis.Plataforma.Notificaciones.pdb
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.MVVM\bin\Debug\netstandard1.3\Binapsis.Presentacion.Editores.pdb
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.MVVM\obj\Debug\netstandard1.3\Binapsis.Presentacion.MVVM.dll
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.MVVM\obj\Debug\netstandard1.3\Binapsis.Presentacion.MVVM.pdb

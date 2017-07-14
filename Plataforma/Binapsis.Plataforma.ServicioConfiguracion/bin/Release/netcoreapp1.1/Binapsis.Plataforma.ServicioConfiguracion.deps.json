@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.1",
-    "signature": "ee3b3753e9c4caf1b04904fbfcf9e71639f8980b"
+    "signature": "2a19aaef7b06d0d58aba213c649ce80ee46b417c"
   },
   "compilationOptions": {
     "defines": [
@@ -1122,40 +1122,6 @@
           "lib/netstandard1.1/Microsoft.Net.Http.Headers.dll": {}
         }
       },
-      "microsoft.netcore.portable.compatibility/1.0.1": {
-        "dependencies": {
-          "Microsoft.NETCore.Runtime.CoreCLR": "1.1.1"
-        },
-        "runtime": {
-          "lib/netstandard1.0/System.ComponentModel.DataAnnotations.dll": {},
-          "lib/netstandard1.0/System.Core.dll": {},
-          "lib/netstandard1.0/System.Net.dll": {},
-          "lib/netstandard1.0/System.Numerics.dll": {},
-          "lib/netstandard1.0/System.Runtime.Serialization.dll": {},
-          "lib/netstandard1.0/System.ServiceModel.Web.dll": {},
-          "lib/netstandard1.0/System.ServiceModel.dll": {},
-          "lib/netstandard1.0/System.Windows.dll": {},
-          "lib/netstandard1.0/System.Xml.Linq.dll": {},
-          "lib/netstandard1.0/System.Xml.Serialization.dll": {},
-          "lib/netstandard1.0/System.Xml.dll": {},
-          "lib/netstandard1.0/System.dll": {}
-        },
-        "compile": {
-          "ref/netstandard1.0/System.ComponentModel.DataAnnotations.dll": {},
-          "ref/netstandard1.0/System.Core.dll": {},
-          "ref/netstandard1.0/System.Net.dll": {},
-          "ref/netstandard1.0/System.Numerics.dll": {},
-          "ref/netstandard1.0/System.Runtime.Serialization.dll": {},
-          "ref/netstandard1.0/System.ServiceModel.Web.dll": {},
-          "ref/netstandard1.0/System.ServiceModel.dll": {},
-          "ref/netstandard1.0/System.Windows.dll": {},
-          "ref/netstandard1.0/System.Xml.Linq.dll": {},
-          "ref/netstandard1.0/System.Xml.Serialization.dll": {},
-          "ref/netstandard1.0/System.Xml.dll": {},
-          "ref/netstandard1.0/System.dll": {},
-          "ref/netstandard1.0/mscorlib.dll": {}
-        }
-      },
       "newtonsoft.json/9.0.1": {
         "dependencies": {
           "Microsoft.CSharp": "4.3.0",
@@ -1488,10 +1454,22 @@
           "lib/netstandard1.0/System.Text.Encodings.Web.dll": {}
         }
       },
+      "binapsis.plataforma.cambios/1.0.0": {
+        "dependencies": {
+          "Binapsis.Plataforma.Estructura": "1.0.0",
+          "Binapsis.Plataforma.Helper": "1.0.0",
+          "NETStandard.Library": "1.6.1"
+        },
+        "runtime": {
+          "Binapsis.Plataforma.Cambios.dll": {}
+        },
+        "compile": {
+          "Binapsis.Plataforma.Cambios.dll": {}
+        }
+      },
       "binapsis.plataforma.configuracion/1.0.0": {
         "dependencies": {
           "Binapsis.Plataforma.Estructura": "1.0.0",
-          "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
           "NETStandard.Library": "1.6.1"
         },
         "runtime": {
@@ -1503,12 +1481,12 @@
       },
       "binapsis.plataforma.configuracion.serializacion/1.0.0": {
         "dependencies": {
+          "Binapsis.Plataforma.Cambios": "1.0.0",
           "Binapsis.Plataforma.Configuracion": "1.0.0",
           "Binapsis.Plataforma.Estructura": "1.0.0",
           "Binapsis.Plataforma.Serializacion": "1.0.0",
           "Binapsis.Plataforma.Serializacion.Binario": "1.0.0",
           "Binapsis.Plataforma.Serializacion.Xml": "1.0.0",
-          "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
           "NETStandard.Library": "1.6.1"
         },
         "runtime": {
@@ -1534,7 +1512,6 @@
       },
       "binapsis.plataforma.estructura/1.0.0": {
         "dependencies": {
-          "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
           "NETStandard.Library": "1.6.1"
         },
         "runtime": {
@@ -1544,10 +1521,22 @@
           "Binapsis.Plataforma.Estructura.dll": {}
         }
       },
-      "binapsis.plataforma.serializacion/1.0.0": {
+      "binapsis.plataforma.helper/1.0.0": {
         "dependencies": {
           "Binapsis.Plataforma.Estructura": "1.0.0",
-          "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
+          "NETStandard.Library": "1.6.1"
+        },
+        "runtime": {
+          "Binapsis.Plataforma.Helper.dll": {}
+        },
+        "compile": {
+          "Binapsis.Plataforma.Helper.dll": {}
+        }
+      },
+      "binapsis.plataforma.serializacion/1.0.0": {
+        "dependencies": {
+          "Binapsis.Plataforma.Cambios": "1.0.0",
+          "Binapsis.Plataforma.Estructura": "1.0.0",
           "NETStandard.Library": "1.6.1"
         },
         "runtime": {
@@ -1559,9 +1548,9 @@
       },
       "binapsis.plataforma.serializacion.binario/1.0.0": {
         "dependencies": {
+          "Binapsis.Plataforma.Cambios": "1.0.0",
           "Binapsis.Plataforma.Estructura": "1.0.0",
           "Binapsis.Plataforma.Serializacion": "1.0.0",
-          "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
           "NETStandard.Library": "1.6.1"
         },
         "runtime": {
@@ -1573,9 +1562,9 @@
       },
       "binapsis.plataforma.serializacion.xml/1.0.0": {
         "dependencies": {
+          "Binapsis.Plataforma.Cambios": "1.0.0",
           "Binapsis.Plataforma.Estructura": "1.0.0",
           "Binapsis.Plataforma.Serializacion": "1.0.0",
-          "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
           "NETStandard.Library": "1.6.1"
         },
         "runtime": {
@@ -3755,13 +3744,6 @@
       "path": "microsoft.net.http.headers/1.1.1",
       "hashPath": "microsoft.net.http.headers.1.1.1.nupkg.sha512"
     },
-    "microsoft.netcore.portable.compatibility/1.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Vd+lvLcGwvkedxtKn0U8s9uR4p0Lm+0U2QvDsLaw7g4S1W4KfPDbaW+ROhhLCSOx/gMYC72/b+z+o4fqS/oxVg==",
-      "path": "microsoft.netcore.portable.compatibility/1.0.1",
-      "hashPath": "microsoft.netcore.portable.compatibility.1.0.1.nupkg.sha512"
-    },
     "newtonsoft.json/9.0.1": {
       "type": "package",
       "serviceable": true,
@@ -3888,6 +3870,11 @@
       "path": "system.text.encodings.web/4.3.0",
       "hashPath": "system.text.encodings.web.4.3.0.nupkg.sha512"
     },
+    "binapsis.plataforma.cambios/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "binapsis.plataforma.configuracion/1.0.0": {
       "type": "project",
       "serviceable": false,
@@ -3904,6 +3891,11 @@
       "sha512": ""
     },
     "binapsis.plataforma.estructura/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "binapsis.plataforma.helper/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

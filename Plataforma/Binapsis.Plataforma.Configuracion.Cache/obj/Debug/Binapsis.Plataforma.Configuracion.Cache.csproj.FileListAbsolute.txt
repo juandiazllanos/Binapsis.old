@@ -1,7 +1,0 @@
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Cache\bin\Debug\Binapsis.Plataforma.Configuracion.Cache.dll
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Cache\bin\Debug\Binapsis.Plataforma.Configuracion.Cache.pdb
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Cache\bin\Debug\Binapsis.Plataforma.Estructura.dll
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Cache\bin\Debug\Binapsis.Plataforma.Estructura.pdb
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Cache\obj\Debug\Binapsis.Plataforma.Configuracion.Cache.csprojResolveAssemblyReference.cache
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Cache\obj\Debug\Binapsis.Plataforma.Configuracion.Cache.dll
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Cache\obj\Debug\Binapsis.Plataforma.Configuracion.Cache.pdb

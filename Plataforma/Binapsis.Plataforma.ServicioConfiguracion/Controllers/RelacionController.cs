@@ -3,6 +3,7 @@ using Binapsis.Plataforma.Configuracion;
 using Binapsis.Plataforma.Configuracion.Sql;
 using Binapsis.Plataforma.Configuracion.Sql.Helper;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,6 +17,12 @@ namespace Binapsis.Plataforma.ServicioConfiguracion.Controllers
         {
             IHelper helper = new HelperRelacion(CadenaConexion);
             return (Relacion)helper.Recuperar(nombre);
+        }
+        
+        public IList<Relacion> Get(string uri = null, string tipo = null, string propiedad = null, 
+                string tablaPrincipal = null, string tablaSecundaria = null)
+        {
+            return new HelperRelacion(CadenaConexion).Recuperar(uri, tipo, propiedad, tablaPrincipal, tablaSecundaria);
         }
         
         [HttpPost]

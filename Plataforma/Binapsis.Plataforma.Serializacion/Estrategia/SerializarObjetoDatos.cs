@@ -19,11 +19,12 @@ namespace Binapsis.Plataforma.Serializacion.Estrategia
 
         public override void Escribir()
         {
-            Diagrama diagrama = new Diagrama();
-            BuilderDiagrama builder = new BuilderDiagrama(diagrama);
+            //Diagrama diagrama = new Diagrama();
+            NodoObjetoDatos nod = new NodoObjetoDatos();
+            BuilderNodoObjetoDatos builder = new BuilderNodoObjetoDatos(nod);
             builder.Construir(ObjetoDatos);
 
-            Escribir(diagrama.Root as NodoObjetoDatos);
+            Escribir(nod);
         }
 
         public virtual void Escribir(NodoObjetoDatos nod)

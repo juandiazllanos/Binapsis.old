@@ -117,7 +117,7 @@ namespace Binapsis.Plataforma.Test.Serializacion
                 
         void Serializar(IDiagramaDatos[] items, ISecuencia secuencia, IEscritor escritor)
         {
-            Serializador serializador = new Serializador(secuencia, escritor);
+            Serializador serializador = new SerializadorDiagramaDatos(secuencia, escritor);
             serializador.Serializar(items);
         }
 
@@ -140,7 +140,7 @@ namespace Binapsis.Plataforma.Test.Serializacion
 
         void Deserializar(ITipo tipo, List<IDiagramaDatos> items, ISecuencia secuencia, ILector lector)
         {
-            Deserializador deserializador = new Deserializador(secuencia, lector);
+            Deserializador deserializador = new DeserializadorDiagramaDatos(secuencia, lector);
             deserializador.Deserializar(tipo, items);
         }
         #endregion

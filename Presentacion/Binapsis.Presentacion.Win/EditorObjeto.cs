@@ -24,7 +24,6 @@ namespace Binapsis.Presentacion.Win
         
         private void Inicializar()
         {
-            _mapeo = new MapeoTipo(UsarReflexion);
             UsarReflexion = true;
         }
 
@@ -72,6 +71,8 @@ namespace Binapsis.Presentacion.Win
         public void Establecer(IObjetoDatos modelo)
         {
             if (_vistaModelo != null) return;
+
+            _mapeo = new MapeoTipo(UsarReflexion);
 
             InicializarVista();
             InicializarComando();

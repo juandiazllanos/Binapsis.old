@@ -27,7 +27,7 @@ namespace Binapsis.Plataforma.ServicioConfiguracion.Formatters
         public override Task<InputFormatterResult> ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
         {
             Type type = context.ModelType;
-            IDeserializador helper = new DeserializacionXml(type);
+            DeserializacionBase helper = new DeserializacionXml(type);
             var solicitud = context.HttpContext.Request;
             ConfiguracionBase resultado = null;
             

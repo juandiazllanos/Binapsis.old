@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Binapsis.Plataforma.Helper\Binapsis.Plataforma.Helper.csproj" />
     <ProjectReference Include="..\Binapsis.Plataforma.Estructura\Binapsis.Plataforma.Estructura.csproj" />
+    <ProjectReference Include="..\Binapsis.Plataforma.Helper\Binapsis.Plataforma.Helper.csproj" />
   </ItemGroup>
 
 </Project>

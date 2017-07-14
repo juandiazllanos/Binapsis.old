@@ -1,7 +1,0 @@
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion\bin\Release\Binapsis.Plataforma.Serializacion.dll
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion\bin\Release\Binapsis.Plataforma.Serializacion.pdb
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion\bin\Release\Binapsis.Plataforma.Estructura.dll
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion\bin\Release\Binapsis.Plataforma.Estructura.pdb
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion\obj\Release\Binapsis.Plataforma.Serializacion.csprojResolveAssemblyReference.cache
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion\obj\Release\Binapsis.Plataforma.Serializacion.dll
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion\obj\Release\Binapsis.Plataforma.Serializacion.pdb

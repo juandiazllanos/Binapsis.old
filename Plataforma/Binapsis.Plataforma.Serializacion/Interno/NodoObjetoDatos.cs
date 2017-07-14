@@ -5,21 +5,15 @@ namespace Binapsis.Plataforma.Serializacion.Interno
     internal class NodoObjetoDatos : Nodo
     {
         #region Constructores
-        public NodoObjetoDatos(ObjetoMap omap)
-            : this(null, omap)
-        {            
-        }
-
-        //public NodoObjetoDatos(NodoReferencia padre, ObjetoMap omap) 
-        //    : this(padre as Nodo, omap)
-        //{
-        //}
-
-        public NodoObjetoDatos(Nodo padre, ObjetoMap omap)
-            : base(padre)
+        public NodoObjetoDatos()
+            : base()
         {
-            ObjetoMap = omap;
         }
+
+        public NodoObjetoDatos(Nodo nodoPadre)
+            : base(nodoPadre)
+        {
+        }        
         #endregion
 
 
@@ -31,7 +25,8 @@ namespace Binapsis.Plataforma.Serializacion.Interno
 
         public IObjetoDatos ObjetoDatos
         {
-            get => ObjetoMap.ObjetoDatos;
+            get; 
+            set;
         }
 
         public virtual ObjetoMap ObjetoMap
@@ -43,6 +38,7 @@ namespace Binapsis.Plataforma.Serializacion.Interno
         public virtual string Propietario
         {
             get => ObjetoMap.Propietario;
+            set => ObjetoMap.Propietario = value;
         }
 
         public bool EsProxy
@@ -65,46 +61,8 @@ namespace Binapsis.Plataforma.Serializacion.Interno
 
         public ITipo Tipo
         {
-            get => ObjetoMap.ObjetoDatos.Tipo; 
+            get => ObjetoDatos?.Tipo; 
         }
         #endregion
-
-                
-        
-        //IEnumerable<IPropiedad> INodoObjetoDatos.Atributos
-        //{
-        //    get
-        //    {
-        //        if (EsProxy) return new List<IPropiedad>();
-
-        //        if (_atrib == null)
-        //        {
-        //            _atrib = from IPropiedad propiedad in ObjetoMap.ObjetoDatos.Tipo.Propiedades
-        //                     where propiedad.Tipo.EsTipoDeDato && ObjetoMap.ObjetoDatos.Establecido(propiedad)
-        //                     select propiedad;
-        //        }
-
-        //        return _atrib;
-        //    }
-        //}
-
-        //IEnumerable<INodoReferencia> INodoObjetoDatos.Referencias
-        //{
-        //    get
-        //    {
-        //        if (EsProxy) return new List<INodoReferencia>();
-
-        //        if (_refer == null)
-        //        {
-        //            _refer = from NodoReferencia item in Nodos
-        //                     where !item.Propiedad.Tipo.EsTipoDeDato
-        //                     select item;
-        //        }
-
-        //        return _refer;
-        //    }
-        //}
-        //#endregion
-
     }
 }

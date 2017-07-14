@@ -21,3 +21,7 @@ D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.ServicioConfiguracion\obj\
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.ServicioConfiguracion\obj\Release\netcoreapp1.1\Binapsis.Plataforma.ServicioConfiguracion.AssemblyInfo.cs
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.ServicioConfiguracion\obj\Release\netcoreapp1.1\Binapsis.Plataforma.ServicioConfiguracion.dll
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.ServicioConfiguracion\obj\Release\netcoreapp1.1\Binapsis.Plataforma.ServicioConfiguracion.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.ServicioConfiguracion\bin\Release\netcoreapp1.1\Binapsis.Plataforma.Cambios.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.ServicioConfiguracion\bin\Release\netcoreapp1.1\Binapsis.Plataforma.Helper.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.ServicioConfiguracion\bin\Release\netcoreapp1.1\Binapsis.Plataforma.Cambios.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.ServicioConfiguracion\bin\Release\netcoreapp1.1\Binapsis.Plataforma.Helper.pdb

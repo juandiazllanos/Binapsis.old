@@ -34,7 +34,7 @@ namespace Binapsis.Plataforma.Configuracion.Serializacion
 
         protected void Serializar(Secuencia secuencia, IEscritor escritor)
         {
-            Serializador helper = new Serializador(secuencia, escritor);
+            Serializador helper = new SerializadorObjetoDatos(secuencia, escritor);
             helper.Serializar(_objeto);
             _contenido = secuencia.Contenido;
         }
@@ -70,10 +70,10 @@ namespace Binapsis.Plataforma.Configuracion.Serializacion
             get { return Contenido; }
         }
 
-        ConfiguracionBase ISerializador.Objeto
-        {
-            get { return Objeto; }
-        }
+        //ConfiguracionBase ISerializador.Objeto
+        //{
+        //    get { return Objeto; }
+        //}
         #endregion
     }
 }

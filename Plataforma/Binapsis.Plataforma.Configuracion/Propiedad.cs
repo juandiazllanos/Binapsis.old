@@ -22,6 +22,7 @@ namespace Binapsis.Plataforma.Configuracion
             if (string.IsNullOrEmpty(Alias) || (Alias.Length <= alias.Length && alias.Substring(0, Alias.Length) == Alias))
                 Alias = alias;
         }
+        
         #endregion
 
 
@@ -73,7 +74,7 @@ namespace Binapsis.Plataforma.Configuracion
         public object ValorInicial
         {
             get => ObtenerString("ValorInicial");
-            set => EstablecerString("ValorInicial", value.ToString());
+            set => EstablecerString("ValorInicial", value?.ToString());
         }
 
         public Tipo TipoAsociado

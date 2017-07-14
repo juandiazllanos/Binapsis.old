@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.1",
-    "signature": "f95542b6513e008157d06b70ff10e6df2df83e62"
+    "signature": "4bcf8d6a909d8ff23d9f197e2e0b08976bf7e736"
   },
   "compilationOptions": {},
   "targets": {
@@ -14,22 +14,6 @@
         },
         "runtime": {
           "Binapsis.Plataforma.Configuracion.Sql.dll": {}
-        }
-      },
-      "microsoft.netcore.portable.compatibility/1.0.1": {
-        "runtime": {
-          "lib/netstandard1.0/System.ComponentModel.DataAnnotations.dll": {},
-          "lib/netstandard1.0/System.Core.dll": {},
-          "lib/netstandard1.0/System.Net.dll": {},
-          "lib/netstandard1.0/System.Numerics.dll": {},
-          "lib/netstandard1.0/System.Runtime.Serialization.dll": {},
-          "lib/netstandard1.0/System.ServiceModel.Web.dll": {},
-          "lib/netstandard1.0/System.ServiceModel.dll": {},
-          "lib/netstandard1.0/System.Windows.dll": {},
-          "lib/netstandard1.0/System.Xml.Linq.dll": {},
-          "lib/netstandard1.0/System.Xml.Serialization.dll": {},
-          "lib/netstandard1.0/System.Xml.dll": {},
-          "lib/netstandard1.0/System.dll": {}
         }
       },
       "runtime.native.system.data.sqlclient.sni/4.3.0": {
@@ -103,17 +87,13 @@
       },
       "binapsis.plataforma.configuracion/1.0.0": {
         "dependencies": {
-          "Binapsis.Plataforma.Estructura": "1.0.0",
-          "Microsoft.NETCore.Portable.Compatibility": "1.0.1"
+          "Binapsis.Plataforma.Estructura": "1.0.0"
         },
         "runtime": {
           "Binapsis.Plataforma.Configuracion.dll": {}
         }
       },
       "binapsis.plataforma.estructura/1.0.0": {
-        "dependencies": {
-          "Microsoft.NETCore.Portable.Compatibility": "1.0.1"
-        },
         "runtime": {
           "Binapsis.Plataforma.Estructura.dll": {}
         }
@@ -125,13 +105,6 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
-    },
-    "microsoft.netcore.portable.compatibility/1.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Vd+lvLcGwvkedxtKn0U8s9uR4p0Lm+0U2QvDsLaw7g4S1W4KfPDbaW+ROhhLCSOx/gMYC72/b+z+o4fqS/oxVg==",
-      "path": "microsoft.netcore.portable.compatibility/1.0.1",
-      "hashPath": "microsoft.netcore.portable.compatibility.1.0.1.nupkg.sha512"
     },
     "runtime.native.system.data.sqlclient.sni/4.3.0": {
       "type": "package",

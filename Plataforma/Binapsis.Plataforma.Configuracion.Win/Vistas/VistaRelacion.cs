@@ -16,5 +16,11 @@ namespace Binapsis.Plataforma.Configuracion.Win.Vistas
         {
             InitializeComponent();
         }
+
+        protected override void InicializarVista()
+        {
+            base.InicializarVista();
+            Establecer("TipoAsociado", Tipo);
+        }
     }
 }

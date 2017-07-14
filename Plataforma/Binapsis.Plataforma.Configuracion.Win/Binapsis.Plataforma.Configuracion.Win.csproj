@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Binapsis.Presentacion.Editores">
-      <HintPath>..\..\Presentacion\Binapsis.Presentacion.Editores\bin\Debug\Binapsis.Presentacion.Editores.dll</HintPath>
-    </Reference>
     <Reference Include="DevExpress.Utils.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraGrid.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -233,6 +230,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Presentacion\Binapsis.Presentacion.Editores\Binapsis.Presentacion.Editores.csproj">
+      <Project>{b61630d5-ad76-4a90-9411-e55ffa5b7e40}</Project>
+      <Name>Binapsis.Presentacion.Editores</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Presentacion\Binapsis.Presentacion.MVVM\Binapsis.Presentacion.MVVM.csproj">
       <Project>{a6755b01-2b4a-4f97-9e0c-7f48bed6ec80}</Project>
       <Name>Binapsis.Presentacion.MVVM</Name>

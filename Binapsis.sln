@@ -45,7 +45,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.AgenteC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.Cambios", "Plataforma\Binapsis.Plataforma.Cambios\Binapsis.Plataforma.Cambios.csproj", "{D0315649-1489-4759-9139-03AA3E4C40CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.Helper", "Binapsis.Plataforma.Helper\Binapsis.Plataforma.Helper.csproj", "{77372CA5-222A-4B97-95C7-ED6CB382BB23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.Datos", "Plataforma\Binapsis.Plataforma.Datos\Binapsis.Plataforma.Datos.csproj", "{E1170C6F-C435-469E-90DB-7C993FB6D7A4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Binapsis.Plataforma.Helper", "Plataforma\Binapsis.Plataforma.Helper\Binapsis.Plataforma.Helper.csproj", "{57B59A19-17E3-4386-8CBB-83EC08DCAD3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.Datos.SQLite", "Plataforma\Binapsis.Plataforma.Datos.SQLite\Binapsis.Plataforma.Datos.SQLite.csproj", "{1A160C5B-5A91-4B64-8460-EE4AF9D1E499}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -129,10 +133,18 @@ Global
 		{D0315649-1489-4759-9139-03AA3E4C40CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0315649-1489-4759-9139-03AA3E4C40CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0315649-1489-4759-9139-03AA3E4C40CE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{77372CA5-222A-4B97-95C7-ED6CB382BB23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77372CA5-222A-4B97-95C7-ED6CB382BB23}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{77372CA5-222A-4B97-95C7-ED6CB382BB23}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77372CA5-222A-4B97-95C7-ED6CB382BB23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1170C6F-C435-469E-90DB-7C993FB6D7A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1170C6F-C435-469E-90DB-7C993FB6D7A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1170C6F-C435-469E-90DB-7C993FB6D7A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1170C6F-C435-469E-90DB-7C993FB6D7A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57B59A19-17E3-4386-8CBB-83EC08DCAD3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57B59A19-17E3-4386-8CBB-83EC08DCAD3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57B59A19-17E3-4386-8CBB-83EC08DCAD3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57B59A19-17E3-4386-8CBB-83EC08DCAD3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A160C5B-5A91-4B64-8460-EE4AF9D1E499}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A160C5B-5A91-4B64-8460-EE4AF9D1E499}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A160C5B-5A91-4B64-8460-EE4AF9D1E499}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A160C5B-5A91-4B64-8460-EE4AF9D1E499}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -157,6 +169,8 @@ Global
 		{AFFF5D2D-7B8C-4F51-B1F9-BB94D3DC83F7} = {8D377004-0BB4-4331-8CB2-0178AEBA8F82}
 		{71753498-7F80-4D33-BA78-1D574230555D} = {8D377004-0BB4-4331-8CB2-0178AEBA8F82}
 		{D0315649-1489-4759-9139-03AA3E4C40CE} = {8D377004-0BB4-4331-8CB2-0178AEBA8F82}
-		{77372CA5-222A-4B97-95C7-ED6CB382BB23} = {8D377004-0BB4-4331-8CB2-0178AEBA8F82}
+		{E1170C6F-C435-469E-90DB-7C993FB6D7A4} = {8D377004-0BB4-4331-8CB2-0178AEBA8F82}
+		{57B59A19-17E3-4386-8CBB-83EC08DCAD3E} = {8D377004-0BB4-4331-8CB2-0178AEBA8F82}
+		{1A160C5B-5A91-4B64-8460-EE4AF9D1E499} = {8D377004-0BB4-4331-8CB2-0178AEBA8F82}
 	EndGlobalSection
 EndGlobal

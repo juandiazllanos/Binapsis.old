@@ -1,4 +1,5 @@
 ﻿using Binapsis.Plataforma.Serializacion.Interno;
+using System.Collections.Generic;
 
 namespace Binapsis.Plataforma.Serializacion.Estrategia
 {
@@ -9,19 +10,26 @@ namespace Binapsis.Plataforma.Serializacion.Estrategia
         {
         }
 
-        protected void Escribir(Diagrama diagrama)
-        {
-            NodoColeccion root = diagrama.Root as NodoColeccion;
-            if (root == null) return;
+        //protected void Escribir(Diagrama diagrama)
+        //{
+        //    NodoColeccion root = diagrama.Root as NodoColeccion;
+        //    if (root == null) return;
 
-            EscribirColeccion(root.Nodos.Count);
-            EscribirItems(root);
+        //    EscribirColeccion(root.Nodos.Count);
+        //    EscribirItems(root);
+        //    EscribirColeccionCierre();
+        //}
+
+        protected void Escribir(NodoColeccion items)
+        {
+            EscribirColeccion(items.Nodos.Count);
+            EscribirItems(items.Nodos);
             EscribirColeccionCierre();
         }
 
-        protected virtual void EscribirItems(NodoColeccion items)
+        protected virtual void EscribirItems(IEnumerable<Nodo> items)
         {
-            foreach (Nodo item in items.Nodos)
+            foreach (Nodo item in items)
                 EscribirItem(item);
         }
 

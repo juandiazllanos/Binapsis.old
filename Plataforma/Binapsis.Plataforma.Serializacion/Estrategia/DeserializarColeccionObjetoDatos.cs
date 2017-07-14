@@ -1,11 +1,11 @@
 ﻿using Binapsis.Plataforma.Estructura;
-using System.Collections.Generic;
+using System.Collections;
 
 namespace Binapsis.Plataforma.Serializacion.Estrategia
 {
-    class DeserializarColeccionObjetoDatos : DeserializarColeccion<IObjetoDatos>
+    class DeserializarColeccionObjetoDatos : DeserializarColeccion
     {
-        public DeserializarColeccionObjetoDatos(ITipo tipo, List<IObjetoDatos> items, ILector lector) 
+        public DeserializarColeccionObjetoDatos(ITipo tipo, IList items, ILector lector) 
             : base(items, lector)
         {
             Tipo = tipo;
@@ -20,12 +20,9 @@ namespace Binapsis.Plataforma.Serializacion.Estrategia
         {
             //leer items
             int longitud = Lector.LeerItems();
-            IObjetoDatos[] items = new IObjetoDatos[longitud];
                         
             for (int i = 0; i < longitud; i++)
-                items[i] = LeerItem();
-
-            Items.AddRange(items);
+                Items.Add(LeerItem());            
         }
 
         private IObjetoDatos LeerItem()

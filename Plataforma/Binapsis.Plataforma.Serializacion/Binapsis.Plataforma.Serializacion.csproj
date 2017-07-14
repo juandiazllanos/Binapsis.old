@@ -1,94 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A7961B7C-6D4F-47E7-8D00-F95E1134E817}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Binapsis.Plataforma.Serializacion</RootNamespace>
-    <AssemblyName>Binapsis.Plataforma.Serializacion</AssemblyName>
-    <DefaultLanguage>es-ES</DefaultLanguage>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <TargetFramework>netstandard1.3</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="project.json" />
-    <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\Binapsis.Plataforma.Cambios\Binapsis.Plataforma.Cambios.csproj"/>
+    <ProjectReference Include="..\Binapsis.Plataforma.Estructura\Binapsis.Plataforma.Estructura.csproj"/>
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Estrategia\Deserializar.cs" />
-    <Compile Include="Estrategia\DeserializarColeccion.cs" />
-    <Compile Include="Estrategia\DeserializarColeccionDiagramaDatos.cs" />
-    <Compile Include="Estrategia\DeserializarColeccionObjetoDatos.cs" />
-    <Compile Include="Estrategia\DeserializarDiagramaDatos.cs" />
-    <Compile Include="Estrategia\DeserializarObjetoCambios.cs" />
-    <Compile Include="Estrategia\DeserializarObjetoDatos.cs" />
-    <Compile Include="Estrategia\SerializarColeccion.cs" />
-    <Compile Include="Estrategia\SerializarColeccionDiagramaDatos.cs" />
-    <Compile Include="Estrategia\SerializarColeccionObjetoDatos.cs" />
-    <Compile Include="Estrategia\SerializarDiagramaDatos.cs" />
-    <Compile Include="Estrategia\SerializarObjetoCambios.cs" />
-    <Compile Include="Estrategia\SerializarObjetoDatos.cs" />
-    <Compile Include="Estrategia\Serializar.cs" />
-    <Compile Include="Deserializador.cs" />
-    <Compile Include="Interno\BuilderDiagrama.cs" />
-    <Compile Include="Impl\LectorBase.cs" />
-    <Compile Include="Impl\EscritorBase.cs" />
-    <Compile Include="IEscritor.cs" />
-    <Compile Include="ILector.cs" />
-    <Compile Include="Interno\NodoColeccion.cs" />
-    <Compile Include="Interno\NodoObjeto.cs" />
-    <Compile Include="ISecuencia.cs" />
-    <Compile Include="Interno\Diagrama.cs" />
-    <Compile Include="Interno\Heap.cs" />
-    <Compile Include="Interno\HeapId.cs" />
-    <Compile Include="Interno\Nodo.cs" />
-    <Compile Include="Interno\NodoObjetoDatos.cs" />
-    <Compile Include="Interno\NodoReferencia.cs" />
-    <Compile Include="Interno\ObjetoMap.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Serializador.cs" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <ProjectReference Include="..\Binapsis.Plataforma.Cambios\Binapsis.Plataforma.Cambios.csproj">
-      <Project>{d0315649-1489-4759-9139-03aa3e4c40ce}</Project>
-      <Name>Binapsis.Plataforma.Cambios</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Binapsis.Plataforma.Estructura\Binapsis.Plataforma.Estructura.csproj">
-      <Project>{1095c376-0173-487d-bd2e-54991e05f539}</Project>
-      <Name>Binapsis.Plataforma.Estructura</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

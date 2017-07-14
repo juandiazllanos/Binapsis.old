@@ -215,13 +215,13 @@ namespace Binapsis.Plataforma.Test.Serializacion
         {
             FicheroImpl fichero = (secuencia as FicheroImpl);
             
-            Serializador serializador = new Serializador(fichero, escritor);
+            Serializador serializador = new SerializadorObjetoDatos(fichero, escritor);
             serializador.Serializar(od);
 
             FicheroImpl fichero2 = new FicheroImpl(fichero.Ruta);
 
             IObjetoDatos od2 = FabricaDatos.Instancia.Crear(od.Tipo);
-            Deserializador deserializador = new Deserializador(fichero2, lector);
+            Deserializador deserializador = new DeserializadorObjetoDatos(fichero2, lector);
             deserializador.Deserializar(od2);
 
             Evaluar.Comparar(od, od2);
