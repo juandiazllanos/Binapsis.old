@@ -1,91 +1,57 @@
-﻿using System;
+﻿using Binapsis.Plataforma.Configuracion;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Binapsis.Plataforma.Datos.Impl
 {
-    public class Parametros : IEnumerable<Parametro>
+    public class Parametros : IEnumerable<ParametroComando>
     {
-        List<Parametro> _parametros;
+        List<ParametroComando> _parametros = new List<ParametroComando>();
 
         #region Constructores
-        public Parametros()
-        {         
-            _parametros = new List<Parametro>();
+        public Parametros(Comando comando)
+        {   
+            ConstruirParametros(comando);
         }
         #endregion
 
 
         #region Metodos
+        protected virtual void ConstruirParametros(Comando comando)
+        {
+            foreach (Parametro parametro in comando.Parametros)
+                AgregarParametro(CrearParametro(parametro));
+        }
+                
+        protected virtual ParametroComando CrearParametro(Parametro parametro)
+        {
+            return new ParametroComando(parametro);
+        }
+
+        protected virtual void AgregarParametro(ParametroComando parametroComando)
+        {
+            _parametros.Add(parametroComando);
+        }
+
         public bool Existe(string nombre)
         {
             return _parametros.Exists(item => item.Nombre == nombre);
         }
-
-        public void Remover(Parametro parametro)
-        {
-            if (parametro == null || _parametros.Contains(parametro)) return;
-
-            int i = _parametros.IndexOf(parametro);
-            _parametros.Remove(parametro);
-            
-            for (int i2 = i; i2 < _parametros.Count; i2++)
-                _parametros[i2].Indice = i2;            
-        }
-
-        public Parametro Agregar(string nombre)
-        {
-            return Agregar(nombre, typeof(string));
-        }
-
-        public Parametro Agregar(string nombre, Type type)
-        {
-            return Agregar(nombre, type, null);
-        }
-
-        public Parametro Agregar(string nombre, Type type, object valor)
-        {
-            return Agregar(nombre, type, "IN", valor);
-        }
-
-        public Parametro Agregar(string nombre, Type type, string direccion, object valor)
-        {
-            Parametro parametro = new Parametro();
-
-            parametro.Nombre = nombre;
-            parametro.Type = type;
-            parametro.Direccion = direccion;
-            parametro.Valor = valor;
-
-            Agregar(parametro);
-
-            return parametro;
-        }
-
-        public void Agregar(Parametro parametro)
-        {
-            if (!Existe(parametro.Nombre))
-                _parametros.Add(parametro);
-            else
-                throw new Exception($"El parametro '{parametro.Nombre}' ya ha sido agregado.");
-
-            parametro.Indice = _parametros.IndexOf(parametro);
-        }
-
+        
         public int Contar()
         {
             return _parametros.Count;
         }
 
-        public Parametro Obtener(string nombre)
+        public ParametroComando Obtener(string nombre)
         {
             return _parametros.FirstOrDefault(item => item.Nombre == nombre);
         }
 
-        public Parametro Obtener(int indice)
+        public ParametroComando Obtener(int indice)
         {
-            if (indice > 0 && indice < _parametros.Count)
+            if (indice >= 0 && indice < _parametros.Count)
                 return _parametros[indice];
             else
                 return null;
@@ -94,12 +60,12 @@ namespace Binapsis.Plataforma.Datos.Impl
 
 
         #region Indizadores
-        public Parametro this[string nombre]
+        public ParametroComando this[string nombre]
         {
             get => Obtener(nombre);
         }
 
-        public Parametro this[int indice]
+        public ParametroComando this[int indice]
         {
             get => Obtener(indice);
         }
@@ -107,14 +73,14 @@ namespace Binapsis.Plataforma.Datos.Impl
 
 
         #region IEnumerable
-        public IEnumerator<Parametro> GetEnumerator()
+        public IEnumerator<ParametroComando> GetEnumerator()
         {
-            return ((IEnumerable<Parametro>)_parametros).GetEnumerator();
+            return ((IEnumerable<ParametroComando>)_parametros).GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return ((IEnumerable<Parametro>)_parametros).GetEnumerator();
+            return ((IEnumerable<ParametroComando>)_parametros).GetEnumerator();
         }
         #endregion
     }

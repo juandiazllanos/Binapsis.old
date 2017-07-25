@@ -2,8 +2,13 @@
 
 namespace Binapsis.Plataforma.Datos.Impl
 {
-    class ParametroColumna : Parametro
+    class ParametroColumna : ParametroComando
     {
+        public ParametroColumna(Plataforma.Configuracion.Parametro parametro) 
+            : base(parametro)
+        {
+        }
+
         public MapeoColumna MapeoColumna
         {
             get;

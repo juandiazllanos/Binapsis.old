@@ -10,13 +10,13 @@ namespace Binapsis.Plataforma.Datos.Operacion
     {
         public override void Ejecutar()
         {
-            foreach (Parametro parametro in Comando.Parametros)                
+            foreach (ParametroComando parametro in Comando.Parametros)                
                     Establecer(parametro);
 
             Contexto.EjecutarComando(Comando);
         }
         
-        private void Establecer(Parametro parametro)
+        private void Establecer(ParametroComando parametro)
         {
             MapeoColumna mapeoColumna;
 
@@ -28,7 +28,7 @@ namespace Binapsis.Plataforma.Datos.Operacion
             Establecer(parametro, mapeoColumna);            
         }
 
-        private void Establecer(Parametro parametro, MapeoColumna mapeoColumna)
+        private void Establecer(ParametroComando parametro, MapeoColumna mapeoColumna)
         {
             object valor = null;
 
@@ -66,6 +66,12 @@ namespace Binapsis.Plataforma.Datos.Operacion
         }
         
         public ComandoEscritura Comando
+        {
+            get;
+            set;
+        }
+
+        public IObjetoDatos ObjetoDatos
         {
             get;
             set;

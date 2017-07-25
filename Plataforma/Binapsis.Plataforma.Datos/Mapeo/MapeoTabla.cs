@@ -40,9 +40,19 @@ namespace Binapsis.Plataforma.Datos.Mapeo
             return ObtenerMapeoColumnaPorPropiedad(propiedad)?.Columna;
         }
 
+        public MapeoColumna ObtenerMapeoColumnaPorColumna(Columna columna)
+        {
+            return ObtenerMapeoColumnaPorColumna(columna?.Nombre);
+        }
+
         public MapeoColumna ObtenerMapeoColumnaPorColumna(string columna)
         {
             return _columnas.FirstOrDefault(item => item.Columna.Nombre == columna);
+        }
+
+        public MapeoColumna ObtenerMapeoColumnaPorPropiedad(IPropiedad propiedad)
+        {
+            return ObtenerMapeoColumnaPorPropiedad(propiedad?.Nombre);
         }
 
         public MapeoColumna ObtenerMapeoColumnaPorPropiedad(string propiedad)
@@ -58,6 +68,11 @@ namespace Binapsis.Plataforma.Datos.Mapeo
         public MapeoRelacion ObtenerMapeoRelacionPorPropiedad(string propiedad)
         {
             return _relaciones.FirstOrDefault(item => item.Propiedad.Nombre == propiedad);
+        }
+
+        public IList<MapeoColumna> ObtenerMapeoColumnaClavePrincipal()
+        {
+            return _columnas.Where(item => item.Columna.ClavePrimaria).ToList();
         }
         #endregion
 

@@ -21,7 +21,7 @@ namespace Binapsis.Plataforma.Datos.Builder
             Operacion.MapeoCatalogo = MapeoCatalogo;
             Operacion.MapeoTabla = MapeoCatalogo.ObtenerMapeoTabla(ObjetoDatos.Tipo);
         }
-
+        
         protected abstract ComandoEscritura CrearComando();
        
 

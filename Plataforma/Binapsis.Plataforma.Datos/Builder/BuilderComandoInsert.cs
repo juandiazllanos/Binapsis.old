@@ -1,8 +1,6 @@
-﻿using Binapsis.Plataforma.Datos.Impl;
-using Binapsis.Plataforma.Datos.Mapeo;
+﻿using Binapsis.Plataforma.Datos.Mapeo;
 using Binapsis.Plataforma.Configuracion;
 using System.Linq;
-using System.Collections.Generic;
 
 namespace Binapsis.Plataforma.Datos.Builder
 {
@@ -10,27 +8,19 @@ namespace Binapsis.Plataforma.Datos.Builder
     {
         public BuilderComandoInsert(Comando comando)
             : base(comando)
-        {
-            MapeoColumnas = new List<MapeoColumna>();
+        {            
         }
-
-        public override void Construir()
+        
+        protected override void ConstruirParametroColumnas()
         {
-            ConstruirMapeoColumnas();
-            base.Construir();
-        }
-
-        private void ConstruirMapeoColumnas()
-        {
-            if (MapeoTabla == null) return;
-
             var columnas = MapeoTabla.Columnas
                 .OrderBy(item => item.Columna.ClavePrimaria)
-                .OrderBy(item => item.Columna.Nombre);            
+                .OrderBy(item => item.Columna.Nombre);
 
-            MapeoColumnas.AddRange(columnas);
+            foreach(MapeoColumna mapeoColumna in columnas)
+                ParametroColumnas.Add(mapeoColumna);
         }
-
+        
         protected override void ConstruirSentencia()
         {
             BuilderSentencia builder = new BuilderSentencia();
@@ -42,7 +32,7 @@ namespace Binapsis.Plataforma.Datos.Builder
             // escribir campos
             int i = 0;
 
-            foreach (MapeoColumna mapeoColumna in MapeoColumnas)
+            foreach (MapeoColumna mapeoColumna in ParametroColumnas)
             {
                 if (i++ != 0) builder.Agregar(", ");
                 builder.Agregar(mapeoColumna.Columna.Nombre);
@@ -54,7 +44,7 @@ namespace Binapsis.Plataforma.Datos.Builder
             builder.Agregar("VALUES ( ");
 
             i = 0;
-            foreach (MapeoColumna mapeoColumna in MapeoColumnas)
+            foreach (MapeoColumna mapeoColumna in ParametroColumnas)
             {
                 if (i++ != 0) builder.Agregar(", ");
                 builder.Agregar($"@{mapeoColumna.Columna.Nombre}");
@@ -65,29 +55,6 @@ namespace Binapsis.Plataforma.Datos.Builder
             // establecer sql
             Comando.Sql = builder.ToString();
         }
-        
-        protected override void ConstruirParametros()
-        {
-            foreach (MapeoColumna mapeoColumna in MapeoColumnas)
-                CrearParametro(mapeoColumna);
-        }
 
-        private void CrearParametro(MapeoColumna mapeoColumna)
-        {
-            Columna columna = mapeoColumna.Columna;
-            ParametroColumna parametro = new ParametroColumna();
-
-            parametro.Nombre = columna.Nombre;
-            //parametro.Type = mapeoColumna.Propiedad.Tipo;
-            parametro.Direccion = "IN";
-            parametro.MapeoColumna = mapeoColumna;
-
-            Comando.Parametros.Agregar(parametro);
-        }
-
-        private List<MapeoColumna> MapeoColumnas
-        {
-            get;
-        }
     }
 }

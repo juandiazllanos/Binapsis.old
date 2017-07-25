@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Binapsis.Plataforma.Estructura;
 
 namespace Binapsis.Plataforma.Datos
 {
     public interface IComando
-    {
-        //IContexto Contexto { get; set; }
+    {        
         void Ejecutar();
+        IColeccion EjecutarConsulta();
+        IObjetoDatos EjecutarConsultaSimple();
+
+        void EstablecerParametro(int indice, object valor);
+        void EstablecerParametro(string nombre, object valor);
+
+        object ObtenerParametro(int indice);
+        object ObtenerParametro(string nombre);
     }
 }

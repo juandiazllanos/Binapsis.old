@@ -16,10 +16,16 @@
 
         void EjecutarComando(IComando comando);
 
+        IResultado EjecutarConsulta(IComando comando);
+
+        void AbrirConexion();
+
         void IniciarTransaccion();
 
         void TerminarTransaccion();
 
         void DeshacerTransaccion();
+
+        void CerrarConexion();
     }
 }

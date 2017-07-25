@@ -1,4 +1,6 @@
-﻿namespace Binapsis.Plataforma.Datos.Operacion
+﻿using Binapsis.Plataforma.Estructura;
+
+namespace Binapsis.Plataforma.Datos.Operacion
 {
     class AplicarCambios : OperacionBase
     {
@@ -22,5 +24,11 @@
             get;
             set;
         }        
+
+        //public IObjetoDatos ObjetoDatos
+        //{
+        //    get;
+        //    set;
+        //}
     }
 }

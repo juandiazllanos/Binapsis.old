@@ -3,11 +3,18 @@ using Binapsis.Plataforma.Estructura;
 using Binapsis.Plataforma.Datos.Mapeo;
 using Binapsis.Plataforma.Datos.Builder;
 using System.Collections;
+using System;
+using Binapsis.Plataforma.Datos.Heap;
+using Binapsis.Plataforma.Configuracion;
+using Binapsis.Plataforma.Datos.Helper;
+using Binapsis.Plataforma.Estructura.Impl;
+using Binapsis.Plataforma.Datos.Operacion;
 
 namespace Binapsis.Plataforma.Datos.Impl
 {
     public class DAS : IDAS
     {
+        #region Constructores
         public DAS(IConfiguracion configuracion, IContexto contexto)
         {
             Configuracion = configuracion;
@@ -16,7 +23,10 @@ namespace Binapsis.Plataforma.Datos.Impl
             MapeoCatalogo = new MapeoCatalogo();
             MapeoCatalogo.Configuracion = configuracion;
         }
+        #endregion
 
+
+        #region Metodos
         public void AplicarCambios(IDiagramaDatos dd)
         {
             try
@@ -75,16 +85,68 @@ namespace Binapsis.Plataforma.Datos.Impl
             builder.Construir();
 
             // construir operacion
-            Operacion.AplicarCambios aplicarCambios = new Operacion.AplicarCambios();
+            AplicarCambios aplicarCambios = new AplicarCambios();
 
             aplicarCambios.Contexto = Contexto;
             aplicarCambios.Cambios = cambios;
-            aplicarCambios.ObjetoDatos = od;
-            
+                        
             // ejecutar operacion
             aplicarCambios.Ejecutar();                         
         }
         
+        public IComando ObtenerComando(string nombre)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IComando CrearComando(Comando comando)
+        {
+            ConsultaHelper consultaHelper = new ConsultaHelper(MapeoCatalogo);
+            ComandoLectura comandoLectura = consultaHelper.CrearConsulta(comando);
+
+            return CrearComando(comandoLectura);
+        }
+
+        public IComando CrearComando(ITipo tipo)
+        {            
+            ConsultaHelper consultaHelper = new ConsultaHelper(MapeoCatalogo);            
+            ComandoLectura comando = consultaHelper.CrearConsulta(tipo);
+
+            return CrearComando(comando);
+        }
+
+        public IComando CrearComando(ITipo tipo, IPropiedad propiedad)
+        {
+            ConsultaHelper consultaHelper = new ConsultaHelper(MapeoCatalogo);
+            ComandoLectura comando = consultaHelper.CrearConsulta(tipo, propiedad);
+
+            return CrearComando(comando);
+        }
+
+        private IComando CrearComando(ComandoLectura comando)
+        {
+            RecuperarHelper recuperarHelper = new RecuperarHelper(MapeoCatalogo);
+            HeapObjetoDatos heapObjetoDatos = new HeapObjetoDatos();
+            IFabrica fabrica = FabricaDatos.Instancia;
+
+            recuperarHelper.Contexto = Contexto;
+            recuperarHelper.Fabrica = fabrica;
+            recuperarHelper.Heap = heapObjetoDatos;
+
+            EjecutarComando ejecutar = new EjecutarComando(comando);
+
+            ejecutar.Contexto = Contexto;
+            ejecutar.Helper = recuperarHelper;
+            ejecutar.MapeoCatalogo = MapeoCatalogo;
+
+            return ejecutar;
+        }
+                
+        #endregion
+
+
+
+        #region Propiedades
         public IConfiguracion Configuracion
         {
             get;
@@ -99,6 +161,7 @@ namespace Binapsis.Plataforma.Datos.Impl
         {
             get;
         }
-                
+        #endregion
+
     }
 }

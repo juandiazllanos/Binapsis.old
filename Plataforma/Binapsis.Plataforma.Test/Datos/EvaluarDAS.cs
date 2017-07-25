@@ -1,7 +1,9 @@
 ﻿using Binapsis.Plataforma.Cambios;
 using Binapsis.Plataforma.Cambios.Builder;
 using Binapsis.Plataforma.Cambios.Impl;
+using Binapsis.Plataforma.Configuracion;
 using Binapsis.Plataforma.Datos;
+using Binapsis.Plataforma.Datos.Helper;
 using Binapsis.Plataforma.Datos.Impl;
 using Binapsis.Plataforma.Datos.SQLite;
 using Binapsis.Plataforma.Estructura;
@@ -19,6 +21,184 @@ namespace Binapsis.Plataforma.Test.Datos
     {
         IConfiguracion _configuracion = new Impl.Configuracion();
         string _cadenaConexion = "Filename=D:\\Data\\Binapsis\\test.db";
+
+        [TestMethod, TestCategory("Evaluar Servicio de acceso de datos")]
+        public void EvaluarDASConsultaComando()
+        {
+            List<IDiagramaDatos> items = new List<IDiagramaDatos>();
+
+            IFabrica fabrica = FabricaDatos.Instancia;
+            IContexto contexto = new ContextoSQLite(_cadenaConexion);
+            IDAS das = new DAS(_configuracion, contexto);
+
+            ITipo tipo = _configuracion.ObtenerTipo("Binapsis.Plataforma.Test.Modelo", "Distrito");
+            IObjetoDatos od = fabrica.Crear(tipo);
+
+            od.Establecer("Id", 1);
+            od.Establecer("Nombre", "LIMA");
+            items.Add(CrearDiagramaDatos(tipo, od, null));
+
+            od = fabrica.Crear(tipo);
+            od.Establecer("Id", 2);
+            od.Establecer("Nombre", "CHORRILLOS");
+            items.Add(CrearDiagramaDatos(tipo, od, null));
+
+            od = fabrica.Crear(tipo);
+            od.Establecer("Id", 3);
+            od.Establecer("Nombre", "SAN JUAN DE MIRAFLORES");
+            items.Add(CrearDiagramaDatos(tipo, od, null));
+
+            od = fabrica.Crear(tipo);
+            od.Establecer("Id", 4);
+            od.Establecer("Nombre", "SAN JUAN DE LURIGANCHO");
+            items.Add(CrearDiagramaDatos(tipo, od, null));
+            
+            od = fabrica.Crear(tipo);
+            od.Establecer("Id", 5);
+            od.Establecer("Nombre", "SAN BORJA");
+            items.Add(CrearDiagramaDatos(tipo, od, null));
+            
+            od = fabrica.Crear(tipo);
+            od.Establecer("Id", 6);
+            od.Establecer("Nombre", "LINCE");
+            items.Add(CrearDiagramaDatos(tipo, od, null));
+
+            od = fabrica.Crear(tipo);
+            od.Establecer("Id", 7);
+            od.Establecer("Nombre", "MIRAFLORES");
+            items.Add(CrearDiagramaDatos(tipo, od, null));
+
+            das.AplicarCambios(items);
+
+            // consultar
+            Comando consulta = Fabrica.Instancia.Crear<Comando>();
+            consulta.Nombre = "DistritoPorNombre";
+            consulta.Sql = "SELECT Distrito.Nombre FROM Distrito WHERE Distrito.Nombre LIKE @Nombre";
+
+            consulta.CrearParametro("Nombre", typeof(string));
+            consulta.CrearResultadoDescriptor("Nombre", typeof(string));
+
+            IComando comando = das.CrearComando(consulta);
+
+            // consulta Distrito.Nombre LIKE SAN%
+            comando.EstablecerParametro(0, "SAN%");
+            IColeccion resultado1 = comando.EjecutarConsulta();
+
+            // consulta Distrito.Nombre LIKE %MIRAFLORES
+            comando.EstablecerParametro(0, "%MIRAFLORES");
+            IColeccion resultado2 = comando.EjecutarConsulta();
+
+            // consulta Distrito.Nombre LIKE LINCE%
+            comando.EstablecerParametro(0, "LINCE%");
+            IColeccion resultado3 = comando.EjecutarConsulta();
+
+            // eliminar
+            IList eliminar = new List<IDiagramaDatos>();
+
+            for (int i = 0; i < items.Count; i++)
+                eliminar.Add(CrearDiagramaDatos((items[i] as IDiagramaDatos).Tipo, null, (items[i] as IDiagramaDatos).ObjetoDatos));
+
+            das.AplicarCambios(eliminar);
+
+            // evaluar
+            Assert.AreEqual(3, resultado1.Longitud);
+            Assert.AreEqual(2, resultado2.Longitud);
+            Assert.AreEqual(1, resultado3.Longitud);
+
+        }
+
+        [TestMethod, TestCategory("Evaluar Servicio de acceso de datos")]
+        public void EvaluarDASConsultaColeccion()
+        {
+            List<IDiagramaDatos> items = new List<IDiagramaDatos>();
+
+            IFabrica fabrica = FabricaDatos.Instancia;            
+            IContexto contexto = new ContextoSQLite(_cadenaConexion);
+            IDAS das = new DAS(_configuracion, contexto);
+
+            ITipo tipo = _configuracion.ObtenerTipo("Binapsis.Plataforma.Test.Modelo", "Distrito");
+            IObjetoDatos od = fabrica.Crear(tipo);
+
+            od.Establecer("Id", 1);
+            od.Establecer("Nombre", "LIMA");
+            items.Add(CrearDiagramaDatos(tipo, od, null));
+
+            od = fabrica.Crear(tipo);
+            od.Establecer("Id", 2);
+            od.Establecer("Nombre", "CHORRILLOS");
+            items.Add(CrearDiagramaDatos(tipo, od, null));
+
+            od = fabrica.Crear(tipo);
+            od.Establecer("Id", 3);
+            od.Establecer("Nombre", "SAN JUAN DE MIRAFLORES");
+            items.Add(CrearDiagramaDatos(tipo, od, null));
+
+            tipo = _configuracion.ObtenerTipo("Binapsis.Plataforma.Test.Modelo", "Provincia");
+
+            od = fabrica.Crear(tipo);
+            od.Establecer("Id", 1);
+            od.Establecer("Nombre", "LIMA");
+            items.Add(CrearDiagramaDatos(tipo, od, null));
+
+            tipo = _configuracion.ObtenerTipo("Binapsis.Plataforma.Test.Modelo", "Departamento");
+
+            od = fabrica.Crear(tipo);
+            od.Establecer("Id", 1);
+            od.Establecer("Nombre", "LIMA");
+            items.Add(CrearDiagramaDatos(tipo, od, null));
+
+            tipo = _configuracion.ObtenerTipo("Binapsis.Plataforma.Test.Modelo", "Ubigeo");
+
+            od = fabrica.Crear(tipo);
+            od.Establecer("Id", 1);
+            od.Establecer("Codigo", "151501");
+            od.Establecer("Departamento", (items[4] as IDiagramaDatos).ObjetoDatos);
+            od.Establecer("Provincia", (items[3] as IDiagramaDatos).ObjetoDatos);
+            od.Establecer("Distrito", (items[0] as IDiagramaDatos).ObjetoDatos);
+            items.Add(CrearDiagramaDatos(tipo, od, null));
+
+            od = fabrica.Crear(tipo);
+            od.Establecer("Id", 2);
+            od.Establecer("Codigo", "151502");
+            od.Establecer("Departamento", (items[4] as IDiagramaDatos).ObjetoDatos);
+            od.Establecer("Provincia", (items[3] as IDiagramaDatos).ObjetoDatos);
+            od.Establecer("Distrito", (items[1] as IDiagramaDatos).ObjetoDatos);
+            items.Add(CrearDiagramaDatos(tipo, od, null));
+
+            od = fabrica.Crear(tipo);
+            od.Establecer("Id", 3);
+            od.Establecer("Codigo", "151503");
+            od.Establecer("Departamento", (items[4] as IDiagramaDatos).ObjetoDatos);
+            od.Establecer("Provincia", (items[3] as IDiagramaDatos).ObjetoDatos);
+            od.Establecer("Distrito", (items[2] as IDiagramaDatos).ObjetoDatos);
+            items.Add(CrearDiagramaDatos(tipo, od, null));
+
+            das.AplicarCambios(items);
+
+            IComando comando = das.CrearComando(tipo, tipo.ObtenerPropiedad("Departamento"));
+            ComandoHelper comandoHelper = new ComandoHelper(comando);
+            comandoHelper.EstablecerParametro(tipo.ObtenerPropiedad("Departamento"), (items[4] as IDiagramaDatos).ObjetoDatos);
+
+            IColeccion coleccion1 = comando.EjecutarConsulta();
+            
+            comando = das.CrearComando(tipo, tipo.ObtenerPropiedad("Distrito"));
+            comandoHelper = new ComandoHelper(comando);
+            comandoHelper.EstablecerParametro(tipo.ObtenerPropiedad("Distrito"), (items[2] as IDiagramaDatos).ObjetoDatos);
+
+            IColeccion coleccion2 = comando.EjecutarConsulta();
+
+            // eliminar
+            IList eliminar = new List<IDiagramaDatos>();
+
+            for (int i = 0; i < items.Count; i++)
+                eliminar.Add(CrearDiagramaDatos((items[i] as IDiagramaDatos).Tipo, null, (items[i] as IDiagramaDatos).ObjetoDatos));
+
+            das.AplicarCambios(eliminar);
+            
+            Assert.AreEqual(1, coleccion2.Longitud);
+            Assert.AreEqual(3, coleccion1.Longitud);
+
+        }
 
         [TestMethod, TestCategory("Evaluar Servicio de acceso de datos")]
         public void EvaluarDASDistrito()
@@ -48,12 +228,19 @@ namespace Binapsis.Plataforma.Test.Datos
             dd = CrearDiagramaDatos(tipo, od2, od);
             das.AplicarCambios(dd);
 
+            // recuperar
+            IComando comando = das.CrearComando(tipo);
+            comando.EstablecerParametro(0, 1);
+
+            IObjetoDatos od3 = comando.EjecutarConsultaSimple(); //das.RecuperarObjetoDatos(tipo, tipo.ObtenerPropiedad("Id"), 1);
+            
             // eliminar
             dd = CrearDiagramaDatos(tipo, null as IObjetoDatos, od2);
             das.AplicarCambios(dd);
 
+            IEqualityHelper igualHelper = EqualityHelper.Instancia;
 
-            Assert.IsTrue(true);
+            Assert.IsTrue(igualHelper.Igual(od2, od3));
         }
 
         [TestMethod, TestCategory("Evaluar Servicio de acceso de datos")]
@@ -84,11 +271,19 @@ namespace Binapsis.Plataforma.Test.Datos
             dd = CrearDiagramaDatos(tipo, od2, od);
             das.AplicarCambios(dd);
 
+            // recuperar
+            IComando comando = das.CrearComando(tipo);
+            comando.EstablecerParametro(0, 1);
+            IObjetoDatos od3 = comando.EjecutarConsultaSimple();
+
             // eliminar
             dd = CrearDiagramaDatos(tipo, null as IObjetoDatos, od2);
             das.AplicarCambios(dd);
-            
-            Assert.IsTrue(true);
+
+
+            IEqualityHelper igualHelper = EqualityHelper.Instancia;
+
+            Assert.IsTrue(igualHelper.Igual(od2, od3));
         }
 
         [TestMethod, TestCategory("Evaluar Servicio de acceso de datos")]
@@ -119,11 +314,20 @@ namespace Binapsis.Plataforma.Test.Datos
             dd = CrearDiagramaDatos(tipo, od2, od);
             das.AplicarCambios(dd);
 
+            // recuperar
+            IComando comando = das.CrearComando(tipo);
+            comando.EstablecerParametro(0, 1);
+            IObjetoDatos od3 = comando.EjecutarConsultaSimple(); //das.RecuperarObjetoDatos(tipo, tipo.ObtenerPropiedad("Id"), 1);
+
             // eliminar
             dd = CrearDiagramaDatos(tipo, null as IObjetoDatos, od2);
             das.AplicarCambios(dd);
 
-            Assert.IsTrue(true);
+
+            IEqualityHelper igualHelper = EqualityHelper.Instancia;
+
+            Assert.IsTrue(igualHelper.Igual(od2, od3));
+
         }
 
         [TestMethod, TestCategory("Evaluar Servicio de acceso de datos")]
@@ -177,7 +381,16 @@ namespace Binapsis.Plataforma.Test.Datos
             items.Add(CrearDiagramaDatos(distrito2.Tipo, distrito2, null));
             items.Add(CrearDiagramaDatos(tipo, od2, od));
 
+            // ejecutar
+            das.AplicarCambios(items);
+
+            // recuperar
+            IComando comando = das.CrearComando(tipo);
+            comando.EstablecerParametro(0, 1);
+            IObjetoDatos od3 = comando.EjecutarConsultaSimple(); //das.RecuperarObjetoDatos(tipo, tipo.ObtenerPropiedad("Id"), 1);
+
             // eliminar
+            items = new List<IDiagramaDatos>();
             items.Add(CrearDiagramaDatos(tipo, null, od2));
             items.Add(CrearDiagramaDatos(distrito2.Tipo, null, distrito2));
             items.Add(CrearDiagramaDatos(distrito.Tipo, null, distrito));
@@ -186,9 +399,9 @@ namespace Binapsis.Plataforma.Test.Datos
 
 
             das.AplicarCambios(items);
+            
 
-
-            Assert.IsTrue(true);
+            Assert.IsTrue(EqualityHelper.Instancia.Igual(od2, od3));
 
         }
 
@@ -248,6 +461,15 @@ namespace Binapsis.Plataforma.Test.Datos
 
             items.Add(CrearDiagramaDatos(tipo, od2, od));
 
+            // ejecutar
+            das.AplicarCambios(items);
+            items = new List<IDiagramaDatos>();
+
+            // recuperar
+            IComando comando = das.CrearComando(tipo);
+            comando.EstablecerParametro(0, 1);
+            IObjetoDatos odr2 = comando.EjecutarConsultaSimple(); //das.RecuperarObjetoDatos(tipo, tipo.ObtenerPropiedad("Id"), 1);
+
             // modificar direccion
             IObjetoDatos distrito2 = fabrica.Crear(_configuracion.ObtenerTipo("Binapsis.Plataforma.Test.Modelo", "Distrito"));
             distrito2.Establecer("Id", 2);
@@ -270,7 +492,18 @@ namespace Binapsis.Plataforma.Test.Datos
                         
             items.Add(CrearDiagramaDatos(tipo, od3, od2));
 
-            // eliminar
+            // ejecutar
+            das.AplicarCambios(items);
+            items = new List<IDiagramaDatos>();
+
+
+            // recuperar
+            comando = das.CrearComando(tipo);
+            comando.EstablecerParametro(0, 1);
+            IObjetoDatos odr3 = comando.EjecutarConsultaSimple(); //das.RecuperarObjetoDatos(tipo, tipo.ObtenerPropiedad("Id"), 1);
+            
+
+            // eliminar            
             items.Add(CrearDiagramaDatos(tipo, null, od3));
             items.Add(CrearDiagramaDatos(ubigeo.Tipo, null, ubigeo));
             items.Add(CrearDiagramaDatos(ubigeo2.Tipo, null, ubigeo2));
@@ -283,7 +516,10 @@ namespace Binapsis.Plataforma.Test.Datos
             das.AplicarCambios(items);
 
 
-            Assert.IsTrue(true);
+            // evaluar
+            Assert.IsTrue(EqualityHelper.Instancia.Igual(od2, odr2));
+            Assert.AreEqual(odr2.ObtenerObjetoDatos("Direcciones[0]/Ubigeo/Departamento"), odr2.ObtenerObjetoDatos("Direcciones[1]/Ubigeo/Departamento"));
+            Assert.IsTrue(EqualityHelper.Instancia.Igual(od3, odr3));
 
         }
 

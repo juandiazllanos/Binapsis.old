@@ -82,6 +82,9 @@ namespace Binapsis.Plataforma.Datos.Mapeo
 
         private MapeoTabla CrearMapeoTabla(ITipo tipo, Tabla tabla)
         {
+            // crear tabla si no existe
+            if (tabla == null) tabla = CrearTabla(tipo);
+                
             MapeoTabla mapeoTabla = new MapeoTabla();
             BuilderMapeoTabla builder = new BuilderMapeoTabla(mapeoTabla);
 
@@ -96,6 +99,13 @@ namespace Binapsis.Plataforma.Datos.Mapeo
             CrearMapeoRelacion(mapeoTabla);
 
             return mapeoTabla;
+        }
+
+        private Tabla CrearTabla(ITipo tipo)
+        {
+            Tabla tabla = Fabrica.Instancia.Crear<Tabla>();
+            tabla.Nombre = tipo.Nombre;
+            return tabla;
         }
         #endregion
 

@@ -136,6 +136,34 @@ namespace Binapsis.Plataforma.Configuracion.Base
             relacion.AgregarPropiedad(new Propiedad { Nombre = "Tipo", Tipo = Obtener(typeof(string)), Alias = "tipo" });
             
             Agregar(relacion);
+
+            // parametro 
+            Tipo parametro = new Tipo { Uri = "Binapsis.Plataforma.Configuracion", Nombre = "Parametro", Alias = "parametros" };
+            parametro.AgregarPropiedad(new Propiedad { Nombre = "Direccion", Tipo = Obtener(typeof(string)), Alias = "direccion" });
+            parametro.AgregarPropiedad(new Propiedad { Nombre = "Indice", Tipo = Obtener(typeof(int)), Alias = "indice" });
+            parametro.AgregarPropiedad(new Propiedad { Nombre = "Nombre", Tipo = Obtener(typeof(string)), Alias = "nombre" });
+            parametro.AgregarPropiedad(new Propiedad { Nombre = "Tipo", Tipo = Obtener(typeof(string)), Alias = "tipo" });
+
+            Agregar(parametro);
+
+            // resultadoDescriptor 
+            Tipo resultadoDescriptor = new Tipo { Uri = "Binapsis.Plataforma.Configuracion", Nombre = "ResultadoDescriptor", Alias = "resultadoDescriptor" };
+            resultadoDescriptor.AgregarPropiedad(new Propiedad { Nombre = "Columna", Tipo = Obtener(typeof(string)), Alias = "columna" });
+            resultadoDescriptor.AgregarPropiedad(new Propiedad { Nombre = "Indice", Tipo = Obtener(typeof(string)), Alias = "indice" });
+            resultadoDescriptor.AgregarPropiedad(new Propiedad { Nombre = "Nombre", Tipo = Obtener(typeof(string)), Alias = "nombre" });
+            resultadoDescriptor.AgregarPropiedad(new Propiedad { Nombre = "Tabla", Tipo = Obtener(typeof(string)), Alias = "tabla" });
+            resultadoDescriptor.AgregarPropiedad(new Propiedad { Nombre = "Tipo", Tipo = Obtener(typeof(string)), Alias = "tipo" });
+
+            Agregar(resultadoDescriptor);
+
+            // comando 
+            Tipo comando = new Tipo { Uri = "Binapsis.Plataforma.Configuracion", Nombre = "Comando", Alias = "comando" };
+            comando.AgregarPropiedad(new Propiedad { Nombre = "Nombre", Tipo = Obtener(typeof(string)), Alias = "nombre" });
+            comando.AgregarPropiedad(new Propiedad { Nombre = "Sql", Tipo = Obtener(typeof(string)), Alias = "sql" });
+            comando.AgregarPropiedad(new Propiedad { Nombre = "Parametros", Tipo = parametro, Asociacion = Asociacion.Composicion, Cardinalidad = Cardinalidad.CeroAMuchos, Alias = "parametros" });
+            comando.AgregarPropiedad(new Propiedad { Nombre = "ResultadoDescriptores", Tipo = resultadoDescriptor, Asociacion = Asociacion.Composicion, Cardinalidad = Cardinalidad.CeroAMuchos, Alias = "resultadoDescriptores" });
+
+            Agregar(comando);
         }
 
     }

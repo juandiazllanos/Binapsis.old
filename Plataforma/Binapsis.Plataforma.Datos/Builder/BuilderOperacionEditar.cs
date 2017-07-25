@@ -4,6 +4,7 @@ using Binapsis.Plataforma.Datos.Mapeo;
 using System.Linq;
 using Binapsis.Plataforma.Estructura;
 using System.Collections.Generic;
+using Binapsis.Plataforma.Configuracion;
 
 namespace Binapsis.Plataforma.Datos.Builder
 {
@@ -16,7 +17,7 @@ namespace Binapsis.Plataforma.Datos.Builder
         
         protected override ComandoEscritura CrearComando()
         {
-            ComandoEscritura comando = new ComandoEscritura();
+            Comando comando = Fabrica.Instancia.Crear<Comando>();
             MapeoTabla mapeoTabla = MapeoCatalogo.ObtenerMapeoTabla(ObjetoDatos.Tipo);
             BuilderComandoUpdate builder = new BuilderComandoUpdate(comando);
 
@@ -30,7 +31,7 @@ namespace Binapsis.Plataforma.Datos.Builder
 
             CantidadCambios = cambios.Count;
 
-            return comando;
+            return new ComandoEscritura(comando, mapeoTabla);
         }
 
         public int CantidadCambios

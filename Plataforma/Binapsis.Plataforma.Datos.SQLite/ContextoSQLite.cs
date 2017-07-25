@@ -15,10 +15,10 @@ namespace Binapsis.Plataforma.Datos.SQLite
         #region Metodos
         public void EjecutarComando(IComando comando)
         {
-            EjecutarComando(comando as Comando);
+            EjecutarComando(comando as ComandoBase);
         }
 
-        private void EjecutarComando(Comando comando)
+        private void EjecutarComando(ComandoBase comando)
         {
             if (comando == null) return;
 
@@ -26,7 +26,7 @@ namespace Binapsis.Plataforma.Datos.SQLite
 
             cmd.CommandText = comando.Sql;
 
-            foreach (Parametro parametro in comando.Parametros)            
+            foreach (ParametroComando parametro in comando.Parametros)            
                 cmd.Parameters.Add(new SqliteParameter { ParameterName = "@" + parametro.Nombre, Value = parametro.Valor });            
 
             cmd.Connection = Conexion;
@@ -34,10 +34,39 @@ namespace Binapsis.Plataforma.Datos.SQLite
 
             cmd.ExecuteNonQuery();
 
-            System.Diagnostics.Debug.WriteLine(cmd.CommandText);
+            //System.Diagnostics.Debug.WriteLine(cmd.CommandText);
         }
 
-        private void AbrirConexion()
+
+        public IResultado EjecutarConsulta(IComando comando)
+        {
+            return EjecutarConsulta(comando as ComandoBase);
+        }
+
+        private IResultado EjecutarConsulta(ComandoBase comando)
+        {
+            if (comando == null) return null;
+
+            SqliteCommand cmd = new SqliteCommand();
+
+            cmd.CommandText = comando.Sql;
+
+            foreach (ParametroComando parametro in comando.Parametros)
+                cmd.Parameters.Add(new SqliteParameter { ParameterName = "@" + parametro.Nombre, Value = parametro.Valor });
+
+            cmd.Connection = Conexion;
+            cmd.Transaction = Transaccion;
+
+            SqliteDataReader reader = cmd.ExecuteReader();            
+            Resultado resultado = new Resultado(reader);
+
+            System.Diagnostics.Debug.WriteLine(cmd.CommandText);
+
+            return resultado;
+        }
+
+
+        public void AbrirConexion()
         {
             if (Conexion == null)
                 Conexion = new SqliteConnection(CadenaConexion);
@@ -46,7 +75,7 @@ namespace Binapsis.Plataforma.Datos.SQLite
                 Conexion.Open();            
         }
 
-        private void CerrarConexion()
+        public void CerrarConexion()
         {
             if (Conexion != null && Conexion.State != ConnectionState.Closed)
                 Conexion.Close();

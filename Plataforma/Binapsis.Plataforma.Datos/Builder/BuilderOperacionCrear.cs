@@ -1,7 +1,7 @@
 ﻿using Binapsis.Plataforma.Datos.Operacion;
 using Binapsis.Plataforma.Datos.Impl;
 using Binapsis.Plataforma.Datos.Mapeo;
-using System;
+using Binapsis.Plataforma.Configuracion;
 
 namespace Binapsis.Plataforma.Datos.Builder
 {
@@ -14,14 +14,14 @@ namespace Binapsis.Plataforma.Datos.Builder
         
         protected override ComandoEscritura CrearComando()
         {
-            ComandoEscritura comando = new ComandoEscritura();
+            Comando comando = Fabrica.Instancia.Crear<Comando>();
             MapeoTabla mapeoTabla = MapeoCatalogo.ObtenerMapeoTabla(ObjetoDatos.Tipo);
             BuilderComando builder = new BuilderComandoInsert(comando);
 
             builder.MapeoTabla = mapeoTabla;
             builder.Construir();
 
-            return comando;
+            return new ComandoEscritura(comando, mapeoTabla);
         }
     }
 }

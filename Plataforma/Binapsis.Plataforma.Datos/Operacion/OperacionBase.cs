@@ -1,18 +1,16 @@
 ﻿using Binapsis.Plataforma.Datos.Impl;
 using Binapsis.Plataforma.Datos.Mapeo;
-using Binapsis.Plataforma.Estructura;
 
 namespace Binapsis.Plataforma.Datos.Operacion
 {
-    abstract class OperacionBase : ComandoBase
+    abstract class OperacionBase 
     {
-        public IContexto Contexto
+        public virtual void Ejecutar()
         {
-            get;
-            set;
+
         }
 
-        public IObjetoDatos ObjetoDatos
+        public IContexto Contexto
         {
             get;
             set;
