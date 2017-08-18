@@ -54,6 +54,7 @@ namespace Binapsis.Plataforma.Datos.Builder
 
             // establecer sql
             Comando.Sql = builder.ToString();
+            Comando.ComandoTipo = ComandoTipo.INSERT;
         }
 
     }

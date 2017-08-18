@@ -15,6 +15,28 @@ namespace Binapsis.Plataforma.Configuracion
             return (Columna)CrearObjetoDatos("Columnas");
         }
 
+        public Columna CrearColumna(string nombre)
+        {
+            Columna columna = CrearColumna();
+            columna.Nombre = nombre;
+            return columna;
+        }
+
+        public Columna CrearColumna(string columna, string propiedad)
+        {
+            Columna columnaItem = CrearColumna(columna);
+            columnaItem.Propiedad = propiedad;
+            return columnaItem;
+        }
+
+        public Columna CrearColumna(string columna, string propiedad, bool esClavePrincipal)
+        {
+            Columna columnaItem = CrearColumna(columna, propiedad);
+            columnaItem.ClavePrimaria = esClavePrincipal;
+            return columnaItem;
+        }
+
+
         public bool ContieneColumna(string columna)
         {
             return Columnas.Cast<Columna>().FirstOrDefault(item => item.Nombre == columna) != null;

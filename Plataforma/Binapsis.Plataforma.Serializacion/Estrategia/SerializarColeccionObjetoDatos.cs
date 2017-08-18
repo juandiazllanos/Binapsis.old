@@ -5,13 +5,13 @@ namespace Binapsis.Plataforma.Serializacion.Estrategia
 {
     class SerializarColeccionObjetoDatos : SerializarColeccion
     {
-        public SerializarColeccionObjetoDatos(IList items, IEscritor escritor) 
+        public SerializarColeccionObjetoDatos(IEnumerable items, IEscritor escritor) 
             : base(escritor)
         {
             Items = items;
         }
 
-        public IList Items
+        public IEnumerable Items
         {
             get;
         }

@@ -1,4 +1,5 @@
-﻿using Binapsis.Plataforma.Estructura;
+﻿using Binapsis.Plataforma.Configuracion.Helper;
+using Binapsis.Plataforma.Estructura;
 using System;
 using System.Collections.Generic;
 
@@ -12,8 +13,9 @@ namespace Binapsis.Plataforma.Configuracion.Base
         {
             _cache = new Dictionary<string, Tipo>();
             Crear();
+            CrearClaves();
         }
-
+        
         private static void Agregar(Tipo tipo)
         {
             _cache.Add($"{tipo.Uri}.{tipo.Nombre}", tipo);
@@ -33,12 +35,7 @@ namespace Binapsis.Plataforma.Configuracion.Base
             else
                 return null;
         }
-
-        //public static ITipo this[Type type]
-        //{
-        //    get => Obtener(type);
-        //}
-
+                
         private static void Crear()
         {
             Agregar(new Tipo { Uri = "System", Nombre = "Boolean", Alias = "bool", EsTipoDeDato = true });
@@ -77,9 +74,9 @@ namespace Binapsis.Plataforma.Configuracion.Base
             propiedad.AgregarPropiedad(new Propiedad { Nombre = "Alias", Alias = "alias", Tipo = Obtener("System", "String") });
             propiedad.AgregarPropiedad(new Propiedad { Nombre = "Asociacion", Alias = "asociacion", Tipo = Obtener("System", "Byte") });
             propiedad.AgregarPropiedad(new Propiedad { Nombre = "Cardinalidad", Alias = "cardinalidad", Tipo = Obtener("System", "Byte") });
-            propiedad.AgregarPropiedad(new Propiedad { Nombre = "Indice", Alias = "indice", Tipo = Obtener("System", "Int32") });
+            propiedad.AgregarPropiedad(new Propiedad { Nombre = "Indice", Alias = "indice", Tipo = Obtener("System", "Byte") });
             propiedad.AgregarPropiedad(new Propiedad { Nombre = "Tipo", Alias = "tipo", Tipo = tipo, Asociacion = Asociacion.Agregacion, Cardinalidad = Cardinalidad.Uno });
-            propiedad.AgregarPropiedad(new Propiedad { Nombre = "ValorInicial", Alias = "valorInicial", Tipo = Obtener("System", "Object") });
+            propiedad.AgregarPropiedad(new Propiedad { Nombre = "ValorInicial", Alias = "valorInicial", Tipo = Obtener("System", "String") });
 
             tipo.AgregarPropiedad(new Propiedad { Nombre = "Base", Alias = "base", Tipo = tipo, Asociacion = Asociacion.Agregacion, Cardinalidad = Cardinalidad.CeroAUno });
             tipo.AgregarPropiedad(new Propiedad { Nombre = "Propiedades", Alias = "propiedades", Tipo = propiedad, Asociacion = Asociacion.Composicion, Cardinalidad = Cardinalidad.CeroAMuchos });
@@ -142,6 +139,7 @@ namespace Binapsis.Plataforma.Configuracion.Base
             parametro.AgregarPropiedad(new Propiedad { Nombre = "Direccion", Tipo = Obtener(typeof(string)), Alias = "direccion" });
             parametro.AgregarPropiedad(new Propiedad { Nombre = "Indice", Tipo = Obtener(typeof(int)), Alias = "indice" });
             parametro.AgregarPropiedad(new Propiedad { Nombre = "Nombre", Tipo = Obtener(typeof(string)), Alias = "nombre" });
+            parametro.AgregarPropiedad(new Propiedad { Nombre = "Longitud", Tipo = Obtener(typeof(int)), Alias = "longitud" });
             parametro.AgregarPropiedad(new Propiedad { Nombre = "Tipo", Tipo = Obtener(typeof(string)), Alias = "tipo" });
 
             Agregar(parametro);
@@ -158,12 +156,27 @@ namespace Binapsis.Plataforma.Configuracion.Base
 
             // comando 
             Tipo comando = new Tipo { Uri = "Binapsis.Plataforma.Configuracion", Nombre = "Comando", Alias = "comando" };
+            comando.AgregarPropiedad(new Propiedad { Nombre = "ComandoTipo", Tipo = Obtener(typeof(byte)), Alias = "comandoTipo" });
             comando.AgregarPropiedad(new Propiedad { Nombre = "Nombre", Tipo = Obtener(typeof(string)), Alias = "nombre" });
             comando.AgregarPropiedad(new Propiedad { Nombre = "Sql", Tipo = Obtener(typeof(string)), Alias = "sql" });
             comando.AgregarPropiedad(new Propiedad { Nombre = "Parametros", Tipo = parametro, Asociacion = Asociacion.Composicion, Cardinalidad = Cardinalidad.CeroAMuchos, Alias = "parametros" });
             comando.AgregarPropiedad(new Propiedad { Nombre = "ResultadoDescriptores", Tipo = resultadoDescriptor, Asociacion = Asociacion.Composicion, Cardinalidad = Cardinalidad.CeroAMuchos, Alias = "resultadoDescriptores" });
 
             Agregar(comando);
+        }
+
+        private static void CrearClaves()
+        {            
+            ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Ensamblado)), "Nombre");
+            ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Uri)), "Nombre");
+            ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Configuracion.Tipo)), "Uri");
+            ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Configuracion.Tipo)), "Nombre");
+            ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Configuracion.Propiedad)), "Nombre");
+            ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Tabla)), "Nombre");
+            ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Columna)), "Nombre");
+            ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Relacion)), "Nombre");
+            ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Conexion)), "Nombre");
+            ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Comando)), "Nombre");
         }
 
     }

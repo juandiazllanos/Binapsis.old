@@ -1,0 +1,228 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v1.1",
+    "signature": "356ba4f00cbf5d15b38d95d9ccd16f07a2487d62"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v1.1": {
+      "binapsis.plataforma.datos.sqlite/1.0.0": {
+        "dependencies": {
+          "Binapsis.Plataforma.Datos": "1.0.0",
+          "Microsoft.Data.Sqlite": "1.1.1"
+        },
+        "runtime": {
+          "Binapsis.Plataforma.Datos.SQLite.dll": {}
+        }
+      },
+      "microsoft.data.sqlite/1.1.1": {
+        "dependencies": {
+          "SQLite": "3.13.0",
+          "System.Data.Common": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.Data.Sqlite.dll": {}
+        }
+      },
+      "sqlite/3.13.0": {
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libsqlite3.so": {
+            "rid": "linux-x64",
+            "assetType": "native"
+          },
+          "runtimes/osx-x64/native/libsqlite3.dylib": {
+            "rid": "osx-x64",
+            "assetType": "native"
+          },
+          "runtimes/win7-x64/native/sqlite3.dll": {
+            "rid": "win7-x64",
+            "assetType": "native"
+          },
+          "runtimes/win7-x86/native/sqlite3.dll": {
+            "rid": "win7-x86",
+            "assetType": "native"
+          }
+        }
+      },
+      "system.data.common/4.3.0": {
+        "runtime": {
+          "lib/netstandard1.2/System.Data.Common.dll": {}
+        }
+      },
+      "binapsis.plataforma.agenteconfiguracion/1.0.0": {
+        "dependencies": {
+          "Binapsis.Plataforma.Configuracion": "1.0.0",
+          "Binapsis.Plataforma.Configuracion.Serializacion": "1.0.0",
+          "Binapsis.Plataforma.Estructura": "1.0.0",
+          "Binapsis.Plataforma.Serializacion": "1.0.0",
+          "Binapsis.Plataforma.Serializacion.Binario": "1.0.0",
+          "Binapsis.Plataforma.Serializacion.Xml": "1.0.0"
+        },
+        "runtime": {
+          "Binapsis.Plataforma.AgenteConfiguracion.dll": {}
+        }
+      },
+      "binapsis.plataforma.cambios/1.0.0": {
+        "dependencies": {
+          "Binapsis.Plataforma.Estructura": "1.0.0",
+          "Binapsis.Plataforma.Helper": "1.0.0"
+        },
+        "runtime": {
+          "Binapsis.Plataforma.Cambios.dll": {}
+        }
+      },
+      "binapsis.plataforma.configuracion/1.0.0": {
+        "dependencies": {
+          "Binapsis.Plataforma.Estructura": "1.0.0"
+        },
+        "runtime": {
+          "Binapsis.Plataforma.Configuracion.dll": {}
+        }
+      },
+      "binapsis.plataforma.configuracion.serializacion/1.0.0": {
+        "dependencies": {
+          "Binapsis.Plataforma.Cambios": "1.0.0",
+          "Binapsis.Plataforma.Configuracion": "1.0.0",
+          "Binapsis.Plataforma.Estructura": "1.0.0",
+          "Binapsis.Plataforma.Serializacion": "1.0.0",
+          "Binapsis.Plataforma.Serializacion.Binario": "1.0.0",
+          "Binapsis.Plataforma.Serializacion.Xml": "1.0.0"
+        },
+        "runtime": {
+          "Binapsis.Plataforma.Configuracion.Serializacion.dll": {}
+        }
+      },
+      "binapsis.plataforma.datos/1.0.0": {
+        "dependencies": {
+          "Binapsis.Plataforma.AgenteConfiguracion": "1.0.0",
+          "Binapsis.Plataforma.Cambios": "1.0.0",
+          "Binapsis.Plataforma.Configuracion": "1.0.0",
+          "Binapsis.Plataforma.Estructura": "1.0.0"
+        },
+        "runtime": {
+          "Binapsis.Plataforma.Datos.dll": {}
+        }
+      },
+      "binapsis.plataforma.estructura/1.0.0": {
+        "runtime": {
+          "Binapsis.Plataforma.Estructura.dll": {}
+        }
+      },
+      "binapsis.plataforma.helper/1.0.0": {
+        "dependencies": {
+          "Binapsis.Plataforma.Estructura": "1.0.0"
+        },
+        "runtime": {
+          "Binapsis.Plataforma.Helper.dll": {}
+        }
+      },
+      "binapsis.plataforma.serializacion/1.0.0": {
+        "dependencies": {
+          "Binapsis.Plataforma.Cambios": "1.0.0",
+          "Binapsis.Plataforma.Estructura": "1.0.0"
+        },
+        "runtime": {
+          "Binapsis.Plataforma.Serializacion.dll": {}
+        }
+      },
+      "binapsis.plataforma.serializacion.binario/1.0.0": {
+        "dependencies": {
+          "Binapsis.Plataforma.Cambios": "1.0.0",
+          "Binapsis.Plataforma.Estructura": "1.0.0",
+          "Binapsis.Plataforma.Serializacion": "1.0.0"
+        },
+        "runtime": {
+          "Binapsis.Plataforma.Serializacion.Binario.dll": {}
+        }
+      },
+      "binapsis.plataforma.serializacion.xml/1.0.0": {
+        "dependencies": {
+          "Binapsis.Plataforma.Cambios": "1.0.0",
+          "Binapsis.Plataforma.Estructura": "1.0.0",
+          "Binapsis.Plataforma.Serializacion": "1.0.0"
+        },
+        "runtime": {
+          "Binapsis.Plataforma.Serializacion.Xml.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "binapsis.plataforma.datos.sqlite/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "microsoft.data.sqlite/1.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EA/L0kQtkPm037kHyLtt/9dsB4ephlgmXgaQbW2qcb2jcW8R5RbfT9zh1j9amZIqFP3OwpnZ7kt7xTwC8z7M1A==",
+      "path": "microsoft.data.sqlite/1.1.1",
+      "hashPath": "microsoft.data.sqlite.1.1.1.nupkg.sha512"
+    },
+    "sqlite/3.13.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UoV/CMFq2fkn/xykqfHrH5JwQcPz3L5Ah+YF342UkpzxGvq6QQDXh2TVJJv74FroynysVZ8pO7dBdu9CXfQKVA==",
+      "path": "sqlite/3.13.0",
+      "hashPath": "sqlite.3.13.0.nupkg.sha512"
+    },
+    "system.data.common/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lm6E3T5u7BOuEH0u18JpbJHxBfOJPuCyl4Kg1RH10ktYLp5uEEE1xKrHW56/We4SnZpGAuCc9N0MJpSDhTHZGQ==",
+      "path": "system.data.common/4.3.0",
+      "hashPath": "system.data.common.4.3.0.nupkg.sha512"
+    },
+    "binapsis.plataforma.agenteconfiguracion/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "binapsis.plataforma.cambios/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "binapsis.plataforma.configuracion/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "binapsis.plataforma.configuracion.serializacion/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "binapsis.plataforma.datos/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "binapsis.plataforma.estructura/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "binapsis.plataforma.helper/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "binapsis.plataforma.serializacion/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "binapsis.plataforma.serializacion.binario/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "binapsis.plataforma.serializacion.xml/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

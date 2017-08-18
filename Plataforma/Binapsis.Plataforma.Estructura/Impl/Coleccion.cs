@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Binapsis.Plataforma.Estructura.Impl
 {
-    public class Coleccion : IColeccion
+    public class Coleccion : IColeccion, IList
     {
         List<IObjetoDatos> _col;
 
@@ -31,7 +31,7 @@ namespace Binapsis.Plataforma.Estructura.Impl
         public int Longitud
         {
             get => _col.Count;
-        }
+        }        
         #endregion
 
 
@@ -104,6 +104,80 @@ namespace Binapsis.Plataforma.Estructura.Impl
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+        #endregion
+
+
+        #region IList
+        int IList.Add(object value)
+        {
+            return ((IList)_col).Add(value);
+        }
+
+        void IList.Clear()
+        {
+            ((IList)_col).Clear();
+        }
+
+        bool IList.Contains(object value)
+        {
+            return ((IList)_col).Contains(value);
+        }
+
+        int IList.IndexOf(object value)
+        {
+            return ((IList)_col).IndexOf(value);
+        }
+
+        void IList.Insert(int index, object value)
+        {
+            ((IList)_col).Insert(index, value);
+        }
+
+        void IList.Remove(object value)
+        {
+            ((IList)_col).Remove(value);
+        }
+
+        void IList.RemoveAt(int index)
+        {
+            ((IList)_col).RemoveAt(index);
+        }
+
+        void ICollection.CopyTo(Array array, int index)
+        {
+            ((IList)_col).CopyTo(array, index);
+        }
+
+        bool IList.IsFixedSize
+        {
+            get => ((IList)_col).IsFixedSize;
+        }
+
+        bool IList.IsReadOnly
+        {
+            get => ((IList)_col).IsReadOnly;
+        }
+
+        int ICollection.Count
+        {
+            get => ((IList)_col).Count;
+        }
+
+        bool ICollection.IsSynchronized
+        {
+            get => ((IList)_col).IsSynchronized;
+        }
+
+        object ICollection.SyncRoot
+        {
+            get => ((IList)_col).SyncRoot;
+        }            
+
+        object IList.this[int index]
+        {
+            get => ((IList)_col)[index];
+            set => ((IList)_col)[index] = value;
         }
         #endregion
     }

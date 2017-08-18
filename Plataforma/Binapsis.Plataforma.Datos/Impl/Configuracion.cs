@@ -54,5 +54,10 @@ namespace Binapsis.Plataforma.Datos.Impl
         {
             return _servicio.ObtenerRelacionesPorTabla(tablaPrincipal, tablaSecundaria);
         }
+
+        public Comando ObtenerComando(string nombre)
+        {
+            return null;
+        }
     }
 }

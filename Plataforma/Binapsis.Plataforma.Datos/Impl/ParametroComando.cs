@@ -17,10 +17,15 @@ namespace Binapsis.Plataforma.Datos.Impl
         {
             get => _parametro.Direccion;            
         }
-
+                
         public string Nombre
         {
             get => _parametro.Nombre;            
+        }
+
+        public int Longitud
+        {
+            get => _parametro.Longitud;
         }
 
         public int Indice

@@ -21,3 +21,5 @@ D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.AgenteConfiguracion\obj\De
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.AgenteConfiguracion\obj\Debug\netstandard1.3\Binapsis.Plataforma.AgenteConfiguracion.AssemblyInfo.cs
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.AgenteConfiguracion\obj\Debug\netstandard1.3\Binapsis.Plataforma.AgenteConfiguracion.dll
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.AgenteConfiguracion\obj\Debug\netstandard1.3\Binapsis.Plataforma.AgenteConfiguracion.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.AgenteConfiguracion\obj\Debug\netstandard1.3\Binapsis.Plataforma.AgenteConfiguracion.csproj.CoreCompileInputs.cache
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.AgenteConfiguracion\obj\Debug\netstandard1.3\Binapsis.Plataforma.AgenteConfiguracion.AssemblyInfoInputs.cache

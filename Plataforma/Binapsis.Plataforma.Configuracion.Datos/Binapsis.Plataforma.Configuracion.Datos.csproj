@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.4</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Binapsis.Plataforma.Configuracion\Binapsis.Plataforma.Configuracion.csproj" />
+    <ProjectReference Include="..\Binapsis.Plataforma.Datos\Binapsis.Plataforma.Datos.csproj" />
+    <ProjectReference Include="..\Binapsis.Plataforma.Estructura\Binapsis.Plataforma.Estructura.csproj" />
+  </ItemGroup>
+
+</Project>

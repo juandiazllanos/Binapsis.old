@@ -1,0 +1,19 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:24339/",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "Binapsis.Plataforma.ServicioConfiguracion": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:24340"
+    }
+  }
+}

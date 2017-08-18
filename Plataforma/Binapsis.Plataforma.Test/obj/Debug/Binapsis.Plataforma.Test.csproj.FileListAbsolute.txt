@@ -55,10 +55,8 @@ D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Test\obj\Debug\Binapsis.Pl
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Test\obj\Debug\Binapsis.Plataforma.Test.dll
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Test\obj\Debug\Binapsis.Plataforma.Test.pdb
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Test\bin\Debug\Binapsis.Plataforma.Datos.dll
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Test\bin\Debug\Binapsis.Plataforma.Datos.SQLite.dll
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Test\bin\Debug\Microsoft.Data.Sqlite.dll
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Test\bin\Debug\Binapsis.Plataforma.Datos.pdb
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Test\bin\Debug\Binapsis.Plataforma.Datos.SQLite.pdb
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Test\bin\Debug\x86\sqlite3.dll
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Test\bin\Debug\x64\sqlite3.dll
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Test\bin\Debug\Microsoft.Win32.Primitives.dll
@@ -73,3 +71,4 @@ D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Test\bin\Debug\System.Net.
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Test\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Test\bin\Debug\System.Xml.ReaderWriter.dll
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Test\bin\Debug\Microsoft.Data.Sqlite.xml
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Test\obj\Debug\Binapsis.Plataforma.Test.csproj.CoreCompileInputs.cache

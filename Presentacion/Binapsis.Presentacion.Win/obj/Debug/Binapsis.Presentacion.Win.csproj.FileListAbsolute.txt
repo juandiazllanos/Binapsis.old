@@ -145,3 +145,4 @@ D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Win\obj\Debug\Binapsis
 D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Win\obj\Debug\Binapsis.Presentacion.Win.dll.licenses
 D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Win\obj\Debug\Binapsis.Presentacion.Win.dll
 D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Win\obj\Debug\Binapsis.Presentacion.Win.pdb
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Win\obj\Debug\Binapsis.Presentacion.Win.csproj.CoreCompileInputs.cache

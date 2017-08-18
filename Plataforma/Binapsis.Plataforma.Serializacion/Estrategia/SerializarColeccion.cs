@@ -9,17 +9,7 @@ namespace Binapsis.Plataforma.Serializacion.Estrategia
             : base(escritor)
         {
         }
-
-        //protected void Escribir(Diagrama diagrama)
-        //{
-        //    NodoColeccion root = diagrama.Root as NodoColeccion;
-        //    if (root == null) return;
-
-        //    EscribirColeccion(root.Nodos.Count);
-        //    EscribirItems(root);
-        //    EscribirColeccionCierre();
-        //}
-
+        
         protected void Escribir(NodoColeccion items)
         {
             EscribirColeccion(items.Nodos.Count);

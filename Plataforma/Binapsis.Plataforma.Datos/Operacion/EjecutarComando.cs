@@ -17,7 +17,15 @@ namespace Binapsis.Plataforma.Datos.Operacion
         #region Metodos
         public override void Ejecutar()
         {
-            
+            try
+            {
+                Contexto.AbrirConexion();
+                Contexto.EjecutarComando(Comando);
+            }
+            finally
+            {
+                Contexto.CerrarConexion();
+            }
         }
 
         public IColeccion EjecutarConsulta()

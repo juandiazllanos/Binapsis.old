@@ -1,4 +1,6 @@
-﻿namespace Binapsis.Plataforma.Datos
+﻿using Binapsis.Plataforma.Estructura;
+
+namespace Binapsis.Plataforma.Datos
 {
     public interface IContexto
     {
@@ -18,6 +20,8 @@
 
         IResultado EjecutarConsulta(IComando comando);
 
+        IClave ObtenerClave(ITipo tipo);
+
         void AbrirConexion();
 
         void IniciarTransaccion();
@@ -27,5 +31,7 @@
         void DeshacerTransaccion();
 
         void CerrarConexion();
+
+        //object GenerarClave(IObjetoDatos od, string columna);
     }
 }

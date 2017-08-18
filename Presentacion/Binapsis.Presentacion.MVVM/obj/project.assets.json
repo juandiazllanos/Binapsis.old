@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "targets": {
     ".NETStandard,Version=v1.3": {
       "Microsoft.NETCore.Platforms/1.1.0": {
@@ -892,6 +892,12 @@
         "framework": ".NETStandard,Version=v1.3",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "bin/placeholder/Binapsis.Plataforma.Estructura.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Binapsis.Plataforma.Estructura.dll": {}
         }
       },
       "Binapsis.Plataforma.Notificaciones/1.0.0": {
@@ -900,6 +906,12 @@
         "dependencies": {
           "Binapsis.Plataforma.Estructura": "1.0.0",
           "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "bin/placeholder/Binapsis.Plataforma.Notificaciones.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Binapsis.Plataforma.Notificaciones.dll": {}
         }
       },
       "Binapsis.Presentacion.Editores/1.0.0": {
@@ -907,6 +919,12 @@
         "framework": ".NETStandard,Version=v1.3",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "bin/placeholder/Binapsis.Presentacion.Editores.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Binapsis.Presentacion.Editores.dll": {}
         }
       }
     }
@@ -3743,19 +3761,35 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\JUAN\\.nuget\\packages\\": {}
+    "C:\\Users\\JUAN\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
       "projectUniqueName": "D:\\Desarrollo\\Binapsis\\Presentacion\\Binapsis.Presentacion.MVVM\\Binapsis.Presentacion.MVVM.csproj",
       "projectName": "Binapsis.Presentacion.MVVM",
       "projectPath": "D:\\Desarrollo\\Binapsis\\Presentacion\\Binapsis.Presentacion.MVVM\\Binapsis.Presentacion.MVVM.csproj",
+      "packagesPath": "C:\\Users\\JUAN\\.nuget\\packages\\",
       "outputPath": "D:\\Desarrollo\\Binapsis\\Presentacion\\Binapsis.Presentacion.MVVM\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\JUAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
       "originalTargetFrameworks": [
         "netstandard1.3"
       ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
       "frameworks": {
         "netstandard1.3": {
           "projectReferences": {
@@ -3770,6 +3804,11 @@
             }
           }
         }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
       }
     },
     "frameworks": {

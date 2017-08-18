@@ -94,7 +94,12 @@ namespace Binapsis.Plataforma.Estructura.Impl
         {
             _impl.ObtenerCaracteristica(propiedad).EstablecerObjetoDatos(valor);
         }
-        
+
+        public void EstablecerObjetoDatos(IPropiedad propiedad, int indice, IObjetoDatos valor)
+        {
+            _impl.ObtenerCaracteristica(propiedad).EstablecerObjetoDatos(indice, valor);
+        }
+
         public void EstablecerSByte(IPropiedad propiedad, sbyte valor)
         {
             _impl.ObtenerCaracteristica(propiedad).EstablecerSByte(valor);
@@ -245,6 +250,10 @@ namespace Binapsis.Plataforma.Estructura.Impl
             get
             {
                 return _propietario;
+            }
+            internal set // se establece cuando se cambia la abstraccion 
+            {
+                _propietario = value;
             }
         }
     }

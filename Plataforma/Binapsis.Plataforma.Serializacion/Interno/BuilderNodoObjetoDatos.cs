@@ -27,10 +27,15 @@ namespace Binapsis.Plataforma.Serializacion.Interno
             ResolverNodos();            
         }
 
-        public void Construir(IList items)
+        //public void Construir(IList items)
+        //{
+        //    Construir(items as IEnumerable);
+        //}
+
+        public void Construir(IEnumerable items)
         {
             // crear nodo
-            NodoColeccion nco = (Nodo as NodoColeccion);  
+            NodoColeccion nco = (Nodo as NodoColeccion);
             if (nco == null) return;
 
             nco.Nombre = "Coleccion";
@@ -38,7 +43,7 @@ namespace Binapsis.Plataforma.Serializacion.Interno
             // crear nodos
             foreach (IObjetoDatos item in items)
             {
-                NodoObjetoDatos nod = new NodoObjetoDatos(nco); 
+                NodoObjetoDatos nod = new NodoObjetoDatos(nco);
                 ConstruirNodoObjetoDatos(nod, item);
                 nco.Agregar(nod);
             }

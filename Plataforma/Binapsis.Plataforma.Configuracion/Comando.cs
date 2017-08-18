@@ -38,6 +38,20 @@ namespace Binapsis.Plataforma.Configuracion
             return parametro;
         }
 
+        public virtual Parametro CrearParametro(string nombre, Type type, int longitud)
+        {
+            Parametro parametro = CrearParametro(nombre, type);
+            parametro.Longitud = longitud;            
+            return parametro;
+        }
+
+        public virtual Parametro CrearParametro(string nombre, Type type, int longitud, string direccion)
+        {
+            Parametro parametro = CrearParametro(nombre, type, longitud);            
+            parametro.Direccion = direccion;
+            return parametro;
+        }
+
         public virtual Parametro ObtenerParametro(string nombre)
         {
             return Parametros.Cast<Parametro>().FirstOrDefault(item => item.Nombre == nombre);
@@ -65,6 +79,12 @@ namespace Binapsis.Plataforma.Configuracion
 
 
         #region Propiedades
+        public ComandoTipo ComandoTipo
+        {
+            get => (ComandoTipo)ObtenerByte("ComandoTipo");
+            set => EstablecerByte("ComandoTipo", (byte)value);
+        }
+
         public string Nombre
         {
             get => ObtenerString("Nombre");

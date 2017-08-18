@@ -49,7 +49,7 @@ namespace Binapsis.Plataforma.Configuracion
             tipoEnsamblado.CrearPropiedad("Nombre", Obtener(typeof(string)), "nombre");
 
             Tipo tipoUri = new Tipo { Uri = uriConfig, Nombre = "Uri", Alias = "uri" };
-            tipoUri.CrearPropiedad("Ensamblado", tipoEnsamblado, "ensamblado");
+            tipoUri.CrearPropiedad("Ensamblado", tipoEnsamblado, "ensamblado").Asociacion = Asociacion.Agregacion;            
             tipoUri.CrearPropiedad("Nombre", Obtener(typeof(string)), "nombre");
 
             Tipo tipoTipo = new Tipo { Uri = uriConfig, Nombre = "Tipo", Alias = "tipo" };
@@ -59,7 +59,7 @@ namespace Binapsis.Plataforma.Configuracion
             tipoPropiedad.CrearPropiedad("Alias", Obtener(typeof(string)), "alias");
             tipoPropiedad.CrearPropiedad("Asociacion", Obtener(typeof(byte)), "asociacion");
             tipoPropiedad.CrearPropiedad("Cardinalidad", Obtener(typeof(byte)), "cardinalidad");
-            tipoPropiedad.CrearPropiedad("Indice", Obtener(typeof(int)), "indice");
+            tipoPropiedad.CrearPropiedad("Indice", Obtener(typeof(byte)), "indice");
             tipoPropiedad.CrearPropiedad("Nombre", Obtener(typeof(string)), "nombre");
             tipoPropiedad.CrearPropiedad("ValorInicial", Obtener(typeof(string)), "valorInicial");
 
@@ -85,10 +85,48 @@ namespace Binapsis.Plataforma.Configuracion
             tipoTipo.CrearPropiedad("Nombre", Obtener(typeof(string)), "nombre");
 
 
+            // conexion
+            Tipo tipoConexion = new Tipo() { Uri = uriConfig, Nombre = "Conexion", Alias = "conexion" };
+            tipoConexion.CrearPropiedad("CadenaConexion", Obtener(typeof(string)));
+            tipoConexion.CrearPropiedad("Nombre", Obtener(typeof(string)));
+
+
+            // columna
+            Tipo tipoColumna = new Tipo { Uri = uriConfig, Nombre = "Columna", Alias = "columna" };
+            tipoColumna.CrearPropiedad("ClavePrincipal", Obtener(typeof(bool)), "clavePrimaria");
+            tipoColumna.CrearPropiedad("Nombre", Obtener(typeof(string)), "nombre");
+            tipoColumna.CrearPropiedad("Propiedad", Obtener(typeof(string)), "propiedad");
+
+
+            // tabla
+            Tipo tipoTabla = new Tipo { Uri = uriConfig, Nombre = "Tabla", Alias = "tabla" };
+            Propiedad propiedadColumna = tipoTabla.CrearPropiedad("Columnas", tipoColumna, "columnas");
+            propiedadColumna.Asociacion = Asociacion.Composicion;
+            propiedadColumna.Cardinalidad = Cardinalidad.CeroAMuchos;
+            tipoTabla.CrearPropiedad("Nombre", Obtener(typeof(string)), "nombre");
+            tipoTabla.CrearPropiedad("Tipo", Obtener(typeof(string)), "tipo");
+
+
+            // relacion
+            Tipo tipoRelacion = new Tipo { Uri = uriConfig, Nombre = "Relacion", Alias = "relacion" };
+            tipoRelacion.CrearPropiedad("ColumnaPrincipal", Obtener(typeof(string)), "columnaPrincipal");
+            tipoRelacion.CrearPropiedad("ColumnaSecundaria", Obtener(typeof(string)), "columnaSecundaria");
+            tipoRelacion.CrearPropiedad("Nombre", Obtener(typeof(string)), "nombre");
+            tipoRelacion.CrearPropiedad("Propiedad", Obtener(typeof(string)), "propiedad");
+            tipoRelacion.CrearPropiedad("TablaPrincipal", Obtener(typeof(string)), "tablaPrincipal");
+            tipoRelacion.CrearPropiedad("TablaSecundaria", Obtener(typeof(string)), "tablaSecundaria");            
+            tipoRelacion.CrearPropiedad("Tipo", Obtener(typeof(string)), "tipo");
+
+
             Agregar(tipoEnsamblado);
             Agregar(tipoUri);            
             Agregar(tipoPropiedad);
             Agregar(tipoTipo);
+
+            Agregar(tipoConexion);
+            Agregar(tipoColumna);
+            Agregar(tipoTabla);
+            Agregar(tipoRelacion);
             
         }
         

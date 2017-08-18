@@ -117,9 +117,6 @@
     <Compile Include="Builders\BuilderTipo.cs" />
     <Compile Include="Cambios\EvaluarResumenCambios.cs" />
     <Compile Include="Configuracion\EvaluarAgenteConfiguracion.cs" />
-    <Compile Include="Datos\EvaluarDAS.cs" />
-    <Compile Include="Datos\Impl\Configuracion.cs" />
-    <Compile Include="Datos\Impl\ConfiguracionRepositorio.cs" />
     <Compile Include="Estructura\EvaluarConfiguracion.cs" />
     <Compile Include="Estructura\EvaluarObjetoDatos.cs" />
     <Compile Include="Estructura\EvaluarTypeHelper.cs" />
@@ -150,6 +147,7 @@
     <Compile Include="Serializacion\EvaluarSerializacionEnFichero.cs" />
     <Compile Include="Serializacion\Modelo\Config.cs" />
     <Compile Include="Serializacion\Modelo\FabricaConfig.cs" />
+    <Compile Include="TestClaveHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Binapsis.Plataforma.AgenteConfiguracion\Binapsis.Plataforma.AgenteConfiguracion.csproj">
@@ -167,10 +165,6 @@
     <ProjectReference Include="..\Binapsis.Plataforma.Configuracion\Binapsis.Plataforma.Configuracion.csproj">
       <Project>{431fb5cb-564f-4259-9e38-fa2cfb733625}</Project>
       <Name>Binapsis.Plataforma.Configuracion</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Binapsis.Plataforma.Datos.SQLite\Binapsis.Plataforma.Datos.SQLite.csproj">
-      <Project>{1a160c5b-5a91-4b64-8460-ee4af9d1e499}</Project>
-      <Name>Binapsis.Plataforma.Datos.SQLite</Name>
     </ProjectReference>
     <ProjectReference Include="..\Binapsis.Plataforma.Datos\Binapsis.Plataforma.Datos.csproj">
       <Project>{E1170C6F-C435-469E-90DB-7C993FB6D7A4}</Project>

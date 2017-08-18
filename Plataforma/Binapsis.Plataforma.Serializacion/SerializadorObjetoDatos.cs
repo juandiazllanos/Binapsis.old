@@ -15,7 +15,7 @@ namespace Binapsis.Plataforma.Serializacion
         {
             if (obj is IObjetoDatos od)
                 Serializar(od);
-            else if (obj is IList items)
+            else if (obj is IEnumerable items)
                 Serializar(items);
         }
 
@@ -25,7 +25,7 @@ namespace Binapsis.Plataforma.Serializacion
             Serializar(estrategia);
         }
 
-        public void Serializar(IList items)
+        public void Serializar(IEnumerable items)
         {
             Serializar estrategia = new SerializarColeccionObjetoDatos(items, Escritor);
             Serializar(estrategia);

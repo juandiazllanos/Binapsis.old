@@ -57,7 +57,7 @@ namespace Binapsis.Plataforma.Datos.Mapeo
 
         public MapeoColumna ObtenerMapeoColumnaPorPropiedad(string propiedad)
         {
-            return _columnas.FirstOrDefault(item => item.Propiedad.Nombre == propiedad);
+            return _columnas.FirstOrDefault(item => item.Propiedad?.Nombre == propiedad);
         }
 
         public MapeoRelacion ObtenerMapeoRelacionPorPropiedad(IPropiedad propiedad)

@@ -68,6 +68,7 @@ namespace Binapsis.Plataforma.Datos.Builder
             }
 
             Comando.Sql = builder.ToString();
+            Comando.ComandoTipo = ComandoTipo.UPDATE;
         }
         
         public IList<IPropiedad> Cambios

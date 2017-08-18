@@ -36,6 +36,8 @@ namespace Binapsis.Plataforma.Datos.Operacion
                 valor = ObjetoDatos.Obtener(mapeoColumna.Propiedad);
             else if (mapeoColumna is MapeoColumnaClave mapeoColumnaClave)
                 valor = ResolverReferencia(mapeoColumnaClave);
+            else if (mapeoColumna.Columna.ClavePrimaria)
+                valor = Contexto.ObtenerClave(mapeoColumna.MapeoTabla.Tipo)?.Obtener(ObjetoDatos, mapeoColumna.Columna.Nombre);
             else
                 return; // terminar
 
@@ -59,10 +61,15 @@ namespace Binapsis.Plataforma.Datos.Operacion
                     ObjetoDatos.Propietario?.Tipo.Nombre == tipo.Nombre)
                 od = ObjetoDatos.Propietario;
 
-            if (od == null || mapeoRelacionClave == null)
+            //if (od == null) return null;
+
+            if (mapeoRelacionClave == null)
                 throw new Exception($"No se ha podido resolver la columna '{mapeoColumna.Columna.Nombre}'.");
 
-            return od.Obtener(mapeoRelacionClave.ClavePrincipal.Propiedad);            
+            if (od != null && mapeoRelacionClave.ClavePrincipal.Propiedad != null)
+                return od.Obtener(mapeoRelacionClave.ClavePrincipal.Propiedad);
+            else 
+                return Contexto.ObtenerClave(mapeoRelacionClave.MapeoRelacion.TablaPrincipal.Tipo)?.Obtener(od, mapeoRelacionClave.ClavePrincipal.Columna.Nombre);
         }
         
         public ComandoEscritura Comando

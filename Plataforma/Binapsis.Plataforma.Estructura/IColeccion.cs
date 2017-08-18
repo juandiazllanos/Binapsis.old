@@ -7,7 +7,7 @@ namespace Binapsis.Plataforma.Estructura
         bool Contiene(IObjetoDatos item);
         int Indice(IObjetoDatos item);
         int Longitud { get; }
-                
+        
         IObjetoDatos this[int indice] { get; }
     }
 }

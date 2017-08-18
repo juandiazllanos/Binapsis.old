@@ -4,7 +4,7 @@ using Binapsis.Plataforma.Datos.Mapeo;
 namespace Binapsis.Plataforma.Datos.Impl
 {
     public class ComandoTabla : ComandoBase
-    {        
+    {
         internal ComandoTabla(Comando comando, MapeoTabla mapeoTabla)
             : base(comando, new ParametrosTabla(comando, mapeoTabla))
         {
@@ -14,6 +14,11 @@ namespace Binapsis.Plataforma.Datos.Impl
         internal MapeoTabla MapeoTabla
         {
             get;
+        }
+
+        public Tabla Tabla
+        {
+            get => MapeoTabla?.Tabla;
         }
 
     }

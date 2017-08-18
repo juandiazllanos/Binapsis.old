@@ -23,3 +23,5 @@ D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Datos\obj\Debug\netstandar
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Datos\obj\Debug\netstandard1.3\Binapsis.Plataforma.Datos.AssemblyInfo.cs
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Datos\obj\Debug\netstandard1.3\Binapsis.Plataforma.Datos.dll
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Datos\obj\Debug\netstandard1.3\Binapsis.Plataforma.Datos.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Datos\obj\Debug\netstandard1.3\Binapsis.Plataforma.Datos.csproj.CoreCompileInputs.cache
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Datos\obj\Debug\netstandard1.3\Binapsis.Plataforma.Datos.AssemblyInfoInputs.cache

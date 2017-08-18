@@ -43,12 +43,19 @@ namespace Binapsis.Plataforma.Datos.Builder
 
         private void ConstruirColumnas()
         {
+            // construir mapeo con columna (solo clave primaria)
+            var columnas = MapeoTabla.Tabla.Columnas.OfType<Columna>().Where(item => string.IsNullOrEmpty(item.Propiedad) && item.ClavePrimaria);
+
+            foreach (Columna columna in columnas)
+                ConstruirColumna(null, columna);
+
+            // construir mapeo con propiedad
             var atributos = MapeoTabla.Tipo.Propiedades.Where(item => item.Tipo.EsTipoDeDato);
 
             foreach (IPropiedad atributo in atributos)
-                ConstruirColumna(atributo);
+                ConstruirColumna(atributo);            
         }
-
+        
         private void ConstruirColumna(IPropiedad propiedad)
         {
             Columna columna = MapeoTabla.Tabla.Columnas.FirstOrDefault(item => (item as Columna)?.Propiedad == propiedad.Nombre) as Columna;
@@ -56,6 +63,11 @@ namespace Binapsis.Plataforma.Datos.Builder
             if (columna == null)
                 columna = CrearColumna(propiedad);
 
+            ConstruirColumna(propiedad, columna);
+        }
+
+        private void ConstruirColumna(IPropiedad propiedad, Columna columna)
+        {
             MapeoColumna mapeoColumna = new MapeoColumna(MapeoTabla);
             mapeoColumna.Columna = columna;
             mapeoColumna.Propiedad = propiedad;

@@ -1,4 +1,5 @@
 ﻿using Binapsis.Plataforma.Estructura;
+using Binapsis.Plataforma.Helper;
 using System.Collections.Generic;
 
 namespace Binapsis.Plataforma.Cambios.Analisis
@@ -17,6 +18,7 @@ namespace Binapsis.Plataforma.Cambios.Analisis
         {
             Tipo = tipo;
             Propietario = propietario;
+            ClaveHelper = propietario?.ClaveHelper;
 
             _propiedades = new List<AnalisisPropiedadCambios>();            
         }
@@ -68,6 +70,12 @@ namespace Binapsis.Plataforma.Cambios.Analisis
         }
         
         public Cambio Cambio
+        {
+            get;
+            set;
+        }
+
+        public IClaveHelper ClaveHelper
         {
             get;
             set;

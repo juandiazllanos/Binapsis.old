@@ -27,6 +27,7 @@ namespace Binapsis.Plataforma.Datos.Builder
             }                
 
             Comando.Sql = builder.ToString();
+            Comando.ComandoTipo = ComandoTipo.QUERY;
         }
         
     }

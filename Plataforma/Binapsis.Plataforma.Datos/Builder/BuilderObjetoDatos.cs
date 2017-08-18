@@ -52,7 +52,7 @@ namespace Binapsis.Plataforma.Datos.Builder
         private void RecuperarObjetoDatos(MapeoRelacion mapeoRelacion)
         {
             // validar clave
-            if (!ValidarClavePrincipal(mapeoRelacion)) return;
+            if (!ValidarClaveSecundaria(mapeoRelacion)) return;
             // obtener referencia del monton
             IObjetoDatos od = RecuperarHelper.Heap.Obtener(Datos.ObtenerClavePrincipal(mapeoRelacion));
             // establecer referencia recuperada
@@ -87,14 +87,28 @@ namespace Binapsis.Plataforma.Datos.Builder
             var claves = mapeoRelacion.Claves.Select(item => item.ClavePrincipal);
             return ValidarClave(claves);
         }
-        
+
+        private bool ValidarClaveSecundaria(MapeoRelacion mapeoRelacion)
+        {
+            var claves = mapeoRelacion.Claves.Select(item => item.ClaveSecundaria);
+            return ValidarClave(claves);
+        }
+
         private bool ValidarClave(IEnumerable<MapeoColumna> claves)
         {
             foreach (MapeoColumna mapeoColumna in claves)
-                if (Datos.Obtener(mapeoColumna.Columna) == ValorInicialHelper.Instancia.Obtener(mapeoColumna.Propiedad))
+                if (ValidarValorInicial(mapeoColumna))
                     return false;
 
             return true;
+        }
+
+        private bool ValidarValorInicial(MapeoColumna mapeoColumna)
+        {
+            if (mapeoColumna.Propiedad != null)
+                return Datos.Obtener(mapeoColumna.Columna) == ValorInicialHelper.Instancia.Obtener(mapeoColumna.Propiedad);
+            else
+                return false; // no se puede validar, la columna no tiene un tipo
         }
 
         private void EstablecerParametros(ComandoLectura consulta, MapeoRelacion mapeoRelacion)

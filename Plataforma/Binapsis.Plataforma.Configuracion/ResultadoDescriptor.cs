@@ -23,8 +23,8 @@ namespace Binapsis.Plataforma.Configuracion
 
         public string Nombre
         {
-            get;
-            set;
+            get => ObtenerString("Nombre");
+            set => EstablecerString("Nombre", value);
         }
 
         public string Tabla

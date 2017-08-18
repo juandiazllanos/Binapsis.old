@@ -47,6 +47,7 @@ namespace Binapsis.Plataforma.Datos.Builder
             }
 
             Comando.Sql = builder.ToString();
+            Comando.ComandoTipo = ComandoTipo.DELETE;
         }
                 
         //protected override void ConstruirParametros()

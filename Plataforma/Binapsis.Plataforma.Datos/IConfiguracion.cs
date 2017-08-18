@@ -15,6 +15,8 @@ namespace Binapsis.Plataforma.Datos
         IList ObtenerRelacionesPorTipo(string uri, string tipo);
         IList ObtenerRelacionesPorTabla(string tablaPrincipal, string tablaSecundaria);
 
+        Comando ObtenerComando(string nombre);
+
         Tipo ObtenerTipo(string uri, string tipo);
     }
 }

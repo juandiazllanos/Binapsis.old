@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "targets": {
     ".NETStandard,Version=v1.3": {
       "Microsoft.NETCore.Platforms/1.1.0": {
@@ -894,6 +894,12 @@
           "Binapsis.Plataforma.Estructura": "1.0.0",
           "Binapsis.Plataforma.Helper": "1.0.0",
           "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "bin/placeholder/Binapsis.Plataforma.Cambios.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Binapsis.Plataforma.Cambios.dll": {}
         }
       },
       "Binapsis.Plataforma.Estructura/1.0.0": {
@@ -901,6 +907,12 @@
         "framework": ".NETStandard,Version=v1.3",
         "dependencies": {
           "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "bin/placeholder/Binapsis.Plataforma.Estructura.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Binapsis.Plataforma.Estructura.dll": {}
         }
       },
       "Binapsis.Plataforma.Helper/1.0.0": {
@@ -909,6 +921,12 @@
         "dependencies": {
           "Binapsis.Plataforma.Estructura": "1.0.0",
           "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "bin/placeholder/Binapsis.Plataforma.Helper.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Binapsis.Plataforma.Helper.dll": {}
         }
       },
       "Binapsis.Plataforma.Serializacion/1.0.0": {
@@ -918,6 +936,12 @@
           "Binapsis.Plataforma.Cambios": "1.0.0",
           "Binapsis.Plataforma.Estructura": "1.0.0",
           "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "bin/placeholder/Binapsis.Plataforma.Serializacion.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Binapsis.Plataforma.Serializacion.dll": {}
         }
       }
     }
@@ -3759,19 +3783,35 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\JUAN\\.nuget\\packages\\": {}
+    "C:\\Users\\JUAN\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
       "projectUniqueName": "D:\\Desarrollo\\Binapsis\\Plataforma\\Binapsis.Plataforma.Serializacion.Xml\\Binapsis.Plataforma.Serializacion.Xml.csproj",
       "projectName": "Binapsis.Plataforma.Serializacion.Xml",
       "projectPath": "D:\\Desarrollo\\Binapsis\\Plataforma\\Binapsis.Plataforma.Serializacion.Xml\\Binapsis.Plataforma.Serializacion.Xml.csproj",
+      "packagesPath": "C:\\Users\\JUAN\\.nuget\\packages\\",
       "outputPath": "D:\\Desarrollo\\Binapsis\\Plataforma\\Binapsis.Plataforma.Serializacion.Xml\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\JUAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
       "originalTargetFrameworks": [
         "netstandard1.3"
       ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
       "frameworks": {
         "netstandard1.3": {
           "projectReferences": {
@@ -3786,6 +3826,11 @@
             }
           }
         }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
       }
     },
     "frameworks": {

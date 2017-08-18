@@ -1,5 +1,5 @@
 ﻿using Binapsis.Plataforma.Estructura;
-using Binapsis.Plataforma.Helper.Impl;
+using Binapsis.Plataforma.Helper;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,14 +10,8 @@ namespace Binapsis.Plataforma.Cambios.Analisis
         List<AnalisisObjetoCambios> _items;
 
         public AnalisisColeccionCambios(AnalisisObjetoCambios aoc, IPropiedad propiedad)
-            : this(aoc, propiedad, null)
-        {
-        }
-
-        public AnalisisColeccionCambios(AnalisisObjetoCambios aoc, IPropiedad propiedad, IPropiedad clave) 
             : base(aoc, propiedad)
         {
-            Clave = clave;
             _items = new List<AnalisisObjetoCambios>();
         }
 
@@ -40,13 +34,13 @@ namespace Binapsis.Plataforma.Cambios.Analisis
 
         private void Construir()
         {
-            if (Clave == null)
+            if (AnalisisObjetoCambios.ClaveHelper == null)
                 ConstruirPorIndice();
             else
-                ConstruirPorClave();
+                ConstruirPorClave(AnalisisObjetoCambios.ClaveHelper);
         }
 
-        private void ConstruirPorClave()
+        private void ConstruirPorClave(IClaveHelper claveHelper)
         {
             IColeccion colNuevo = AnalisisObjetoCambios.ObjetoDatosNuevo.ObtenerColeccion(Propiedad);
             IColeccion colAntiguo = AnalisisObjetoCambios.ObjetoDatosAntiguo.ObtenerColeccion(Propiedad);
@@ -60,7 +54,7 @@ namespace Binapsis.Plataforma.Cambios.Analisis
             foreach(IObjetoDatos item in colNuevo)
             {
                 itemNuevo = item;
-                itemAntiguo = itemsAntiguo.FirstOrDefault(antiguo => EqualityHelper.Instancia.Igual(itemNuevo, antiguo, Clave));
+                itemAntiguo = itemsAntiguo.FirstOrDefault(antiguo => claveHelper.ObtenerString(itemNuevo) == claveHelper.ObtenerString(antiguo)); //EqualityHelper.Instancia.Igual(itemNuevo, antiguo, Clave));
 
                 if (itemAntiguo != null) itemsAntiguo.Remove(itemAntiguo);
 
@@ -104,10 +98,10 @@ namespace Binapsis.Plataforma.Cambios.Analisis
             _items.Add(aic);
         }
 
-        public IPropiedad Clave
-        {
-            get;
-        }
+        //public IPropiedad Clave
+        //{
+        //    get;
+        //}
 
         public IReadOnlyList<AnalisisObjetoCambios> Coleccion
         {

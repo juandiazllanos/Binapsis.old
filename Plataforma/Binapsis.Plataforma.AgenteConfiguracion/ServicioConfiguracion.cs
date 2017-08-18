@@ -8,6 +8,9 @@ using System;
 using EspacioNombre = Binapsis.Plataforma.Configuracion.Uri;
 using System.Collections.Generic;
 using System.Collections;
+using Binapsis.Plataforma.Serializacion;
+using Binapsis.Plataforma.Serializacion.Xml;
+using Binapsis.Plataforma.Estructura.Impl;
 
 namespace Binapsis.Plataforma.AgenteConfiguracion
 {
@@ -17,24 +20,29 @@ namespace Binapsis.Plataforma.AgenteConfiguracion
 
         public ServicioConfiguracion()
         {
-            _fabrica = Fabrica.Instancia;
+
         }
 
         public ServicioConfiguracion(string url)
-            : this()
-        {
-            Url = url;
+            : this(url, Fabrica.Instancia)
+        {            
         }
 
         public ServicioConfiguracion(IFabricaImpl impl)
+            : this(null, impl)
         {
-            _fabrica = new Fabrica(impl);
+
         }
 
         public ServicioConfiguracion(string url, IFabricaImpl impl)
-            : this(impl)
+            : this(url, new Fabrica(impl))
+        {            
+        }
+
+        public ServicioConfiguracion(string url, Fabrica fabrica)
         {
             Url = url;
+            _fabrica = fabrica;
         }
 
 
@@ -72,13 +80,21 @@ namespace Binapsis.Plataforma.AgenteConfiguracion
 
         public ConfiguracionBase Obtener(Type type, string configuracion, string clave)
         {
-            ConfiguracionBase instancia = null;
-            
+            // recuperar xml
+            string valor = Obtener(configuracion, clave);
+            if (valor == null) throw new Exception($"La configuración '{configuracion}:{clave}' no existe");
+
+            if (valor.Length == 0) return null;
+
             // crear instancia
-            instancia = _fabrica.Crear(type);
-            
-            // recuperar
-            Recuperar(instancia, configuracion, clave);
+            ConfiguracionBase instancia = _fabrica.Crear(type);
+            // crear secuencia
+            Secuencia secuencia = new Secuencia(valor);
+            // crear helper
+            Deserializador deserializador = new DeserializadorObjetoDatos(secuencia, new LectorXml());
+            // deserializar
+            deserializador.Fabrica = _fabrica;
+            deserializador.Deserializar(instancia);
 
             return instancia;
         }
@@ -100,24 +116,30 @@ namespace Binapsis.Plataforma.AgenteConfiguracion
             return items;
         }
                 
-        public void Recuperar(ConfiguracionBase instancia, string clave)
-        {
-            Recuperar(instancia, instancia.Tipo.Nombre, clave);
-        }
+        //public ConfiguracionBase Recuperar(ITipo tipo, string clave)
+        //{
+        //    return Recuperar(tipo, tipo.Nombre, clave);
+        //}
 
-        public void Recuperar(ConfiguracionBase instancia, string configuracion, string clave)
-        {
-            // recuperar xml
-            string valor = Obtener(configuracion, clave);
-            if (valor == null) throw new Exception($"La configuración '{configuracion}:{clave}' no existe");
-                       
-            IDeserializador deserializador = null;
-                        
-            // crear helper
-            deserializador = new DeserializacionXml(instancia);
-            // deserializar
-            deserializador.Deserializar(valor);
-        }
+        //public ConfiguracionBase Recuperar(ITipo tipo, string configuracion, string clave)
+        //{
+        //    // recuperar xml
+        //    string valor = Obtener(configuracion, clave);
+        //    if (valor == null) throw new Exception($"La configuración '{configuracion}:{clave}' no existe");
+
+        //    if (valor.Length == 0) return null;
+
+        //    // crear instancia
+        //    ConfiguracionBase instancia = _fabrica.Crear(tipo);
+        //    // crear secuencia
+        //    Secuencia secuencia = new Secuencia(valor);
+        //    // crear helper
+        //    Deserializador deserializador = new DeserializadorObjetoDatos(secuencia, new LectorXml()); 
+        //    // deserializar
+        //    deserializador.Deserializar(valor);
+
+        //    return instancia;
+        //}
 
         public void Recuperar(Type type, IList items, string configuracion, string parametros)
         {
@@ -132,6 +154,33 @@ namespace Binapsis.Plataforma.AgenteConfiguracion
             
             // deserializar
             deserializador.Deserializar(valor);
+        }
+
+        internal IColeccion EjecutarConsulta(ComandoHelper consulta)
+        {
+            Coleccion coleccion = new Coleccion();
+            StringBuilder builder = new StringBuilder();
+
+            object valor = null;
+
+            foreach (Parametro parametro in consulta.Comando.Parametros)
+            {
+                valor = consulta.Obtener(parametro.Nombre);
+                if (valor == null) continue;
+
+                if (builder.Length > 0) builder.Append("&");
+                builder.Append($"{parametro.Nombre}={valor}");
+            }
+
+            string resultado = ObtenerColeccion($"consulta/{consulta.Comando.Nombre}", builder.ToString());
+            if (string.IsNullOrEmpty(resultado)) return coleccion;
+
+            Secuencia secuencia = new Secuencia(resultado);
+            ITipo tipo = new ResultadoTipo(consulta.Comando);
+            Deserializador helper = new DeserializadorObjetoDatos(secuencia, new LectorXml());
+            helper.Deserializar(tipo, coleccion);
+
+            return coleccion;
         }
 
         public Definicion ObtenerDefinicion()
@@ -282,7 +331,7 @@ namespace Binapsis.Plataforma.AgenteConfiguracion
                 cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/xml"));
 
                 if (!string.IsNullOrEmpty(parametros))
-                    ruta = $"{url}/{configuracion}?{parametros}";
+                    ruta = $"{url}/{configuracion}/{parametros}";
                 else
                     ruta = $"{url}/{configuracion}";
 

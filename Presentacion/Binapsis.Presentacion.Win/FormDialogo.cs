@@ -1,5 +1,4 @@
 ﻿using DevExpress.XtraEditors;
-using DevExpress.Skins;
 using System;
 using System.Windows.Forms;
 using Binapsis.Presentacion.Editores;
@@ -8,7 +7,7 @@ namespace Binapsis.Presentacion.Win
 {
     internal partial class FormDialogo : XtraForm
     {
-        EditorObjeto _editor;
+        UserControl _editor;
         Action<FormDialogo> _terminar;
 
         public FormDialogo()
@@ -19,7 +18,7 @@ namespace Binapsis.Presentacion.Win
 
         protected virtual void Inicializar()
         {
-            SkinManager.EnableFormSkins();
+            //SkinManager.EnableFormSkins();
 
             Resultado = ResultadoDialogo.Cancelado;
             botonOk.Tag = ResultadoDialogo.OK;
@@ -48,12 +47,17 @@ namespace Binapsis.Presentacion.Win
             if (boton != null)            
                 resul = (ResultadoDialogo)boton.Tag;
             
-            if (resul == ResultadoDialogo.Cancelado && ConfirmarDialogo && 
-                MessageBox.Show(this, "Confirmar para salir", "Confirmación", 
+            Cerrar(resul);
+        }
+
+        internal void Cerrar(ResultadoDialogo resultado)
+        {
+            if (resultado == ResultadoDialogo.Cancelado && ConfirmarDialogo &&
+                MessageBox.Show(this, "Confirmar para salir", "Confirmación",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
                 return;
 
-            Resultado = resul;
+            Resultado = resultado;
             Close();
         }
 
@@ -63,7 +67,7 @@ namespace Binapsis.Presentacion.Win
             _terminar?.Invoke(this);
         }
 
-        private void EstablecerEditor(EditorObjeto editor)
+        private void EstablecerEditor(UserControl editor)
         {
             int width = editor.Width;
             int height = editor.Height + botones.Height;
@@ -81,7 +85,7 @@ namespace Binapsis.Presentacion.Win
             _editor = editor;
         }
 
-        public EditorObjeto Editor
+        public UserControl Editor
         {
             get => _editor;
             set => EstablecerEditor(value);

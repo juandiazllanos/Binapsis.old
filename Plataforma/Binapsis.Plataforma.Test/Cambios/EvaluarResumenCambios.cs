@@ -84,7 +84,7 @@ namespace Binapsis.Plataforma.Test.Cambios
             nuevo.RemoverObjetoDatos("ReferenciaObjetoDatosItem[0]/ReferenciaObjetoDatosItem", nuevo.ObtenerObjetoDatos("ReferenciaObjetoDatosItem[0]/ReferenciaObjetoDatosItem[2]"));
 
             IDiagramaDatos diagrama = new DiagramaDatos(tipo);
-            BuilderDiagramaDatos builder = new BuilderDiagramaDatos(diagrama);
+            BuilderDiagramaDatos builder = new BuilderDiagramaDatos(diagrama);                    
             builder.Construir(nuevo, antiguo);
 
             IResumenCambios resumen = diagrama.ResumenCambios;
@@ -133,6 +133,51 @@ namespace Binapsis.Plataforma.Test.Cambios
             Assert.AreEqual(antiguo.ObtenerString("ReferenciaObjetoDatosItem[0]/ReferenciaObjetoDatosItem[0]/atributoString"),
                 resumen.ObtenerValorAntiguo(nuevo.ObtenerObjetoDatos("ReferenciaObjetoDatosItem[0]/ReferenciaObjetoDatosItem[0]"), propiedadesCambiadas[0]));
 
+        }
+
+        [TestMethod, TestCategory("Evaluar Resumen de cambios")]
+        public void EvaluarDiagramaDatosCambiosColeccionPorClave()
+        {
+            ITipo tipo = HelperTipo.ObtenerTipo2();
+            IObjetoDatos nuevo = TestHelper.Crear(tipo);
+            TestHelper.Construir(nuevo, 1, 3);
+
+            ICopyHelper helper = new CopyHelper();
+            IObjetoDatos antiguo = helper.Copiar(nuevo);
+            
+            IObjetoDatos itemNuevo  = nuevo.CrearObjetoDatos("ReferenciaObjetoDatosItem");
+            IObjetoDatos itemEditado = nuevo.ObtenerObjetoDatos("ReferenciaObjetoDatosItem[0]");
+            IObjetoDatos itemEliminado = nuevo.ObtenerObjetoDatos("ReferenciaObjetoDatosItem[1]");
+
+            itemEditado.EstablecerString("atributoString", "item valor modificado");
+            nuevo.RemoverObjetoDatos("ReferenciaObjetoDatosItem", itemEliminado);
+
+            IDiagramaDatos diagrama = new DiagramaDatos(tipo);
+            BuilderDiagramaDatos builder = new BuilderDiagramaDatos(diagrama);
+            // utilizar claves
+            builder.ClaveHelper = TestClaveHelper.Instancia;
+            builder.Construir(nuevo, antiguo);
+
+            IResumenCambios resumen = diagrama.ResumenCambios;
+
+            List<IObjetoDatos> cambios = new List<IObjetoDatos>(resumen.ObtenerObjetoDatosCambiados());
+
+            Assert.AreEqual(4, cambios.Count);
+
+            Assert.IsTrue(resumen.Creado(itemNuevo));
+            Assert.IsTrue(resumen.Modificado(itemEditado));
+
+            IObjetoDatos itemEliminado2 = null;
+
+            foreach (IObjetoDatos item in cambios)
+                if (resumen.Eliminado(item))
+                {
+                    itemEliminado2 = item;
+                    break;
+                }
+
+            Assert.IsNotNull(itemEliminado2);
+            Assert.IsTrue(TestClaveHelper.Instancia.ObtenerString(itemEliminado).Equals(TestClaveHelper.Instancia.ObtenerString(itemEliminado2)));
         }
 
         [TestMethod, TestCategory("Evaluar Resumen de cambios")]

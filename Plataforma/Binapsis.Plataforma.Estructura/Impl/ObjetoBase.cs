@@ -53,11 +53,11 @@ namespace Binapsis.Plataforma.Estructura.Impl
             AgregarObjetoDatos(Tipo[indice], item);
         }
 
-        protected abstract ObjetoBase CrearObjetoDatos(IImplementacion impl);
-        
-        protected IObjetoDatos CrearObjetoDatos(IPropiedad propiedad)
+        protected internal abstract ObjetoBase CrearObjetoDatos(IImplementacion impl);
+
+        protected internal ObjetoBase CrearObjetoDatos(IPropiedad propiedad, IImplementacion impl)
         {
-            IObjetoDatos od = CrearObjetoDatos(_impl.Crear(propiedad.Tipo, this)); 
+            ObjetoBase od = CrearObjetoDatos(impl);
 
             if (propiedad.Cardinalidad >= Cardinalidad.CeroAMuchos)
                 _impl.AgregarObjetoDatos(propiedad, od);
@@ -65,6 +65,11 @@ namespace Binapsis.Plataforma.Estructura.Impl
                 _impl.EstablecerObjetoDatos(propiedad, od);
 
             return od;
+        }
+        
+        protected IObjetoDatos CrearObjetoDatos(IPropiedad propiedad)
+        {
+            return CrearObjetoDatos(propiedad, _impl.Crear(propiedad.Tipo, this)); 
         }
 
         protected IObjetoDatos CrearObjetoDatos(int indice)

@@ -57,7 +57,8 @@ namespace Binapsis.Plataforma.Configuracion.Helper
                 case "Single":
                     return default(float);
                 case "String":
-                    return default(string);
+                    return string.Empty;
+                    //return default(string);
                 case "UInt16":
                     return default(ushort);
                 case "UInt32":

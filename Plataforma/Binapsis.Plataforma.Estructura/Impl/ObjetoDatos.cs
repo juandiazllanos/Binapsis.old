@@ -45,7 +45,7 @@ namespace Binapsis.Plataforma.Estructura.Impl
             base.AgregarObjetoDatos(ruta, item);
         }
 
-        protected override ObjetoBase CrearObjetoDatos(IImplementacion impl)
+        protected internal override ObjetoBase CrearObjetoDatos(IImplementacion impl)
         {
             return FabricaDatos.Instancia.Crear(impl);
         }

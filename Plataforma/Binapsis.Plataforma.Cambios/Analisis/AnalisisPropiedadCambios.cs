@@ -29,6 +29,7 @@ namespace Binapsis.Plataforma.Cambios.Analisis
         {
             get;
         }
-        
+
+                
     }
 }

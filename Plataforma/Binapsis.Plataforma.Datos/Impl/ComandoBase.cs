@@ -1,6 +1,8 @@
 ﻿using System;
 using Binapsis.Plataforma.Estructura;
 using Binapsis.Plataforma.Configuracion;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Binapsis.Plataforma.Datos.Impl
 {
@@ -56,12 +58,22 @@ namespace Binapsis.Plataforma.Datos.Impl
         public virtual object ObtenerParametro(int indice)
         {
             return Parametros[indice]?.Valor;
-        }        
+        }  
+        
+        public virtual IList<ParametroComando> ObtenerParametroSalida()
+        {
+            return Parametros.Where(item => item.Direccion == "OUT").ToList();
+        }
         #endregion
 
 
         #region Propiedades
-        private Comando Comando
+        public ComandoTipo ComandoTipo
+        {
+            get => Comando.ComandoTipo;
+        }
+
+        protected Comando Comando
         {
             get;
         }
@@ -74,7 +86,7 @@ namespace Binapsis.Plataforma.Datos.Impl
         public string Sql
         {
             get => Comando.Sql;            
-        }
+        }                
         #endregion
 
     }

@@ -1,10 +1,11 @@
 ﻿using Binapsis.Presentacion.Editores;
+using System.Windows.Forms;
 
 namespace Binapsis.Presentacion.Win
 {
     public class Dialogo : IDialogo
     {
-        EditorObjeto _editor;
+        UserControl _editor;
         TerminarHandler _terminar;
         FormDialogo _form;
 
@@ -14,7 +15,7 @@ namespace Binapsis.Presentacion.Win
             _form.ConfirmarDialogo = true;
         }
 
-        private void EstablecerEditor(EditorObjeto editor)
+        private void EstablecerEditor(UserControl editor)
         {
             _form.Editor = editor;
             _editor = editor;
@@ -22,6 +23,7 @@ namespace Binapsis.Presentacion.Win
 
         public void Mostrar()
         {
+            _form.ConfirmarDialogo = ConfirmarDialogo;
             _form.Mostrar();
             Resultado = _form.Resultado;
         }
@@ -38,7 +40,12 @@ namespace Binapsis.Presentacion.Win
             _terminar?.Invoke(this);
         }
 
-        public EditorObjeto Editor
+        public void Cerrar(ResultadoDialogo resultado)
+        {
+            _form.Cerrar(resultado);
+        }
+
+        public UserControl Editor
         {
             get => _editor;
             set => EstablecerEditor(value);
@@ -48,6 +55,12 @@ namespace Binapsis.Presentacion.Win
         {
             get;
             private set;
+        }
+
+        public bool ConfirmarDialogo
+        {
+            get;
+            set;
         }
     }
 }

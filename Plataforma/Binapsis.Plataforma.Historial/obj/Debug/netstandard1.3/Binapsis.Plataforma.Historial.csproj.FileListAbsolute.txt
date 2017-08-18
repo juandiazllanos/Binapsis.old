@@ -11,3 +11,5 @@ D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Historial\bin\Debug\netsta
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Historial\bin\Debug\netstandard1.3\Binapsis.Plataforma.Helper.dll
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Historial\bin\Debug\netstandard1.3\Binapsis.Plataforma.Cambios.pdb
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Historial\bin\Debug\netstandard1.3\Binapsis.Plataforma.Helper.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Historial\obj\Debug\netstandard1.3\Binapsis.Plataforma.Historial.csproj.CoreCompileInputs.cache
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Historial\obj\Debug\netstandard1.3\Binapsis.Plataforma.Historial.AssemblyInfoInputs.cache

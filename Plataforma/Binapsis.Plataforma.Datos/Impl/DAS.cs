@@ -96,16 +96,25 @@ namespace Binapsis.Plataforma.Datos.Impl
         
         public IComando ObtenerComando(string nombre)
         {
-            throw new NotImplementedException();
+            Comando comando = Configuracion.ObtenerComando(nombre);
+            if (comando == null) return null;
+
+            return CrearComando(comando);
         }
 
         public IComando CrearComando(Comando comando)
         {
-            ConsultaHelper consultaHelper = new ConsultaHelper(MapeoCatalogo);
-            ComandoLectura comandoLectura = consultaHelper.CrearConsulta(comando);
-
-            return CrearComando(comandoLectura);
+            // crear comando consulta
+            if (comando.ComandoTipo == ComandoTipo.QUERY)
+                return CrearConsulta(comando);
+            // crear comando procedimiento
+            else if (comando.ComandoTipo == ComandoTipo.PROCEDURE)
+                return CrearProcedimiento(comando);
+            // null
+            else
+                return null;            
         }
+               
 
         public IComando CrearComando(ITipo tipo)
         {            
@@ -121,6 +130,28 @@ namespace Binapsis.Plataforma.Datos.Impl
             ComandoLectura comando = consultaHelper.CrearConsulta(tipo, propiedad);
 
             return CrearComando(comando);
+        }
+
+        private IComando CrearConsulta(Comando comando)
+        {
+            if (comando.ComandoTipo != ComandoTipo.QUERY) return null;
+
+            ConsultaHelper consultaHelper = new ConsultaHelper(MapeoCatalogo);
+            ComandoLectura comandoLectura = consultaHelper.CrearConsulta(comando);
+
+            return CrearComando(comandoLectura);
+        }
+
+        private IComando CrearProcedimiento(Comando comando)
+        {
+            if (comando.ComandoTipo != ComandoTipo.PROCEDURE) return null;
+
+            ComandoBase comandoBase = new ComandoBase(comando);
+            EjecutarComando ejecutar = new EjecutarComando(comandoBase);
+
+            ejecutar.Contexto = Contexto;
+
+            return ejecutar;
         }
 
         private IComando CrearComando(ComandoLectura comando)

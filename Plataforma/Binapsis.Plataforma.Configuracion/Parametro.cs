@@ -27,6 +27,12 @@ namespace Binapsis.Plataforma.Configuracion
             set => EstablecerString("Nombre", value);
         }
 
+        public int Longitud
+        {
+            get => ObtenerInteger("Longitud");
+            set => EstablecerInteger("Longitud", value);
+        }
+
         public string TipoDato
         {
             get => ObtenerString("Tipo");

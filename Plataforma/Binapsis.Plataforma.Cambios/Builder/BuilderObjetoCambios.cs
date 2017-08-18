@@ -1,6 +1,7 @@
 ﻿using Binapsis.Plataforma.Cambios.Analisis;
 using Binapsis.Plataforma.Cambios.Impl;
 using Binapsis.Plataforma.Estructura;
+using Binapsis.Plataforma.Helper;
 using Binapsis.Plataforma.Helper.Impl;
 
 namespace Binapsis.Plataforma.Cambios.Builder
@@ -14,7 +15,12 @@ namespace Binapsis.Plataforma.Cambios.Builder
 
         public void Construir(IObjetoDatos nuevo, IObjetoDatos antiguo)
         {
-            AnalisisObjetoCambios aoc = new AnalisisObjetoCambios(ObjetoCambios.Tipo) { ObjetoDatosNuevo = nuevo, ObjetoDatosAntiguo = antiguo };
+            AnalisisObjetoCambios aoc = new AnalisisObjetoCambios(ObjetoCambios.Tipo) {
+                ObjetoDatosNuevo = nuevo,
+                ObjetoDatosAntiguo = antiguo,
+                ClaveHelper = ClaveHelper
+            };
+
             aoc.Resolver();
             Construir(aoc);
         }
@@ -82,9 +88,7 @@ namespace Binapsis.Plataforma.Cambios.Builder
 
             IObjetoDatos objetoCambios = ObjetoCambios;
             ObjetoCambios itemCambios = (objetoCambios.CrearObjetoDatos(propiedad) as ObjetoCambios);
-            BuilderObjetoCambios builder = null;
-            
-            builder = new BuilderObjetoCambios(itemCambios);
+            BuilderObjetoCambios builder = new BuilderObjetoCambios(itemCambios) { ClaveHelper = ClaveHelper };
             builder.Construir(aoc);            
         }
 
@@ -95,7 +99,7 @@ namespace Binapsis.Plataforma.Cambios.Builder
             IObjetoDatos objetoCambios = ObjetoCambios;
 
             ObjetoCambios itemCambios = new Fabrica().Crear(propiedad.Tipo);
-            BuilderObjetoCambios builder = new BuilderObjetoCambios(itemCambios);
+            BuilderObjetoCambios builder = new BuilderObjetoCambios(itemCambios) { ClaveHelper = ClaveHelper };
             builder.Construir(aoc);
 
             objetoCambios.EstablecerObjetoDatos(propiedad, itemCambios);
@@ -106,6 +110,10 @@ namespace Binapsis.Plataforma.Cambios.Builder
             get;
         }
 
-        
+        public IClaveHelper ClaveHelper
+        {
+            get;
+            set;
+        }
     }
 }

@@ -33,7 +33,7 @@ namespace Binapsis.Plataforma.Test.Serializacion.Modelo
             propiedad.Asociacion = Asociacion.Agregacion;
             propiedad.Cardinalidad = Cardinalidad.CeroAMuchos;
 
-            return Crear(tipo);
+            return Crear(tipo as ITipo);
         }
         
         public override Config Crear(IImplementacion impl)

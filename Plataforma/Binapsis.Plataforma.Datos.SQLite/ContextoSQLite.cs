@@ -2,6 +2,7 @@
 using Microsoft.Data.Sqlite;
 using System.Data;
 using System;
+using Binapsis.Plataforma.Estructura;
 
 namespace Binapsis.Plataforma.Datos.SQLite
 {
@@ -58,7 +59,7 @@ namespace Binapsis.Plataforma.Datos.SQLite
             cmd.Transaction = Transaccion;
 
             SqliteDataReader reader = cmd.ExecuteReader();            
-            Resultado resultado = new Resultado(reader);
+            ResultadoSQLite resultado = new ResultadoSQLite(reader);
 
             System.Diagnostics.Debug.WriteLine(cmd.CommandText);
 
@@ -116,6 +117,11 @@ namespace Binapsis.Plataforma.Datos.SQLite
         void IDisposable.Dispose()
         {
             DeshacerTransaccion();
+        }
+
+        public IClave ObtenerClave(ITipo tipo)
+        {
+            return null;
         }
         #endregion
 

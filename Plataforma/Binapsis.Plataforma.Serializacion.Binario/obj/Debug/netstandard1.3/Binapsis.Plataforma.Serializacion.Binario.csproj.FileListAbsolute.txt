@@ -13,3 +13,5 @@ D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Binario\obj\
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Binario\obj\Debug\netstandard1.3\Binapsis.Plataforma.Serializacion.Binario.AssemblyInfo.cs
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Binario\obj\Debug\netstandard1.3\Binapsis.Plataforma.Serializacion.Binario.dll
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Binario\obj\Debug\netstandard1.3\Binapsis.Plataforma.Serializacion.Binario.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Binario\obj\Debug\netstandard1.3\Binapsis.Plataforma.Serializacion.Binario.csproj.CoreCompileInputs.cache
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Binario\obj\Debug\netstandard1.3\Binapsis.Plataforma.Serializacion.Binario.AssemblyInfoInputs.cache
