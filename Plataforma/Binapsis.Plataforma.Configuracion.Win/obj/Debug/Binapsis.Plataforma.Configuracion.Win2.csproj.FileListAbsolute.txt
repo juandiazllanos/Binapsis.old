@@ -1,0 +1,2 @@
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Win\obj\Debug\Binapsis.Plataforma.Configuracion.Win.exe
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Win\obj\Debug\Binapsis.Plataforma.Configuracion.Win.pdb

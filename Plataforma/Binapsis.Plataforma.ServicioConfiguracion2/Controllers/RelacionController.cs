@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Binapsis.Plataforma.Configuracion;
+using Binapsis.Plataforma.Estructura;
+using Microsoft.AspNetCore.Http;
+using System;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,11 +16,22 @@ namespace Binapsis.Plataforma.ServicioConfiguracion.Controllers
         }
 
 
-        [HttpGet("{clave}")]
+        [HttpGet("{clave}", Order = 0)]
         public Relacion Get(string clave)
         {
             return Obtener(clave);
         }
+
+        [HttpGet(Order = 1)]
+        public IColeccion Get()
+        {
+            return ObtenerColeccion(Request.Query);
+        }
+
+        //private IColeccion ObtenerColeccion(IQueryCollection query)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         [HttpPost]
         public void Post([FromBody]Relacion valor)

@@ -206,16 +206,12 @@ namespace Binapsis.Plataforma.Test.Cambios
 
             List<IObjetoDatos> objetosCambiados = new List<IObjetoDatos>(resumen.ObtenerObjetoDatosCambiados());
 
-            Assert.AreEqual(2, objetosCambiados.Count);
+            Assert.AreEqual(1, objetosCambiados.Count);
 
             Assert.IsFalse(resumen.Creado(objetosCambiados[0]));
             Assert.IsFalse(resumen.Eliminado(objetosCambiados[0]));
             Assert.IsTrue(resumen.Modificado(objetosCambiados[0]));
-
-            Assert.IsFalse(resumen.Creado(objetosCambiados[1]));
-            Assert.IsTrue(resumen.Eliminado(objetosCambiados[1]));
-            Assert.IsFalse(resumen.Modificado(objetosCambiados[1]));
-
+            
             List<IPropiedad> propiedadesCambiadas = new List<IPropiedad>(resumen.ObtenerCambios(nuevo));
             Assert.AreEqual(1, propiedadesCambiadas.Count);
             Assert.AreEqual("ReferenciaObjetoDatos2", propiedadesCambiadas[0].Nombre);
@@ -234,15 +230,11 @@ namespace Binapsis.Plataforma.Test.Cambios
 
             objetosCambiados = new List<IObjetoDatos>(resumen.ObtenerObjetoDatosCambiados());
 
-            Assert.AreEqual(2, objetosCambiados.Count);
+            Assert.AreEqual(1, objetosCambiados.Count);
             Assert.IsFalse(resumen.Creado(objetosCambiados[0]));
             Assert.IsFalse(resumen.Eliminado(objetosCambiados[0]));
             Assert.IsTrue(resumen.Modificado(objetosCambiados[0]));
-
-            Assert.IsFalse(resumen.Creado(objetosCambiados[1]));
-            Assert.IsTrue(resumen.Eliminado(objetosCambiados[1]));
-            Assert.IsFalse(resumen.Modificado(objetosCambiados[1]));
-
+            
             propiedadesCambiadas = new List<IPropiedad>(resumen.ObtenerCambios(nuevo));
             Assert.AreEqual(1, propiedadesCambiadas.Count);
             Assert.AreEqual("ReferenciaObjetoDatos2", propiedadesCambiadas[0].Nombre);
@@ -265,14 +257,11 @@ namespace Binapsis.Plataforma.Test.Cambios
 
             objetosCambiados = new List<IObjetoDatos>(resumen.ObtenerObjetoDatosCambiados());
 
-            Assert.AreEqual(2, objetosCambiados.Count);
+            Assert.AreEqual(1, objetosCambiados.Count);
             Assert.IsFalse(resumen.Creado(objetosCambiados[0]));
             Assert.IsFalse(resumen.Eliminado(objetosCambiados[0]));
             Assert.IsTrue(resumen.Modificado(objetosCambiados[0]));
-
-            Assert.IsTrue(resumen.Creado(objetosCambiados[1]));
-            Assert.IsFalse(resumen.Eliminado(objetosCambiados[1]));
-            Assert.IsFalse(resumen.Modificado(objetosCambiados[1]));
+            
 
             propiedadesCambiadas = new List<IPropiedad>(resumen.ObtenerCambios(nuevo));
             Assert.AreEqual(1, propiedadesCambiadas.Count);

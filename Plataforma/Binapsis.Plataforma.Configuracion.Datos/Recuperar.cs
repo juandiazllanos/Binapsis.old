@@ -21,6 +21,14 @@ namespace Binapsis.Plataforma.Configuracion.Datos
             ComandoHelper = new ComandoHelper(comando);
         }
 
+        public Recuperar(IContexto contexto, ITipo tipo, IPropiedad[] propiedades)
+            : this(contexto)
+        {
+            // crear comando
+            IComando comando = CrearComando(tipo, propiedades);
+            ComandoHelper = new ComandoHelper(comando);
+        }
+
         public Recuperar(IContexto contexto, string nombreComando)
             : this(contexto)
         {            
@@ -55,6 +63,13 @@ namespace Binapsis.Plataforma.Configuracion.Datos
         {
             IDAS das = new DAS(Configuracion, Contexto);
             IComando comando = das.CrearComando(tipo);
+            return comando;
+        }
+
+        protected virtual IComando CrearComando(ITipo tipo, IPropiedad[] propiedades)
+        {
+            IDAS das = new DAS(Configuracion, Contexto);
+            IComando comando = das.CrearComando(tipo, propiedades);
             return comando;
         }
 

@@ -1,0 +1,17 @@
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Binario\bin\Debug\netstandard2.0\Binapsis.Plataforma.Serializacion.Binario.deps.json
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Binario\bin\Debug\netstandard2.0\Binapsis.Plataforma.Serializacion.Binario.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Binario\bin\Debug\netstandard2.0\Binapsis.Plataforma.Serializacion.Binario.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Binario\bin\Debug\netstandard2.0\Binapsis.Plataforma.Cambios.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Binario\bin\Debug\netstandard2.0\Binapsis.Plataforma.Estructura.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Binario\bin\Debug\netstandard2.0\Binapsis.Plataforma.Helper.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Binario\bin\Debug\netstandard2.0\Binapsis.Plataforma.Serializacion.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Binario\bin\Debug\netstandard2.0\Binapsis.Plataforma.Cambios.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Binario\bin\Debug\netstandard2.0\Binapsis.Plataforma.Estructura.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Binario\bin\Debug\netstandard2.0\Binapsis.Plataforma.Serializacion.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Binario\bin\Debug\netstandard2.0\Binapsis.Plataforma.Helper.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Binario\obj\Debug\netstandard2.0\Binapsis.Plataforma.Serializacion.Binario.csprojResolveAssemblyReference.cache
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Binario\obj\Debug\netstandard2.0\Binapsis.Plataforma.Serializacion.Binario.csproj.CoreCompileInputs.cache
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Binario\obj\Debug\netstandard2.0\Binapsis.Plataforma.Serializacion.Binario.AssemblyInfoInputs.cache
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Binario\obj\Debug\netstandard2.0\Binapsis.Plataforma.Serializacion.Binario.AssemblyInfo.cs
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Binario\obj\Debug\netstandard2.0\Binapsis.Plataforma.Serializacion.Binario.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Serializacion.Binario\obj\Debug\netstandard2.0\Binapsis.Plataforma.Serializacion.Binario.pdb

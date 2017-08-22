@@ -42,6 +42,7 @@ namespace Binapsis.Plataforma.Test.Datos.Impl
             Comando crearId = Fabrica.Instancia.Crear<Comando>();
             crearId.Nombre = "CrearId";
             crearId.Sql = "usp_CrearId";
+            crearId.ComandoTipo = ComandoTipo.PROCEDURE;
 
             crearId.CrearParametro("clave", typeof(string), 250);
             crearId.CrearParametro("id", typeof(int), "OUT");
@@ -179,69 +180,50 @@ namespace Binapsis.Plataforma.Test.Datos.Impl
             tablaDepartamento.Nombre = "DEPARTAMENTO";
             tablaDepartamento.TipoAsociado = $"{_espacioNombre}.Departamento";
 
-            Columna colDepartamentoId = tablaDepartamento.CrearColumna();
-            colDepartamentoId.ClavePrimaria = true;
-            colDepartamentoId.Nombre = "ID";
-            colDepartamentoId.Propiedad = "Id";
+            tablaDepartamento.CrearColumna("ID", "Id", true);
+            tablaDepartamento.CrearColumna("NOMBRE", "Nombre");
 
             // Tabla = PROVINCIA
             Tabla tablaProvincia = fabrica.Crear<Tabla>();
             tablaProvincia.Nombre = "PROVINCIA";
             tablaProvincia.TipoAsociado = $"{_espacioNombre}.Provincia";
 
-            Columna colProvinciaId = tablaProvincia.CrearColumna();
-            colProvinciaId.ClavePrimaria = true;
-            colProvinciaId.Nombre = "ID";
-            colProvinciaId.Propiedad = "Id";
+            tablaProvincia.CrearColumna("ID", "Id", true);
+            tablaProvincia.CrearColumna("NOMBRE", "Nombre");
 
             // Tabla = DISTRITO
             Tabla tablaDistrito = fabrica.Crear<Tabla>();
             tablaDistrito.Nombre = "DISTRITO";
             tablaDistrito.TipoAsociado = $"{_espacioNombre}.Distrito";
 
-            Columna colDistritoId = tablaDistrito.CrearColumna();
-            colDistritoId.ClavePrimaria = true;
-            colDistritoId.Nombre = "ID";
-            colDistritoId.Propiedad = "Id";
+            tablaDistrito.CrearColumna("ID", "Id", true);
+            tablaDistrito.CrearColumna("NOMBRE", "Nombre");
 
             // Tabla = UBIGEO
             Tabla tablaUbigeo = fabrica.Crear<Tabla>();
             tablaUbigeo.Nombre = "UBIGEO";
             tablaUbigeo.TipoAsociado = $"{_espacioNombre}.Ubigeo";
 
-            Columna colUbigeoId = tablaUbigeo.CrearColumna();
-            colUbigeoId.ClavePrimaria = true;
-            colUbigeoId.Nombre = "ID";
-            colUbigeoId.Propiedad = "Id";
-
-            //Columna colUbigeoCodigo = tablaUbigeo.CrearColumna();
-            //colUbigeoCodigo.Nombre = "COD";
-            //colUbigeoCodigo.Propiedad = "Codigo";
+            tablaUbigeo.CrearColumna("ID", "Id", true);
+            tablaUbigeo.CrearColumna("CODIGO", "Codigo");
+            
 
             // Tabla = CLIENTE
             Tabla tablaCliente = fabrica.Crear<Tabla>();
             tablaCliente.Nombre = "CLIENTE";
             tablaCliente.TipoAsociado = $"{_espacioNombre}.Cliente";
 
-            Columna colClienteId = tablaCliente.CrearColumna();
-            colClienteId.ClavePrimaria = true;
-            colClienteId.Nombre = "ID";
-            colClienteId.Propiedad = "Id";
+            tablaCliente.CrearColumna("ID", "Id", true);
+            tablaCliente.CrearColumna("NOMBRES", "Nombres");
 
             // Tabla = DIRECCION
             Tabla tablaDireccion = fabrica.Crear<Tabla>();
             tablaDireccion.Nombre = "DIRECCION";
             tablaDireccion.TipoAsociado = $"{_espacioNombre}.Direccion";
 
-            Columna colDireccionId = tablaDireccion.CrearColumna();
-            colDireccionId.ClavePrimaria = true;
-            colDireccionId.Nombre = "ID";
-            colDireccionId.Propiedad = "Id";
-
-            //Columna colDireccionDescripcion = tablaDireccion.CrearColumna();            
-            //colDireccionDescripcion.Nombre = "DESC";
-            //colDireccionDescripcion.Propiedad = "Descripcion";
-
+            tablaDireccion.CrearColumna("ID", "Id", true);
+            tablaDireccion.CrearColumna("DESCRIPCION", "Descripcion");
+            
             // agregar tablas
             _items.Add(tablaDepartamento);
             _items.Add(tablaProvincia);

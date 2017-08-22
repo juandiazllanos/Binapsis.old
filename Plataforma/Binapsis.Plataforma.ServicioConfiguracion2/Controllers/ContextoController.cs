@@ -3,6 +3,9 @@ using Binapsis.Plataforma.Estructura;
 using Binapsis.Plataforma.Configuracion.Datos;
 using Binapsis.Plataforma.Datos;
 using Binapsis.Plataforma.Configuracion;
+using System;
+using System.Linq;
+using Microsoft.AspNetCore.Http;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -24,6 +27,12 @@ namespace Binapsis.Plataforma.ServicioConfiguracion.Controllers
             IObjetoDatos od = recuperar.EjecutarConsultaSimple();            
             T instancia = Fabrica.Instancia.Crear<T>(od);
             return instancia; 
+        }
+
+        protected IColeccion ObtenerColeccion(IQueryCollection query)
+        {
+            ConsultaHelper<T> consultaHelper = new ConsultaHelper<T>(ContextoInfo);
+            return consultaHelper.Ejecutar(query);
         }
         
         protected void Crear(T od)

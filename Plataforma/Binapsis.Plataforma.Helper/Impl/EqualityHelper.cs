@@ -52,9 +52,7 @@ namespace Binapsis.Plataforma.Helper.Impl
                     continue;
                 else if (propiedad.Cardinalidad == Cardinalidad.CeroAMuchos)
                     resul = Igual(od1.ObtenerColeccion(propiedad), od2.ObtenerColeccion(propiedad));
-                else //if (propiedad.Asociacion == Asociacion.Agregacion)
-                //    resul = ReferenceEquals(od1.ObtenerObjetoDatos(propiedad), od2.ObtenerObjetoDatos(propiedad));
-                //else
+                else 
                     resul = Igual(od1.ObtenerObjetoDatos(propiedad), od2.ObtenerObjetoDatos(propiedad));
 
                 if (!resul) break;

@@ -149,7 +149,7 @@ namespace Binapsis.Plataforma.Serializacion.Xml
 
         public override void EscribirDateTime(IPropiedad propiedad, DateTime valor)
         {
-            EscribirAtributoXml(propiedad, valor.ToString("s", DateTimeFormatInfo.InvariantInfo));
+            EscribirAtributoXml(propiedad, valor.ToString("o", DateTimeFormatInfo.InvariantInfo));
         }
 
         public override void EscribirDecimal(IPropiedad propiedad, decimal valor)

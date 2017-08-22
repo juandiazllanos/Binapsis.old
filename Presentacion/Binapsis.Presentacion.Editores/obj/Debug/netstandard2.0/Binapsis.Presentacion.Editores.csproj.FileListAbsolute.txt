@@ -1,0 +1,9 @@
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Editores\bin\Debug\netstandard2.0\Binapsis.Presentacion.Editores.deps.json
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Editores\bin\Debug\netstandard2.0\Binapsis.Presentacion.Editores.dll
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Editores\bin\Debug\netstandard2.0\Binapsis.Presentacion.Editores.pdb
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Editores\obj\Debug\netstandard2.0\Binapsis.Presentacion.Editores.csproj.CoreCompileInputs.cache
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Editores\obj\Debug\netstandard2.0\Binapsis.Presentacion.Editores.AssemblyInfoInputs.cache
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Editores\obj\Debug\netstandard2.0\Binapsis.Presentacion.Editores.AssemblyInfo.cs
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Editores\obj\Debug\netstandard2.0\Binapsis.Presentacion.Editores.dll
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Editores\obj\Debug\netstandard2.0\Binapsis.Presentacion.Editores.pdb
+D:\Desarrollo\Binapsis\Presentacion\Binapsis.Presentacion.Editores\obj\Debug\netstandard2.0\Binapsis.Presentacion.Editores.csprojResolveAssemblyReference.cache

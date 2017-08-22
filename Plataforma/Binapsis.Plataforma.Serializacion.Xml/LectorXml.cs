@@ -158,7 +158,7 @@ namespace Binapsis.Plataforma.Serializacion.Xml
 
         public override DateTime LeerDateTime()
         {
-            return DateTime.ParseExact(_reader.Value, "s", DateTimeFormatInfo.InvariantInfo, DateTimeStyles.AssumeLocal);
+            return DateTime.ParseExact(_reader.Value, "o", DateTimeFormatInfo.InvariantInfo, DateTimeStyles.AssumeLocal);
         }
 
         public override decimal LeerDecimal()

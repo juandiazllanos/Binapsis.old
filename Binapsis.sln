@@ -1,63 +1,61 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.10
+VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentacion", "Presentacion", "{7D0EA6F1-3D89-47F4-9A08-76FA0F359D33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Presentacion.Editores", "Presentacion\Binapsis.Presentacion.Editores\Binapsis.Presentacion.Editores.csproj", "{B61630D5-AD76-4A90-9411-E55FFA5B7E40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Binapsis.Presentacion.Editores", "Presentacion\Binapsis.Presentacion.Editores\Binapsis.Presentacion.Editores.csproj", "{B61630D5-AD76-4A90-9411-E55FFA5B7E40}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plataforma", "Plataforma", "{8D377004-0BB4-4331-8CB2-0178AEBA8F82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.Configuracion", "Plataforma\Binapsis.Plataforma.Configuracion\Binapsis.Plataforma.Configuracion.csproj", "{431FB5CB-564F-4259-9E38-FA2CFB733625}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Binapsis.Plataforma.Configuracion", "Plataforma\Binapsis.Plataforma.Configuracion\Binapsis.Plataforma.Configuracion.csproj", "{431FB5CB-564F-4259-9E38-FA2CFB733625}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.Estructura", "Plataforma\Binapsis.Plataforma.Estructura\Binapsis.Plataforma.Estructura.csproj", "{1095C376-0173-487D-BD2E-54991E05F539}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Binapsis.Plataforma.Estructura", "Plataforma\Binapsis.Plataforma.Estructura\Binapsis.Plataforma.Estructura.csproj", "{1095C376-0173-487D-BD2E-54991E05F539}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.Historial", "Plataforma\Binapsis.Plataforma.Historial\Binapsis.Plataforma.Historial.csproj", "{07EBC2AD-0697-43A3-A62D-333D75FBD4E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Binapsis.Plataforma.Historial", "Plataforma\Binapsis.Plataforma.Historial\Binapsis.Plataforma.Historial.csproj", "{07EBC2AD-0697-43A3-A62D-333D75FBD4E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.Notificaciones", "Plataforma\Binapsis.Plataforma.Notificaciones\Binapsis.Plataforma.Notificaciones.csproj", "{EC26F237-92C5-47BD-81F3-E2F48E701EE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Binapsis.Plataforma.Notificaciones", "Plataforma\Binapsis.Plataforma.Notificaciones\Binapsis.Plataforma.Notificaciones.csproj", "{EC26F237-92C5-47BD-81F3-E2F48E701EE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.Serializacion", "Plataforma\Binapsis.Plataforma.Serializacion\Binapsis.Plataforma.Serializacion.csproj", "{A7961B7C-6D4F-47E7-8D00-F95E1134E817}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Binapsis.Plataforma.Serializacion", "Plataforma\Binapsis.Plataforma.Serializacion\Binapsis.Plataforma.Serializacion.csproj", "{A7961B7C-6D4F-47E7-8D00-F95E1134E817}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.Serializacion.Binario", "Plataforma\Binapsis.Plataforma.Serializacion.Binario\Binapsis.Plataforma.Serializacion.Binario.csproj", "{8102FE4D-58ED-4C59-80AF-E1B19F758EE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Binapsis.Plataforma.Serializacion.Binario", "Plataforma\Binapsis.Plataforma.Serializacion.Binario\Binapsis.Plataforma.Serializacion.Binario.csproj", "{8102FE4D-58ED-4C59-80AF-E1B19F758EE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.Serializacion.Xml", "Plataforma\Binapsis.Plataforma.Serializacion.Xml\Binapsis.Plataforma.Serializacion.Xml.csproj", "{AE6BF23C-E25A-4D0E-94DE-81246AE2BCB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Binapsis.Plataforma.Serializacion.Xml", "Plataforma\Binapsis.Plataforma.Serializacion.Xml\Binapsis.Plataforma.Serializacion.Xml.csproj", "{AE6BF23C-E25A-4D0E-94DE-81246AE2BCB5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.Test", "Plataforma\Binapsis.Plataforma.Test\Binapsis.Plataforma.Test.csproj", "{030FAEB2-2A03-4B78-B37D-FC7CDAF15ACF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Presentacion.MVVM", "Presentacion\Binapsis.Presentacion.MVVM\Binapsis.Presentacion.MVVM.csproj", "{A6755B01-2B4A-4F97-9E0C-7F48BED6EC80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Binapsis.Presentacion.MVVM", "Presentacion\Binapsis.Presentacion.MVVM\Binapsis.Presentacion.MVVM.csproj", "{A6755B01-2B4A-4F97-9E0C-7F48BED6EC80}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Presentacion.Test", "Presentacion\Binapsis.Presentacion.Test\Binapsis.Presentacion.Test.csproj", "{C3CF683A-1CA6-42ED-ADA4-2D459D414272}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Presentacion.Win", "Presentacion\Binapsis.Presentacion.Win\Binapsis.Presentacion.Win.csproj", "{773F4876-66A6-4886-93F6-E5059DF8A0ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.Configuracion.Serializacion", "Plataforma\Binapsis.Plataforma.Configuracion.Serializacion\Binapsis.Plataforma.Configuracion.Serializacion.csproj", "{B840B399-FD12-4007-8B42-C61656908F89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Binapsis.Plataforma.Configuracion.Serializacion", "Plataforma\Binapsis.Plataforma.Configuracion.Serializacion\Binapsis.Plataforma.Configuracion.Serializacion.csproj", "{B840B399-FD12-4007-8B42-C61656908F89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.Configuracion.Win2", "Plataforma\Binapsis.Plataforma.Configuracion.Win\Binapsis.Plataforma.Configuracion.Win2.csproj", "{64E52F3B-E194-4891-8FD5-4B5AD366B6EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Binapsis.Plataforma.AgenteConfiguracion", "Plataforma\Binapsis.Plataforma.AgenteConfiguracion\Binapsis.Plataforma.AgenteConfiguracion.csproj", "{71753498-7F80-4D33-BA78-1D574230555D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.AgenteConfiguracion", "Plataforma\Binapsis.Plataforma.AgenteConfiguracion\Binapsis.Plataforma.AgenteConfiguracion.csproj", "{71753498-7F80-4D33-BA78-1D574230555D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Binapsis.Plataforma.Cambios", "Plataforma\Binapsis.Plataforma.Cambios\Binapsis.Plataforma.Cambios.csproj", "{D0315649-1489-4759-9139-03AA3E4C40CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.Cambios", "Plataforma\Binapsis.Plataforma.Cambios\Binapsis.Plataforma.Cambios.csproj", "{D0315649-1489-4759-9139-03AA3E4C40CE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.Datos", "Plataforma\Binapsis.Plataforma.Datos\Binapsis.Plataforma.Datos.csproj", "{E1170C6F-C435-469E-90DB-7C993FB6D7A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Binapsis.Plataforma.Datos", "Plataforma\Binapsis.Plataforma.Datos\Binapsis.Plataforma.Datos.csproj", "{E1170C6F-C435-469E-90DB-7C993FB6D7A4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Binapsis.Plataforma.Helper", "Plataforma\Binapsis.Plataforma.Helper\Binapsis.Plataforma.Helper.csproj", "{57B59A19-17E3-4386-8CBB-83EC08DCAD3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.Datos.SQLServer", "Plataforma\Binapsis.Plataforma.Datos.SQLServer\Binapsis.Plataforma.Datos.SQLServer.csproj", "{30EA1936-D5E7-4E5B-9415-5A40FB4CC473}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Binapsis.Plataforma.Datos.SQLServer", "Plataforma\Binapsis.Plataforma.Datos.SQLServer\Binapsis.Plataforma.Datos.SQLServer.csproj", "{30EA1936-D5E7-4E5B-9415-5A40FB4CC473}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.TestNETCore", "Plataforma\Binapsis.Plataforma.TestNETCore\Binapsis.Plataforma.TestNETCore.csproj", "{FBB41102-D04A-4300-BD44-AA2DF3D77FBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Binapsis.Plataforma.TestNETCore", "Plataforma\Binapsis.Plataforma.TestNETCore\Binapsis.Plataforma.TestNETCore.csproj", "{FBB41102-D04A-4300-BD44-AA2DF3D77FBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.Datos.SQLite", "Plataforma\Binapsis.Plataforma.Datos.SQLite\Binapsis.Plataforma.Datos.SQLite.csproj", "{E62638EC-85DE-44F8-A83E-0AE2D2E87520}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Binapsis.Plataforma.Datos.SQLite", "Plataforma\Binapsis.Plataforma.Datos.SQLite\Binapsis.Plataforma.Datos.SQLite.csproj", "{E62638EC-85DE-44F8-A83E-0AE2D2E87520}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma", "Plataforma\Binapsis.Plataforma\Binapsis.Plataforma.csproj", "{D8A4AF31-6F3E-43B2-AFC7-7077A8BB43EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Binapsis.Plataforma", "Plataforma\Binapsis.Plataforma\Binapsis.Plataforma.csproj", "{D8A4AF31-6F3E-43B2-AFC7-7077A8BB43EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.ServicioDatos", "Plataforma\Binapsis.Plataforma.ServicioDatos\Binapsis.Plataforma.ServicioDatos.csproj", "{BB415C5F-5086-4D93-A125-A6918B65ABE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Binapsis.Plataforma.ServicioDatos", "Plataforma\Binapsis.Plataforma.ServicioDatos\Binapsis.Plataforma.ServicioDatos.csproj", "{BB415C5F-5086-4D93-A125-A6918B65ABE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.Configuracion.Datos", "Plataforma\Binapsis.Plataforma.Configuracion.Datos\Binapsis.Plataforma.Configuracion.Datos.csproj", "{756D53D0-F367-4A61-B79C-8B79EEA56B05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Binapsis.Plataforma.Configuracion.Datos", "Plataforma\Binapsis.Plataforma.Configuracion.Datos\Binapsis.Plataforma.Configuracion.Datos.csproj", "{756D53D0-F367-4A61-B79C-8B79EEA56B05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.ServicioConfiguracion", "Plataforma\Binapsis.Plataforma.ServicioConfiguracion2\Binapsis.Plataforma.ServicioConfiguracion.csproj", "{17995DAB-193B-4669-88ED-D9C0CC8083ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Binapsis.Plataforma.ServicioConfiguracion", "Plataforma\Binapsis.Plataforma.ServicioConfiguracion2\Binapsis.Plataforma.ServicioConfiguracion.csproj", "{17995DAB-193B-4669-88ED-D9C0CC8083ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.Configuracion.Presentacion", "Plataforma\Binapsis.Plataforma.Configuracion.Presentacion\Binapsis.Plataforma.Configuracion.Presentacion.csproj", "{6F07D7AB-3B48-4CCE-8F63-E69104373FC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Binapsis.Plataforma.Configuracion.Presentacion", "Plataforma\Binapsis.Plataforma.Configuracion.Presentacion\Binapsis.Plataforma.Configuracion.Presentacion.csproj", "{6F07D7AB-3B48-4CCE-8F63-E69104373FC9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binapsis.Plataforma.Configuracion.Presentacion.Win", "Plataforma\Binapsis.Plataforma.Configuracion.Presentacion.Win\Binapsis.Plataforma.Configuracion.Presentacion.Win.csproj", "{E8108398-4937-448A-B3CD-6A6D2C358F8D}"
 EndProject
@@ -119,10 +117,6 @@ Global
 		{B840B399-FD12-4007-8B42-C61656908F89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B840B399-FD12-4007-8B42-C61656908F89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B840B399-FD12-4007-8B42-C61656908F89}.Release|Any CPU.Build.0 = Release|Any CPU
-		{64E52F3B-E194-4891-8FD5-4B5AD366B6EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64E52F3B-E194-4891-8FD5-4B5AD366B6EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{64E52F3B-E194-4891-8FD5-4B5AD366B6EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64E52F3B-E194-4891-8FD5-4B5AD366B6EE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{71753498-7F80-4D33-BA78-1D574230555D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{71753498-7F80-4D33-BA78-1D574230555D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71753498-7F80-4D33-BA78-1D574230555D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -193,7 +187,6 @@ Global
 		{C3CF683A-1CA6-42ED-ADA4-2D459D414272} = {7D0EA6F1-3D89-47F4-9A08-76FA0F359D33}
 		{773F4876-66A6-4886-93F6-E5059DF8A0ED} = {7D0EA6F1-3D89-47F4-9A08-76FA0F359D33}
 		{B840B399-FD12-4007-8B42-C61656908F89} = {8D377004-0BB4-4331-8CB2-0178AEBA8F82}
-		{64E52F3B-E194-4891-8FD5-4B5AD366B6EE} = {8D377004-0BB4-4331-8CB2-0178AEBA8F82}
 		{71753498-7F80-4D33-BA78-1D574230555D} = {8D377004-0BB4-4331-8CB2-0178AEBA8F82}
 		{D0315649-1489-4759-9139-03AA3E4C40CE} = {8D377004-0BB4-4331-8CB2-0178AEBA8F82}
 		{E1170C6F-C435-469E-90DB-7C993FB6D7A4} = {8D377004-0BB4-4331-8CB2-0178AEBA8F82}
@@ -207,5 +200,8 @@ Global
 		{17995DAB-193B-4669-88ED-D9C0CC8083ED} = {8D377004-0BB4-4331-8CB2-0178AEBA8F82}
 		{6F07D7AB-3B48-4CCE-8F63-E69104373FC9} = {8D377004-0BB4-4331-8CB2-0178AEBA8F82}
 		{E8108398-4937-448A-B3CD-6A6D2C358F8D} = {8D377004-0BB4-4331-8CB2-0178AEBA8F82}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5BCC2D11-053C-4F30-9B07-9C43F5C8FECC}
 	EndGlobalSection
 EndGlobal

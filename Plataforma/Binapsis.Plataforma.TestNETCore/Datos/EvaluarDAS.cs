@@ -85,7 +85,7 @@ namespace Binapsis.Plataforma.Test.Datos
             // consultar
             Comando consulta = Fabrica.Instancia.Crear<Comando>();
             consulta.Nombre = "DistritoPorNombre";
-            consulta.Sql = "SELECT Distrito.Nombre FROM Distrito WHERE Distrito.Nombre LIKE @Nombre";
+            consulta.Sql = "SELECT DISTRITO.NOMBRE as Nombre FROM Distrito WHERE DISTRITO.NOMBRE LIKE @Nombre";
 
             consulta.CrearParametro("Nombre", typeof(string));
             consulta.CrearResultadoDescriptor("Nombre", typeof(string));
@@ -186,13 +186,13 @@ namespace Binapsis.Plataforma.Test.Datos
 
             das.AplicarCambios(items);
 
-            IComando comando = das.CrearComando(tipo, tipo.ObtenerPropiedad("Departamento"));
+            IComando comando = das.CrearComando(tipo, new IPropiedad[] { tipo.ObtenerPropiedad("Departamento") });
             ComandoHelper comandoHelper = new ComandoHelper(comando);
             comandoHelper.EstablecerParametro(tipo.ObtenerPropiedad("Departamento"), (items[4] as IDiagramaDatos).ObjetoDatos);
 
             IColeccion coleccion1 = comando.EjecutarConsulta();
             
-            comando = das.CrearComando(tipo, tipo.ObtenerPropiedad("Distrito"));
+            comando = das.CrearComando(tipo, new IPropiedad[] { tipo.ObtenerPropiedad("Distrito") });
             comandoHelper = new ComandoHelper(comando);
             comandoHelper.EstablecerParametro(tipo.ObtenerPropiedad("Distrito"), (items[2] as IDiagramaDatos).ObjetoDatos);
 

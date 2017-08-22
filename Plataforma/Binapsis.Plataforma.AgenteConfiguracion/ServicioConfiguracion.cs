@@ -331,7 +331,7 @@ namespace Binapsis.Plataforma.AgenteConfiguracion
                 cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/xml"));
 
                 if (!string.IsNullOrEmpty(parametros))
-                    ruta = $"{url}/{configuracion}/{parametros}";
+                    ruta = $"{url}/{configuracion}?{parametros}";
                 else
                     ruta = $"{url}/{configuracion}";
 

@@ -65,7 +65,7 @@ namespace Binapsis.Plataforma.Configuracion
 
         public T Crear<T>(IObjetoDatos od) where T : ConfiguracionBase
         {
-            return (T)Crear(od as ObjetoBase);
+            return (T)base.Crear(od as ObjetoBase);
         }
 
         public ConfiguracionBase Crear(IObjetoDatos od) 

@@ -13,7 +13,7 @@ namespace Binapsis.Plataforma.Datos
 
         IComando ObtenerComando(string nombre);
         IComando CrearComando(ITipo tipo);
-        IComando CrearComando(ITipo tipo, IPropiedad propiedad);
+        IComando CrearComando(ITipo tipo, IPropiedad[] propiedades);
         IComando CrearComando(Comando comando);
 
         //IObjetoDatos RecuperarObjetoDatos(ITipo tipo, IPropiedad propiedad, object valor);

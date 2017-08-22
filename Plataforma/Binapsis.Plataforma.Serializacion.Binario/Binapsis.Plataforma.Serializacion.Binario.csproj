@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.3</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Binapsis.Plataforma.Cambios\Binapsis.Plataforma.Cambios.csproj"/>
-    <ProjectReference Include="..\Binapsis.Plataforma.Estructura\Binapsis.Plataforma.Estructura.csproj"/>
-    <ProjectReference Include="..\Binapsis.Plataforma.Serializacion\Binapsis.Plataforma.Serializacion.csproj"/>
+    <ProjectReference Include="..\Binapsis.Plataforma.Cambios\Binapsis.Plataforma.Cambios.csproj" />
+    <ProjectReference Include="..\Binapsis.Plataforma.Estructura\Binapsis.Plataforma.Estructura.csproj" />
+    <ProjectReference Include="..\Binapsis.Plataforma.Serializacion\Binapsis.Plataforma.Serializacion.csproj" />
   </ItemGroup>
 </Project>

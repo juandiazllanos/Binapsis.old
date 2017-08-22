@@ -124,10 +124,10 @@ namespace Binapsis.Plataforma.Datos.Impl
             return CrearComando(comando);
         }
 
-        public IComando CrearComando(ITipo tipo, IPropiedad propiedad)
+        public IComando CrearComando(ITipo tipo, IPropiedad[] propiedades)
         {
             ConsultaHelper consultaHelper = new ConsultaHelper(MapeoCatalogo);
-            ComandoLectura comando = consultaHelper.CrearConsulta(tipo, propiedad);
+            ComandoLectura comando = consultaHelper.CrearConsulta(tipo, propiedades);
 
             return CrearComando(comando);
         }

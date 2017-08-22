@@ -52,8 +52,8 @@ namespace Binapsis.Plataforma.Configuracion
 
         public int Indice
         {
-            get => ObtenerInteger("Indice");
-            set => EstablecerInteger("Indice", value);
+            get => ObtenerByte("Indice");
+            set => EstablecerByte("Indice", (byte)value);
         }
 
         public string Nombre

@@ -22,34 +22,63 @@ namespace Binapsis.Plataforma.Datos.Helper
             return CrearConsulta(mapeoTabla);
         }
 
-        public ComandoLectura CrearConsulta(ITipo tipo, IPropiedad propiedad)
+        public ComandoLectura CrearConsulta(ITipo tipo, IPropiedad[] propiedades)
         {
             MapeoTabla mapeoTabla = MapeoCatalogo.ObtenerMapeoTabla(tipo);
             if (mapeoTabla == null) throw new Exception($"El tipo '{tipo.Nombre}' no esta asociado a una tabla");
 
-            if (propiedad.Tipo.EsTipoDeDato)
-                return CrearConsultaAtributo(mapeoTabla, propiedad);
-            else
-                return CrearConsultaReferencia(mapeoTabla, propiedad);
+            IList<MapeoColumna> mapeoColumnas = new List<MapeoColumna>();
+
+            foreach (IPropiedad propiedad in propiedades)
+                ResolverMapeoColumna(mapeoTabla, propiedad, mapeoColumnas);
+
+            return CrearConsulta(mapeoTabla, mapeoColumnas);
         }
 
-        private ComandoLectura CrearConsultaAtributo(MapeoTabla mapeoTabla, IPropiedad propiedad)
+        private void ResolverMapeoColumna(MapeoTabla mapeoTabla, IPropiedad propiedad, IList<MapeoColumna> resultado)
+        {
+            if (propiedad.Tipo.EsTipoDeDato)
+                ResolverMapeoColumnaAtributo(mapeoTabla, propiedad, resultado);
+            else
+                ResolverMapeoColumnaReferencia(mapeoTabla, propiedad, resultado);
+        }
+
+        private void ResolverMapeoColumnaAtributo(MapeoTabla mapeoTabla, IPropiedad propiedad, IList<MapeoColumna> resultado)
         {
             MapeoColumna mapeoColumna = mapeoTabla?.ObtenerMapeoColumnaPorPropiedad(propiedad.Nombre);
             if (mapeoColumna == null) throw new Exception($"La propiedad '{propiedad.Nombre}' no esta asociado a una columna.");
-
-            return CrearConsulta(mapeoTabla, mapeoColumna);
+            resultado.Add(mapeoColumna);
         }
 
-        private ComandoLectura CrearConsultaReferencia(MapeoTabla mapeoTabla, IPropiedad propiedad)
+        private void ResolverMapeoColumnaReferencia(MapeoTabla mapeoTabla, IPropiedad propiedad, IList<MapeoColumna> resultado)
         {
             MapeoRelacion mapeoRelacion = mapeoTabla.ObtenerMapeoRelacionPorPropiedad(propiedad);
             if (mapeoRelacion == null) throw new Exception($"La propiedad '{propiedad.Nombre}' no está asociada a una relación.");
 
-            IList<MapeoColumna> mapeoColumnas = mapeoRelacion.Claves.Select(item => item.ClaveSecundaria).ToList();
+            var claves = mapeoRelacion.Claves.Select(item => item.ClaveSecundaria);
+            if (claves == null) return;
 
-            return CrearConsulta(mapeoTabla, mapeoColumnas);
+            foreach (MapeoColumna mapeoColumna in claves)
+                resultado.Add(mapeoColumna);
         }
+
+        //private ComandoLectura CrearConsultaAtributo(MapeoTabla mapeoTabla, IPropiedad propiedad)
+        //{
+        //    MapeoColumna mapeoColumna = mapeoTabla?.ObtenerMapeoColumnaPorPropiedad(propiedad.Nombre);
+        //    if (mapeoColumna == null) throw new Exception($"La propiedad '{propiedad.Nombre}' no esta asociado a una columna.");
+
+        //    return CrearConsulta(mapeoTabla, mapeoColumna);
+        //}
+
+        //private ComandoLectura CrearConsultaReferencia(MapeoTabla mapeoTabla, IPropiedad propiedad)
+        //{
+        //    MapeoRelacion mapeoRelacion = mapeoTabla.ObtenerMapeoRelacionPorPropiedad(propiedad);
+        //    if (mapeoRelacion == null) throw new Exception($"La propiedad '{propiedad.Nombre}' no está asociada a una relación.");
+
+        //    IList<MapeoColumna> mapeoColumnas = mapeoRelacion.Claves.Select(item => item.ClaveSecundaria).ToList();
+
+        //    return CrearConsulta(mapeoTabla, mapeoColumnas);
+        //}
 
         public ComandoLectura CrearConsulta(MapeoTabla mapeoTabla)
         {

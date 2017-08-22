@@ -18,29 +18,27 @@ namespace Binapsis.Plataforma.ServicioConfiguracion.Controllers
         }
 
         [HttpGet("definicion/{clave}")]
-        public IObjetoDatos Get(string clave)
+        public IObjetoDatos GetDefinicion(string clave)
         {
             return ConfiguracionRepositorio.Instancia.Comandos.FirstOrDefault(item => item.Nombre.Equals(clave, System.StringComparison.OrdinalIgnoreCase));
         }
-
-        [HttpGet("{consulta}/{*parametros}")]
-        public IColeccion Get(string consulta, string parametros)
+        
+        [HttpGet("{consulta}")]
+        public IColeccion GetConsulta(string consulta)
         {
-            Comando comando = Get(consulta) as Comando;
+            Comando comando = GetDefinicion(consulta) as Comando;
             if (comando == null) return null;
 
             IContexto contexto = ContextoHelper.CrearContexto(ContextoInfo);
             Recuperar recuperar = RecuperarHelper.CrearComando(contexto, comando);
             if (recuperar == null) return null;
 
-            string[] args = parametros?.Split('&');
-            int index = 0;
+            var pairs = Request.Query;
 
-            if (args != null )
-                foreach (string arg in args)
-                    recuperar.EstablecerParametro(arg.Substring(0, index = arg.IndexOf("=")), arg.Substring(index + 1));
+            foreach (var kvp in pairs)
+                recuperar.EstablecerParametro(kvp.Key, kvp.Value.ToString());
 
-            return recuperar.EjecutarConsulta();            
+            return recuperar.EjecutarConsulta();
         }
 
         public ContextoInfo ContextoInfo

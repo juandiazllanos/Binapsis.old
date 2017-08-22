@@ -13,6 +13,18 @@ namespace Binapsis.Plataforma.Configuracion.Datos
             return new Recuperar(contexto, tipo);
         }
 
+        public static Recuperar CrearComando(IContexto contexto, Type type, IPropiedad[] propiedades)
+        {
+            ITipo tipo = Types.Instancia.Obtener(type);
+            return CrearComando(contexto, tipo, propiedades);
+        }
+
+        public static Recuperar CrearComando(IContexto contexto, ITipo tipo, IPropiedad[] propiedades)
+        {
+            if (tipo == null) return null;
+            return new Recuperar(contexto, tipo, propiedades);
+        }
+
         public static Recuperar CrearComando(IContexto contexto, string comandoNombre)
         {
             return new Recuperar(contexto, comandoNombre);
