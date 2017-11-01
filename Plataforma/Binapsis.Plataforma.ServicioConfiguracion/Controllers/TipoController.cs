@@ -1,49 +1,46 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Binapsis.Plataforma.Configuracion.Sql.Helper;
+using Binapsis.Plataforma.Estructura;
 using Binapsis.Plataforma.Configuracion;
-using Microsoft.Extensions.Configuration;
-using Binapsis.Plataforma.Configuracion.Sql;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Binapsis.Plataforma.ServicioConfiguracion.Controllers
 {
     [Route("configuracion/[controller]")]
-    public class TipoController : Controller
-    {        
-        // GET api/values/5
-        [HttpGet("{nombre}")]
-        public Tipo Get(string nombre)
+    public class TipoController : ConfiguracionController<Tipo>
+    {
+        public TipoController(ContextoInfo contextoInfo) 
+            : base(contextoInfo)
         {
-            HelperTipo helper = new HelperTipo(CadenaConexion);
-            return helper.Recuperar(nombre);
         }
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody]Tipo value)
+        [HttpGet("{clave}", Order = 0)]
+        public Tipo Get(string clave)
         {
-            IHelper sql = new HelperTipo(CadenaConexion);
+            return Obtener(clave);
+        }
 
-            if (!sql.Existe(value))
-                sql.Insertar(value);
+
+        [HttpGet(Order = 1)]
+        public IColeccion Get()
+        {
+            return ObtenerColeccion(Request.Query);
+        }
+
+        [HttpPost]
+        public void Post([FromBody]Tipo od)
+        {
+            Crear(od);
         }
 
         [HttpPut("{clave}")]
-        public void Put(string clave, [FromBody]Tipo value)
+        public void Put(string clave, [FromBody]Tipo od)
         {
-            IHelper sql = new HelperTipo(CadenaConexion);
-
-            if (sql.Existe(clave))
-                sql.Actualizar(clave, value);
+            Editar(clave, od);
         }
 
-        private string CadenaConexion
+        [HttpDelete("{clave}")]
+        public void Delete(string clave)
         {
-            get
-            {
-                return Startup.Configuration.GetValue<string>("cadenaConexion");
-            }
+            Eliminar(clave);
         }
     }
 }

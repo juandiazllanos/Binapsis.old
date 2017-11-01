@@ -14,10 +14,10 @@ namespace Binapsis.Plataforma.Datos.Builder
         {
             BuilderSentencia builder = new BuilderSentencia();
 
-            builder.Agregar("SELECT *");            
+            builder.Agregar("SELECT * FROM ").Agregar(MapeoTabla.Tabla.Nombre);
 
-            builder.Agregar(" FROM ").Agregar(MapeoTabla.Tabla.Nombre);
-            builder.Agregar(" WHERE ");
+            if (ParametroColumnas.Count > 0)
+                builder.Agregar(" WHERE ");
 
             int i = 0;
             foreach (MapeoColumna mapeoColumna in ParametroColumnas)

@@ -1,22 +1,26 @@
 ﻿using Binapsis.Plataforma.Configuracion;
 using Binapsis.Plataforma.Configuracion.Serializacion;
 using Binapsis.Plataforma.Estructura;
+using Binapsis.Plataforma.Estructura.Impl;
+using Binapsis.Plataforma.Serializacion;
+using Binapsis.Plataforma.Serializacion.Xml;
+
+using System;
+using System.Collections.Generic;
+using System.Collections;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using System;
+
 using EspacioNombre = Binapsis.Plataforma.Configuracion.Uri;
-using System.Collections.Generic;
-using System.Collections;
-using Binapsis.Plataforma.Serializacion;
-using Binapsis.Plataforma.Serializacion.Xml;
-using Binapsis.Plataforma.Estructura.Impl;
+using Binapsis.Plataforma.Configuracion.Caching;
 
 namespace Binapsis.Plataforma.AgenteConfiguracion
 {
     public class ServicioConfiguracion
     {
         Fabrica _fabrica;
+        CacheConfiguracion _cache;
 
         public ServicioConfiguracion()
         {
@@ -43,6 +47,7 @@ namespace Binapsis.Plataforma.AgenteConfiguracion
         {
             Url = url;
             _fabrica = fabrica;
+            _cache = new CacheConfiguracion();
         }
 
 
@@ -53,9 +58,9 @@ namespace Binapsis.Plataforma.AgenteConfiguracion
 
         public T Obtener<T>(string configuracion, string clave) where T : ConfiguracionBase
         {
-            return (T)Obtener(typeof(T), configuracion, clave);            
+            return (T)Obtener(typeof(T), configuracion, clave);
         }
-       
+
         public IList ObtenerColeccion<T>()
         {
             return ObtenerColeccion(typeof(T));
@@ -80,6 +85,10 @@ namespace Binapsis.Plataforma.AgenteConfiguracion
 
         public ConfiguracionBase Obtener(Type type, string configuracion, string clave)
         {
+            // recuperar de cache
+            if (_cache.Exists(type, clave))
+                return _cache.Get(type, clave);
+
             // recuperar xml
             string valor = Obtener(configuracion, clave);
             if (valor == null) throw new Exception($"La configuración '{configuracion}:{clave}' no existe");
@@ -95,6 +104,9 @@ namespace Binapsis.Plataforma.AgenteConfiguracion
             // deserializar
             deserializador.Fabrica = _fabrica;
             deserializador.Deserializar(instancia);
+
+            // agregar en cache
+            _cache.Set(instancia);
 
             return instancia;
         }
@@ -116,31 +128,6 @@ namespace Binapsis.Plataforma.AgenteConfiguracion
             return items;
         }
                 
-        //public ConfiguracionBase Recuperar(ITipo tipo, string clave)
-        //{
-        //    return Recuperar(tipo, tipo.Nombre, clave);
-        //}
-
-        //public ConfiguracionBase Recuperar(ITipo tipo, string configuracion, string clave)
-        //{
-        //    // recuperar xml
-        //    string valor = Obtener(configuracion, clave);
-        //    if (valor == null) throw new Exception($"La configuración '{configuracion}:{clave}' no existe");
-
-        //    if (valor.Length == 0) return null;
-
-        //    // crear instancia
-        //    ConfiguracionBase instancia = _fabrica.Crear(tipo);
-        //    // crear secuencia
-        //    Secuencia secuencia = new Secuencia(valor);
-        //    // crear helper
-        //    Deserializador deserializador = new DeserializadorObjetoDatos(secuencia, new LectorXml()); 
-        //    // deserializar
-        //    deserializador.Deserializar(valor);
-
-        //    return instancia;
-        //}
-
         public void Recuperar(Type type, IList items, string configuracion, string parametros)
         {
             // recuperar xml
@@ -182,42 +169,27 @@ namespace Binapsis.Plataforma.AgenteConfiguracion
 
             return coleccion;
         }
-
-        public Definicion ObtenerDefinicion()
-        {
-            return Obtener<Definicion>("Definicion", null);
-        }
-
-        public Definicion ObtenerDefinicion(string ruta)
-        {
-            return Obtener<Definicion>("Definicion", ruta);
-        }
-
-        public Definicion ObtenerDefinicion(string configuracion, string clave)
-        {
-            return ObtenerDefinicion($"{configuracion}/{clave}");
-        }
-
+        
         public Ensamblado ObtenerEnsamblado(string nombre)
         {
-            return Obtener<Ensamblado>("Ensamblado", nombre);
+            return Obtener<Ensamblado>(nombre);
         }
         
         public EspacioNombre ObtenerUri(string nombre)
         {
-            return Obtener<EspacioNombre>("Uri", nombre);
+            return Obtener<EspacioNombre>(nombre);
         }
         
         public Tipo ObtenerTipo(string uri, string nombre)
         {
-            return Obtener<Tipo>("Tipo", $"{uri}.{nombre}");
+            return Obtener<Tipo>($"{uri}.{nombre}");
         }
 
         public Tabla ObtenerTabla(string nombre)
         {
             return Obtener<Tabla>(nombre);
         }
-
+        
         public IList ObtenerTablas()
         {
             return ObtenerColeccion<Tabla>();
@@ -227,8 +199,8 @@ namespace Binapsis.Plataforma.AgenteConfiguracion
         {
             Filtro filtro = new Filtro();
 
-            filtro.Agregar(nameof(uri), uri);
-            filtro.Agregar(nameof(tipo), tipo);
+            //filtro.Agregar(nameof(uri), uri);
+            filtro.Agregar("tipo", $"{uri}.{tipo}");
 
             return ObtenerColeccion<Tabla>(filtro.ToString());
         }
@@ -247,40 +219,47 @@ namespace Binapsis.Plataforma.AgenteConfiguracion
         public IList ObtenerRelacionesPorUri(string uri)
         {
             if (string.IsNullOrEmpty(uri)) return null;
-            return ObtenerRelaciones(uri);
+
+            Filtro filtro = new Filtro();
+            filtro.Agregar("uri", uri);            
+
+            return ObtenerColeccion<Relacion>(filtro.ToString());
         }
 
         public IList ObtenerRelacionesPorTipo(string uri, string tipo)
         {
             if (string.IsNullOrEmpty(uri) || string.IsNullOrEmpty(tipo)) return null;
-            return ObtenerRelaciones(uri, tipo);
+
+            Filtro filtro = new Filtro();
+            filtro.Agregar("uri", uri);
+            filtro.Agregar("tipo", tipo);
+
+            return ObtenerColeccion<Relacion>(filtro.ToString());
         }
 
         public IList ObtenerRelacionesPorPropiedad(string uri, string tipo, string propiedad)
         {
             if (string.IsNullOrEmpty(uri) || string.IsNullOrEmpty(tipo) || string.IsNullOrEmpty(propiedad)) return null;
-            return ObtenerRelaciones(uri, tipo, propiedad);
+
+            Filtro filtro = new Filtro();
+            filtro.Agregar("uri", uri);
+            filtro.Agregar("tipo", tipo);
+            filtro.Agregar("propiedad", propiedad);
+
+            return ObtenerColeccion<Relacion>(filtro.ToString());
         }
 
         public IList ObtenerRelacionesPorTabla(string tablaPrincipal, string tablaSecundaria)
         {
             if (string.IsNullOrEmpty(tablaPrincipal) && string.IsNullOrEmpty(tablaSecundaria)) return null;
-            return ObtenerRelaciones(tablaPrincipal: tablaPrincipal, tablaSecundaria: tablaSecundaria);
-        }
 
-        private IList ObtenerRelaciones(string uri = null, string tipo = null, string propiedad = null, string tablaPrincipal = null, string tablaSecundaria = null)
-        {
             Filtro filtro = new Filtro();
+            filtro.Agregar("tablaPrincipal", tablaPrincipal);
+            filtro.Agregar("tablaSecundaria", tablaSecundaria);
 
-            filtro.Agregar(nameof(uri), uri);
-            filtro.Agregar(nameof(tipo), tipo);
-            filtro.Agregar(nameof(propiedad), propiedad);
-            filtro.Agregar(nameof(tablaPrincipal), tablaPrincipal);
-            filtro.Agregar(nameof(tablaSecundaria), tablaSecundaria);
-
-            return ObtenerColeccion<Relacion>(filtro.ToString());
+            return ObtenerColeccion<Relacion>(filtro.ToString());            
         }
-
+        
         private string Obtener(string configuracion, string clave)
         {
             if (string.IsNullOrEmpty(Url)) throw new Exception("Url no es válida.");

@@ -41,7 +41,17 @@ namespace Binapsis.Plataforma.Datos.Impl
         public virtual void EstablecerParametro(string nombre, object valor)
         {
             if (Parametros.Existe(nombre))
-                Parametros[nombre].Valor = valor;            
+                Parametros[nombre].Valor = valor;
+            else
+                EstablecerParametroMatch(nombre, valor);
+        }
+
+        protected virtual void EstablecerParametroMatch(string nombre, object valor)
+        {
+            var parametro = Parametros.FirstOrDefault(item => item.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase));
+
+            if (parametro != null)
+                parametro.Valor = valor;
         }
 
         public virtual void EstablecerParametro(int indice, object valor)

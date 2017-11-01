@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Binapsis.Presentacion.Win.Boton boton5 = new Binapsis.Presentacion.Win.Boton();
-            Binapsis.Presentacion.Win.Boton boton6 = new Binapsis.Presentacion.Win.Boton();
-            this.Base = new Binapsis.Presentacion.Win.EditorTextoBoton();
-            this.Uri = new Binapsis.Presentacion.Win.EditorTextoBoton();
-            this.Nombre = new Binapsis.Presentacion.Win.EditorTexto();
-            this.Alias = new Binapsis.Presentacion.Win.EditorTexto();
-            this.EsTipoDeDato = new Binapsis.Presentacion.Win.EditorBoolean();
+            Binapsis.Presentacion.Editores.Win.Boton boton5 = new Binapsis.Presentacion.Editores.Win.Boton();
+            Binapsis.Presentacion.Editores.Win.Boton boton6 = new Binapsis.Presentacion.Editores.Win.Boton();
+            this.Base = new Binapsis.Presentacion.Editores.Win.EditorTextoBoton();
+            this.Uri = new Binapsis.Presentacion.Editores.Win.EditorTextoBoton();
+            this.Nombre = new Binapsis.Presentacion.Editores.Win.EditorTexto();
+            this.Alias = new Binapsis.Presentacion.Editores.Win.EditorTexto();
+            this.EsTipoDeDato = new Binapsis.Presentacion.Editores.Win.EditorBoolean();
             this.SuspendLayout();
             // 
             // Base
@@ -42,7 +42,7 @@
             boton5.Image = null;
             boton5.Nombre = "seleccionarBase";
             this.Base.Botones.Add(boton5);
-            this.Base.Estilo = Binapsis.Presentacion.Win.Estilo.TextButtonEdit;
+            this.Base.Estilo = Binapsis.Presentacion.Editores.Win.Estilo.TextButtonEdit;
             this.Base.Etiqueta.Texto = "Base";
             this.Base.Location = new System.Drawing.Point(32, 27);
             this.Base.Name = "EditorBase";
@@ -54,7 +54,7 @@
             boton6.Image = null;
             boton6.Nombre = "seleccionarUri";
             this.Uri.Botones.Add(boton6);
-            this.Uri.Estilo = Binapsis.Presentacion.Win.Estilo.TextButtonEdit;
+            this.Uri.Estilo = Binapsis.Presentacion.Editores.Win.Estilo.TextButtonEdit;
             this.Uri.Etiqueta.Texto = "Uri";
             this.Uri.Location = new System.Drawing.Point(32, 53);
             this.Uri.Name = "EditorBase";
@@ -79,7 +79,7 @@
             // 
             // EsTipoDeDato
             // 
-            this.EsTipoDeDato.Estilo = Binapsis.Presentacion.Win.Estilo.CheckEdit;
+            this.EsTipoDeDato.Estilo = Binapsis.Presentacion.Editores.Win.Estilo.CheckEdit;
             this.EsTipoDeDato.Etiqueta.Texto = "";
             this.EsTipoDeDato.Etiqueta.Visible = false;
             this.EsTipoDeDato.Location = new System.Drawing.Point(110, 131);
@@ -105,10 +105,10 @@
 
         #endregion
 
-        private Binapsis.Presentacion.Win.EditorTextoBoton Base;
-        private Binapsis.Presentacion.Win.EditorTextoBoton Uri;
-        private Binapsis.Presentacion.Win.EditorTexto Nombre;
-        private Binapsis.Presentacion.Win.EditorTexto Alias;
-        private Binapsis.Presentacion.Win.EditorBoolean EsTipoDeDato;
+        private Binapsis.Presentacion.Editores.Win.EditorTextoBoton Base;
+        private Binapsis.Presentacion.Editores.Win.EditorTextoBoton Uri;
+        private Binapsis.Presentacion.Editores.Win.EditorTexto Nombre;
+        private Binapsis.Presentacion.Editores.Win.EditorTexto Alias;
+        private Binapsis.Presentacion.Editores.Win.EditorBoolean EsTipoDeDato;
     }
 }

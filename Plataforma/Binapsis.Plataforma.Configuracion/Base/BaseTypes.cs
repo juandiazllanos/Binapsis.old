@@ -1,5 +1,4 @@
-﻿using Binapsis.Plataforma.Configuracion.Helper;
-using Binapsis.Plataforma.Estructura;
+﻿using Binapsis.Plataforma.Estructura;
 using System;
 using System.Collections.Generic;
 
@@ -13,7 +12,7 @@ namespace Binapsis.Plataforma.Configuracion.Base
         {
             _cache = new Dictionary<string, Tipo>();
             Crear();
-            CrearClaves();
+            //CrearClaves();
         }
         
         private static void Agregar(Tipo tipo)
@@ -98,6 +97,12 @@ namespace Binapsis.Plataforma.Configuracion.Base
             Agregar(definicion);
 
 
+            // contexto
+            Tipo contexto = new Tipo { Uri = "Binapsis.Plataforma.Configuracion", Nombre = "Contexto", Alias = "contexto" };
+            contexto.AgregarPropiedad(new Propiedad { Nombre = "Nombre", Alias = "nombre", Tipo = Obtener(typeof(string)) });
+            contexto.AgregarPropiedad(new Propiedad { Nombre = "Url", Alias = "alias", Tipo = Obtener(typeof(string)) });
+
+            Agregar(contexto);
             
             // conexion
             Tipo conexion = new Tipo { Uri = "Binapsis.Plataforma.Configuracion", Nombre = "Conexion", Alias = "conexion" };
@@ -147,7 +152,7 @@ namespace Binapsis.Plataforma.Configuracion.Base
             // resultadoDescriptor 
             Tipo resultadoDescriptor = new Tipo { Uri = "Binapsis.Plataforma.Configuracion", Nombre = "ResultadoDescriptor", Alias = "resultadoDescriptor" };
             resultadoDescriptor.AgregarPropiedad(new Propiedad { Nombre = "Columna", Tipo = Obtener(typeof(string)), Alias = "columna" });
-            resultadoDescriptor.AgregarPropiedad(new Propiedad { Nombre = "Indice", Tipo = Obtener(typeof(string)), Alias = "indice" });
+            resultadoDescriptor.AgregarPropiedad(new Propiedad { Nombre = "Indice", Tipo = Obtener(typeof(int)), Alias = "indice" });
             resultadoDescriptor.AgregarPropiedad(new Propiedad { Nombre = "Nombre", Tipo = Obtener(typeof(string)), Alias = "nombre" });
             resultadoDescriptor.AgregarPropiedad(new Propiedad { Nombre = "Tabla", Tipo = Obtener(typeof(string)), Alias = "tabla" });
             resultadoDescriptor.AgregarPropiedad(new Propiedad { Nombre = "Tipo", Tipo = Obtener(typeof(string)), Alias = "tipo" });
@@ -165,19 +170,22 @@ namespace Binapsis.Plataforma.Configuracion.Base
             Agregar(comando);
         }
 
-        private static void CrearClaves()
-        {            
-            ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Ensamblado)), "Nombre");
-            ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Uri)), "Nombre");
-            ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Configuracion.Tipo)), "Uri");
-            ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Configuracion.Tipo)), "Nombre");
-            ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Configuracion.Propiedad)), "Nombre");
-            ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Tabla)), "Nombre");
-            ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Columna)), "Nombre");
-            ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Relacion)), "Nombre");
-            ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Conexion)), "Nombre");
-            ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Comando)), "Nombre");
-        }
+        //private static void CrearClaves()
+        //{            
+        //    ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Ensamblado)), "Nombre");
+        //    ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Uri)), "Nombre");
+        //    ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Configuracion.Tipo)), "Uri");
+        //    ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Configuracion.Tipo)), "Nombre");
+        //    ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Configuracion.Propiedad)), "Nombre");
+        //    ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Tabla)), "Nombre");
+        //    ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Columna)), "Nombre");
+        //    ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Relacion)), "Nombre");
+        //    ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Conexion)), "Nombre");
+        //    ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Comando)), "Nombre");
+        //    ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Parametro)), "Nombre");
+        //    ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(ResultadoDescriptor)), "Nombre");
+        //    ConfiguracionClaveHelper.Instancia.Establecer(Obtener(typeof(Contexto)), "Nombre");
+        //}
 
     }
 }

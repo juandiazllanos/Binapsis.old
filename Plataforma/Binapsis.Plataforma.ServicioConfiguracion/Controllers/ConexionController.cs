@@ -1,48 +1,40 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Binapsis.Plataforma.Configuracion;
-using Binapsis.Plataforma.Configuracion.Sql;
-using Binapsis.Plataforma.Configuracion.Sql.Helper;
-using Microsoft.Extensions.Configuration;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Binapsis.Plataforma.ServicioConfiguracion.Controllers
 {
     [Route("configuracion/[controller]")]
-    public class ConexionController : Controller
-    {        
-        [HttpGet("{nombre}")]
-        public Conexion Get(string nombre)
+    public class ConexionController : ConfiguracionController<Conexion>
+    {
+        public ConexionController(ContextoInfo contextoInfo) : base(contextoInfo)
         {
-            IHelper helper = new HelperConexion(CadenaConexion);
-            return (Conexion)helper.Recuperar(nombre);
         }
-        
+
+
+        [HttpGet("{clave}")]
+        public Conexion Get(string clave)
+        {
+            return Obtener(clave);
+        }
+
         [HttpPost]
-        public void Post([FromBody]Conexion value)
+        public void Post([FromBody]Conexion valor)
         {
-            IHelper helper = new HelperConexion(CadenaConexion);
-            helper.Insertar(value);
+            Crear(valor);
         }
-                
+
         [HttpPut("{clave}")]
-        public void Put(string clave, [FromBody]Conexion value)
+        public void Put(string clave, [FromBody]Conexion valor)
         {
-            IHelper helper = new HelperConexion(CadenaConexion);
-            helper.Actualizar(clave, value);
+            Editar(clave, valor);
         }
-                
+
         [HttpDelete("{clave}")]
         public void Delete(string clave)
         {
-            IHelper helper = new HelperConexion(CadenaConexion);
-            Conexion valor = (Conexion)helper.Recuperar(clave);
-            helper.Eliminar(valor);
-        }
-
-        private string CadenaConexion
-        {
-            get => Startup.Configuration.GetValue<string>("cadenaConexion");
+            Eliminar(clave);
         }
     }
 }

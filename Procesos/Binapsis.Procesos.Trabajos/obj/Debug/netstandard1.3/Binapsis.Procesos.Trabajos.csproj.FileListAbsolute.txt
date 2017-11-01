@@ -1,0 +1,13 @@
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Trabajos\bin\Debug\netstandard1.3\Binapsis.Procesos.Trabajos.deps.json
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Trabajos\bin\Debug\netstandard1.3\Binapsis.Procesos.Trabajos.dll
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Trabajos\bin\Debug\netstandard1.3\Binapsis.Procesos.Trabajos.pdb
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Trabajos\bin\Debug\netstandard1.3\Binapsis.Consola.Definicion.dll
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Trabajos\bin\Debug\netstandard1.3\Binapsis.Consola.Helpers.dll
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Trabajos\bin\Debug\netstandard1.3\Binapsis.Procesos.Orquestacion.dll
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Trabajos\bin\Debug\netstandard1.3\Binapsis.Consola.Definicion.pdb
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Trabajos\bin\Debug\netstandard1.3\Binapsis.Consola.Helpers.pdb
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Trabajos\bin\Debug\netstandard1.3\Binapsis.Procesos.Orquestacion.pdb
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Trabajos\obj\Debug\netstandard1.3\Binapsis.Procesos.Trabajos.csprojResolveAssemblyReference.cache
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Trabajos\obj\Debug\netstandard1.3\Binapsis.Procesos.Trabajos.AssemblyInfo.cs
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Trabajos\obj\Debug\netstandard1.3\Binapsis.Procesos.Trabajos.dll
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Trabajos\obj\Debug\netstandard1.3\Binapsis.Procesos.Trabajos.pdb

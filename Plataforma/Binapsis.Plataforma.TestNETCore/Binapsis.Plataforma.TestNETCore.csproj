@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>    
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,7 +21,7 @@
     <ProjectReference Include="..\Binapsis.Plataforma.Serializacion.Binario\Binapsis.Plataforma.Serializacion.Binario.csproj" />
     <ProjectReference Include="..\Binapsis.Plataforma.Serializacion.Xml\Binapsis.Plataforma.Serializacion.Xml.csproj" />
     <ProjectReference Include="..\Binapsis.Plataforma.Serializacion\Binapsis.Plataforma.Serializacion.csproj" />
-    <ProjectReference Include="..\Binapsis.Plataforma.ServicioConfiguracion2\Binapsis.Plataforma.ServicioConfiguracion.csproj" />
+    <ProjectReference Include="..\Binapsis.Plataforma.ServicioConfiguracion\Binapsis.Plataforma.ServicioConfiguracion.csproj" />
   </ItemGroup>
 
   <ItemGroup>

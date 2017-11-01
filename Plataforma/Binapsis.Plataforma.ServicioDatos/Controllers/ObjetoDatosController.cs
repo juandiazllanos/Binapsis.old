@@ -1,51 +1,61 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Binapsis.Plataforma.Estructura;
+﻿using Binapsis.Plataforma.Estructura.Impl;
+using Binapsis.Plataforma.ServicioDatos.Helper;
+using Binapsis.Plataforma.ServicioDatos.Impl;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using Microsoft.AspNetCore.Mvc;
 
 namespace Binapsis.Plataforma.ServicioDatos.Controllers
 {
-    [Route("datos/[controller]")]
+    [Route("api/datos")]
     public class ObjetoDatosController : Controller
-    {                
-        public IObjetoDatos GetObjetoDatos()
-        {
-            return null;
+    {
+        ConfiguracionImpl _configuracion;
+
+        public ObjetoDatosController(ConfiguracionInfo configuracionInfo)
+        {            
+            _configuracion = new ConfiguracionImpl(configuracionInfo.Url);
         }
 
-        //[HttpGet("coleccion")]
-        //public IColeccion GetColeccion()
-        //{
-        //    return null;
-        //}
-
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{contexto}/od/{uri}/{tipo}/{id}")]
+        public ObjetoDatos Get(string contexto, string uri, string tipo, string id)
         {
-            return "value";
+            RecuperarHelper helper = new RecuperarHelper(_configuracion, contexto, uri, tipo);
+            return helper.Ejecutar(id);
         }
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody]string value)
+        [HttpGet("{contexto}/od/{uri}/{tipo}/{clave}/{valor}")]
+        public ObjetoDatos Get(string contexto, string uri, string tipo, string clave, string valor)
         {
+            RecuperarHelper helper = new RecuperarHelper(_configuracion, contexto, uri, tipo);
+            return helper.Ejecutar(clave, valor);
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        [HttpPost("{contexto}/od/{uri}/{tipo}")]
+        public void Post(string contexto, string uri, string tipo)
         {
+            ObjetoDatosHelper helper = new ObjetoDatosHelper(_configuracion, HttpContext, uri, tipo);
+            helper.Crear(contexto);
         }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpPut("{contexto}/od/{uri}/{tipo}")]
+        public void Put(string contexto, string uri, string tipo)
         {
+            ObjetoDatosHelper helper = new ObjetoDatosHelper(_configuracion, HttpContext, uri, tipo);
+            helper.Editar(contexto);
         }
+
+        [HttpDelete("{contexto}/od/{uri}/{tipo}")]
+        public void Delete(string contexto, string uri, string tipo)
+        {
+            ObjetoDatosHelper helper = new ObjetoDatosHelper(_configuracion, HttpContext, uri, tipo);
+            helper.Eliminar(contexto);
+        }
+
+        [HttpDelete("{contexto}/od/{uri}/{tipo}/{id}")]
+        public void Delete(string contexto, string uri, string tipo, string id)
+        {
+            
+        }
+        
     }
 }

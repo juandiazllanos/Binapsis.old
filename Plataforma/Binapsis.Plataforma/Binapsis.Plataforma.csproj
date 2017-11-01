@@ -1,11 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard1.3</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Binapsis.Plataforma.AgenteConfiguracion\Binapsis.Plataforma.AgenteConfiguracion.csproj" />
+    <ProjectReference Include="..\Binapsis.Plataforma.AgenteDatos\Binapsis.Plataforma.AgenteDatos.csproj" />
+    <ProjectReference Include="..\Binapsis.Plataforma.Configuracion\Binapsis.Plataforma.Configuracion.csproj" />
     <ProjectReference Include="..\Binapsis.Plataforma.Estructura\Binapsis.Plataforma.Estructura.csproj" />
+    <ProjectReference Include="..\Binapsis.Plataforma.Historial\Binapsis.Plataforma.Historial.csproj" />
+    <ProjectReference Include="..\Binapsis.Plataforma.Notificaciones\Binapsis.Plataforma.Notificaciones.csproj" />
   </ItemGroup>
 
 </Project>

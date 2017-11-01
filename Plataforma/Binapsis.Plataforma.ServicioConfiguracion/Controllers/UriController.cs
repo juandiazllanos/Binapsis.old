@@ -1,58 +1,48 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Binapsis.Plataforma.Configuracion.Sql.Helper;
-using Binapsis.Plataforma.Configuracion.Sql;
 using Binapsis.Plataforma.Configuracion;
-using Microsoft.Extensions.Configuration;
+using Binapsis.Plataforma.Estructura;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Binapsis.Plataforma.ServicioConfiguracion.Controllers
 {
     [Route("configuracion/[controller]")]
-    public class UriController : Controller
-    {        
-        // GET api/values/5
-        [HttpGet("{nombre}")]
-        public Uri Get(string nombre)
+    public class UriController : ConfiguracionController<Uri>
+    {
+        public UriController(ContextoInfo contextoInfo) 
+            : base(contextoInfo)
         {
-            IHelper sql = new HelperUri(CadenaConexion);            
-            Uri valor = (Uri)sql.Recuperar(nombre);
-            return valor;
         }
 
-        // POST api/values
+        [HttpGet("{clave}", Order = 0)]
+        public Uri Get(string clave)
+        {
+            return Obtener(clave);
+        }
+
+
+        [HttpGet(Order = 1)]
+        public IColeccion Get()
+        {
+            return ObtenerColeccion(Request.Query);
+        }
+
         [HttpPost]
         public void Post([FromBody]Uri valor)
         {
-            IHelper sql = new HelperUri(CadenaConexion);
-
-            if (!sql.Existe(valor))                
-                sql.Insertar(valor);
+            Crear(valor);
         }
 
         [HttpPut("{clave}")]
-        public void Put(string clave, [FromBody]Uri valor)
+        public void Put(string clave, [FromBody]Uri od)
         {
-            IHelper sql = new HelperUri(CadenaConexion);
-
-            if (sql.Existe(clave))
-                sql.Actualizar(clave, valor);            
+            Editar(clave, od);
         }
 
-        [HttpDelete("{nombre}")]
-        public void Delete(string nombre)
+        [HttpDelete("{clave}")]
+        public void Delete(string clave)
         {
-            IHelper sql = new HelperUri(CadenaConexion);
-            Uri valor = (Uri)sql.Recuperar(nombre);
-            sql.Eliminar(valor);
-        }
-
-        private string CadenaConexion
-        {
-            get
-            {
-                return Startup.Configuration.GetValue<string>("cadenaConexion");
-            }
+            Eliminar(clave);
         }
     }
 }

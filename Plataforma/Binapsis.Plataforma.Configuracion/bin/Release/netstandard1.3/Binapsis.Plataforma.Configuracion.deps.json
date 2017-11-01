@@ -10,6 +10,7 @@
       "binapsis.plataforma.configuracion/1.0.0": {
         "dependencies": {
           "Binapsis.Plataforma.Estructura": "1.0.0",
+          "Binapsis.Plataforma.Helper": "1.0.0",
           "NETStandard.Library": "1.6.1"
         },
         "runtime": {
@@ -570,6 +571,15 @@
         "runtime": {
           "Binapsis.Plataforma.Estructura.dll": {}
         }
+      },
+      "binapsis.plataforma.helper/1.0.0": {
+        "dependencies": {
+          "Binapsis.Plataforma.Estructura": "1.0.0",
+          "NETStandard.Library": "1.6.1"
+        },
+        "runtime": {
+          "Binapsis.Plataforma.Helper.dll": {}
+        }
       }
     }
   },
@@ -1014,6 +1024,11 @@
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
     "binapsis.plataforma.estructura/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "binapsis.plataforma.helper/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

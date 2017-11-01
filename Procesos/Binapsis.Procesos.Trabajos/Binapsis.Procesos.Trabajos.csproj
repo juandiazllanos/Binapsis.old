@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Consola\Binapsis.Consola.Definicion\Binapsis.Consola.Definicion.csproj" />
+    <ProjectReference Include="..\..\Consola\Binapsis.Consola.Helpers\Binapsis.Consola.Helpers.csproj" />
+    <ProjectReference Include="..\Binapsis.Procesos.Orquestacion\Binapsis.Procesos.Orquestacion.csproj" />
+  </ItemGroup>
+
+</Project>

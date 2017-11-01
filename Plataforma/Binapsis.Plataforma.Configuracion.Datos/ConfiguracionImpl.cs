@@ -1,6 +1,7 @@
 ﻿using Binapsis.Plataforma.Datos;
 using System.Collections;
 using System.Linq;
+using System;
 
 namespace Binapsis.Plataforma.Configuracion.Datos
 {
@@ -54,6 +55,11 @@ namespace Binapsis.Plataforma.Configuracion.Datos
         public Tipo ObtenerTipo(string uri, string tipo)
         {
             return Repositorio.Tipos.FirstOrDefault(item => item.Uri.Nombre == uri && item.Nombre == tipo);
+        }
+
+        public IPrimaryKey ObtenerPrimaryKey(string tabla, string columna)
+        {
+            return new PrimaryKey(tabla, columna);
         }
 
         #region Propiedades

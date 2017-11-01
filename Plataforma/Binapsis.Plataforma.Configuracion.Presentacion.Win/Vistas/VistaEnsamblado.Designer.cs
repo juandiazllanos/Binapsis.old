@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Nombre = new Binapsis.Presentacion.Win.EditorTexto();
+            this.Nombre = new Binapsis.Presentacion.Editores.Win.EditorTexto();
             this.SuspendLayout();
             // 
             // Nombre
@@ -52,6 +52,6 @@
 
         #endregion
 
-        private Binapsis.Presentacion.Win.EditorTexto Nombre;
+        private Binapsis.Presentacion.Editores.Win.EditorTexto Nombre;
     }
 }

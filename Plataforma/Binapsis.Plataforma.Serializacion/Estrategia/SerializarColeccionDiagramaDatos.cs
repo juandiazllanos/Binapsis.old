@@ -6,13 +6,13 @@ namespace Binapsis.Plataforma.Serializacion.Estrategia
 {
     class SerializarColeccionDiagramaDatos : SerializarColeccion
     {
-        public SerializarColeccionDiagramaDatos(IList items, IEscritor escritor) 
+        public SerializarColeccionDiagramaDatos(IEnumerable items, IEscritor escritor) 
             : base(escritor)
         {
             Items = items;
         }
 
-        public IList Items
+        public IEnumerable Items
         {
             get;
         }

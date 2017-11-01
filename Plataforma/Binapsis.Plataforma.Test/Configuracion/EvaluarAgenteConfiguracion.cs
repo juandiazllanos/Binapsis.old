@@ -8,7 +8,7 @@ namespace Binapsis.Plataforma.Test.Configuracion
     [TestClass]
     public class EvaluarAgenteConfiguracion
     {
-        string _url = "http://localhost:86/configuracion";
+        string _url = "http://localhost:85/configuracion";
 
         [TestMethod, TestCategory("Evaluar servicio de configuracion")]
         public void RecuperarEnsamblado()

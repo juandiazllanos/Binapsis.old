@@ -4,6 +4,7 @@ using Binapsis.Plataforma.Datos.Helper;
 using Binapsis.Plataforma.Datos.Impl;
 using Binapsis.Plataforma.Datos.Mapeo;
 using Binapsis.Plataforma.Estructura;
+using Binapsis.Plataforma.Helper.Impl;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -106,7 +107,7 @@ namespace Binapsis.Plataforma.Datos.Builder
         private bool ValidarValorInicial(MapeoColumna mapeoColumna)
         {
             if (mapeoColumna.Propiedad != null)
-                return Datos.Obtener(mapeoColumna.Columna) == ValorInicialHelper.Instancia.Obtener(mapeoColumna.Propiedad);
+                return DefaultValueHelper.Instancia.IsDefaultValue(mapeoColumna.Propiedad, Datos.Obtener(mapeoColumna.Columna));
             else
                 return false; // no se puede validar, la columna no tiene un tipo
         }

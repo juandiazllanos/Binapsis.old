@@ -95,6 +95,9 @@ namespace Binapsis.Plataforma.Cambios.Impl
                 _modificados.Add(datos, cambios);
             else if (cambios.Cambio == Cambio.Eliminado)
                 _eliminados.Add(datos, cambios);
+
+            if (cambios is ObjetoCambios objetoCambios)
+                objetoCambios.ResumenCambios = this;
         }
         #endregion
 
@@ -103,6 +106,12 @@ namespace Binapsis.Plataforma.Cambios.Impl
         public IObjetoCambios this[IObjetoDatos od]
         {
             get => ObtenerObjetoCambios(od);
+        }
+
+        public IDiagramaDatos DiagramaDatos
+        {
+            get;
+            internal set;
         }
         #endregion
     }

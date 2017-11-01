@@ -62,7 +62,7 @@ namespace Binapsis.Plataforma.Datos.Builder
         {
             Configuracion.Parametro parametro = Comando.CrearParametro();
             parametro.Nombre = mapeoColumna.Columna.Nombre;
-            parametro.Direccion = "IN";
+            parametro.Direccion = "IN";            
         }
         
     }

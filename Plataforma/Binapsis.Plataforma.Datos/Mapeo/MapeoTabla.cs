@@ -9,12 +9,14 @@ namespace Binapsis.Plataforma.Datos.Mapeo
     {
         List<MapeoColumna> _columnas;
         List<MapeoRelacion> _relaciones;
+        Dictionary<string, IPrimaryKey> _keys;
 
         #region Constructores
         public MapeoTabla()
         {
             _columnas = new List<MapeoColumna>();
             _relaciones = new List<MapeoRelacion>();
+            _keys = new Dictionary<string, IPrimaryKey>();
         }
         #endregion
 
@@ -74,6 +76,20 @@ namespace Binapsis.Plataforma.Datos.Mapeo
         {
             return _columnas.Where(item => item.Columna.ClavePrimaria).ToList();
         }
+        
+        public void AgregarPrimaryKey(string columna, IPrimaryKey pk)
+        {
+            if (!_keys.ContainsKey(columna))
+                _keys.Add(columna, pk);
+        }
+
+        public IPrimaryKey ObtenerPrimaryKey(string columna)
+        {
+            if (_keys.ContainsKey(columna))
+                return _keys[columna];
+            else
+                return null;
+        }
         #endregion
 
 
@@ -82,7 +98,7 @@ namespace Binapsis.Plataforma.Datos.Mapeo
         {
             get => _columnas;
         }
-
+        
         public List<MapeoRelacion> Relaciones
         {
             get => _relaciones;

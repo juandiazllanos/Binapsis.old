@@ -7,12 +7,28 @@ namespace Binapsis.Plataforma.Datos.Impl
     public class ParametroComando
     {
         Parametro _parametro;
+        protected object _valor;
 
+        #region Constructores
         public ParametroComando(Parametro parametro)
         {
             _parametro = parametro;
         }
+        #endregion
 
+
+        #region Metodos
+        protected virtual void Establecer(object valor)
+        {
+            if (Type != null)
+                _valor = Convert.ChangeType(valor, Type);
+            else
+                _valor = valor;
+        }
+        #endregion
+
+
+        #region Propiedades
         public string Direccion
         {
             get => _parametro.Direccion;            
@@ -41,8 +57,10 @@ namespace Binapsis.Plataforma.Datos.Impl
 
         public object Valor
         {
-            get;
-            set;
+            get => _valor;
+            set => Establecer(value);
         }
+        #endregion
+
     }
 }

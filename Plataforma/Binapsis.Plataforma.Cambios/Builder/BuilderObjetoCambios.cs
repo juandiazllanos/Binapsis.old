@@ -18,7 +18,7 @@ namespace Binapsis.Plataforma.Cambios.Builder
             AnalisisObjetoCambios aoc = new AnalisisObjetoCambios(ObjetoCambios.Tipo) {
                 ObjetoDatosNuevo = nuevo,
                 ObjetoDatosAntiguo = antiguo,
-                ClaveHelper = ClaveHelper
+                KeyHelper = KeyHelper
             };
 
             aoc.Resolver();
@@ -88,7 +88,7 @@ namespace Binapsis.Plataforma.Cambios.Builder
 
             IObjetoDatos objetoCambios = ObjetoCambios;
             ObjetoCambios itemCambios = (objetoCambios.CrearObjetoDatos(propiedad) as ObjetoCambios);
-            BuilderObjetoCambios builder = new BuilderObjetoCambios(itemCambios) { ClaveHelper = ClaveHelper };
+            BuilderObjetoCambios builder = new BuilderObjetoCambios(itemCambios) { KeyHelper = KeyHelper };
             builder.Construir(aoc);            
         }
 
@@ -99,7 +99,7 @@ namespace Binapsis.Plataforma.Cambios.Builder
             IObjetoDatos objetoCambios = ObjetoCambios;
 
             ObjetoCambios itemCambios = new Fabrica().Crear(propiedad.Tipo);
-            BuilderObjetoCambios builder = new BuilderObjetoCambios(itemCambios) { ClaveHelper = ClaveHelper };
+            BuilderObjetoCambios builder = new BuilderObjetoCambios(itemCambios) { KeyHelper = KeyHelper };
             builder.Construir(aoc);
 
             objetoCambios.EstablecerObjetoDatos(propiedad, itemCambios);
@@ -110,7 +110,7 @@ namespace Binapsis.Plataforma.Cambios.Builder
             get;
         }
 
-        public IClaveHelper ClaveHelper
+        public IKeyHelper KeyHelper
         {
             get;
             set;

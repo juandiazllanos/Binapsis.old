@@ -1,4 +1,5 @@
 ﻿using Binapsis.Plataforma.Estructura;
+
 using System;
 using System.Collections.Generic;
 
@@ -22,7 +23,7 @@ namespace Binapsis.Plataforma.Configuracion
 
         private void Crear()
         {      
-            Ensamblado ensamSystem = new Ensamblado { Nombre = "System" };
+            Ensamblado ensamSystem = new Ensamblado { Nombre = "mscorlib" };
             Uri uriSystem = new Uri { Ensamblado = ensamSystem, Nombre = "System" };  
             
             Agregar(new Tipo { Uri = uriSystem, Nombre = "Boolean", Alias = "bool", EsTipoDeDato = true });
@@ -85,6 +86,11 @@ namespace Binapsis.Plataforma.Configuracion
             tipoTipo.CrearPropiedad("Nombre", Obtener(typeof(string)), "nombre");
 
 
+            // contexto 
+            Tipo tipoContexto = new Tipo { Uri = uriConfig, Nombre = "Contexto", Alias = "contexto" };
+            tipoContexto.CrearPropiedad("Nombre", Obtener(typeof(string)), "nombre");
+            tipoContexto.CrearPropiedad("Url", Obtener(typeof(string)), "url");
+
             // conexion
             Tipo tipoConexion = new Tipo() { Uri = uriConfig, Nombre = "Conexion", Alias = "conexion" };
             tipoConexion.CrearPropiedad("CadenaConexion", Obtener(typeof(string)));
@@ -118,16 +124,49 @@ namespace Binapsis.Plataforma.Configuracion
             tipoRelacion.CrearPropiedad("Tipo", Obtener(typeof(string)), "tipo");
 
 
+            // parametro 
+            Tipo tipoParametro = new Tipo { Uri = uriConfig, Nombre = "Parametro", Alias = "parametro" };
+            tipoParametro.CrearPropiedad("Direccion", Obtener(typeof(string)), "direccion");
+            tipoParametro.CrearPropiedad("Indice", Obtener(typeof(int)), "indice");
+            tipoParametro.CrearPropiedad("Nombre", Obtener(typeof(string)), "nombre" );
+            tipoParametro.CrearPropiedad("Longitud", Obtener(typeof(int)), "longitud" );
+            tipoParametro.CrearPropiedad("Tipo", Obtener(typeof(string)), "tipo" );
+            
+            // resultadoDescriptor 
+            Tipo tipoResultadoDescriptor = new Tipo { Uri = uriConfig, Nombre = "ResultadoDescriptor", Alias = "resultadoDescriptor" };
+            tipoResultadoDescriptor.CrearPropiedad("Columna", Obtener(typeof(string)), "columna" );
+            tipoResultadoDescriptor.CrearPropiedad("Indice", Obtener(typeof(int)), "indice" );
+            tipoResultadoDescriptor.CrearPropiedad("Nombre", Obtener(typeof(string)), "nombre" );
+            tipoResultadoDescriptor.CrearPropiedad("Tabla", Obtener(typeof(string)), "tabla" );
+            tipoResultadoDescriptor.CrearPropiedad("Tipo", Obtener(typeof(string)), "tipo" );
+            
+            // comando 
+            Tipo tipoComando = new Tipo { Uri = uriConfig, Nombre = "Comando", Alias = "comando" };
+            tipoComando.CrearPropiedad("ComandoTipo", Obtener(typeof(byte)), "comandoTipo" );
+            tipoComando.CrearPropiedad("Nombre", Obtener(typeof(string)), "nombre");
+            tipoComando.CrearPropiedad("Sql", Obtener(typeof(string)), "sql");
+            Propiedad propiedadParametros = tipoComando.CrearPropiedad("Parametros", tipoParametro, "parametros");
+            propiedadParametros.Asociacion = Asociacion.Composicion;
+            propiedadParametros.Cardinalidad = Cardinalidad.CeroAMuchos;
+            Propiedad propiedadResultadoDescriptores = tipoComando.CrearPropiedad("ResultadoDescriptores", tipoResultadoDescriptor, "resultadoDescriptores");
+            propiedadResultadoDescriptores.Asociacion = Asociacion.Composicion;
+            propiedadResultadoDescriptores.Cardinalidad = Cardinalidad.CeroAMuchos;
+
+
             Agregar(tipoEnsamblado);
             Agregar(tipoUri);            
             Agregar(tipoPropiedad);
             Agregar(tipoTipo);
 
+            Agregar(tipoContexto);
             Agregar(tipoConexion);
             Agregar(tipoColumna);
             Agregar(tipoTabla);
             Agregar(tipoRelacion);
-            
+
+            Agregar(tipoParametro);
+            Agregar(tipoResultadoDescriptor);
+            Agregar(tipoComando);
         }
         
         private void Agregar(Tipo tipo)

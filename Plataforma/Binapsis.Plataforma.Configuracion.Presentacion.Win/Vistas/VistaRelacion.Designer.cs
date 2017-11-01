@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.TablaPrincipal = new Binapsis.Presentacion.Win.EditorTexto();
-            this.ColumnaPrincipal = new Binapsis.Presentacion.Win.EditorTexto();
-            this.TablaSecundaria = new Binapsis.Presentacion.Win.EditorTexto();
-            this.ColumnaSecundaria = new Binapsis.Presentacion.Win.EditorTexto();
-            this.Tipo = new Binapsis.Presentacion.Win.EditorTexto();
-            this.Propiedad = new Binapsis.Presentacion.Win.EditorTexto();
+            this.TablaPrincipal = new Binapsis.Presentacion.Editores.Win.EditorTexto();
+            this.ColumnaPrincipal = new Binapsis.Presentacion.Editores.Win.EditorTexto();
+            this.TablaSecundaria = new Binapsis.Presentacion.Editores.Win.EditorTexto();
+            this.ColumnaSecundaria = new Binapsis.Presentacion.Editores.Win.EditorTexto();
+            this.Tipo = new Binapsis.Presentacion.Editores.Win.EditorTexto();
+            this.Propiedad = new Binapsis.Presentacion.Editores.Win.EditorTexto();
             this.SuspendLayout();
             // 
             // TablaPrincipal
@@ -108,11 +108,11 @@
 
         #endregion
 
-        private Binapsis.Presentacion.Win.EditorTexto TablaPrincipal;
-        private Binapsis.Presentacion.Win.EditorTexto ColumnaPrincipal;
-        private Binapsis.Presentacion.Win.EditorTexto TablaSecundaria;
-        private Binapsis.Presentacion.Win.EditorTexto ColumnaSecundaria;
-        private Binapsis.Presentacion.Win.EditorTexto Tipo;
-        private Binapsis.Presentacion.Win.EditorTexto Propiedad;
+        private Binapsis.Presentacion.Editores.Win.EditorTexto TablaPrincipal;
+        private Binapsis.Presentacion.Editores.Win.EditorTexto ColumnaPrincipal;
+        private Binapsis.Presentacion.Editores.Win.EditorTexto TablaSecundaria;
+        private Binapsis.Presentacion.Editores.Win.EditorTexto ColumnaSecundaria;
+        private Binapsis.Presentacion.Editores.Win.EditorTexto Tipo;
+        private Binapsis.Presentacion.Editores.Win.EditorTexto Propiedad;
     }
 }

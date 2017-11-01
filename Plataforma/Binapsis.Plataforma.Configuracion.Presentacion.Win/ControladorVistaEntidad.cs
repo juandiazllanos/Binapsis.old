@@ -1,7 +1,7 @@
 ﻿using Binapsis.Plataforma.Configuracion.Presentacion.Win.Vistas;
 using Binapsis.Plataforma.Estructura;
 using Binapsis.Presentacion.Editores;
-using Binapsis.Presentacion.Win;
+using Binapsis.Presentacion.Editores.Win;
 using System;
 
 namespace Binapsis.Plataforma.Configuracion.Presentacion.Win

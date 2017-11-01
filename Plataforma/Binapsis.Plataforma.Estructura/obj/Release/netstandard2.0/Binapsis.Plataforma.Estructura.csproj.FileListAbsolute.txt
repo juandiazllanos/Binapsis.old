@@ -1,0 +1,9 @@
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Estructura\bin\Release\netstandard2.0\Binapsis.Plataforma.Estructura.deps.json
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Estructura\bin\Release\netstandard2.0\Binapsis.Plataforma.Estructura.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Estructura\bin\Release\netstandard2.0\Binapsis.Plataforma.Estructura.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Estructura\obj\Release\netstandard2.0\Binapsis.Plataforma.Estructura.csprojResolveAssemblyReference.cache
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Estructura\obj\Release\netstandard2.0\Binapsis.Plataforma.Estructura.csproj.CoreCompileInputs.cache
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Estructura\obj\Release\netstandard2.0\Binapsis.Plataforma.Estructura.AssemblyInfoInputs.cache
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Estructura\obj\Release\netstandard2.0\Binapsis.Plataforma.Estructura.AssemblyInfo.cs
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Estructura\obj\Release\netstandard2.0\Binapsis.Plataforma.Estructura.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Estructura\obj\Release\netstandard2.0\Binapsis.Plataforma.Estructura.pdb

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Nombre = new Binapsis.Presentacion.Win.EditorTexto();
-            this.CadenaConexion = new Binapsis.Presentacion.Win.EditorTexto();
+            this.Nombre = new Binapsis.Presentacion.Editores.Win.EditorTexto();
+            this.CadenaConexion = new Binapsis.Presentacion.Editores.Win.EditorTexto();
             this.SuspendLayout();
             // 
             // Nombre
@@ -43,7 +43,7 @@
             // 
             // CadenaConexion
             // 
-            this.CadenaConexion.Estilo = Binapsis.Presentacion.Win.Estilo.TextMemoEdit;
+            this.CadenaConexion.Estilo = Binapsis.Presentacion.Editores.Win.Estilo.TextMemoEdit;
             this.CadenaConexion.Etiqueta.Ancho = 100;
             this.CadenaConexion.Etiqueta.Texto = "Cadena de conexión";
             this.CadenaConexion.Location = new System.Drawing.Point(36, 50);
@@ -65,7 +65,7 @@
 
         #endregion
 
-        private Binapsis.Presentacion.Win.EditorTexto Nombre;
-        private Binapsis.Presentacion.Win.EditorTexto CadenaConexion;
+        private Binapsis.Presentacion.Editores.Win.EditorTexto Nombre;
+        private Binapsis.Presentacion.Editores.Win.EditorTexto CadenaConexion;
     }
 }

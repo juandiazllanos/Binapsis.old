@@ -29,3 +29,7 @@ D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.ServicioDatos\obj\Debug\ne
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.ServicioDatos\obj\Debug\netcoreapp2.0\Binapsis.Plataforma.ServicioDatos.AssemblyInfo.cs
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.ServicioDatos\obj\Debug\netcoreapp2.0\Binapsis.Plataforma.ServicioDatos.dll
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.ServicioDatos\obj\Debug\netcoreapp2.0\Binapsis.Plataforma.ServicioDatos.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.ServicioDatos\bin\Debug\netcoreapp2.0\Binapsis.Plataforma.Datos.SQLite.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.ServicioDatos\bin\Debug\netcoreapp2.0\Binapsis.Plataforma.Datos.SQLServer.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.ServicioDatos\bin\Debug\netcoreapp2.0\Binapsis.Plataforma.Datos.SQLite.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.ServicioDatos\bin\Debug\netcoreapp2.0\Binapsis.Plataforma.Datos.SQLServer.pdb

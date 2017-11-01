@@ -1,7 +1,6 @@
 ﻿using Binapsis.Plataforma.Estructura;
 using Binapsis.Plataforma.Helper;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Binapsis.Plataforma.Cambios.Analisis
 {
@@ -34,34 +33,41 @@ namespace Binapsis.Plataforma.Cambios.Analisis
 
         private void Construir()
         {
-            if (AnalisisObjetoCambios.ClaveHelper == null)
+            if (AnalisisObjetoCambios.KeyHelper == null)
                 ConstruirPorIndice();
             else
-                ConstruirPorClave(AnalisisObjetoCambios.ClaveHelper);
+                ConstruirPorClave(AnalisisObjetoCambios.KeyHelper);
         }
 
-        private void ConstruirPorClave(IClaveHelper claveHelper)
+        private void ConstruirPorClave(IKeyHelper keyHelper)
         {
             IColeccion colNuevo = AnalisisObjetoCambios.ObjetoDatosNuevo.ObtenerColeccion(Propiedad);
             IColeccion colAntiguo = AnalisisObjetoCambios.ObjetoDatosAntiguo.ObtenerColeccion(Propiedad);
 
-            IObjetoDatos itemNuevo;
-            IObjetoDatos itemAntiguo;
-
-            List<IObjetoDatos> itemsAntiguo = new List<IObjetoDatos>(colAntiguo);
             int indice = 0;
-            
-            foreach(IObjetoDatos item in colNuevo)
-            {
-                itemNuevo = item;
-                itemAntiguo = itemsAntiguo.FirstOrDefault(antiguo => claveHelper.ObtenerString(itemNuevo) == claveHelper.ObtenerString(antiguo)); //EqualityHelper.Instancia.Igual(itemNuevo, antiguo, Clave));
 
-                if (itemAntiguo != null) itemsAntiguo.Remove(itemAntiguo);
+            //IObjetoDatos itemNuevo;
+            //IObjetoDatos itemAntiguo;
 
-                CrearItem(itemNuevo, itemAntiguo, indice++);                
-            }
+            //List<IObjetoDatos> itemsAntiguo = new List<IObjetoDatos>(colAntiguo);
 
-            foreach (IObjetoDatos item in itemsAntiguo)
+
+            //foreach(IObjetoDatos item in colNuevo)
+            //{
+            //    itemNuevo = item;
+            //    itemAntiguo = itemsAntiguo.FirstOrDefault(antiguo => claveHelper.ObtenerString(itemNuevo) == claveHelper.ObtenerString(antiguo)); //EqualityHelper.Instancia.Igual(itemNuevo, antiguo, Clave));
+
+            //    if (itemAntiguo != null) itemsAntiguo.Remove(itemAntiguo);
+
+            //    CrearItem(itemNuevo, itemAntiguo, indice++);                
+            //}
+
+            ColeccionKeyHelper colKeyHelper = new ColeccionKeyHelper(colNuevo, colAntiguo, keyHelper);
+
+            foreach (var item in colKeyHelper)
+                CrearItem(item, colKeyHelper[item], indice++);
+
+            foreach (IObjetoDatos item in colKeyHelper.Eliminados)
             {
                 indice = colAntiguo.Indice(item);
                 CrearItem(null, item, indice);

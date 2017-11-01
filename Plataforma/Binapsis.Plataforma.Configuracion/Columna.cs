@@ -1,9 +1,8 @@
 using Binapsis.Plataforma.Estructura;
-using Binapsis.Plataforma.Estructura.Impl;
 
 namespace Binapsis.Plataforma.Configuracion
 {
-	public class Columna : ConfiguracionBase
+    public class Columna : ConfiguracionBase
     {
         public Columna(IImplementacion impl) 
             : base(impl)

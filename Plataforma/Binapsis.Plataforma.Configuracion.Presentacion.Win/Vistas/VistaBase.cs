@@ -1,4 +1,4 @@
-﻿using Binapsis.Presentacion.Win;
+﻿using Binapsis.Presentacion.Editores.Win;
 
 namespace Binapsis.Plataforma.Configuracion.Presentacion.Win.Vistas
 {

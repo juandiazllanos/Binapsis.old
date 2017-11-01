@@ -1,9 +1,10 @@
 ﻿using Binapsis.Plataforma.Datos;
 using Binapsis.Plataforma.Datos.Impl;
+using Binapsis.Plataforma.Estructura;
 
 namespace Binapsis.Plataforma.Configuracion.Datos
 {
-    class ContextoUpdate : Contexto
+    class ContextoUpdate : ContextoBase
     {
         public ContextoUpdate(IContexto contexto) 
             : base(contexto)
@@ -37,10 +38,24 @@ namespace Binapsis.Plataforma.Configuracion.Datos
 
             base.EjecutarComando(comandoUpdate);
         }
+
+        //public override IClave ObtenerClave(ITipo tipo)
+        //{
+        //    if (Antiguo == null)
+        //        return base.ObtenerClave(tipo);
+        //    else
+        //        return new ClaveAntiguo(tipo, Antiguo);
+        //}
         #endregion
 
 
         #region Propiedades
+        public IObjetoDatos Antiguo
+        {
+            get;
+            set;
+        }
+
         public string Clave
         {
             get;

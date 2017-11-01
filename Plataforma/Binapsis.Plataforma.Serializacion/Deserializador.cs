@@ -9,10 +9,15 @@ namespace Binapsis.Plataforma.Serializacion
     public abstract class Deserializador
     {        
         public Deserializador(ISecuencia secuencia, ILector lector)
+            : this(secuencia, lector, FabricaDatos.Instancia)
+        {            
+        }
+
+        public Deserializador(ISecuencia secuencia, ILector lector, IFabrica fabrica)
         {
             Secuencia = secuencia;
             Lector = lector;
-            Fabrica = FabricaDatos.Instancia;
+            Fabrica = fabrica;
         }
 
         /// <summary>

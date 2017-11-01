@@ -18,6 +18,15 @@ namespace Binapsis.Plataforma.Estructura.Impl
         {
             _col = new List<IObjetoDatos>(items);
         }
+
+        public Coleccion(IEnumerable items)
+        {
+            _col = new List<IObjetoDatos>();
+
+            foreach (var item in items)
+                if (item is IObjetoDatos od)
+                    _col.Add(od);
+        }
         #endregion
 
 

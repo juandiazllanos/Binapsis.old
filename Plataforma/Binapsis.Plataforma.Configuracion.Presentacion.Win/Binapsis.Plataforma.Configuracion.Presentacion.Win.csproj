@@ -11,6 +11,8 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -36,16 +38,16 @@
     <StartupObject>Binapsis.Plataforma.Configuracion.Presentacion.Win.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Printing.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Sparkline.v16.2.Core, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Utils.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraBars.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraPrinting.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraTreeList.v16.2, Version=16.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v16.2, Version=16.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v16.2.Core, Version=16.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v16.2.Core, Version=16.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v16.2, Version=16.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v16.2, Version=16.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v16.2, Version=16.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v16.2, Version=16.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v16.2, Version=16.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v16.2, Version=16.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v16.2, Version=16.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -55,7 +57,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -104,17 +105,35 @@
     <Compile Include="Vistas\VistaColumna.Designer.cs">
       <DependentUpon>VistaColumna.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\VistaComando.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vistas\VistaComando.Designer.cs">
+      <DependentUpon>VistaComando.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\VistaConexion.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Vistas\VistaConexion.Designer.cs">
       <DependentUpon>VistaConexion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\VistaContexto.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vistas\VistaContexto.Designer.cs">
+      <DependentUpon>VistaContexto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\VistaEnsamblado.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Vistas\VistaEnsamblado.Designer.cs">
       <DependentUpon>VistaEnsamblado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\VistaParametro.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vistas\VistaParametro.Designer.cs">
+      <DependentUpon>VistaParametro.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\VistaPropiedad.cs">
       <SubType>UserControl</SubType>
@@ -127,6 +146,12 @@
     </Compile>
     <Compile Include="Vistas\VistaRelacion.Designer.cs">
       <DependentUpon>VistaRelacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\VistaResultadoDescriptor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vistas\VistaResultadoDescriptor.Designer.cs">
+      <DependentUpon>VistaResultadoDescriptor.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\VistaSeleccionar.cs">
       <SubType>UserControl</SubType>
@@ -172,17 +197,29 @@
     <EmbeddedResource Include="Vistas\VistaColumna.resx">
       <DependentUpon>VistaColumna.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\VistaComando.resx">
+      <DependentUpon>VistaComando.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\VistaConexion.resx">
       <DependentUpon>VistaConexion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\VistaContexto.resx">
+      <DependentUpon>VistaContexto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\VistaEnsamblado.resx">
       <DependentUpon>VistaEnsamblado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\VistaParametro.resx">
+      <DependentUpon>VistaParametro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\VistaPropiedad.resx">
       <DependentUpon>VistaPropiedad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\VistaRelacion.resx">
       <DependentUpon>VistaRelacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\VistaResultadoDescriptor.resx">
+      <DependentUpon>VistaResultadoDescriptor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\VistaSeleccionar.resx">
       <DependentUpon>VistaSeleccionar.cs</DependentUpon>
@@ -207,9 +244,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Presentacion\Binapsis.Presentacion.Editores.Win\Binapsis.Presentacion.Editores.Win.csproj">
+      <Project>{773f4876-66a6-4886-93f6-e5059df8a0ed}</Project>
+      <Name>Binapsis.Presentacion.Editores.Win</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Presentacion\Binapsis.Presentacion.Editores\Binapsis.Presentacion.Editores.csproj">
       <Project>{b61630d5-ad76-4a90-9411-e55ffa5b7e40}</Project>
       <Name>Binapsis.Presentacion.Editores</Name>
@@ -217,10 +260,6 @@
     <ProjectReference Include="..\..\Presentacion\Binapsis.Presentacion.MVVM\Binapsis.Presentacion.MVVM.csproj">
       <Project>{a6755b01-2b4a-4f97-9e0c-7f48bed6ec80}</Project>
       <Name>Binapsis.Presentacion.MVVM</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Presentacion\Binapsis.Presentacion.Win\Binapsis.Presentacion.Win.csproj">
-      <Project>{773f4876-66a6-4886-93f6-e5059df8a0ed}</Project>
-      <Name>Binapsis.Presentacion.Win</Name>
     </ProjectReference>
     <ProjectReference Include="..\Binapsis.Plataforma.AgenteConfiguracion\Binapsis.Plataforma.AgenteConfiguracion.csproj">
       <Project>{71753498-7F80-4D33-BA78-1D574230555D}</Project>

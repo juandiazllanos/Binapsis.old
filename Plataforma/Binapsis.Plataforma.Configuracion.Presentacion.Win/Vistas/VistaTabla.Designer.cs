@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Nombre = new Binapsis.Presentacion.Win.EditorTexto();
-            this.Tipo = new Binapsis.Presentacion.Win.EditorTexto();
+            this.Nombre = new Binapsis.Presentacion.Editores.Win.EditorTexto();
+            this.Tipo = new Binapsis.Presentacion.Editores.Win.EditorTexto();
             this.SuspendLayout();
             // 
             // Nombre
@@ -63,7 +63,7 @@
 
         #endregion
 
-        private Binapsis.Presentacion.Win.EditorTexto Nombre;
-        private Binapsis.Presentacion.Win.EditorTexto Tipo;
+        private Binapsis.Presentacion.Editores.Win.EditorTexto Nombre;
+        private Binapsis.Presentacion.Editores.Win.EditorTexto Tipo;
     }
 }

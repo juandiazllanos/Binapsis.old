@@ -61,25 +61,7 @@ namespace Binapsis.Plataforma.Datos.Helper
             foreach (MapeoColumna mapeoColumna in claves)
                 resultado.Add(mapeoColumna);
         }
-
-        //private ComandoLectura CrearConsultaAtributo(MapeoTabla mapeoTabla, IPropiedad propiedad)
-        //{
-        //    MapeoColumna mapeoColumna = mapeoTabla?.ObtenerMapeoColumnaPorPropiedad(propiedad.Nombre);
-        //    if (mapeoColumna == null) throw new Exception($"La propiedad '{propiedad.Nombre}' no esta asociado a una columna.");
-
-        //    return CrearConsulta(mapeoTabla, mapeoColumna);
-        //}
-
-        //private ComandoLectura CrearConsultaReferencia(MapeoTabla mapeoTabla, IPropiedad propiedad)
-        //{
-        //    MapeoRelacion mapeoRelacion = mapeoTabla.ObtenerMapeoRelacionPorPropiedad(propiedad);
-        //    if (mapeoRelacion == null) throw new Exception($"La propiedad '{propiedad.Nombre}' no está asociada a una relación.");
-
-        //    IList<MapeoColumna> mapeoColumnas = mapeoRelacion.Claves.Select(item => item.ClaveSecundaria).ToList();
-
-        //    return CrearConsulta(mapeoTabla, mapeoColumnas);
-        //}
-
+        
         public ComandoLectura CrearConsulta(MapeoTabla mapeoTabla)
         {
             IList<MapeoColumna> columnas = mapeoTabla.Columnas.Where(item => item.Columna.ClavePrimaria).ToList();

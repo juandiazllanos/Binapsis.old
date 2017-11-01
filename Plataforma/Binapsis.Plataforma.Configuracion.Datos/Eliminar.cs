@@ -18,7 +18,7 @@ namespace Binapsis.Plataforma.Configuracion.Datos
         {
             IDiagramaDatos dd = new DiagramaDatos(obj.Tipo);
             BuilderDiagramaDatos builder = new BuilderDiagramaDatos(dd);
-            builder.ClaveHelper = ConfiguracionClaveHelper.Instancia;
+            builder.KeyHelper = new ConfiguracionKeyHelper();
             builder.Construir(null, obj);
 
             Ejecutar(dd);

@@ -1,0 +1,11 @@
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Controladores\bin\Debug\netstandard1.3\Binapsis.Procesos.Controladores.deps.json
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Controladores\bin\Debug\netstandard1.3\Binapsis.Procesos.Controladores.dll
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Controladores\bin\Debug\netstandard1.3\Binapsis.Procesos.Controladores.pdb
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Controladores\bin\Debug\netstandard1.3\Binapsis.Procesos.Orquestacion.dll
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Controladores\bin\Debug\netstandard1.3\Binapsis.Procesos.Orquestacion.pdb
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Controladores\obj\Debug\netstandard1.3\Binapsis.Procesos.Controladores.csprojResolveAssemblyReference.cache
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Controladores\obj\Debug\netstandard1.3\Binapsis.Procesos.Controladores.AssemblyInfo.cs
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Controladores\obj\Debug\netstandard1.3\Binapsis.Procesos.Controladores.dll
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Controladores\obj\Debug\netstandard1.3\Binapsis.Procesos.Controladores.pdb
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Controladores\bin\Debug\netstandard1.3\Binapsis.Consola.Definicion.dll
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Controladores\bin\Debug\netstandard1.3\Binapsis.Consola.Definicion.pdb

@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+//using Binapsis.Plataforma.Configuracion;
+//using Contexto = Binapsis.Plataforma.Configuracion.Contexto;
 
 namespace Binapsis.Plataforma.Configuracion.Datos
 {
@@ -38,6 +40,7 @@ namespace Binapsis.Plataforma.Configuracion.Datos
             _items.Add(Types.Instancia.Obtener(typeof(Tipo)));
             _items.Add(Types.Instancia.Obtener(typeof(Propiedad)));
 
+            _items.Add(Types.Instancia.Obtener(typeof(Contexto)));
             _items.Add(Types.Instancia.Obtener(typeof(Conexion)));
             _items.Add(Types.Instancia.Obtener(typeof(Tabla)));
             _items.Add(Types.Instancia.Obtener(typeof(Columna)));
@@ -84,20 +87,45 @@ namespace Binapsis.Plataforma.Configuracion.Datos
             relacion.TipoAsociado = typeof(Relacion).FullName;
             relacion.CrearColumna("PK_Relacion", "", true);
 
+            Tabla contexto = Fabrica.Instancia.Crear<Tabla>();
+            contexto.Nombre = "Contexto";
+            contexto.TipoAsociado = typeof(Contexto).FullName;
+            contexto.CrearColumna("PK_Contexto", "", true);
+
             Tabla conexion = Fabrica.Instancia.Crear<Tabla>();
             conexion.Nombre = "Conexion";
             conexion.TipoAsociado = typeof(Conexion).FullName;
             conexion.CrearColumna("PK_Conexion", "", true);
+
+            Tabla comando = Fabrica.Instancia.Crear<Tabla>();
+            comando.Nombre = "Comando";
+            comando.TipoAsociado = typeof(Comando).FullName;
+            comando.CrearColumna("PK_Comando", "", true);
+
+            Tabla parametro = Fabrica.Instancia.Crear<Tabla>();
+            parametro.Nombre = "Parametro";
+            parametro.TipoAsociado = typeof(Parametro).FullName;
+            parametro.CrearColumna("PK_Parametro", "", true);
+
+            Tabla resultadoDescriptor = Fabrica.Instancia.Crear<Tabla>();
+            resultadoDescriptor.Nombre = "ResultadoDescriptor";
+            resultadoDescriptor.TipoAsociado = typeof(ResultadoDescriptor).FullName;
+            resultadoDescriptor.CrearColumna("PK_ResultadoDescriptor", "", true);
 
             _items.Add(ensamblado);
             _items.Add(uri);
             _items.Add(tipo);
             _items.Add(propiedad);
 
+            _items.Add(contexto);
+
             _items.Add(conexion);
             _items.Add(tabla);
             _items.Add(columna);
             _items.Add(relacion);
+            _items.Add(comando);
+            _items.Add(parametro);
+            _items.Add(resultadoDescriptor);
 
         }
 
@@ -157,12 +185,33 @@ namespace Binapsis.Plataforma.Configuracion.Datos
             columnaTabla.TablaPrincipal = "Tabla";
             columnaTabla.ColumnaPrincipal = "PK_Tabla";
 
+            // Parametro => Comando
+            Relacion parametroComando = Fabrica.Instancia.Crear<Relacion>();
+            parametroComando.TipoAsociado = typeof(Comando).FullName;
+            parametroComando.Propiedad = "Parametros";
+            parametroComando.TablaSecundaria = "Parametro";
+            parametroComando.ColumnaSecundaria = "FK_Comando";
+            parametroComando.TablaPrincipal = "Comando";            
+            parametroComando.ColumnaPrincipal = "PK_Comando";
+
+            // ResultadoDescriptor => Comando
+            Relacion resultadoDescriptorComando = Fabrica.Instancia.Crear<Relacion>();
+            resultadoDescriptorComando.TipoAsociado = typeof(Comando).FullName;
+            resultadoDescriptorComando.Propiedad = "ResultadoDescriptores";
+            resultadoDescriptorComando.TablaSecundaria = "ResultadoDescriptor";
+            resultadoDescriptorComando.ColumnaSecundaria = "FK_Comando";
+            resultadoDescriptorComando.TablaPrincipal = "Comando";
+            resultadoDescriptorComando.ColumnaPrincipal = "PK_Comando";
+            
+
             _items.Add(uriEnsamblado);
             _items.Add(tipoUri);
             _items.Add(tipoTipoBase);
             _items.Add(propiedadTipoPropietario);
             _items.Add(propiedadTipoTipo);
             _items.Add(columnaTabla);
+            _items.Add(parametroComando);
+            _items.Add(resultadoDescriptorComando);
 
         }
 
@@ -268,6 +317,14 @@ namespace Binapsis.Plataforma.Configuracion.Datos
             listarPropiedadPorNombre.CrearResultadoDescriptor("Nombre", typeof(string));
             listarPropiedadPorNombre.CrearParametro("nombre", typeof(string), 250);
 
+            // listar contexto
+            Comando listarContexto = Fabrica.Instancia.Crear<Comando>();
+            listarContexto.Nombre = "listarContexto";
+            listarContexto.Sql = "SELECT PK_Contexto as Clave, Nombre FROM Contexto";
+            listarContexto.ComandoTipo = ComandoTipo.QUERY;
+            listarContexto.CrearResultadoDescriptor("Clave", typeof(string));
+            listarContexto.CrearResultadoDescriptor("Nombre", typeof(string));
+            
             // listar conexion
             Comando listarConexion = Fabrica.Instancia.Crear<Comando>();
             listarConexion.Nombre = "listarConexion";
@@ -348,6 +405,31 @@ namespace Binapsis.Plataforma.Configuracion.Datos
             listarRelacionPorNombre.CrearResultadoDescriptor("Nombre", typeof(string));
             listarRelacionPorNombre.CrearParametro("nombre", typeof(string), 250);
 
+            // listar comando
+            Comando listarComando = Fabrica.Instancia.Crear<Comando>();
+            listarComando.Nombre = "listarComando";
+            listarComando.Sql = "SELECT PK_Comando as Clave, Nombre FROM Comando";
+            listarComando.CrearResultadoDescriptor("Clave", typeof(string));
+            listarComando.CrearResultadoDescriptor("Nombre", typeof(string));
+
+            // listar parametro por comando
+            Comando listarParametroPorComando = Fabrica.Instancia.Crear<Comando>();
+            listarParametroPorComando.Nombre = "listarParametroPorComando";
+            listarParametroPorComando.Sql = "SELECT PK_Parametro as Clave, Nombre FROM Parametro WHERE FK_Comando = @Comando";
+            listarParametroPorComando.ComandoTipo = ComandoTipo.QUERY;
+            listarParametroPorComando.CrearResultadoDescriptor("Clave", typeof(string));
+            listarParametroPorComando.CrearResultadoDescriptor("Nombre", typeof(string));
+            listarParametroPorComando.CrearParametro("Comando", typeof(string), 250);
+
+            // listar resultado descriptor por comando
+            Comando listarResultadoDescriptorPorComando = Fabrica.Instancia.Crear<Comando>();
+            listarResultadoDescriptorPorComando.Nombre = "listarResultadoDescriptorPorComando";
+            listarResultadoDescriptorPorComando.Sql = "SELECT PK_ResultadoDescriptor as Clave, Nombre FROM ResultadoDescriptor WHERE FK_Comando = @Comando";
+            listarResultadoDescriptorPorComando.ComandoTipo = ComandoTipo.QUERY;
+            listarResultadoDescriptorPorComando.CrearResultadoDescriptor("Clave", typeof(string));
+            listarResultadoDescriptorPorComando.CrearResultadoDescriptor("Nombre", typeof(string));
+            listarResultadoDescriptorPorComando.CrearParametro("Comando", typeof(string), 250);
+
 
             // agregar comandos
             _items.Add(listarEnsamblado);
@@ -365,6 +447,8 @@ namespace Binapsis.Plataforma.Configuracion.Datos
             _items.Add(listarPropiedadPorTipo);
             _items.Add(listarPropiedadPorNombre);
 
+            _items.Add(listarContexto);
+
             _items.Add(listarConexion);
             _items.Add(listarConexionPorNombre);
 
@@ -377,6 +461,10 @@ namespace Binapsis.Plataforma.Configuracion.Datos
 
             _items.Add(listarRelacion);
             _items.Add(listarRelacionPorNombre);
+
+            _items.Add(listarComando);
+            _items.Add(listarParametroPorComando);
+            _items.Add(listarResultadoDescriptorPorComando);
 
         }
         #endregion

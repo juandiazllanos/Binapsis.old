@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,10 +16,11 @@ namespace Binapsis.Plataforma.ServicioConfiguracion
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
+
             Configuration = builder.Build();
         }
 
-        public static IConfigurationRoot Configuration { get; private set; }
+        public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -31,12 +28,14 @@ namespace Binapsis.Plataforma.ServicioConfiguracion
             // Add framework services.
             //services.AddMvc();
             services.AddMvc
-                (options =>
+                (options => 
                     {
-                        options.InputFormatters.Add(new XmlInputFormatter());
-                        options.OutputFormatters.Add(new XmlOutputFormatter());
+                        options.InputFormatters.Add(new InputFormatter());
+                        options.OutputFormatters.Add(new OutputFormatter());
                     }
                 );
+            // crear contextoInfo
+            services.AddSingleton(Configuration.GetSection("ContextoInfo").Get<ContextoInfo>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

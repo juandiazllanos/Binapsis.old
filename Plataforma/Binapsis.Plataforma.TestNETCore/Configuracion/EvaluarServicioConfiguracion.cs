@@ -1,14 +1,4 @@
-﻿using Binapsis.Plataforma.Configuracion;
-using Binapsis.Plataforma.Estructura;
-using Binapsis.Plataforma.Estructura.Impl;
-using Binapsis.Plataforma.Helper.Impl;
-using Binapsis.Plataforma.ServicioConfiguracion;
-using Binapsis.Plataforma.ServicioConfiguracion.Controllers;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Binapsis.Plataforma.TestNETCore.Configuracion
 {

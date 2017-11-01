@@ -1,6 +1,5 @@
 ﻿using Binapsis.Plataforma.Cambios.Impl;
 using Binapsis.Plataforma.Estructura;
-using Binapsis.Plataforma.Estructura.Impl;
 using Binapsis.Plataforma.Helper;
 
 namespace Binapsis.Plataforma.Cambios.Builder
@@ -16,7 +15,7 @@ namespace Binapsis.Plataforma.Cambios.Builder
         {
             IObjetoCambios cambios = new Fabrica().Crear(DiagramaDatos.Tipo);
             BuilderObjetoCambios builder = new BuilderObjetoCambios(cambios) {
-                ClaveHelper = ClaveHelper
+                KeyHelper = KeyHelper
             };
             
             builder.Construir(nuevo, antiguo);
@@ -35,6 +34,8 @@ namespace Binapsis.Plataforma.Cambios.Builder
 
             DiagramaDatos.ObjetoDatos = datos;
             DiagramaDatos.ResumenCambios = resumen;
+
+            resumen.DiagramaDatos = DiagramaDatos;
         }
 
         public IDiagramaDatos DiagramaDatos
@@ -42,7 +43,7 @@ namespace Binapsis.Plataforma.Cambios.Builder
             get;
         }
 
-        public IClaveHelper ClaveHelper
+        public IKeyHelper KeyHelper
         {
             get;
             set;

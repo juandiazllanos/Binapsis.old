@@ -4,6 +4,7 @@
     {
         void Mostrar();
         void Mostrar(TerminarHandler terminar);
+        void Establecer(IEditorObjeto editorObjeto);
                 
         ResultadoDialogo Resultado { get; }
     }

@@ -13,6 +13,11 @@ namespace Binapsis.Plataforma.Serializacion
         {
         }
 
+        public DeserializadorDiagramaDatos(ISecuencia secuencia, ILector lector, IFabrica fabrica)
+            : base(secuencia, lector, fabrica)
+        {
+        }
+
         public override void Deserializar(object obj)
         {
             if (obj is IDiagramaDatos dd)

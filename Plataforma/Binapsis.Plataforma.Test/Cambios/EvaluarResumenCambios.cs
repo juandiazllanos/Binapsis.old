@@ -155,7 +155,7 @@ namespace Binapsis.Plataforma.Test.Cambios
             IDiagramaDatos diagrama = new DiagramaDatos(tipo);
             BuilderDiagramaDatos builder = new BuilderDiagramaDatos(diagrama);
             // utilizar claves
-            builder.ClaveHelper = TestClaveHelper.Instancia;
+            builder.KeyHelper = HelperTipo.KeyHelper;
             builder.Construir(nuevo, antiguo);
 
             IResumenCambios resumen = diagrama.ResumenCambios;
@@ -177,7 +177,14 @@ namespace Binapsis.Plataforma.Test.Cambios
                 }
 
             Assert.IsNotNull(itemEliminado2);
-            Assert.IsTrue(TestClaveHelper.Instancia.ObtenerString(itemEliminado).Equals(TestClaveHelper.Instancia.ObtenerString(itemEliminado2)));
+
+            IKey key1 = HelperTipo.KeyHelper.GetKey(itemEliminado);
+            IKey key2 = HelperTipo.KeyHelper.GetKey(itemEliminado2);
+
+            Assert.IsNotNull(key1);
+            Assert.IsNotNull(key2);
+
+            Assert.IsTrue(key1.Equals(key2));
         }
 
         [TestMethod, TestCategory("Evaluar Resumen de cambios")]

@@ -22,7 +22,7 @@ namespace Binapsis.Plataforma.Serializacion.Interno
             ResolverNodos();            
         }
 
-        public void Construir(IList items)
+        public void Construir(IEnumerable items)
         {
             // crear nodo
             NodoColeccion nco = Nodo as NodoColeccion; 

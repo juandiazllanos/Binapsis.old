@@ -1,61 +1,47 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Binapsis.Plataforma.Configuracion;
-using Binapsis.Plataforma.Configuracion.Sql;
-using Binapsis.Plataforma.Configuracion.Sql.Helper;
-using Microsoft.Extensions.Configuration;
-using System.Collections.Generic;
+using Binapsis.Plataforma.Estructura;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Binapsis.Plataforma.ServicioConfiguracion.Controllers
 {
     [Route("configuracion/[controller]")]
-    public class TablaController : Controller
-    {        
-        [HttpGet("{nombre}")]
-        public Tabla Get(string nombre)
+    public class TablaController : ConfiguracionController<Tabla>
+    {
+        public TablaController(ContextoInfo contextoInfo) : base(contextoInfo)
         {
-            IHelper helper = new HelperTabla(CadenaConexion);
-            return (Tabla)helper.Recuperar(nombre);
         }
 
-        [HttpGet("{uri?}/{tipo?}")]
-        public IList<Tabla> Get(string uri = null, string tipo = null)
-        {
-            return new HelperTabla(CadenaConexion).Recuperar(uri, tipo);
-        }
 
-        [HttpGet("all")]
-        public IList<Tabla> Get()
+        [HttpGet("{clave}", Order = 0)]
+        public Tabla Get(string clave)
         {
-            return new HelperTabla(CadenaConexion).RecuperarTodo();
+            return Obtener(clave);
+        }
+        
+        [HttpGet(Order = 1)]
+        public IColeccion Get()
+        {
+            return ObtenerColeccion(Request.Query);
         }
 
         [HttpPost]
-        public void Post([FromBody]Tabla value)
+        public void Post([FromBody]Tabla valor)
         {
-            IHelper helper = new HelperTabla(CadenaConexion);
-            helper.Insertar(value);
+            Crear(valor);
         }
-                
+
         [HttpPut("{clave}")]
-        public void Put(string clave, [FromBody]Tabla value)
+        public void Put(string clave, [FromBody]Tabla valor)
         {
-            IHelper helper = new HelperTabla(CadenaConexion);
-            helper.Actualizar(clave, value);
+            Editar(clave, valor);
         }
-                
+
         [HttpDelete("{clave}")]
         public void Delete(string clave)
         {
-            IHelper helper = new HelperTabla(CadenaConexion);
-            Tabla valor = (Tabla)helper.Recuperar(clave);
-            helper.Eliminar(valor);
-        }
-
-        private string CadenaConexion
-        {
-            get => Startup.Configuration.GetValue<string>("cadenaConexion");
+            Eliminar(clave);
         }
     }
 }

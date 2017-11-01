@@ -10,6 +10,8 @@ namespace Binapsis.Plataforma.Datos
         Tabla ObtenerTabla(string nombreTabla);
         Relacion ObtenerRelacion(string uri, string tipo, string propiedad);
 
+        IPrimaryKey ObtenerPrimaryKey(string tabla, string columna);
+
         IList ObtenerTablas();
         IList ObtenerRelaciones();
         IList ObtenerRelacionesPorTipo(string uri, string tipo);

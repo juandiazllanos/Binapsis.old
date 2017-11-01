@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Binapsis.Presentacion.Win.Boton boton1 = new Binapsis.Presentacion.Win.Boton();
-            this.Ensamblado = new Binapsis.Presentacion.Win.EditorTextoBoton();
-            this.Nombre = new Binapsis.Presentacion.Win.EditorTexto();
+            Binapsis.Presentacion.Editores.Win.Boton boton1 = new Binapsis.Presentacion.Editores.Win.Boton();
+            this.Ensamblado = new Binapsis.Presentacion.Editores.Win.EditorTextoBoton();
+            this.Nombre = new Binapsis.Presentacion.Editores.Win.EditorTexto();
             this.SuspendLayout();
             // 
             // Ensamblado
@@ -38,7 +38,7 @@
             boton1.Image = null;
             boton1.Nombre = "seleccionarEnsambaldo";
             this.Ensamblado.Botones.Add(boton1);
-            this.Ensamblado.Estilo = Binapsis.Presentacion.Win.Estilo.TextButtonEdit;
+            this.Ensamblado.Estilo = Binapsis.Presentacion.Editores.Win.Estilo.TextButtonEdit;
             this.Ensamblado.Etiqueta.Texto = "Ensamblado";
             this.Ensamblado.Location = new System.Drawing.Point(26, 24);
             this.Ensamblado.Name = "EditorBase";
@@ -67,7 +67,7 @@
 
         #endregion
 
-        private Binapsis.Presentacion.Win.EditorTextoBoton Ensamblado;
-        private Binapsis.Presentacion.Win.EditorTexto Nombre;
+        private Binapsis.Presentacion.Editores.Win.EditorTextoBoton Ensamblado;
+        private Binapsis.Presentacion.Editores.Win.EditorTexto Nombre;
     }
 }

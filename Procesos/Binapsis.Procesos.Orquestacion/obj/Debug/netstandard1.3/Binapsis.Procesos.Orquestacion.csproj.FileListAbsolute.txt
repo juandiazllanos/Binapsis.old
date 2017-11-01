@@ -1,0 +1,7 @@
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Orquestacion\bin\Debug\netstandard1.3\Binapsis.Procesos.Orquestacion.deps.json
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Orquestacion\bin\Debug\netstandard1.3\Binapsis.Procesos.Orquestacion.dll
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Orquestacion\bin\Debug\netstandard1.3\Binapsis.Procesos.Orquestacion.pdb
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Orquestacion\obj\Debug\netstandard1.3\Binapsis.Procesos.Orquestacion.csprojResolveAssemblyReference.cache
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Orquestacion\obj\Debug\netstandard1.3\Binapsis.Procesos.Orquestacion.AssemblyInfo.cs
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Orquestacion\obj\Debug\netstandard1.3\Binapsis.Procesos.Orquestacion.dll
+D:\Desarrollo\Binapsis\Procesos\Binapsis.Procesos.Orquestacion\obj\Debug\netstandard1.3\Binapsis.Procesos.Orquestacion.pdb

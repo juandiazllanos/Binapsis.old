@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Binapsis.Presentacion.Win.Boton boton2 = new Binapsis.Presentacion.Win.Boton();
-            this.Tipo = new Binapsis.Presentacion.Win.EditorTextoBoton();
-            this.Nombre = new Binapsis.Presentacion.Win.EditorTexto();
-            this.Alias = new Binapsis.Presentacion.Win.EditorTexto();
-            this.ValorInicial = new Binapsis.Presentacion.Win.EditorTexto();
-            this.Asociacion = new Binapsis.Presentacion.Win.EditorEnumeracion();
-            this.Cardinalidad = new Binapsis.Presentacion.Win.EditorEnumeracion();
-            this.Indice = new Binapsis.Presentacion.Win.EditorNumerico();
+            Binapsis.Presentacion.Editores.Win.Boton boton2 = new Binapsis.Presentacion.Editores.Win.Boton();
+            this.Tipo = new Binapsis.Presentacion.Editores.Win.EditorTextoBoton();
+            this.Nombre = new Binapsis.Presentacion.Editores.Win.EditorTexto();
+            this.Alias = new Binapsis.Presentacion.Editores.Win.EditorTexto();
+            this.ValorInicial = new Binapsis.Presentacion.Editores.Win.EditorTexto();
+            this.Asociacion = new Binapsis.Presentacion.Editores.Win.EditorEnumeracion();
+            this.Cardinalidad = new Binapsis.Presentacion.Editores.Win.EditorEnumeracion();
+            this.Indice = new Binapsis.Presentacion.Editores.Win.EditorNumerico();
             this.SuspendLayout();
             // 
             // Tipo
@@ -43,7 +43,7 @@
             boton2.Image = null;
             boton2.Nombre = "seleccionarTipo";
             this.Tipo.Botones.Add(boton2);
-            this.Tipo.Estilo = Binapsis.Presentacion.Win.Estilo.TextButtonEdit;
+            this.Tipo.Estilo = Binapsis.Presentacion.Editores.Win.Estilo.TextButtonEdit;
             this.Tipo.Etiqueta.Texto = "Tipo";
             this.Tipo.Location = new System.Drawing.Point(25, 78);
             this.Tipo.Name = "EditorBase";
@@ -76,7 +76,7 @@
             // 
             // Asociacion
             // 
-            this.Asociacion.Estilo = Binapsis.Presentacion.Win.Estilo.EnumeracionEdit;
+            this.Asociacion.Estilo = Binapsis.Presentacion.Editores.Win.Estilo.EnumeracionEdit;
             this.Asociacion.Etiqueta.Texto = "Asociación";
             this.Asociacion.Location = new System.Drawing.Point(25, 104);
             this.Asociacion.Name = "EditorBase";
@@ -85,7 +85,7 @@
             // 
             // Cardinalidad
             // 
-            this.Cardinalidad.Estilo = Binapsis.Presentacion.Win.Estilo.EnumeracionEdit;
+            this.Cardinalidad.Estilo = Binapsis.Presentacion.Editores.Win.Estilo.EnumeracionEdit;
             this.Cardinalidad.Etiqueta.Texto = "Cardinalidad";
             this.Cardinalidad.Location = new System.Drawing.Point(25, 130);
             this.Cardinalidad.Name = "EditorBase";
@@ -119,12 +119,12 @@
 
         #endregion
 
-        private Binapsis.Presentacion.Win.EditorTextoBoton Tipo;
-        private Binapsis.Presentacion.Win.EditorTexto Nombre;
-        private Binapsis.Presentacion.Win.EditorTexto Alias;
-        private Binapsis.Presentacion.Win.EditorTexto ValorInicial;
-        private Binapsis.Presentacion.Win.EditorEnumeracion Asociacion;
-        private Binapsis.Presentacion.Win.EditorEnumeracion Cardinalidad;
-        private Binapsis.Presentacion.Win.EditorNumerico Indice;
+        private Binapsis.Presentacion.Editores.Win.EditorTextoBoton Tipo;
+        private Binapsis.Presentacion.Editores.Win.EditorTexto Nombre;
+        private Binapsis.Presentacion.Editores.Win.EditorTexto Alias;
+        private Binapsis.Presentacion.Editores.Win.EditorTexto ValorInicial;
+        private Binapsis.Presentacion.Editores.Win.EditorEnumeracion Asociacion;
+        private Binapsis.Presentacion.Editores.Win.EditorEnumeracion Cardinalidad;
+        private Binapsis.Presentacion.Editores.Win.EditorNumerico Indice;
     }
 }

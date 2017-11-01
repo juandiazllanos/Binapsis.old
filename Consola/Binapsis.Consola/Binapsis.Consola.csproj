@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Plataforma\Binapsis.Plataforma.AgenteConfiguracion\Binapsis.Plataforma.AgenteConfiguracion.csproj" />
+    <ProjectReference Include="..\..\Plataforma\Binapsis.Plataforma.AgenteDatos\Binapsis.Plataforma.AgenteDatos.csproj" />
+    <ProjectReference Include="..\..\Plataforma\Binapsis.Plataforma.Configuracion\Binapsis.Plataforma.Configuracion.csproj" />
+    <ProjectReference Include="..\..\Plataforma\Binapsis.Plataforma\Binapsis.Plataforma.csproj" />
+    <ProjectReference Include="..\..\Procesos\Binapsis.Procesos.Trabajos\Binapsis.Procesos.Trabajos.csproj" />
+    <ProjectReference Include="..\Binapsis.Consola.Definicion\Binapsis.Consola.Definicion.csproj" />
+    <ProjectReference Include="..\Binapsis.Consola.Graphics\Binapsis.Consola.Graphics.csproj" />
+    <ProjectReference Include="..\Binapsis.Consola.Helpers\Binapsis.Consola.Helpers.csproj" />
+    <ProjectReference Include="..\Binapsis.Consola.Navegacion\Binapsis.Consola.Navegacion.csproj" />
+  </ItemGroup>
+
+</Project>

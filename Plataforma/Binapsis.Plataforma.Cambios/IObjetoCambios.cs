@@ -6,5 +6,6 @@ namespace Binapsis.Plataforma.Cambios
     {
         Cambio Cambio { get; set; }
         string Referencia { get; set; }
+        IObjetoDatos PropietarioAntiguo { get; }
     }
 }

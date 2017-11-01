@@ -49,17 +49,17 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.imagenes16 = new System.Windows.Forms.ImageList(this.components);
             this.imagenes32 = new System.Windows.Forms.ImageList(this.components);
-            this.splitMain = new DevExpress.XtraEditors.SplitContainerControl();
-            this.tvwMain = new System.Windows.Forms.TreeView();
-            this.imgElemento16 = new System.Windows.Forms.ImageList(this.components);
             this.lvwMain = new System.Windows.Forms.ListView();
             this.colCategoria = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colNombre = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.imgElemento16 = new System.Windows.Forms.ImageList(this.components);
             this.contextMain = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.splitMain = new DevExpress.XtraEditors.SplitContainerControl();
+            this.tvwMain = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.barMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contextMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.contextMain)).BeginInit();
             this.SuspendLayout();
             // 
             // barMain
@@ -248,48 +248,6 @@
             this.imagenes32.Images.SetKeyName(2, "Eliminar");
             this.imagenes32.Images.SetKeyName(3, "Refrescar");
             // 
-            // splitMain
-            // 
-            this.splitMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitMain.Location = new System.Drawing.Point(0, 69);
-            this.splitMain.Name = "splitMain";
-            this.splitMain.Panel1.Controls.Add(this.tvwMain);
-            this.splitMain.Panel1.Text = "Panel1";
-            this.splitMain.Panel2.Controls.Add(this.lvwMain);
-            this.splitMain.Panel2.Text = "Panel2";
-            this.splitMain.Size = new System.Drawing.Size(892, 324);
-            this.splitMain.SplitterPosition = 350;
-            this.splitMain.TabIndex = 4;
-            // 
-            // tvwMain
-            // 
-            this.tvwMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tvwMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvwMain.FullRowSelect = true;
-            this.tvwMain.HideSelection = false;
-            this.tvwMain.ImageIndex = 0;
-            this.tvwMain.ImageList = this.imgElemento16;
-            this.tvwMain.Location = new System.Drawing.Point(0, 0);
-            this.tvwMain.Name = "tvwMain";
-            this.tvwMain.SelectedImageIndex = 0;
-            this.tvwMain.Size = new System.Drawing.Size(350, 324);
-            this.tvwMain.TabIndex = 5;
-            // 
-            // imgElemento16
-            // 
-            this.imgElemento16.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgElemento16.ImageStream")));
-            this.imgElemento16.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgElemento16.Images.SetKeyName(0, "Categoria");
-            this.imgElemento16.Images.SetKeyName(1, "Configuracion");
-            this.imgElemento16.Images.SetKeyName(2, "Ensamblado");
-            this.imgElemento16.Images.SetKeyName(3, "Tipo");
-            this.imgElemento16.Images.SetKeyName(4, "Uri");
-            this.imgElemento16.Images.SetKeyName(5, "Propiedad");
-            this.imgElemento16.Images.SetKeyName(6, "Conexion");
-            this.imgElemento16.Images.SetKeyName(7, "Tabla");
-            this.imgElemento16.Images.SetKeyName(8, "Columna");
-            this.imgElemento16.Images.SetKeyName(9, "Relacion");
-            // 
             // lvwMain
             // 
             this.lvwMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -321,6 +279,25 @@
             this.colNombre.Text = "Nombre";
             this.colNombre.Width = 352;
             // 
+            // imgElemento16
+            // 
+            this.imgElemento16.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgElemento16.ImageStream")));
+            this.imgElemento16.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgElemento16.Images.SetKeyName(0, "Categoria");
+            this.imgElemento16.Images.SetKeyName(1, "Configuracion");
+            this.imgElemento16.Images.SetKeyName(2, "Ensamblado");
+            this.imgElemento16.Images.SetKeyName(3, "Tipo");
+            this.imgElemento16.Images.SetKeyName(4, "Uri");
+            this.imgElemento16.Images.SetKeyName(5, "Propiedad");
+            this.imgElemento16.Images.SetKeyName(6, "Conexion");
+            this.imgElemento16.Images.SetKeyName(7, "Tabla");
+            this.imgElemento16.Images.SetKeyName(8, "Columna");
+            this.imgElemento16.Images.SetKeyName(9, "Relacion");
+            this.imgElemento16.Images.SetKeyName(10, "Comando");
+            this.imgElemento16.Images.SetKeyName(11, "ResultadoDescriptor");
+            this.imgElemento16.Images.SetKeyName(12, "Parametro");
+            this.imgElemento16.Images.SetKeyName(13, "Contexto");
+            // 
             // contextMain
             // 
             this.contextMain.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
@@ -329,6 +306,33 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.toolMenuEliminar)});
             this.contextMain.Manager = this.barMain;
             this.contextMain.Name = "contextMain";
+            // 
+            // splitMain
+            // 
+            this.splitMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitMain.Location = new System.Drawing.Point(0, 69);
+            this.splitMain.Name = "splitMain";
+            this.splitMain.Panel1.Controls.Add(this.tvwMain);
+            this.splitMain.Panel1.Text = "Panel1";
+            this.splitMain.Panel2.Controls.Add(this.lvwMain);
+            this.splitMain.Panel2.Text = "Panel2";
+            this.splitMain.Size = new System.Drawing.Size(892, 324);
+            this.splitMain.SplitterPosition = 350;
+            this.splitMain.TabIndex = 4;
+            // 
+            // tvwMain
+            // 
+            this.tvwMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tvwMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tvwMain.FullRowSelect = true;
+            this.tvwMain.HideSelection = false;
+            this.tvwMain.ImageIndex = 0;
+            this.tvwMain.ImageList = this.imgElemento16;
+            this.tvwMain.Location = new System.Drawing.Point(0, 0);
+            this.tvwMain.Name = "tvwMain";
+            this.tvwMain.SelectedImageIndex = 0;
+            this.tvwMain.Size = new System.Drawing.Size(350, 324);
+            this.tvwMain.TabIndex = 5;
             // 
             // Main
             // 
@@ -346,9 +350,9 @@
             this.Text = "Main";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.barMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contextMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).EndInit();
             this.splitMain.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.contextMain)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

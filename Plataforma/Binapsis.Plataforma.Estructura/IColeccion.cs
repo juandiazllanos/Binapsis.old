@@ -9,5 +9,6 @@ namespace Binapsis.Plataforma.Estructura
         int Longitud { get; }
         
         IObjetoDatos this[int indice] { get; }
+        //ITipo Tipo { get; }
     }
 }

@@ -13,7 +13,7 @@
             Elemento = elemento;
         }
 
-        internal Elemento Elemento
+        public Elemento Elemento
         {
             get;        
         }

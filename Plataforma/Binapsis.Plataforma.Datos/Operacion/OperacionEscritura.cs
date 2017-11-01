@@ -2,6 +2,7 @@
 using Binapsis.Plataforma.Datos.Impl;
 using Binapsis.Plataforma.Datos.Mapeo;
 using Binapsis.Plataforma.Estructura;
+using Binapsis.Plataforma.Helper.Impl;
 using System;
 
 namespace Binapsis.Plataforma.Datos.Operacion
@@ -37,12 +38,12 @@ namespace Binapsis.Plataforma.Datos.Operacion
             else if (mapeoColumna is MapeoColumnaClave mapeoColumnaClave)
                 valor = ResolverReferencia(mapeoColumnaClave);
             else if (mapeoColumna.Columna.ClavePrimaria)
-                valor = Contexto.ObtenerClave(mapeoColumna.MapeoTabla.Tipo)?.Obtener(ObjetoDatos, mapeoColumna.Columna.Nombre);
+                valor = mapeoColumna.MapeoTabla.ObtenerPrimaryKey(mapeoColumna.Columna.Nombre).Get(ObjetoDatos); //Contexto.ObtenerClave(mapeoColumna.MapeoTabla.Tipo)?.Obtener(ObjetoDatos, mapeoColumna.Columna.Nombre);
             else
                 return; // terminar
 
             if (valor == null)
-                valor = ValorInicialHelper.Instancia.Obtener(mapeoColumna.Propiedad);
+                valor = DefaultValueHelper.Instancia.GetDefaultValue(mapeoColumna.Propiedad); //ValorInicialHelper.Instancia.Obtener(mapeoColumna.Propiedad);
 
             parametro.Valor = valor;
         }
@@ -66,10 +67,17 @@ namespace Binapsis.Plataforma.Datos.Operacion
             if (mapeoRelacionClave == null)
                 throw new Exception($"No se ha podido resolver la columna '{mapeoColumna.Columna.Nombre}'.");
 
-            if (od != null && mapeoRelacionClave.ClavePrincipal.Propiedad != null)
-                return od.Obtener(mapeoRelacionClave.ClavePrincipal.Propiedad);
-            else 
-                return Contexto.ObtenerClave(mapeoRelacionClave.MapeoRelacion.TablaPrincipal.Tipo)?.Obtener(od, mapeoRelacionClave.ClavePrincipal.Columna.Nombre);
+            IPrimaryKey pk = mapeoRelacionClave.ObtenerPrimaryKey();
+
+            if (od != null && pk != null)
+                return pk.Get(od);
+            else
+                return null;
+
+            //if (od != null && mapeoRelacionClave.ClavePrincipal.Propiedad != null)
+            //    return od.Obtener(mapeoRelacionClave.ClavePrincipal.Propiedad);
+            //else 
+            //    return Contexto.ObtenerClave(mapeoRelacionClave.MapeoRelacion.TablaPrincipal.Tipo)?.Obtener(od, mapeoRelacionClave.ClavePrincipal.Columna.Nombre);
         }
         
         public ComandoEscritura Comando

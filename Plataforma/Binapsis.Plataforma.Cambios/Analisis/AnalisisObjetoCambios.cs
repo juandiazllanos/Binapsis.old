@@ -18,7 +18,7 @@ namespace Binapsis.Plataforma.Cambios.Analisis
         {
             Tipo = tipo;
             Propietario = propietario;
-            ClaveHelper = propietario?.ClaveHelper;
+            KeyHelper = propietario?.KeyHelper;
 
             _propiedades = new List<AnalisisPropiedadCambios>();            
         }
@@ -75,7 +75,7 @@ namespace Binapsis.Plataforma.Cambios.Analisis
             set;
         }
 
-        public IClaveHelper ClaveHelper
+        public IKeyHelper KeyHelper
         {
             get;
             set;

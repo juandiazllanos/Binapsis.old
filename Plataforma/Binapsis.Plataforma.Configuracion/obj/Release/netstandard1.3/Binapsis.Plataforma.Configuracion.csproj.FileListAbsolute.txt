@@ -7,3 +7,5 @@ D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion\obj\Release\
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion\obj\Release\netstandard1.3\Binapsis.Plataforma.Configuracion.AssemblyInfo.cs
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion\obj\Release\netstandard1.3\Binapsis.Plataforma.Configuracion.dll
 D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion\obj\Release\netstandard1.3\Binapsis.Plataforma.Configuracion.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion\bin\Release\netstandard1.3\Binapsis.Plataforma.Helper.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion\bin\Release\netstandard1.3\Binapsis.Plataforma.Helper.pdb

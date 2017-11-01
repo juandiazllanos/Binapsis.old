@@ -1,0 +1,5 @@
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Graphics\bin\Debug\Binapsis.Consola.Graphics.dll
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Graphics\bin\Debug\Binapsis.Consola.Graphics.pdb
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Graphics\obj\Debug\Binapsis.Consola.Graphics.csprojResolveAssemblyReference.cache
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Graphics\obj\Debug\Binapsis.Consola.Graphics.dll
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Graphics\obj\Debug\Binapsis.Consola.Graphics.pdb

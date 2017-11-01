@@ -1,0 +1,10 @@
+﻿namespace Binapsis.Presentacion.Editores.Win.Diseñadores
+{
+    internal class TypeEditorEstiloFechaBoton : TypeEditorEstilo
+    {
+        public TypeEditorEstiloFechaBoton() 
+            : base(new Estilo[] { Estilo.DateButtonEdit, Estilo.TimeButtonEdit })
+        {
+        }
+    }
+}

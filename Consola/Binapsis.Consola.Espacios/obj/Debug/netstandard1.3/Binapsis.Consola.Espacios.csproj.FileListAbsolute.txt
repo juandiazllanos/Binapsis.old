@@ -1,0 +1,17 @@
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Espacios\bin\Debug\netstandard1.3\Binapsis.Consola.Espacios.deps.json
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Espacios\bin\Debug\netstandard1.3\Binapsis.Consola.Definicion.dll
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Espacios\bin\Debug\netstandard1.3\Binapsis.Plataforma.Configuracion.dll
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Espacios\bin\Debug\netstandard1.3\Binapsis.Plataforma.Estructura.dll
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Espacios\bin\Debug\netstandard1.3\Binapsis.Plataforma.Helper.dll
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Espacios\bin\Debug\netstandard1.3\Binapsis.Plataforma.Configuracion.pdb
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Espacios\bin\Debug\netstandard1.3\Binapsis.Plataforma.Estructura.pdb
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Espacios\bin\Debug\netstandard1.3\Binapsis.Plataforma.Helper.pdb
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Espacios\obj\Debug\netstandard1.3\Binapsis.Consola.Espacios.csprojResolveAssemblyReference.cache
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Espacios\obj\Debug\netstandard1.3\Binapsis.Consola.Espacios.AssemblyInfo.cs
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Espacios\bin\Debug\netstandard1.3\Binapsis.Consola.Espacios.dll
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Espacios\bin\Debug\netstandard1.3\Binapsis.Consola.Espacios.pdb
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Espacios\bin\Debug\netstandard1.3\Binapsis.Consola.Helpers.dll
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Espacios\bin\Debug\netstandard1.3\Binapsis.Consola.Definicion.pdb
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Espacios\bin\Debug\netstandard1.3\Binapsis.Consola.Helpers.pdb
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Espacios\obj\Debug\netstandard1.3\Binapsis.Consola.Espacios.dll
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Espacios\obj\Debug\netstandard1.3\Binapsis.Consola.Espacios.pdb

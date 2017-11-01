@@ -35,11 +35,12 @@ namespace Binapsis.Plataforma.Configuracion.Datos
             // obtener datos antiguos
             IObjetoDatos antiguo = RecuperarAntiguo(obj.Tipo, clave);
             // construir cambios
-            builder.ClaveHelper = ConfiguracionClaveHelper.Instancia;
+            builder.KeyHelper = new ConfiguracionKeyHelper();
             builder.Construir(obj, antiguo);
             // configurar contexto
             ContextoUpdate.Tabla = Configuracion.ObtenerTabla(obj.Tipo.Uri, obj.Tipo.Nombre);
             ContextoUpdate.Clave = clave;
+            ContextoUpdate.Antiguo = antiguo;
             
             // ejecutar cambios
             Ejecutar(dd);

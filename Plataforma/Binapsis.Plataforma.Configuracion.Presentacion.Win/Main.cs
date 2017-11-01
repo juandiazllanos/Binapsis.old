@@ -96,7 +96,12 @@ namespace Binapsis.Plataforma.Configuracion.Presentacion.Win
         {
             string imagen = nodo.Padre?.Nombre;
 
-            if (imagen == null) imagen = "Configuracion";
+            if (nodo.Elemento is Categoria)
+                imagen = "Categoria";
+            else if (nodo.Elemento is Clave)
+                imagen = (nodo.Padre as Nodo)?.Elemento.Nombre;
+            else
+                imagen = "Configuracion";
             
             return imagen;
         }

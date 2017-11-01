@@ -119,10 +119,10 @@ namespace Binapsis.Plataforma.Datos.SQLite
             DeshacerTransaccion();
         }
 
-        public IClave ObtenerClave(ITipo tipo)
-        {
-            return null;
-        }
+        //public IClave ObtenerClave(ITipo tipo)
+        //{
+        //    return null;
+        //}
         #endregion
 
 

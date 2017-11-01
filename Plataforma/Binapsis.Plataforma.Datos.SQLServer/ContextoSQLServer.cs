@@ -146,10 +146,10 @@ namespace Binapsis.Plataforma.Datos.SQLServer
             DeshacerTransaccion();
         }
 
-        public IClave ObtenerClave(ITipo tipo)
-        {
-            return null;
-        }
+        //public IClave ObtenerClave(ITipo tipo)
+        //{
+        //    return null;
+        //}
         #endregion
 
 

@@ -1,0 +1,13 @@
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Cambios\bin\Release\netstandard2.0\Binapsis.Plataforma.Cambios.deps.json
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Cambios\bin\Release\netstandard2.0\Binapsis.Plataforma.Cambios.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Cambios\bin\Release\netstandard2.0\Binapsis.Plataforma.Cambios.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Cambios\bin\Release\netstandard2.0\Binapsis.Plataforma.Estructura.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Cambios\bin\Release\netstandard2.0\Binapsis.Plataforma.Helper.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Cambios\bin\Release\netstandard2.0\Binapsis.Plataforma.Estructura.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Cambios\bin\Release\netstandard2.0\Binapsis.Plataforma.Helper.pdb
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Cambios\obj\Release\netstandard2.0\Binapsis.Plataforma.Cambios.csprojResolveAssemblyReference.cache
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Cambios\obj\Release\netstandard2.0\Binapsis.Plataforma.Cambios.csproj.CoreCompileInputs.cache
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Cambios\obj\Release\netstandard2.0\Binapsis.Plataforma.Cambios.AssemblyInfoInputs.cache
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Cambios\obj\Release\netstandard2.0\Binapsis.Plataforma.Cambios.AssemblyInfo.cs
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Cambios\obj\Release\netstandard2.0\Binapsis.Plataforma.Cambios.dll
+D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Cambios\obj\Release\netstandard2.0\Binapsis.Plataforma.Cambios.pdb

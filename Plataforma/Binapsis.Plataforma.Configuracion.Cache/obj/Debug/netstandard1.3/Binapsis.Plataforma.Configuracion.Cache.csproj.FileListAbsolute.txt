@@ -1,9 +1,0 @@
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Cache\bin\Debug\netstandard1.3\Binapsis.Plataforma.Configuracion.Cache.deps.json
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Cache\bin\Debug\netstandard1.3\Binapsis.Plataforma.Configuracion.Cache.dll
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Cache\bin\Debug\netstandard1.3\Binapsis.Plataforma.Configuracion.Cache.pdb
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Cache\bin\Debug\netstandard1.3\Binapsis.Plataforma.Estructura.dll
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Cache\bin\Debug\netstandard1.3\Binapsis.Plataforma.Estructura.pdb
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Cache\obj\Debug\netstandard1.3\Binapsis.Plataforma.Configuracion.Cache.AssemblyInfo.cs
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Cache\obj\Debug\netstandard1.3\Binapsis.Plataforma.Configuracion.Cache.dll
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Cache\obj\Debug\netstandard1.3\Binapsis.Plataforma.Configuracion.Cache.pdb
-D:\Desarrollo\Binapsis\Plataforma\Binapsis.Plataforma.Configuracion.Cache\obj\Debug\netstandard1.3\Binapsis.Plataforma.Configuracion.Cache.csprojResolveAssemblyReference.cache

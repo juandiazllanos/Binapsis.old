@@ -1,0 +1,9 @@
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Helpers\bin\Debug\netstandard1.3\Binapsis.Consola.Helpers.deps.json
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Helpers\bin\Debug\netstandard1.3\Binapsis.Consola.Helpers.dll
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Helpers\bin\Debug\netstandard1.3\Binapsis.Consola.Helpers.pdb
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Helpers\bin\Debug\netstandard1.3\Binapsis.Consola.Definicion.dll
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Helpers\bin\Debug\netstandard1.3\Binapsis.Consola.Definicion.pdb
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Helpers\obj\Debug\netstandard1.3\Binapsis.Consola.Helpers.csprojResolveAssemblyReference.cache
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Helpers\obj\Debug\netstandard1.3\Binapsis.Consola.Helpers.AssemblyInfo.cs
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Helpers\obj\Debug\netstandard1.3\Binapsis.Consola.Helpers.dll
+D:\Desarrollo\Binapsis\Consola\Binapsis.Consola.Helpers\obj\Debug\netstandard1.3\Binapsis.Consola.Helpers.pdb

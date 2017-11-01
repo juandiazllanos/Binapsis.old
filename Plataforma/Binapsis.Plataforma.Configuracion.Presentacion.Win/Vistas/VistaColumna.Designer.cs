@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Nombre = new Binapsis.Presentacion.Win.EditorTexto();
-            this.Propiedad = new Binapsis.Presentacion.Win.EditorTexto();
-            this.ClavePrincipal = new Binapsis.Presentacion.Win.EditorBoolean();
+            this.Nombre = new Binapsis.Presentacion.Editores.Win.EditorTexto();
+            this.Propiedad = new Binapsis.Presentacion.Editores.Win.EditorTexto();
+            this.ClavePrincipal = new Binapsis.Presentacion.Editores.Win.EditorBoolean();
             this.SuspendLayout();
             // 
             // Nombre
@@ -51,7 +51,7 @@
             // 
             // ClavePrincipal
             // 
-            this.ClavePrincipal.Estilo = Binapsis.Presentacion.Win.Estilo.CheckEdit;
+            this.ClavePrincipal.Estilo = Binapsis.Presentacion.Editores.Win.Estilo.CheckEdit;
             this.ClavePrincipal.Etiqueta.Texto = "Clave principal";
             this.ClavePrincipal.Etiqueta.Visible = false;
             this.ClavePrincipal.Location = new System.Drawing.Point(108, 78);
@@ -76,8 +76,8 @@
 
         #endregion
 
-        private Binapsis.Presentacion.Win.EditorTexto Nombre;
-        private Binapsis.Presentacion.Win.EditorTexto Propiedad;
-        private Binapsis.Presentacion.Win.EditorBoolean ClavePrincipal;
+        private Binapsis.Presentacion.Editores.Win.EditorTexto Nombre;
+        private Binapsis.Presentacion.Editores.Win.EditorTexto Propiedad;
+        private Binapsis.Presentacion.Editores.Win.EditorBoolean ClavePrincipal;
     }
 }

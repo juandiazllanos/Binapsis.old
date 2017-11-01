@@ -26,10 +26,12 @@ namespace Binapsis.Plataforma.Configuracion.Presentacion.Win
             Consola.Agregar("Uri", typeof(Uri));
             Consola.Agregar("Tipo", typeof(Tipo));
             Consola.Agregar("Propiedad", typeof(Propiedad));
+            Consola.Agregar("Contexto", typeof(Contexto));
             Consola.Agregar("Conexion", typeof(Conexion));
             Consola.Agregar("Tabla", typeof(Tabla));
             Consola.Agregar("Columna", typeof(Columna));
             Consola.Agregar("Relacion", typeof(Relacion));
+            Consola.Agregar("Comando", typeof(Comando));
         }
 
         private void ConstruirConsultas()
@@ -38,10 +40,14 @@ namespace Binapsis.Plataforma.Configuracion.Presentacion.Win
             Consola.Agregar("Uri", "listarUriPorEnsamblado");
             Consola.Agregar("Tipo", "listarTipoPorUri");
             Consola.Agregar("Propiedad", "listarPropiedadPorTipo");
+            Consola.Agregar("Contexto", "listarContexto");
             Consola.Agregar("Conexion", "listarConexion");
             Consola.Agregar("Tabla", "listarTabla");
             Consola.Agregar("Columna", "listarColumnaPorTabla");
             Consola.Agregar("Relacion", "listarRelacion");
+            Consola.Agregar("Comando", "listarComando");
+            Consola.Agregar("Parametro", "listarParametroPorComando");
+            Consola.Agregar("ResultadoDescriptor", "listarResultadoDescriptorPorComando");
         }
 
         private void ConstruirGrupos()
@@ -53,10 +59,14 @@ namespace Binapsis.Plataforma.Configuracion.Presentacion.Win
             categoria.Grupos.Agregar(categoria = new Categoria { Nombre = "Tipo" });
             categoria.Grupos.Agregar(categoria = new CategoriaItem("Propiedades") { Nombre = "Propiedad" });
 
+            grupo.Grupos.Agregar(categoria = new Categoria { Nombre = "Contexto"});
             grupo.Grupos.Agregar(categoria = new Categoria { Nombre = "Conexion", Descripcion = "Conexión" });
             grupo.Grupos.Agregar(categoria = new Categoria { Nombre = "Tabla" });
             categoria.Grupos.Agregar(categoria = new CategoriaItem("Columnas") { Nombre = "Columna" });
             grupo.Grupos.Agregar(categoria = new Categoria { Nombre = "Relacion", Descripcion = "Relación" });
+            grupo.Grupos.Agregar(categoria = new Categoria { Nombre = "Comando" });
+            categoria.Grupos.Agregar(new CategoriaItem("Parametros") { Nombre = "Parametro" });
+            categoria.Grupos.Agregar(new CategoriaItem("ResultadoDescriptores") { Nombre = "ResultadoDescriptor", Descripcion = "Resultado" });
 
             Consola.Navegador.Grupos.Agregar(grupo);
         }

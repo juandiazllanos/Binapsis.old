@@ -1,19 +1,30 @@
-﻿using Binapsis.Plataforma.Estructura.Impl;
-using Binapsis.Plataforma.Estructura;
-using System;
+﻿using Binapsis.Plataforma.Estructura;
+using Binapsis.Plataforma.Estructura.Impl;
+using Binapsis.Plataforma.Helper;
 
 namespace Binapsis.Plataforma
 {
     public class EntidadBase : ObjetoBase
-    {
-        public EntidadBase(IImplementacion impl) 
+    {        
+        protected EntidadBase(IImplementacion impl) 
             : base(impl)
         {
         }
 
         protected override ObjetoBase CrearObjetoDatos(IImplementacion impl)
         {
-            throw new NotImplementedException();
+            return (HelperProvider.DataFactory as DataFactory)?.Crear(impl);
         }
+                
+        public virtual EntidadBase CrearEntidadBase(IPropiedad propiedad)
+        {
+            return CrearObjetoDatos(propiedad) as EntidadBase;
+        }
+
+        public object Id
+        {
+            get => Obtener("Id");
+        }
+
     }
 }

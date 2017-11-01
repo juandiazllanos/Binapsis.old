@@ -20,7 +20,7 @@ namespace Binapsis.Plataforma.Datos
 
         IResultado EjecutarConsulta(IComando comando);
 
-        IClave ObtenerClave(ITipo tipo);
+        //IClave ObtenerClave(ITipo tipo);
 
         void AbrirConexion();
 

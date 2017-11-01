@@ -1,6 +1,8 @@
 ﻿using Binapsis.Plataforma.Configuracion;
+using Binapsis.Plataforma.Datos.Impl;
 using Binapsis.Plataforma.Datos.Mapeo;
 using Binapsis.Plataforma.Estructura;
+
 using System.Linq;
 
 namespace Binapsis.Plataforma.Datos.Builder
@@ -23,6 +25,17 @@ namespace Binapsis.Plataforma.Datos.Builder
             MapeoTabla.Tabla = tabla;
 
             ConstruirColumnas();
+            ConstruirKeys();
+        }
+
+        private void ConstruirKeys()
+        {
+            foreach (MapeoColumna mapeoColumna in MapeoTabla.ObtenerMapeoColumnaClavePrincipal())
+                if (mapeoColumna.Propiedad != null)
+                    MapeoTabla.AgregarPrimaryKey(mapeoColumna.Columna.Nombre, new PrimaryKey(mapeoColumna));
+                else
+                    MapeoTabla.AgregarPrimaryKey(mapeoColumna.Columna.Nombre, 
+                        Configuracion.ObtenerPrimaryKey(MapeoTabla.Tabla.Nombre, mapeoColumna.Columna.Nombre));
         }
 
         private Tabla CrearTabla(ITipo tipo)
